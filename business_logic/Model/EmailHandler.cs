@@ -15,7 +15,7 @@ namespace business_logic.Model
             mail.Body = content;
 
             mailClient.Port = 587;
-            mailClient.Credentials = new System.Net.NetworkCredential("PetBook@mail.com","Pet3@Book4");
+            mailClient.Credentials = new System.Net.NetworkCredential("PetBook@mail.com","*******");
             mailClient.EnableSsl = true;
 
             //mailClient.Send(mail);

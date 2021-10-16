@@ -1,7 +1,9 @@
+using System;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace business_logic.Model.Mediator
 {
@@ -23,16 +25,34 @@ namespace business_logic.Model.Mediator
             stream = client.GetStream();
         }
 
-        public async Task<string> requestPets(){
+        public async Task<List<Pet>> requestPets(){
             Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",null);
 
             byte[] dataToServer = Encoding.ASCII.GetBytes(JsonSerializer.Serialize(communicationClass));
             await stream.WriteAsync(dataToServer);
 
-            byte[] dataFromServer = new byte[1024];
+            byte[] dataFromServer = new byte[2048];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
-            return response;
+
+            List<Pet> PetList = JsonSerializer.Deserialize<List<Pet>>(response);
+            Console.WriteLine(PetList);
+            return PetList;
+        }
+
+        public async Task<Pet> createPet(Pet newPet){
+            Comunication<Pet> commClass = new Comunication<Pet>("pet","Add",newPet);
+
+            byte[] dataToServer = Encoding.ASCII.GetBytes(JsonSerializer.Serialize(commClass));
+            await stream.WriteAsync(dataToServer);
+
+            byte[] dataFromServer = new byte[2048];
+            int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
+            string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
+
+            Pet thePet = JsonSerializer.Deserialize<Pet>(response);
+            Console.WriteLine(thePet);
+            return new Pet();
         }
     }
 }
