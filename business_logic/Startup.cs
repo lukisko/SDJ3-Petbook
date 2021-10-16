@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using business_logic.Model;
+using business_logic.Data;
 
 namespace business_logic
 {
@@ -32,6 +34,7 @@ namespace business_logic
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "business_logic", Version = "v1" });
             });
+            services.AddSingleton<IPetsData ,PetsData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

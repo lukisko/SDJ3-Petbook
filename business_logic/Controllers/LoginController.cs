@@ -16,6 +16,8 @@ namespace business_logic.Controllers
         //[Route("{email:int}")]
         public ActionResult<String> Login([FromQuery] string email){
             Console.WriteLine(email);
+            //var testing = Environment.GetEnvironmentVariable("PATH");
+            //Console.WriteLine((testing!=null)?testing:"nothing");
             IEmailHandler emailHandler = new EmailHandler();
             try {
                 emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there!");
