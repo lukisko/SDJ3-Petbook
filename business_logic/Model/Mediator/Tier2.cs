@@ -10,7 +10,7 @@ namespace business_logic.Model.Mediator
     public class Tier2 : ITier2Mediator
     {
         private static readonly string HOST = "localhost";
-        private static readonly int PORT = 4569;
+        private static readonly int PORT = 5123;
         private TcpClient client;
         private NetworkStream stream;
         public Tier2() {
@@ -25,7 +25,7 @@ namespace business_logic.Model.Mediator
             stream = client.GetStream();
         }
 
-        public async Task<List<Pet>> requestPets(){
+        public async Task<PetList> requestPets(){
             Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",null);
 
             byte[] dataToServer = Encoding.ASCII.GetBytes(JsonSerializer.Serialize(communicationClass));
@@ -35,8 +35,10 @@ namespace business_logic.Model.Mediator
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
 
-            List<Pet> PetList = JsonSerializer.Deserialize<List<Pet>>(response);
-            Console.WriteLine(PetList);
+
+
+            PetList PetList = JsonSerializer.Deserialize<PetList>(response);
+            Console.WriteLine(JsonSerializer.Serialize(PetList));
             return PetList;
         }
 
@@ -51,7 +53,7 @@ namespace business_logic.Model.Mediator
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
 
             Pet thePet = JsonSerializer.Deserialize<Pet>(response);
-            Console.WriteLine(thePet);
+            Console.WriteLine(JsonSerializer.Serialize(thePet));
             return new Pet();
         }
     }

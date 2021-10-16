@@ -6,13 +6,19 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using business_logic.Model.Mediator;
+using System.Text.Json;
+using business_logic.Data;
 
 namespace business_logic
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
+            //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
+            //await test.requestPets(); //delete also async
+            //await test.createPet(new Model.Pet());
             CreateHostBuilder(args).Build().Run();
         }
 
