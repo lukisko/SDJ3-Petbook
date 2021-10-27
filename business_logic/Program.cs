@@ -19,7 +19,10 @@ namespace business_logic
             //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
             //await test.requestPets(); //delete also async
             //await test.createPet(new Model.Pet());
-            CreateHostBuilder(args).Build().Run();
+            ITier2Mediator med = new Tier2();
+            Console.WriteLine("client connected!");
+            await med.requestPets();
+            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
