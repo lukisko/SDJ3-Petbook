@@ -40,9 +40,9 @@ namespace business_logic.Model.Mediator
 
 
 
-            PetList PetList = JsonSerializer.Deserialize<PetList>(response);
+            Comunication<PetList> PetList = JsonSerializer.Deserialize<Comunication<PetList>>(response);
             Console.WriteLine(JsonSerializer.Serialize(PetList));
-            return PetList;
+            return PetList.value;
         }
 
         public async Task<Pet> createPet(Pet newPet){
