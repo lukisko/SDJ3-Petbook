@@ -193,19 +193,19 @@
     ]
   },
   "packageFolders": {
-    "/home/lukisko/.nuget/packages/": {}
+    "C:\\Users\\hanch\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/business_logic/business_logic.csproj",
+      "projectUniqueName": "C:\\Users\\hanch\\Desktop\\programs\\JAVA3\\SDJ3-Petbook\\business_logic\\business_logic.csproj",
       "projectName": "business_logic",
-      "projectPath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/business_logic/business_logic.csproj",
-      "packagesPath": "/home/lukisko/.nuget/packages/",
-      "outputPath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/business_logic/obj/",
+      "projectPath": "C:\\Users\\hanch\\Desktop\\programs\\JAVA3\\SDJ3-Petbook\\business_logic\\business_logic.csproj",
+      "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hanch\\Desktop\\programs\\JAVA3\\SDJ3-Petbook\\business_logic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/lukisko/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -244,12 +244,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -258,7 +252,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
