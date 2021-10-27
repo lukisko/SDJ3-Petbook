@@ -27,11 +27,21 @@ public class DatabaseHandler implements Database
         String type = resultSet.getString("type");
         String breed = resultSet.getString("breed");
         String description = resultSet.getString("description");
-        list.addPet(new Pet(id, name, type, breed));
+        list.addPet(new Pet(id, name, type, breed, description));
       }
-
     }
-
     return list;
+  }
+
+  @Override public void addPet(Pet pet) throws SQLException, RemoteException
+  {
+    try (Connection connection = DatabaseConnection.getConnection()) {
+      PreparedStatement statement = connection.prepareStatement("insert into Pet(id,type,breed,description)values (?,?,?,?)");
+      statement.setInt(1, pet.getId());
+      statement.setString(2, pet.getType());
+      statement.setString(3, pet.getBread());
+      statement.setString(4, pet.getDescription());
+      statement.execute();
+    }
   }
 }
