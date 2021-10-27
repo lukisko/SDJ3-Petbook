@@ -28,7 +28,8 @@ namespace ClientApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+            services.AddScoped<IPetController, PetController>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
