@@ -1,7 +1,61 @@
 @page "/"
+@inject IPetController _petController
+@inject NavigationManager NavMgr
+@using business_logic.Model;
+<h1>Pet book</h1>
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<a class="btn btn-success mb-2" @onclick="()=>NavigateToAddPet()">Add Pet</a>
+@if (toShowPets == null)
+{
+    <p>No pets found</p>
+}
+else
+{
+    <table class="table">
+        <thead class="table-primary">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Breed</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in toShowPets)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.type</td>
+                <td>@item.breed</td>
+                <td>@item.description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code{
+    private IList<Pet> allPets;
+    private IList<Pet> toShowPets;
+
+    protected override async Task OnInitializedAsync()
+    {
+        allPets = await _petController.GetAllPetsAsync();
+        toShowPets = allPets;
+    }
+    private void NavigateToAddPet()
+    {
+        NavMgr.NavigateTo($"/AddPet");
+    }
+
+
+
+
+
+
+
+
+}

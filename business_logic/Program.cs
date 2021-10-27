@@ -17,10 +17,20 @@ namespace business_logic
     {
         public async static Task Main(string[] args)
         {
+<<<<<<< HEAD
             ITier2Mediator med = new Tier2();
             Console.WriteLine("client connected!");
             await med.requestPets();
             //CreateHostBuilder(args).Build().Run();
+=======
+            //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
+            //await test.requestPets(); //delete also async
+            //await test.createPet(new Model.Pet());
+            //ITier2Mediator med = new Tier2();
+            //Console.WriteLine("client connected!");
+            //await med.requestPets();
+            CreateHostBuilder(args).Build().Run();
+>>>>>>> ClientApp
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
