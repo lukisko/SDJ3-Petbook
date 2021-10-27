@@ -30,9 +30,9 @@ public class T2Handler implements Runnable
 
       try
       {
-        byte[] lenBytes = new byte[100];
-        is.read(lenBytes, 0 ,100);
-        String received = new String(lenBytes, 0, 100);
+        byte[] lenBytes = new byte[500];
+        is.read(lenBytes, 0 ,500);
+        String received = new String(lenBytes, 0, 500);
         System.out.println(received);
         Comunication request = gson.fromJson(received.trim(), Comunication.class);
 
