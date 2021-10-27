@@ -9,8 +9,8 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2 : ITier2Mediator
     {
-        private static readonly string HOST = "62.107.181.237";
-        private static readonly int PORT = 5123;
+        private static readonly string HOST = "62.107.181.237";//"127.0.0.1";//
+        private static readonly int PORT = 5123;//4758;//
         private TcpClient client;
         private NetworkStream stream;
         public Tier2() {
@@ -26,10 +26,13 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<PetList> requestPets(){
-            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",null);
+            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",new Pet(){type="test",breed="ing",name="none"});
 
-            byte[] dataToServer = Encoding.ASCII.GetBytes(JsonSerializer.Serialize(communicationClass));
+            var testing = JsonSerializer.Serialize(communicationClass);
+            byte[] dataToServer = Encoding.ASCII.GetBytes(testing);
+            Console.WriteLine("hello");
             await stream.WriteAsync(dataToServer);
+            Console.WriteLine(dataToServer.Length);
 
             byte[] dataFromServer = new byte[2048];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);

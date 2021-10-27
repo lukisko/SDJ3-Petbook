@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using business_logic.Model.Mediator;
 using System.Text.Json;
 using business_logic.Data;
+using business_logic.Model;
 
 namespace business_logic
 {
@@ -16,9 +17,6 @@ namespace business_logic
     {
         public async static Task Main(string[] args)
         {
-            //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
-            //await test.requestPets(); //delete also async
-            //await test.createPet(new Model.Pet());
             ITier2Mediator med = new Tier2();
             Console.WriteLine("client connected!");
             await med.requestPets();
