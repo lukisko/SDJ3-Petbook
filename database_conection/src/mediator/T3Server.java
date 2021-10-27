@@ -32,6 +32,7 @@ public class T3Server implements Runnable
         Thread clientHandler = new Thread(t2Handler);
         clientHandler.setDaemon(true);
         clientHandler.start();
+        socket.close();
       }
     }
     catch (Exception e){

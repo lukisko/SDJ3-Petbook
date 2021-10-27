@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 public class PetList
 {
-  private ArrayList<Pet> list;
+  private ArrayList<Pet> pets;
 
   public PetList(){
-    list = new ArrayList<>();
+    pets = new ArrayList<>();
   }
 
   public void addPet(Pet pet){
-    list.add(pet);
+    pets.add(pet);
   }
 
-  public ArrayList<Pet> getList()
+  public void setPets(ArrayList<Pet> pets)
   {
-    return list;
+     this.pets = pets;
+  }
+
+  public ArrayList<Pet> getPets()
+  {
+    return pets;
   }
 }

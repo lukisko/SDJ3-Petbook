@@ -31,7 +31,7 @@ public class DatabaseHandler implements Database
       }
 
     }
-    System.out.println(list);
+
     return list;
   }
 }

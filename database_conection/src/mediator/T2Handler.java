@@ -27,9 +27,7 @@ public class T2Handler implements Runnable
 
   @Override public void run()
   {
-    running = true;
-    while (running)
-    {
+
       try
       {
         byte[] lenBytes = new byte[100];
@@ -68,6 +66,5 @@ public class T2Handler implements Runnable
         e.printStackTrace();
       }
     }
-  }
 
 }

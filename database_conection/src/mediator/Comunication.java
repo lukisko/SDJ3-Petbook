@@ -13,6 +13,21 @@ public class Comunication<T>
     this.value = value;
   }
 
+  public void setType(String type)
+  {
+    this.type = type;
+  }
+
+  public void setMethod(String method)
+  {
+    this.method = method;
+  }
+
+  public void setValue(T value)
+  {
+    this.value = value;
+  }
+
   public String getType()
   {
     return type;
