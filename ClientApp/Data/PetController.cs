@@ -14,7 +14,8 @@ namespace ClientApp.Data
             ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
         };
         private static readonly HttpClient client = new HttpClient(handler);
-        private string uri = "https://localhost:5001";//"https://84.238.40.156:5001";
+        //private string uri = "https://84.238.40.156:5001";
+        private string uri = "https://localhost:5001";
         private HttpClientHandler clientHandler;
 
         public PetController()

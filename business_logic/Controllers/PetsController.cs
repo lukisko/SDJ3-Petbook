@@ -26,6 +26,7 @@ namespace business_logic.Controllers
             /*Console.WriteLine("pets are: "+pets);
             string JsonString = JsonSerializer.Serialize(pets.GetPets());
             return JsonString;*/
+            Console.WriteLine("I am inside");
             ITier2Mediator med = new Tier2();
             Console.WriteLine("Tier2 connected!");
             PetList list = await med.requestPets();
