@@ -36,8 +36,8 @@ public class DatabaseHandler implements Database
   @Override public void addPet(Pet pet) throws SQLException, RemoteException
   {
     try (Connection connection = DatabaseConnection.getConnection()) {
-      PreparedStatement statement = connection.prepareStatement("insert into Pet(id,type,breed,description)values (?,?,?,?)");
-      statement.setInt(1, pet.getId());
+      PreparedStatement statement = connection.prepareStatement("insert into Pet(name,type,breed,description)values (?,?,?,?)");
+      statement.setString(1, pet.getName());
       statement.setString(2, pet.getType());
       statement.setString(3, pet.getBread());
       statement.setString(4, pet.getDescription());

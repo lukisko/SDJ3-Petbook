@@ -34,8 +34,11 @@ namespace business_logic.Controllers
         }
 
         [HttpPost]
-        public ActionResult<String> AddPet(Pet pet){
-            Pet newPet = pets.AddPet(pet);
+        public async Task<ActionResult<String>> AddPet(Pet pet){
+            //Pet newPet = pets.AddPet(pet);
+            ITier2Mediator med = new Tier2();
+            Pet newPet = await med.createPet(pet);
+            Console.WriteLine("adding new pet");
             return StatusCode(200,newPet);
         }
     }

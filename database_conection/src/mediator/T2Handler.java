@@ -33,7 +33,7 @@ public class T2Handler implements Runnable
         byte[] lenBytes = new byte[500];
         is.read(lenBytes, 0 ,500);
         String received = new String(lenBytes, 0, 500);
-        System.out.println(received);
+        //System.out.println(received);
         Comunication request = gson.fromJson(received.trim(), Comunication.class);
 
         switch (request.getMethod())
@@ -53,7 +53,9 @@ public class T2Handler implements Runnable
           case "Add":
             try
             {
-                database.addPet((Pet)request.getValue());
+              ComunicationPet requestAdd = gson.fromJson(received.trim(), ComunicationPet.class);
+              System.out.println(requestAdd.getValue());
+                database.addPet((Pet)requestAdd.getValue());
             }
             catch (Exception e)
             {
