@@ -10,25 +10,22 @@ namespace ClientApp.Data
 {
     public class PetController : IPetController
     {
-        private static readonly HttpClientHandler handler = new HttpClientHandler(){
-            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-        };
-        private static readonly HttpClient client = new HttpClient(handler);
-        //private string uri = "https://84.238.40.156:5001";
         private string uri = "https://localhost:5001";
+        private readonly HttpClient client;
         private HttpClientHandler clientHandler;
 
         public PetController()
         {
-            //clientHandler = new HttpClientHandler();
-            //clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            //client = new HttpClient(clientHandler);
+           
+            clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+            client = new HttpClient(clientHandler);  
         }
 
         public async Task addPetAsync(Pet pet)
         {
             string serializedPet = JsonSerializer.Serialize(pet);
-            StringContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
+            HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
             await client.PostAsync($"{uri}/Pets", content);
         }
 
@@ -36,6 +33,12 @@ namespace ClientApp.Data
         {
             List<Pet> pets = new List<Pet>();
             HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Pets");
+            
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception("Not good");
+            }
+            
             String reply = await responseMessage.Content.ReadAsStringAsync();
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
