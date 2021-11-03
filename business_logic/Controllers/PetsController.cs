@@ -16,29 +16,20 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class PetsController : ControllerBase
     {
-        private IPetsData pets;
-        public PetsController(IPetsData data){
-            pets = data;
+        private IModel model;
+        public PetsController(IModel model){
+            this.model = model;
         }
         [HttpGet]
         public async Task<ActionResult<String>> GetPets(){
-            //return "ok";
-            /*Console.WriteLine("pets are: "+pets);
-            string JsonString = JsonSerializer.Serialize(pets.GetPets());
-            return JsonString;*/
-            Console.WriteLine("I am inside");
-            ITier2Mediator med = new Tier2();
-            Console.WriteLine("Tier2 connected!");
-            PetList list = await med.requestPets();
-            return JsonSerializer.Serialize(list.pets);
+            PetList listToReturn = await model.getPetsAsync();
+            return JsonSerializer.Serialize(listToReturn.pets);
         }
 
         [HttpPost]
         public async Task<ActionResult<String>> AddPet(Pet pet){
-            //Pet newPet = pets.AddPet(pet);
-            ITier2Mediator med = new Tier2();
-            Pet newPet = await med.createPet(pet);
-            Console.WriteLine("adding new pet");
+
+            Pet newPet = await model.createPetAsync(pet);
             return StatusCode(200,newPet);
         }
     }

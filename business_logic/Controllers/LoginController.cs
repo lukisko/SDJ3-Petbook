@@ -12,21 +12,19 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class LoginController : ControllerBase
     {
+        private IModel model;
+
+        public  LoginController(IModel model){
+            this.model = model;
+        }
+
         [HttpGet]
         //[Route("{email:int}")]
         public ActionResult<String> Login([FromQuery] string email){
             Console.WriteLine(email);
             //var testing = Environment.GetEnvironmentVariable("PATH");
             //Console.WriteLine((testing!=null)?testing:"nothing");
-            IEmailHandler emailHandler = new EmailHandler();
-            try {
-                emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there!");
-            } catch (Exception exception){
-                Console.WriteLine("error occured!"+exception);
-                return email;
-            }
-            return "OK";
-            
+            return (model.Login(email))? "ok" : email;
         }
     }
 }

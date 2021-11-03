@@ -33,15 +33,15 @@ namespace business_logic.Model.Mediator
             Console.WriteLine("hello");
             await stream.WriteAsync(dataToServer);
             Console.WriteLine(dataToServer.Length);
-
+            Console.WriteLine("2");
             byte[] dataFromServer = new byte[2048];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
-
-
+            Console.WriteLine("3");
 
             Comunication<PetList> PetList = JsonSerializer.Deserialize<Comunication<PetList>>(response);
             Console.WriteLine(JsonSerializer.Serialize(PetList));
+            Console.WriteLine("out of mediator");
             return PetList.value;
         }
 

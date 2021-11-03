@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DatabaseHandler implements Database
 {
   @Override
-  public PetList getPetList() throws SQLException, RemoteException {
+  public synchronized PetList getPetList() throws SQLException, RemoteException {
     PetList list = new PetList();
     try (Connection connection = DatabaseConnection.getConnection()) {
       PreparedStatement statement = connection.prepareStatement("select * from Pet");
@@ -33,7 +33,7 @@ public class DatabaseHandler implements Database
     return list;
   }
 
-  @Override public void addPet(Pet pet) throws SQLException, RemoteException
+  @Override public synchronized void addPet(Pet pet) throws SQLException, RemoteException
   {
     try (Connection connection = DatabaseConnection.getConnection()) {
       PreparedStatement statement = connection.prepareStatement("insert into Pet(name,type,breed,description)values (?,?,?,?)");
