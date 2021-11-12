@@ -9,12 +9,11 @@ import java.util.List;
 public class UserDatabase implements UserPersistence
 {
   private static UserDatabase instance;
-  private EntityManager entityManager;
-  private EntityManagerFactory entityManagerFactory;
+  private DatabaseConnection customers;
+
 
   private UserDatabase(){
-    entityManager = DatabaseConnection.getInstance().getEntityManager();
-    entityManagerFactory = DatabaseConnection.getInstance().getEntityManagerFactory();
+    customers = DatabaseConnection.getInstance();
   }
 
   public synchronized static UserDatabase getInstance() {
@@ -26,24 +25,17 @@ public class UserDatabase implements UserPersistence
 
   @Override public Customer load(String email)
   {
-    Customer result = new Customer();
-    List<Customer> c = entityManager.createQuery("SELECT c FROM customer c").getResultList();
-    for (Customer customer: c)
-    {
-      if(customer.getEmail().equals(email)){
-        result = customer;
+    List<Customer> customerList= customers.load("customer");
+    for (Customer c: customerList) {
+      if(c.getEmail().equals(email)){
+        return c;
       }
     }
-    //entityManager.close();
-    return result;
-
+    return null;
   }
 
   @Override public void save(Customer customer)
   {
-    entityManager.getTransaction().begin();
-    entityManager.persist(customer);
-    entityManager.getTransaction().commit();
-    //entityManager.close();
+    customers.save(customer);
   }
 }
