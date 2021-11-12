@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "customer")
 @Table(name = "customer_table")
-public class Customer
+public class Customer implements Serializable
 {
   @Id
   @Column(name = "id")
@@ -22,6 +23,7 @@ public class Customer
   {
     return email;
   }
+
   public int getId()
   {
     return id;

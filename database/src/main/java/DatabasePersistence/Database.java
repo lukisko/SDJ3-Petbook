@@ -1,29 +1,30 @@
 package DatabasePersistence;
 
+import com.sun.security.ntlm.Client;
 import model.Customer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
-public class DatabaseConnection<T>
+public class Database<T>
 {
   private EntityManagerFactory entityManagerFactory;
   private EntityManager entityManager;
 
-  private static DatabaseConnection instance;
+  private static Database instance;
 
-  private DatabaseConnection(){
+  private Database(){
     entityManagerFactory = Persistence.createEntityManagerFactory("petBookDBS");
     entityManager= entityManagerFactory.createEntityManager();
     entityManager.getTransaction().begin();
   }
 
-  public synchronized static DatabaseConnection getInstance() {
+  public synchronized static Database getInstance() {
     if (instance == null) {
-      instance = new DatabaseConnection();
+      instance = new Database();
     }
     return instance;
   }
@@ -32,9 +33,14 @@ public class DatabaseConnection<T>
     entityManager.persist(object);
     entityManager.getTransaction().commit();
   }
-  public List<T> load(String object){
-    List<T> c = entityManager.createQuery("SELECT c FROM " + object + " c").getResultList();
-    return c;
+
+  // mention in security the sql injection
+  public List<T> load(String table){
+    Query query = entityManager.createQuery("SELECT c FROM :table c");
+    query.setParameter("table", table);
+    List<T> result = query.getResultList();
+    return result;
+
   }
 
 }

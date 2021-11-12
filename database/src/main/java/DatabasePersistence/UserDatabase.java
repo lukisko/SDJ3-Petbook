@@ -2,18 +2,16 @@ package DatabasePersistence;
 
 import model.Customer;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 public class UserDatabase implements UserPersistence
 {
   private static UserDatabase instance;
-  private DatabaseConnection customers;
+  private Database customers;
 
 
   private UserDatabase(){
-    customers = DatabaseConnection.getInstance();
+    customers = Database.getInstance();
   }
 
   public synchronized static UserDatabase getInstance() {
