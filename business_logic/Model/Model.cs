@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using business_logic.Model.Mediator;
 using System;
+using System.Collections.Generic;
+using business_logic.Model.UserPack;
 
 namespace business_logic.Model
 {
@@ -8,11 +10,20 @@ namespace business_logic.Model
     {
         private ITier2Mediator tier2Mediator;
         private IEmailHandler emailHandler;
+        private IUserManager userManager;
+        private Dictionary<string,string> emailCodeMap;
+
+        private Random random;
+
+        private static readonly int codeLength = 7;
 
         public Model(){
             tier2Mediator = new Tier2();
             emailHandler = new EmailHandler();
+            random = new Random(1538);
+            userManager = new UserManager(tier2Mediator);
         }
+        //////change this down part
         public bool Login(string email){
             try {
                 emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there!");
@@ -33,5 +44,36 @@ namespace business_logic.Model
             return newPet;
         }
         //TODO make REST connect to model and model to socket
+
+        public async Task<bool> sendCode(string email){
+            if (! await userManager.emailExist(email)){
+                return false;
+            }
+            string code = this.createRandomCode();
+            emailHandler.sendLoginLink(email,code);
+            emailCodeMap[email]=code;
+            return true;
+        }
+        public async Task<User> login(string email, string code){
+            if (!emailCodeMap.ContainsKey(email)){
+                return new User();
+            }
+            if (emailCodeMap[email]==code){
+                return await userManager.GetUser(email);
+            }
+            return new User();
+        }
+        public Task<User> register(User user){
+            return null; //TODO
+        }
+
+        private string createRandomCode(){
+            string code = "";
+            for (int i = 0; i< codeLength;i++){
+                char ch =(char)random.Next(65,90+1);
+                code += ch.ToString();
+            }
+            return code;
+        }
     }
 }

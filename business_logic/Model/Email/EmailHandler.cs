@@ -22,7 +22,7 @@ namespace business_logic.Model
             mailClient.SendMailAsync(mail);
         }
         public void sendLoginLink(string EmailAddress, string LoginCode){
-
+            this.sendEmail(EmailAddress,"login code","Hello, here you have your login code: "+LoginCode);
         }
     }
 }
