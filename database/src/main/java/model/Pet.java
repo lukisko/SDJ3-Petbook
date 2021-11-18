@@ -1,6 +1,10 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "pet")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -22,6 +26,11 @@ public class Pet
   @ManyToOne
   @JoinColumn(name="user_email")
   private User user;
+  @ManyToOne
+  @JoinColumn(name="city_name")
+  private City city;
+  @ManyToMany(mappedBy = "pets")
+  private Set<Group> groups;
 
   public Pet(){}
   public Pet(String name, String type, String bread, String description){
