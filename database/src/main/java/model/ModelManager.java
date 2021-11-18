@@ -3,6 +3,8 @@ package model;
 import DatabasePersistence.UserDatabase;
 import DatabasePersistence.UserPersistence;
 
+import java.util.List;
+
 public class ModelManager implements Model
 {
 
@@ -13,13 +15,18 @@ public class ModelManager implements Model
     userPersistence = UserDatabase.getInstance();
   }
 
-  @Override public void AddUser(Customer customer)
+  @Override public void AddUser(User user)
   {
-    userPersistence.save(customer);
+    userPersistence.save(user);
   }
 
-  @Override public Customer getUser(String email)
+  @Override public User getUser(String email)
   {
-    return userPersistence.load(email);
+    return userPersistence.loadUser(email);
+  }
+
+  @Override public List<User> getUserList()
+  {
+    return userPersistence.loadAll();
   }
 }

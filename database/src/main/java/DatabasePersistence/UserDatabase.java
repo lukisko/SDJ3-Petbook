@@ -1,17 +1,18 @@
 package DatabasePersistence;
 
-import model.Customer;
+import model.User;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class UserDatabase implements UserPersistence
 {
   private static UserDatabase instance;
-  private Database customers;
+  private Database database;
 
 
   private UserDatabase(){
-    customers = Database.getInstance();
+    database = Database.getInstance();
   }
 
   public synchronized static UserDatabase getInstance() {
@@ -21,10 +22,12 @@ public class UserDatabase implements UserPersistence
     return instance;
   }
 
-  @Override public Customer load(String email)
+  @Override public User loadUser(String email)
   {
-    List<Customer> customerList= customers.load("customer");
-    for (Customer c: customerList) {
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+    List<User> customerList = query.getResultList();
+
+    for (User c: customerList) {
       if(c.getEmail().equals(email)){
         return c;
       }
@@ -32,8 +35,16 @@ public class UserDatabase implements UserPersistence
     return null;
   }
 
-  @Override public void save(Customer customer)
+  @Override public List<User> loadAll()
   {
-    customers.save(customer);
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+    List<User> customerList = query.getResultList();
+    return customerList;
+  }
+
+  @Override public void save(User customer)
+  {
+    database.getEntityManager().persist(customer);
+    database.getEntityManager().getTransaction().commit();
   }
 }

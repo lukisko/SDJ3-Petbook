@@ -1,9 +1,12 @@
 package DatabasePersistence;
 
-import model.Customer;
+import model.User;
+
+import java.util.List;
 
 public interface UserPersistence
 {
-  Customer load(String email);
-  void save(Customer customer);
+  User loadUser(String email);
+  List<User> loadAll();
+  void save(User customer);
 }
