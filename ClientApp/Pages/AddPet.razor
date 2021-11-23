@@ -16,18 +16,3 @@
 </EditForm>
 
 
-@code{
-    public Pet petToAdd = new Pet() {id = 0};
-
-    private async Task AddNewPet()
-    {
-        await _petController.addPetAsync(petToAdd);
-        NavMgr.NavigateTo("/");
-    }
-
-
-
-
-
-
-}
