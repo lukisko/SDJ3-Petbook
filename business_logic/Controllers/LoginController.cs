@@ -22,11 +22,15 @@ namespace business_logic.Controllers
 
         [HttpGet]
         public async Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code){
+            Console.WriteLine("heeere");
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(code)){
                 return StatusCode(400,"please provide email and code");
             }
             try {
-                User usr = await model.login(email,code);
+                string token = await model.login(email,code);
+                if (String.IsNullOrEmpty(token)){
+                    return StatusCode(404,"this email was not found");
+                }
                 return StatusCode(200,"01100110");
             }catch (Exception e){
                 return StatusCode(400,"the login was not successful");
@@ -35,10 +39,14 @@ namespace business_logic.Controllers
 
         [HttpPost]
         public async Task<ActionResult<User>> Register(User newUser){
+            Console.WriteLine("heeere2");
+            //User usr = await model.register(newUser);
             try {
+                Console.WriteLine(newUser.name);
                 User usr = await model.register(newUser);
-                return StatusCode(200,usr); //new User());
+                return StatusCode(200,"final");//usr); //new User());
             }catch (Exception e){
+                Console.WriteLine(e);
                 return StatusCode(400,"registration not successfull");
             }
             
