@@ -15,7 +15,7 @@ public class ModelManager implements Model
     userPersistence = UserDatabase.getInstance();
   }
 
-  @Override public void AddUser(User user)
+  @Override public void addUser(User user)
   {
     userPersistence.save(user);
   }

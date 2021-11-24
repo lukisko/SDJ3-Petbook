@@ -46,7 +46,7 @@ public class T2Handler implements Runnable
             try
             {
 
-              String stringToSend = gson.toJson(new ComunicationUser("PetList","Get",
+              String stringToSend = gson.toJson(new ComunicationUser("User","Get",
                   model.getUser(request.getValue().getEmail())));
               byte[] toSendBytes = stringToSend.getBytes();
               System.out.println("sending data");
@@ -62,7 +62,7 @@ public class T2Handler implements Runnable
             {
               ComunicationUser requestAdd = gson.fromJson(received.trim(), ComunicationUser.class);
               System.out.println(requestAdd.getValue());
-              model.AddUser(requestAdd.getValue());
+              model.addUser(requestAdd.getValue());
             }
             catch (Exception e)
             {

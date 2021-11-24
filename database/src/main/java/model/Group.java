@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.*;
 
 @Entity(name = "group")
@@ -17,19 +18,20 @@ public class Group
       inverseJoinColumns = { @JoinColumn(name = "pet_id") }
   )
   public Set<Pet> pets;
-  public List<Pet> petList;
+  //public List<Pet> petList;
 
   public Group(){
     pets = new HashSet<>();
-    petList = new ArrayList<>(pets);
+    //petList = new ArrayList<>();
   }
   public void addPet(Pet pet){
     pets.add(pet);
-    petList.add(pet);
+    //petList.add(pet);
+//    petList = Arrays.asList(pets.toArray());
   }
 
-  public List<Pet> getPets()
-  {
-    return petList;
-  }
+//  public List<Pet> getPets()
+//  {
+//    return petList;
+//  }
 }

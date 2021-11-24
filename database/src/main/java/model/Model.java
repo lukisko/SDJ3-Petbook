@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface Model
 {
-  void AddUser(User user);
+  void addUser(User user);
   User getUser(String email);
   List<User> getUserList();
 }

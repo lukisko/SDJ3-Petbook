@@ -8,24 +8,26 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ionge\\.nuget\\packages\\": {}
+    "C:\\Users\\hanch\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
+      "projectUniqueName": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj",
       "projectName": "ClientApp",
-      "projectPath": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
-      "packagesPath": "C:\\Users\\ionge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\ClientApp\\obj\\",
+      "projectPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj",
+      "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ionge\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

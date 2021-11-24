@@ -11,15 +11,17 @@ public class Main
   public static void main(String[] args)
   {
    // Model model = new ModelManager();
-//    User customer = new User();
-////    customer.setEmail("a@ddd");
-////    customer.setName("matus");
-////    model.AddUser(customer);
+//    User user = new User();
+//    user.setName("asd");
+//    user.setEmail("a");
+//    model.addUser(user);
 //    System.out.println(model.getUser("asd"));
 //    System.out.println(model.getUserList());
-//    Model model = new ModelManager();
-//    T3Server server = new T3Server(model);
-//    server.run();
+
+
+    Model model = new ModelManager();
+    T3Server server = new T3Server(model);
+    server.run();
     
   }
 }

@@ -42,6 +42,13 @@ public class User implements Serializable
     return pets;
   }
 
+  public void addPet(Pet pet){
+    pets.add(pet);
+  }
+  public void removePet(Pet pet){
+
+  }
+
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''

@@ -24,7 +24,7 @@ public class UserDatabase implements UserPersistence
 
   @Override public User loadUser(String email)
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user_table c");
     List<User> customerList = query.getResultList();
 
     for (User c: customerList) {
@@ -37,7 +37,7 @@ public class UserDatabase implements UserPersistence
 
   @Override public List<User> loadAll()
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user_table c");
     List<User> customerList = query.getResultList();
     return customerList;
   }

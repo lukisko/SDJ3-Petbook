@@ -193,24 +193,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ionge\\.nuget\\packages\\": {}
+    "C:\\Users\\hanch\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\business_logic\\business_logic.csproj",
+      "projectUniqueName": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\business_logic\\business_logic.csproj",
       "projectName": "business_logic",
-      "projectPath": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\business_logic\\business_logic.csproj",
-      "packagesPath": "C:\\Users\\ionge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ionge\\Desktop\\VIA UNIVERSITY\\3sem\\SEP3\\SDJ3-Petbook\\business_logic\\obj\\",
+      "projectPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\business_logic\\business_logic.csproj",
+      "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\business_logic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ionge\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
