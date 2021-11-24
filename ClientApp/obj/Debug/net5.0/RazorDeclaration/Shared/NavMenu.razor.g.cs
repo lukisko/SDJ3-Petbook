@@ -97,7 +97,7 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\hanch\Desktop\Programs\PetBook\ClientApp\Shared\NavMenu.razor"
+#line 79 "C:\Users\hanch\Desktop\Programs\PetBook\ClientApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

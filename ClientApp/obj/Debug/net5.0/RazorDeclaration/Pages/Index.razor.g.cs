@@ -96,6 +96,13 @@ using business_logic.Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\hanch\Desktop\Programs\PetBook\ClientApp\Pages\Index.razor"
+using System.Collections.ObjectModel;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,14 +112,15 @@ using business_logic.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\hanch\Desktop\Programs\PetBook\ClientApp\Pages\Index.razor"
+#line 41 "C:\Users\hanch\Desktop\Programs\PetBook\ClientApp\Pages\Index.razor"
       
     private IList<Pet> allPets;
     private IList<Pet> toShowPets;
 
     protected override async Task OnInitializedAsync()
     {
-        allPets = await _petController.GetAllPetsAsync();
+        //allPets = await _petController.GetAllPetsAsync();
+        allPets = new List<Pet>();
         toShowPets = allPets;
     }
     private void NavigateToAddPet()

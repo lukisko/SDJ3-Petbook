@@ -2,6 +2,7 @@
 @inject IPetController _petController
 @inject NavigationManager NavMgr
 @using business_logic.Model;
+@using System.Collections.ObjectModel
 <h1>Pet book</h1>
 
 
@@ -12,7 +13,7 @@
 }
 else
 {
-    <table class="table">
+    <table class="min-w-max w-full table-auto shadow-xl">
         <thead class="table-primary">
         <tr>
             <th>Id</th>
@@ -43,7 +44,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        allPets = await _petController.GetAllPetsAsync();
+        //allPets = await _petController.GetAllPetsAsync();
+        allPets = new List<Pet>();
         toShowPets = allPets;
     }
     private void NavigateToAddPet()
