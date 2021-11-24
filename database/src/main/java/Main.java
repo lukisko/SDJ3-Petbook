@@ -3,11 +3,14 @@ import model.Model;
 import model.ModelManager;
 import model.User;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Main
 {
   public static void main(String[] args)
   {
-    Model model = new ModelManager();
+   // Model model = new ModelManager();
 //    User customer = new User();
 ////    customer.setEmail("a@ddd");
 ////    customer.setName("matus");
@@ -17,5 +20,6 @@ public class Main
 //    Model model = new ModelManager();
 //    T3Server server = new T3Server(model);
 //    server.run();
+    
   }
 }
