@@ -39,7 +39,7 @@ namespace ClientApp.Data
 
         public async Task<User> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/{email}/{code}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}?email={email}&code={code}");
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
