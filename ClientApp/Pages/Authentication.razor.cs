@@ -25,7 +25,7 @@ namespace ClientApp.Pages
         {
             try
             {
-                // await _userController.Register(_userToRegister);
+                 await _userController.Register(_userToRegister);
             }
             catch (Exception e)
             {

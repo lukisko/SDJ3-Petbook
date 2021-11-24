@@ -10,7 +10,7 @@ namespace ClientApp.Data
 {
     public class PetController : IPetController
     {
-        private string uri = "https://localhost:5001";
+        private string uri = "192.168.44.32:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
 
