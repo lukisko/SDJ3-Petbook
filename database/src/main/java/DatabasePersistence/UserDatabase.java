@@ -24,27 +24,27 @@ public class UserDatabase implements UserPersistence
 
   @Override public User loadUser(String email)
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user_table c");
-    List<User> customerList = query.getResultList();
-
-    for (User c: customerList) {
-      if(c.getEmail().equals(email)){
-        return c;
-      }
-    }
-    return null;
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user c WHERE email = :value");
+    query.setParameter("value",email);
+    User user = (User) query.getSingleResult();
+    user.getPets().clear();
+    return user;
   }
 
   @Override public List<User> loadAll()
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user_table c");
+    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
     List<User> customerList = query.getResultList();
     return customerList;
   }
 
   @Override public void save(User customer)
   {
+    if(!database.getEntityManager().getTransaction().isActive()) {
+      database.getEntityManager().getTransaction().begin();
+    }
     database.getEntityManager().persist(customer);
     database.getEntityManager().getTransaction().commit();
+
   }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity(name = "pet")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "pet_table")
 public class Pet
 {
@@ -24,13 +24,9 @@ public class Pet
   @Column(name = "description")
   private String description;
   @ManyToOne
-  @JoinColumn(name="user_email")
+  @JoinColumn(name="user_email", nullable = false)
   private User user;
-  @ManyToOne
-  @JoinColumn(name="city_name")
-  private City city;
-  @ManyToMany(mappedBy = "pets")
-  private Set<Group> groups;
+
 
   public Pet(){}
   public Pet(String name, String type, String bread, String description){
@@ -43,6 +39,14 @@ public class Pet
   public int getId()
   {
     return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
   public String getName()

@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,9 +16,12 @@ public class User implements Serializable
   private String email;
   @Column(name = "name")
   private String name;
-  @OneToMany(mappedBy="user")
+  @OneToMany(mappedBy="user", cascade = CascadeType.MERGE)
   private List<Pet> pets;
 
+  public User(){
+    pets = new ArrayList<>();
+  }
   public void setEmail(String email)
   {
     this.email = email;

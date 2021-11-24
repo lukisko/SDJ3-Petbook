@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface PetPersistance
 {
-  Pet loadPet(String email);
+  Pet loadPet(int id);
   List<Pet> loadAll();
-  void save(Pet pet);
+  List<Pet> LoadListOf(String email);
+  void save(User user,Pet pet);
 }

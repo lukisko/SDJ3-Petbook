@@ -2,6 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import model.Model;
+import model.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +32,6 @@ public class T2Handler implements Runnable
     while (running){
       try
       {
-        System.out.println("getting data");
         byte[] lenBytes = new byte[500];
         is.read(lenBytes, 0 ,500);
         String received = new String(lenBytes, 0, 500);
@@ -45,11 +45,19 @@ public class T2Handler implements Runnable
           case "Get":
             try
             {
+              System.out.println(1);
+              User user = model.getUser("cernicern@gmail.com");
+              System.out.println(user);
+              String stringToSend = null;
+              try {
+                 stringToSend = gson.toJson(new ComunicationUser("user","Get", user ));
+              }
+             catch (Exception e){
+               System.out.println(3);
+             }
 
-              String stringToSend = gson.toJson(new ComunicationUser("User","Get",
-                  model.getUser(request.getValue().getEmail())));
+              System.out.println("GET " + stringToSend);
               byte[] toSendBytes = stringToSend.getBytes();
-              System.out.println("sending data");
               os.write(toSendBytes);
             }
             catch (Exception e)
@@ -61,8 +69,11 @@ public class T2Handler implements Runnable
             try
             {
               ComunicationUser requestAdd = gson.fromJson(received.trim(), ComunicationUser.class);
-              System.out.println(requestAdd.getValue());
               model.addUser(requestAdd.getValue());
+              String stringToSend = gson.toJson(new ComunicationUser("user","Add", model.getUser(request.getValue().getEmail())));
+              System.out.println("ADD " + stringToSend);
+              byte[] toSendBytes = stringToSend.getBytes();
+              os.write(toSendBytes);
             }
             catch (Exception e)
             {
