@@ -63,8 +63,10 @@ namespace business_logic.Model
             }
             return new User();
         }
-        public Task<User> register(User user){
-            return null; //TODO
+        public async Task<User> register(User user){
+            await this.sendCode(user.email);
+            User usr = await tier2Mediator.MakeUser(user);
+            return usr;
         }
 
         private string createRandomCode(){
@@ -74,6 +76,10 @@ namespace business_logic.Model
                 code += ch.ToString();
             }
             return code;
+        }
+
+        public string getLoginToken(string email){
+            return "01100110";
         }
     }
 }

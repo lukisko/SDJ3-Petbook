@@ -11,5 +11,7 @@ namespace business_logic.Model
         Task<bool> sendCode(string email);
         Task<User> login(string email, string code); // is it going to be user or email??
         Task<User> register(User user);
+
+        string getLoginToken(string email);
     }
 }

@@ -14,7 +14,7 @@ namespace business_logic.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PetsController : ControllerBase
+    public class PetsController : ControllerBase, IPetController
     {
         private IModel model;
         public PetsController(IModel model){
