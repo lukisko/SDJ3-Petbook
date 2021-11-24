@@ -23,7 +23,7 @@ namespace business_logic.Controllers
         [HttpGet]
         public async Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code){
             Console.WriteLine("heeere");
-            return StatusCode(500,"not running tier3");
+            //return StatusCode(500,"not running tier3");
             if (String.IsNullOrEmpty(email) || String.IsNullOrEmpty(code)){
                 return StatusCode(400,"please provide email and code");
             }
@@ -41,7 +41,7 @@ namespace business_logic.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> Register(User newUser){
             Console.WriteLine("heeere2");
-            return StatusCode(500, "not running tier 3");
+            //return StatusCode(500, "not running tier 3");
             //User usr = await model.register(newUser);
             try {
                 Console.WriteLine(newUser.name);
