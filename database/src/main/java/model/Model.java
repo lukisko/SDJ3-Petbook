@@ -11,4 +11,7 @@ public interface Model
   List<Pet> getAllPets();
   List<Pet> getPetList(String email);
   void addPet(String email,Pet pet);
+  City getCity(String name);
+  List<City> getAllCities();
+  void addCity(City city);
 }

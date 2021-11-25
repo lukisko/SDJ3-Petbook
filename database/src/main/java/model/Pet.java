@@ -1,10 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 @Entity(name = "pet")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -26,6 +22,10 @@ public class Pet
   @ManyToOne
   @JoinColumn(name="user_email", nullable = false)
   private User user;
+  @ManyToOne
+  @JoinColumn(name="city_name", nullable = false)
+  private City city;
+
 
 
   public Pet(){}
@@ -74,6 +74,14 @@ public class Pet
     return bread;
   }
 
+  public City getCity() {
+    return city;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
   public void setBread(String bread)
   {
     this.bread = bread;
@@ -87,6 +95,10 @@ public class Pet
   public void setDescription(String description)
   {
     this.description = description;
+  }
+
+  public void setCity(City city) {
+    this.city = city;
   }
 
   @Override public String toString()

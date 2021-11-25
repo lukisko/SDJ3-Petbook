@@ -1,9 +1,6 @@
 package model;
 
-import DatabasePersistence.PetDatabase;
-import DatabasePersistence.PetPersistance;
-import DatabasePersistence.UserDatabase;
-import DatabasePersistence.UserPersistence;
+import DatabasePersistence.*;
 
 import java.util.List;
 
@@ -12,11 +9,13 @@ public class ModelManager implements Model
 
   private UserPersistence userPersistence;
   private PetPersistance petPersistance;
+  private CityPersistence cityPersistence;
 
 
   public ModelManager(){
-    userPersistence = UserDatabase.getInstance();
-    petPersistance = PetDatabase.getInstance();
+    userPersistence = new UserDatabase();
+    petPersistance = new PetDatabase();
+    cityPersistence = new CityDatabase();
   }
 
   @Override public void addUser(User user)
@@ -48,7 +47,22 @@ public class ModelManager implements Model
   }
 
   @Override public void addPet(String email, Pet pet) {
+    if(!(cityPersistence.loadCity(pet.getCity().getName()).getName().equals(pet.getCity().getName()))){
+      cityPersistence.save(pet.getCity());
+    }
     User user = userPersistence.loadUser(email);
     petPersistance.save(user, pet);
+  }
+
+  @Override public City getCity(String name) {
+    return cityPersistence.loadCity(name);
+  }
+
+  @Override public List<City> getAllCities() {
+    return cityPersistence.loadAll();
+  }
+
+  @Override public void addCity(City city) {
+    cityPersistence.save(city);
   }
 }

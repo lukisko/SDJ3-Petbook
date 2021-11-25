@@ -9,27 +9,27 @@ import java.util.List;
 
 public class PetDatabase implements PetPersistance
 {
-  private static PetDatabase instance;
+
   private Database database;
 
 
-  private PetDatabase(){
+  public PetDatabase(){
     database = Database.getInstance();
   }
 
-  public synchronized static PetDatabase getInstance() {
-    if (instance == null) {
-      instance = new PetDatabase();
-    }
-    return instance;
-  }
+
 
   @Override public Pet loadPet(int id)
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE id = :idValue");
-    query.setParameter("idValue",id);
-    Pet pet = (Pet)query.getSingleResult();
-    return null;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE id = :idValue");
+      query.setParameter("idValue",id);
+      Pet pet = (Pet)query.getSingleResult();
+      return pet;
+    }
+    catch (Exception e){
+      return null;
+    }
   }
 
   @Override public List<Pet> loadAll()
@@ -40,10 +40,15 @@ public class PetDatabase implements PetPersistance
   }
 
   @Override public List<Pet> LoadListOf(String email) {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
-    query.setParameter("emailValue",email);
-    List<Pet> petList = query.getResultList();
-    return petList;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
+      query.setParameter("emailValue",email);
+      List<Pet> petList = query.getResultList();
+      return petList;
+    }
+    catch (Exception e){
+      return null;
+    }
   }
 
   @Override public void save(User user,Pet pet)

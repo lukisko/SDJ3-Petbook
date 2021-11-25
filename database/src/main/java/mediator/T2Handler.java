@@ -45,17 +45,8 @@ public class T2Handler implements Runnable
           case "Get":
             try
             {
-              System.out.println(1);
-              User user = model.getUser("cernicern@gmail.com");
-              System.out.println(user);
-              String stringToSend = null;
-              try {
-                 stringToSend = gson.toJson(new ComunicationUser("user","Get", user ));
-              }
-             catch (Exception e){
-               System.out.println(3);
-             }
 
+              String stringToSend = gson.toJson(new ComunicationUser("user","Get", model.getUser(request.getValue().getEmail())));
               System.out.println("GET " + stringToSend);
               byte[] toSendBytes = stringToSend.getBytes();
               os.write(toSendBytes);

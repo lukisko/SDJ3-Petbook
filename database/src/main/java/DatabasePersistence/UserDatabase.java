@@ -7,28 +7,34 @@ import java.util.List;
 
 public class UserDatabase implements UserPersistence
 {
-  private static UserDatabase instance;
+
   private Database database;
 
 
-  private UserDatabase(){
+  public UserDatabase(){
     database = Database.getInstance();
   }
 
-  public synchronized static UserDatabase getInstance() {
-    if (instance == null) {
-      instance = new UserDatabase();
-    }
-    return instance;
-  }
 
   @Override public User loadUser(String email)
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user c WHERE email = :value");
-    query.setParameter("value",email);
-    User user = (User) query.getSingleResult();
-    user.getPets().clear();
-    return user;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM user c WHERE email = :value");
+      query.setParameter("value",email);
+      User user = (User) query.getSingleResult();
+      if(user.getPets().size() > 0) {
+        user.getPets().forEach((n) -> n.setUser(null));
+        user.getPets().forEach((n) -> n.getCity().setPets(null));
+      }
+      return user;
+    }
+    catch (Exception e){
+      System.out.println();
+      System.out.println("UserDatabase_Exception: " + e.getMessage());
+      e.printStackTrace();
+      System.out.println();
+      return null;
+    }
   }
 
   @Override public List<User> loadAll()
