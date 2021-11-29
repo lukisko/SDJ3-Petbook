@@ -21,6 +21,7 @@ namespace business_logic.Controllers
         }
 
         [HttpGet]
+        
         public async Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code){
             Console.WriteLine("heeere");
             //return StatusCode(500,"not running tier3");
