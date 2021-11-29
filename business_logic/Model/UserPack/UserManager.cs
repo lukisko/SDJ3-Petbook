@@ -46,6 +46,7 @@ namespace business_logic.Model.UserPack
 
         public async Task<AuthorisedUser> CreateUser(AuthorisedUser user){
             AuthorisedUser usr = await tier2Mediator.MakeUser(user);
+            Console.WriteLine(MakeUserCode(user.email));
             return usr;
         }
 

@@ -10,7 +10,7 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2 : ITier2Mediator
     {
-        private static readonly string HOST = "192.168.44.20";//"192.168.43.113";//"62.107.181.237";//"127.0.0.1";//
+        private static readonly string HOST = "localhost";//"192.168.44.20";//"192.168.43.113";//"62.107.181.237";//"127.0.0.1";//
         private static readonly int PORT = 5123;//4758;//
         private TcpClient client;
         private NetworkStream stream;

@@ -7,7 +7,7 @@ namespace  ClientApp.Pages
 { 
    public partial class Index :ComponentBase {
     
-       private IList<Pet> allPets;
+       private IList<Pet> allPet;
        private IList<Pet> toShowPets;
 
        protected override async Task OnInitializedAsync()

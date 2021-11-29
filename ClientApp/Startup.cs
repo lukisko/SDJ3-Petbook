@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Blazored.Modal;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -31,7 +31,7 @@ namespace ClientApp
             services.AddServerSideBlazor();
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController,UserController>();
-            services.AddBlazoredModal();
+            
 
         }
 
