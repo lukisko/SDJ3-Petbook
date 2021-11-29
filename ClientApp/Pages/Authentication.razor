@@ -13,5 +13,5 @@
     <br/><InputText @bind-Value="_userToRegister.email"></InputText>
     <br/><label style="text-decoration-color: red">@_errorMessage</label>
 
-    <button class="btn btn-primary" type="submit" @onclick="@(() => _modalService.Show<Login>("Login"))">Register</button>
+    <button class="btn btn-primary" type="submit" @onclick="@(() => RegisterUser())">Register</button>
 </EditForm>

@@ -5,10 +5,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
 {
-    public partial class Authentication :ComponentBase
+    public partial class Authentication : ComponentBase
     {
-        [Parameter]
-        public string Email { get; set; }
+        [Parameter] public string Email { get; set; }
 
         private User _userToRegister;
         private string _errorMessage;
@@ -25,11 +24,13 @@ namespace ClientApp.Pages
         {
             try
             {
-                 await _userController.Register(_userToRegister);
+                await _userController.Register(_userToRegister);
+                _modalService.Show<Login>("Login");
             }
             catch (Exception e)
             {
                 _errorMessage = e.Message;
+                _userToRegister.name = "";
             }
         }
     }

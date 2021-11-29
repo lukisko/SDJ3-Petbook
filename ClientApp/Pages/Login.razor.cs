@@ -15,11 +15,11 @@ namespace ClientApp.Pages
             _confirmationCode = null;
         }
     
-        private void LoginUser()
+        private async void LoginUser()
         {
             try
             {
-                _userController.Login(Email, _confirmationCode);
+              await _userController.Login(Email, _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
             }
