@@ -12,7 +12,7 @@ namespace business_logic.Model.UserPack
         private ITier2Mediator tier2Mediator;
         private Dictionary<string,AuthorisedUser> emailUserMap;
         private Dictionary<string,string> emailCodeMap;
-        private Dictionary<string,string> emailTokenMap;
+        private Dictionary<string,string> tokenEmailMap;
 
         private Random random;
 
@@ -21,7 +21,7 @@ namespace business_logic.Model.UserPack
             emailUserMap = new Dictionary<string, AuthorisedUser>();
             random = new Random(1538);
             emailCodeMap = new Dictionary<string, string>();
-            emailTokenMap = new Dictionary<string, string>();
+            tokenEmailMap = new Dictionary<string, string>();
         }
 
         public async Task<bool> emailExist(string email){
@@ -65,8 +65,8 @@ namespace business_logic.Model.UserPack
         }
 
         public string MakeUserToken(string email){
-            string token = this.createRandomCode(20);
-            emailTokenMap[email] = token;
+            string token = this.createRandomCode(25);
+            tokenEmailMap[token] = email;
             return token;
         }
 
