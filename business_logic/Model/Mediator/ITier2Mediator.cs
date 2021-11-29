@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using business_logic.Model.UserPack;
 
 namespace business_logic.Model.Mediator
 {
@@ -8,8 +9,8 @@ namespace business_logic.Model.Mediator
         Task<PetList> requestPets();
         Task<Pet> createPet(Pet newPet);
 
-        Task<User> GetUser(User user);
-        Task<User> MakeUser(User user);
+        Task<AuthorisedUser> GetUser(AuthorisedUser user);
+        Task<AuthorisedUser> MakeUser(AuthorisedUser user);
     }
 
     

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace business_logic.Model
 {
     public class User

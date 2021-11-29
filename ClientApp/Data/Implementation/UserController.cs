@@ -10,7 +10,7 @@ namespace ClientApp.Data
 {
     public class UserController : IUserController
     {
-        private string uri = "192.168.44.32:5001";
+        private string uri = "https://localhost:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
 
@@ -39,7 +39,7 @@ namespace ClientApp.Data
 
         public async Task<User> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/{email}/{code}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}?email={email}&code={code}");
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);

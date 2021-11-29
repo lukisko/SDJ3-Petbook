@@ -22,6 +22,7 @@ namespace business_logic.Model
             emailHandler = new EmailHandler();
             random = new Random(1538);
             userManager = new UserManager(tier2Mediator);
+            emailCodeMap = new Dictionary<string, string>();
         }
         //////change this down part
         public bool Login(string email){
@@ -50,22 +51,32 @@ namespace business_logic.Model
                 return false;
             }
             string code = this.createRandomCode();
+            Console.WriteLine("have random number");
             emailHandler.sendLoginLink(email,code);
             emailCodeMap[email]=code;
             return true;
         }
-        public async Task<User> login(string email, string code){
+        public async Task<string> login(string email, string code){
             if (!emailCodeMap.ContainsKey(email)){
-                return new User();
+                return "";
             }
             if (emailCodeMap[email]==code){
-                return await userManager.GetUser(email);
+                return "011101";await userManager.GetUser(email);
             }
-            return new User();
+            return "";
         }
         public async Task<User> register(User user){
+            //change this
+            AuthorisedUser authUsr = new AuthorisedUser(){
+                email = user.email,
+                name = user.name,
+                pets = new Pet[0]
+            };
+            Console.WriteLine("something is here");
             await this.sendCode(user.email);
-            User usr = await tier2Mediator.MakeUser(user);
+            Console.WriteLine("email is on its way");
+            User usr = await tier2Mediator.MakeUser(authUsr);
+            Console.WriteLine("efter creating user");
             return usr;
         }
 

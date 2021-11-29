@@ -21,6 +21,7 @@ namespace business_logic.Controllers
 
         [HttpGet]
         public async Task<ActionResult<String>> SendEmail([FromQuery] string email){
+            //return StatusCode(500,"sorry server down");
             if (await model.sendCode(email)){
                     return StatusCode(200);
                 } else {
