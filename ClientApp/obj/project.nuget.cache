@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "T6myweiz+LyWmZEwzaqCJyB1e3hv1IJPII3ILmFI9mvDw0RHKKWFMRch+BgQ6JnTI+1cWOKfeBAeWaHODp/+gA==",
+  "dgSpecHash": "xdAg/e8CGb3CkeYEJp6PRcE6mvS4rDHmwVb+3xZk+kKcu0LOib+2gjyxvzhATpQR2Bpty2HAcw2uL7DZzguBnA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj",
+  "projectFilePath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
