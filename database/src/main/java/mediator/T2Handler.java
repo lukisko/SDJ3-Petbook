@@ -102,7 +102,7 @@ public class T2Handler implements Runnable {
         byte[] lenBytes = new byte[500];
         is.read(lenBytes, 0, 500);
         String received = new String(lenBytes, 0, 500);
-        System.out.println(received);
+        System.out.println("THE REQUEST:  " + received);
         Comunication request = gson
             .fromJson(received.trim(), Comunication.class);
 
@@ -118,6 +118,7 @@ public class T2Handler implements Runnable {
             pet(request.getMethod(), pet);
             break;
         }
+        System.out.println();
       }
 
       catch (Exception e) {
