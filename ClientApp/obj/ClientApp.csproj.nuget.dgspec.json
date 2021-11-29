@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj": {}
+    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj": {
+    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj",
+        "projectUniqueName": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
         "projectName": "ClientApp",
-        "projectPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\ClientApp.csproj",
+        "projectPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
         "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hanch\\Desktop\\Programs\\PetBook\\ClientApp\\obj\\",
+        "outputPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
