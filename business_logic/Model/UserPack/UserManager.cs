@@ -14,9 +14,14 @@ namespace business_logic.Model.UserPack
         private Dictionary<string,string> emailCodeMap;
         private Dictionary<string,string> emailTokenMap;
 
+        private Random random;
+
         public UserManager(ITier2Mediator mediator){
             this.tier2Mediator = mediator;
             emailUserMap = new Dictionary<string, AuthorisedUser>();
+            random = new Random(1538);
+            emailCodeMap = new Dictionary<string, string>();
+            emailTokenMap = new Dictionary<string, string>();
         }
 
         public async Task<bool> emailExist(string email){
@@ -42,6 +47,45 @@ namespace business_logic.Model.UserPack
         public async Task<AuthorisedUser> CreateUser(AuthorisedUser user){
             AuthorisedUser usr = await tier2Mediator.MakeUser(user);
             return usr;
+        }
+
+        public string MakeUserCode(string email){
+            string code = this.createRandomCode(7);
+            emailCodeMap[email] = code;
+            return code;
+        }
+
+        public bool IsCorrectCode(string email, string code){
+            if (emailCodeMap.ContainsKey(email)){
+                if (emailCodeMap[email].Equals(code)){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public string MakeUserToken(string email){
+            string token = this.createRandomCode(20);
+            emailTokenMap[email] = token;
+            return token;
+        }
+
+        public bool IsCorrectToken(string email, string token){
+            if (emailCodeMap.ContainsKey(email)){
+                if (emailCodeMap[email].Equals(token)){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private string createRandomCode(int codeLength){
+            string code = "";
+            for (int i = 0; i< codeLength;i++){
+                char ch =(char)random.Next(65,90+1);
+                code += ch.ToString();
+            }
+            return code;
         }
     }
 }

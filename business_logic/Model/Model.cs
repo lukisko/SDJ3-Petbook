@@ -15,8 +15,6 @@ namespace business_logic.Model
 
         private Random random;
 
-        private static readonly int codeLength = 7;
-
         public Model(){
             tier2Mediator = new Tier2();
             emailHandler = new EmailHandler();
@@ -44,24 +42,19 @@ namespace business_logic.Model
             Pet newPet = await tier2Mediator.createPet(pet);
             return newPet;
         }
-        //TODO make REST connect to model and model to socket
 
         public async Task<bool> sendCode(string email){
             if (! await userManager.emailExist(email)){
                 return false;
             }
-            string code = this.createRandomCode();
-            Console.WriteLine("have random number");
+            string code = userManager.MakeUserCode(email);
             emailHandler.sendLoginLink(email,code);
-            emailCodeMap[email]=code;
+            Console.WriteLine("email is no its way");
             return true;
         }
         public async Task<string> login(string email, string code){
-            if (!emailCodeMap.ContainsKey(email)){
-                return "";
-            }
-            if (emailCodeMap[email]==code){
-                return "011101";await userManager.GetUser(email);
+            if (userManager.IsCorrectCode(email,code)){
+                return userManager.MakeUserToken(email);
             }
             return "";
         }
@@ -74,13 +67,12 @@ namespace business_logic.Model
             };
             Console.WriteLine("something is here");
             await this.sendCode(user.email);
-            Console.WriteLine("email is on its way");
-            User usr = await tier2Mediator.MakeUser(authUsr);
+            User usr = await userManager.CreateUser(authUsr);
             Console.WriteLine("efter creating user");
             return usr;
         }
 
-        private string createRandomCode(){
+        private string createRandomCode(int codeLength){
             string code = "";
             for (int i = 0; i< codeLength;i++){
                 char ch =(char)random.Next(65,90+1);

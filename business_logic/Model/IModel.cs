@@ -6,11 +6,14 @@ namespace business_logic.Model
     {
         Task<PetList> getPetsAsync();
         Task<Pet> createPetAsync(Pet pet);
-
-        ///<returns> returns true if the email exists and email was send, and false if the email do not exist.</returns>
+        /// <summary>
+        /// method to send one time login code to user
+        /// </summary>
+        /// <param name="email">email address of user that requested login.</param>
+        /// <returns>returns true if the email exists and email was send, and false if the email do not exist.</returns>
         Task<bool> sendCode(string email);
         /// <summary>
-        /// method to login
+        /// method to login enter user email and the code that he claim he received
         /// </summary>
         /// <param name="email">emial of user that want to log in</param>
         /// <param name="code">code that we have send to his/her email</param>
