@@ -1,2 +1,6 @@
 business_logic/bin
 business_logic/obj/Debug/net5.0
+
+ClientApp/bin
+ClientApp/obj/Debug/net5.0/
+ClientApp/obj/Debug/net5.0/ClientApp.assets.cache

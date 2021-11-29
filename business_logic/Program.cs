@@ -23,6 +23,8 @@ namespace business_logic
             //ITier2Mediator med = new Tier2();
             //Console.WriteLine("client connected!");
             //await med.requestPets();
+            //IEmailHandler emailHandler = new EmailHandler();
+            //emailHandler.sendEmail("lukas.pleva126@gmail.com","title","hello world");
             CreateHostBuilder(args).Build().Run();
         }
 

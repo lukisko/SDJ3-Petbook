@@ -1,3 +1,4 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Blazored.Modal" Path="/home/lukisko/.nuget/packages/blazored.modal/6.0.1/build/../staticwebassets/" />
+  <ContentRoot BasePath="/" Path="/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/obj/Debug/net5.0/scopedcss/bundle/" />
 </StaticWebAssets>
