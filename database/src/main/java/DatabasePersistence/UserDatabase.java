@@ -29,19 +29,22 @@ public class UserDatabase implements UserPersistence
       return user;
     }
     catch (Exception e){
-      System.out.println();
       System.out.println("UserDatabase_Exception: " + e.getMessage());
-      e.printStackTrace();
-      System.out.println();
       return null;
     }
   }
 
   @Override public List<User> loadAll()
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
-    List<User> customerList = query.getResultList();
-    return customerList;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+      List<User> customerList = query.getResultList();
+      return customerList;
+    }
+    catch (Exception e){
+      System.out.println("UserDatabase_Exception: " + e.getMessage());
+      return null;
+    }
   }
 
   @Override public void save(User customer)

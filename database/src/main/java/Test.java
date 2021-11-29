@@ -1,6 +1,3 @@
-import com.google.gson.Gson;
-import mediator.Comunication;
-import mediator.ComunicationUser;
 import model.*;
 
 public class Test {
@@ -23,10 +20,5 @@ public class Test {
 //    model.addPet("asd",pet);
 
 //    model.addCity(city);
-
-    User user = new User();
-    user.setEmail("pleva@usa.com");
-    ComunicationUser comunicationUser = new ComunicationUser("user","Get", user);
-    System.out.println(model.getUser(comunicationUser.getValue().getEmail()));
   }
 }

@@ -28,15 +28,22 @@ public class PetDatabase implements PetPersistance
       return pet;
     }
     catch (Exception e){
+      System.out.println("PetDatabase_Exception: " + e.getMessage());
       return null;
     }
   }
 
   @Override public List<Pet> loadAll()
   {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM pet c");
-    List<Pet> petList = query.getResultList();
-    return petList;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c");
+      List<Pet> petList = query.getResultList();
+      return petList;
+    }
+    catch (Exception e){
+      System.out.println("PetDatabase_Exception: " + e.getMessage());
+      return null;
+    }
   }
 
   @Override public List<Pet> LoadListOf(String email) {
@@ -47,6 +54,7 @@ public class PetDatabase implements PetPersistance
       return petList;
     }
     catch (Exception e){
+      System.out.println("PetDatabase_Exception: " + e.getMessage());
       return null;
     }
   }

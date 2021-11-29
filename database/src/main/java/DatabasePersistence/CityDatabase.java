@@ -25,14 +25,21 @@ public class CityDatabase implements CityPersistence {
       return city;
     }
     catch (Exception e) {
+      System.out.println("CityDatabase_Exception: " + e.getMessage());
       return null;
     }
   }
 
   @Override public List<City> loadAll() {
-    Query query = database.getEntityManager().createQuery("SELECT c FROM city c");
-    List<City> cityList = query.getResultList();
-    return cityList;
+    try {
+      Query query = database.getEntityManager().createQuery("SELECT c FROM city c");
+      List<City> cityList = query.getResultList();
+      return cityList;
+    }
+    catch (Exception e){
+      System.out.println("CityDatabase_Exception: " + e.getMessage());
+      return null;
+    }
   }
 
   @Override public void save(City city) {
