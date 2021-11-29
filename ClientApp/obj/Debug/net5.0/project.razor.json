@@ -184,35 +184,217 @@
         }
       },
       {
-        "HashCode": -268525223,
+        "HashCode": -1623403631,
         "Kind": "Components.Component",
-        "Name": "__GeneratedComponent.AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f",
+        "Name": "ClientApp.App",
         "AssemblyName": "ClientApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f"
+            "TagName": "App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "__GeneratedComponent.AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f"
+          "Common.TypeName": "ClientApp.App"
         }
       },
       {
-        "HashCode": -1871902578,
+        "HashCode": -871568063,
         "Kind": "Components.Component",
-        "Name": "__GeneratedComponent.AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f",
+        "Name": "ClientApp.App",
         "AssemblyName": "ClientApp",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "__GeneratedComponent.AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f"
+            "TagName": "ClientApp.App"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "__GeneratedComponent.AspNetCore_edccabd70ab62140043f8d17afa5160eb4e15b4f",
+          "Common.TypeName": "ClientApp.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 831295490,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.SurveyPrompt",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -2120807730,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.SurveyPrompt",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ClientApp.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1686587879,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.MainLayout",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MainLayout"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.MainLayout"
+        }
+      },
+      {
+        "HashCode": -1612222420,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.MainLayout",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ClientApp.Shared.MainLayout"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Body",
+            "TypeName": "Microsoft.AspNetCore.Components.RenderFragment",
+            "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+            "Metadata": {
+              "Common.PropertyName": "Body",
+              "Components.ChildContent": "True"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.MainLayout",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1412529071,
+        "Kind": "Components.ChildContent",
+        "Name": "ClientApp.Shared.MainLayout.Body",
+        "AssemblyName": "ClientApp",
+        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "ClientApp.Shared.MainLayout.Body",
+          "Components.IsSpecialKind": "Components.ChildContent"
+        }
+      },
+      {
+        "HashCode": -1927723668,
+        "Kind": "Components.ChildContent",
+        "Name": "ClientApp.Shared.MainLayout.Body",
+        "AssemblyName": "ClientApp",
+        "Documentation": "\n            <summary>\n            Gets the content to be rendered inside the layout.\n            </summary>\n        ",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Body",
+            "ParentTag": "ClientApp.Shared.MainLayout"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.None",
+          "Common.TypeName": "ClientApp.Shared.MainLayout.Body",
+          "Components.IsSpecialKind": "Components.ChildContent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1431342468,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.NavMenu",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.NavMenu"
+        }
+      },
+      {
+        "HashCode": 365037814,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.NavMenu",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ClientApp.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -16443,6 +16625,62 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "ClientApp",
-  "Documents": [],
+  "Documents": [
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Shared/MainLayout.razor",
+      "TargetPath": "Shared\\MainLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/Authentication.razor",
+      "TargetPath": "Pages\\Authentication.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/Login.razor",
+      "TargetPath": "Pages\\Login.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/App.razor",
+      "TargetPath": "App.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Shared/SurveyPrompt.razor",
+      "TargetPath": "Shared\\SurveyPrompt.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/Index.razor",
+      "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/AddPet.razor",
+      "TargetPath": "Pages\\AddPet.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Shared/NavMenu.razor",
+      "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Pages/_Host.cshtml",
+      "TargetPath": "Pages\\_Host.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor",
+      "TargetPath": "_Imports.razor",
+      "FileKind": "componentImport"
+    }
+  ],
   "SerializationFormat": "0.2"
 }
