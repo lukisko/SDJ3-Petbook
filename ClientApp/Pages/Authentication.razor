@@ -11,7 +11,7 @@
     <br/><InputText @bind-Value="_userToRegister.name"/>
     <br/> <label>Email</label>
     <br/><InputText @bind-Value="_userToRegister.email"></InputText>
-    <br/><label style="text-decoration-color: red">@_errorMessage</label>
+    <br/><label style="text-decoration-color: red">@_errorMessage</label> 
 
     <button class="btn btn-primary" type="submit" @onclick="@(() => RegisterUser())">Register</button>
 </EditForm>
