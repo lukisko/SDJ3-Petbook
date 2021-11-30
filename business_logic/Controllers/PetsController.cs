@@ -25,7 +25,6 @@ namespace business_logic.Controllers
             PetList listToReturn = await model.getPetsAsync();
             
             
-            
             return JsonSerializer.Serialize("thanks");//listToReturn.pets);
         }
 

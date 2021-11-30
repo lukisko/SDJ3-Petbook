@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace business_logic.Model
 {
     public class User
-    {   
-        public string email {get;set;}
-        public string name {get;set;}
+    {
+        [Required] [EmailAddress] public string email { get; set; }
+        [Required] public string name { get; set; }
     }
 }

@@ -90,6 +90,7 @@ using ClientApp.Data;
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Login")]
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Login/{Email}")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -97,6 +98,7 @@ using ClientApp.Data;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserController _userController { get; set; }
     }
 }
