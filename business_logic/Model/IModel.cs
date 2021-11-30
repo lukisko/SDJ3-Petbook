@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
+using business_logic.Model.UserPack;
 
 namespace business_logic.Model
 {
     public interface IModel
     {
         Task<PetList> getPetsAsync();
-        Task<Pet> createPetAsync(Pet pet);
+        Task<Pet> createPetAsync(Pet pet, string token);
         /// <summary>
         /// method to send one time login code to user
         /// </summary>
@@ -19,7 +20,6 @@ namespace business_logic.Model
         /// <param name="code">code that we have send to his/her email</param>
         /// <returns>if code and email are good return access token, returns empty string otherwise</returns>
         Task<string> login(string email, string code); // is it going to be user or email??
-        Task<User> register(User user);
-        string getLoginToken(string email);
+        Task<AuthorisedUser> register(User user);
     }
 }
