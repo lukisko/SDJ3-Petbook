@@ -20,5 +20,11 @@ public class Test {
 //    model.addPet("asd",pet);
 
 //    model.addCity(city);
+    Pet pet = new Pet();
+    City city = new City();
+    city.setName("BA");
+    pet.setCity(city);
+    //pet.setId(200);
+    model.addPet("asd",pet);
   }
 }

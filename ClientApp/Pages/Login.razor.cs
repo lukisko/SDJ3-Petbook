@@ -17,16 +17,17 @@ namespace ClientApp.Pages
     
         private async void LoginUser()
         {
-            try
-            {
-              await _userController.Login(Email, _confirmationCode);
-                Email = null;
-                _confirmationCode = null;
-            }
-            catch (Exception e)
-            {
-                _errorMessage = e.Message;
-            }
+            Console.WriteLine(Email);
+            // try
+            // {
+            //   await _userController.Login(Email, _confirmationCode);
+            //     Email = null;
+            //     _confirmationCode = null;
+            // }
+            // catch (Exception e)
+            // {
+            //     _errorMessage = e.Message;
+            // }
         }
     }
 }

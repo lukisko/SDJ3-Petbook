@@ -64,8 +64,14 @@ public class PetDatabase implements PetPersistance
     if(!database.getEntityManager().getTransaction().isActive()) {
       database.getEntityManager().getTransaction().begin();
     }
+    System.out.println(user);
+//    User ss = new User();
+//
+//    ss.setEmail("asd");
+    user.addPet(pet);
     pet.setUser(user);
-    database.getEntityManager().merge(pet);
+    user.addPet(pet);
+    database.getEntityManager().persist(pet);
     database.getEntityManager().getTransaction().commit();
   }
 }
