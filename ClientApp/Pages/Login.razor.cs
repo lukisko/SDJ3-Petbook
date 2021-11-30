@@ -1,29 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ClientApp.Authentication;
+
 using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
 {
     public partial class Login : ComponentBase
     {
-        
         [Parameter] public string Email { get; set; }
         private string _confirmationCode;
         private string _errorMessage;
         private bool ShowPopUpDialog;
-        /*private CustomAuthenticationStateProvider authenticationStateProvider;
-
-        public Login(CustomAuthenticationStateProvider authenticationStateProvider){
-            this.authenticationStateProvider = authenticationStateProvider;
-        }*/
 
         protected override async Task OnInitializedAsync()
         {
-            if (String.IsNullOrEmpty(Email))
-            {
-                ShowPopUpDialog = true;
-            }
             _errorMessage = "";
             _confirmationCode = null;
         }
