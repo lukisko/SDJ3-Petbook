@@ -1,7 +1,6 @@
 @page "/"
 @inject IPetController _petController
 @inject NavigationManager NavMgr
-@using business_logic.Model;
 
 @if (toShowPets == null)
 {
@@ -22,22 +21,22 @@ else
             <label class="flex flex-col rounded-lg shadow-lg group relative cursor-pointer hover:shadow-2xl">
               <div class="w-full px-4 py-6 rounded-t-lg card-section-1">
                 <h3 class="mx-auto text-base font-semibold text-center underline text-pink-500 group-hover:text-blue">
-                  Type: @item.type
+                  Type: @item.Type
                 </h3>
                 <p class="text-5xl font-bold text-center group-hover:text-blue text-pink-500">
-                  Name: @item.name <span class="text-3xl"></span>
+                  Name: @item.Name <span class="text-3xl"></span>
                 </p>
                 <p class="text-xs text-center uppercase group-hover:text-blue text-pink-500">
-                  Breed: @item.breed
+                  Breed: @item.Breed
                 </p>
               </div>
               <div
                 class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-pink-500">
                 <p class="text-xl text-white">
-                  Description: @item.description
+                  Description: @item.Description
                 </p>
                 <button class="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-pink-500">
-                  Adopt @item.status
+                  Adopt @item.Status
                 </button>
               </div>
             </label>

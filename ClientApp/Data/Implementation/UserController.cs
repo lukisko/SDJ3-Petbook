@@ -5,9 +5,10 @@ using System.Security.Authentication;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using business_logic.Model;
+using ClientApp.Model;
 
-namespace ClientApp.Data
+
+namespace ClientApp.Data.Implementation
 {
     public class UserController : IUserController
     {

@@ -1,32 +1,42 @@
 ﻿using System;
-using business_logic.Model;
+
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text;
+using ClientApp.Model;
 
-namespace ClientApp.Data
+namespace ClientApp.Data.Implementation
 {
     public class PetController : IPetController
     {
         private string uri = "1https://localhost:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-
+        public Action<Object> RequestAnswerChange; 
         public PetController()
         {
            
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
-            client = new HttpClient(clientHandler);  
+            client = new HttpClient(clientHandler);
         }
 
-        public async Task addPetAsync(Pet pet)
+        public async Task AddPetAsync(Pet pet)
         {
             string serializedPet = JsonSerializer.Serialize(pet);
             HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
-            await client.PostAsync($"{uri}/Pets", content);
+            HttpResponseMessage responseMessage= await client.PostAsync($"{uri}/Pets", content);
+            if (responseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                RequestAnswerChange.Invoke(responseMessage.Content);
+            }
+            else
+            {
+                throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
+            }
         }
 
         public async Task<IList<Pet>> GetAllPetsAsync()

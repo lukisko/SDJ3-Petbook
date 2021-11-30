@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace business_logic.Model
+namespace ClientApp.Model
 {
     public class User
     {

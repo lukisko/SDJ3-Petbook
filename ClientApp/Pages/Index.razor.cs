@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using business_logic.Model;
+using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
 namespace  ClientApp.Pages
