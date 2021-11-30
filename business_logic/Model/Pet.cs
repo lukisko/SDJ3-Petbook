@@ -11,6 +11,6 @@ namespace business_logic.Model
         public string breed {get;set;}
         public string description {get;set;}
         public City city {get;set;}
-        public string userEmail {set;get;}
+        public User user {get;set;}
     }
 }
