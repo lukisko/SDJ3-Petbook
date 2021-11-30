@@ -1,0 +1,15 @@
+﻿@page "/Login"
+@inject IUserController _userController
+
+<EditForm Model="_userController"  OnSubmit="@LoginUser">
+    <DataAnnotationsValidator/> <ValidationSummary/>
+    <label>Email</label>
+    <br/><InputText @bind-Value="Email"/>
+    <label>Code</label>
+    <br/><InputText @bind-Value="_confirmationCode"></InputText>
+    <br/><label style="text-decoration-color: red">@_errorMessage</label>
+
+    <button class="btn btn-primary" type="submit">Login</button>
+</EditForm>
+
+
