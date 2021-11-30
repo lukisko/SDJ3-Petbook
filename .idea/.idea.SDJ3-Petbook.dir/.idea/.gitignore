@@ -13,3 +13,4 @@
 /httpRequests/
 
 *.dll
+*.pdb

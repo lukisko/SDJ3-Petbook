@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
 using System.Net.Http;
+using business_logic.Model.UserPack;
 
 namespace business_logic.Controllers
 {
@@ -21,7 +22,15 @@ namespace business_logic.Controllers
         }
 
         [HttpGet]
-        
+        /// <summary>
+        /// final login for user using email and code.
+        /// </summary>
+        /// <param name="email">user's email address</param>
+        /// <param name="code">code that was send to the email address</param>
+        /// <returns>access token needed in other operations</returns>
+        /// <remarks>
+        /// testing
+        /// </remarks>
         public async Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code){
             Console.WriteLine("heeere");
             //return StatusCode(500,"not running tier3");
@@ -31,16 +40,16 @@ namespace business_logic.Controllers
             try {
                 string token = await model.login(email,code);
                 if (String.IsNullOrEmpty(token)){
-                    return StatusCode(404,"this email was not found");
+                    return StatusCode(404,"the login was not succesfull");
                 }
-                return StatusCode(200,"01100110");
+                return StatusCode(200,token);
             }catch (Exception e){
                 return StatusCode(400,"the login was not successful");
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> Register(User newUser){
+        public async Task<ActionResult<AuthorisedUser>> Register(User newUser){
             Console.WriteLine("heeere2");
             //return StatusCode(500, "not running tier 3");
             //User usr = await model.register(newUser);

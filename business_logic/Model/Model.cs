@@ -25,7 +25,7 @@ namespace business_logic.Model
         //////change this down part
         public bool Login(string email){
             try {
-                emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there!");
+                emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there! ");
             } catch (Exception exception){
                 Console.WriteLine("error occured!"+exception);
                 return false;
@@ -38,7 +38,12 @@ namespace business_logic.Model
             return list;
         }
 
-        public async Task<Pet> createPetAsync(Pet pet){
+        public async Task<Pet> createPetAsync(Pet pet,string token){
+            string email = userManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            pet.user.email = email;
             Pet newPet = await tier2Mediator.createPet(pet);
             return newPet;
         }
@@ -49,7 +54,7 @@ namespace business_logic.Model
             }
             string code = userManager.MakeUserCode(email);
             emailHandler.sendLoginLink(email,code);
-            Console.WriteLine("email is no its way");
+            Console.WriteLine("email is no its way with code: "+code);
             return true;
         }
         public async Task<string> login(string email, string code){
@@ -58,7 +63,7 @@ namespace business_logic.Model
             }
             return "";
         }
-        public async Task<User> register(User user){
+        public async Task<AuthorisedUser> register(User user){
             //change this
             AuthorisedUser authUsr = new AuthorisedUser(){
                 email = user.email,
@@ -67,7 +72,7 @@ namespace business_logic.Model
             };
             Console.WriteLine("something is here");
             await this.sendCode(user.email);
-            User usr = await userManager.CreateUser(authUsr);
+            AuthorisedUser usr = await userManager.CreateUser(authUsr);
             Console.WriteLine("efter creating user");
             return usr;
         }
@@ -79,10 +84,6 @@ namespace business_logic.Model
                 code += ch.ToString();
             }
             return code;
-        }
-
-        public string getLoginToken(string email){
-            return "01100110";
         }
     }
 }

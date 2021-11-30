@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "xdAg/e8CGb3CkeYEJp6PRcE6mvS4rDHmwVb+3xZk+kKcu0LOib+2gjyxvzhATpQR2Bpty2HAcw2uL7DZzguBnA==",
+  "dgSpecHash": "FFbwLCmTz6NCBtsw3CdOxJz9hlaAwH9r7KsS8ekNYE/VDFTAnojhdiA8NfVhakhd1xzzSyXjjqzc2sFSjddW4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/ClientApp.csproj",
+  "expectedPackageFiles": [
+    "/home/lukisko/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
