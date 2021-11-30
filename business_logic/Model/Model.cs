@@ -25,7 +25,7 @@ namespace business_logic.Model
         //////change this down part
         public bool Login(string email){
             try {
-                emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there!");
+                emailHandler.sendEmail(email,"Your login link - PetBook","Testing Hello there! ");
             } catch (Exception exception){
                 Console.WriteLine("error occured!"+exception);
                 return false;
