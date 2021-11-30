@@ -1,6 +1,7 @@
 package DatabasePersistence;
 
 import model.User;
+import org.hibernate.Session;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -11,22 +12,20 @@ public class UserDatabase implements UserPersistence
   private Database database;
 
 
+
   public UserDatabase(){
     database = Database.getInstance();
+
   }
 
 
   @Override public User loadUser(String email)
   {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM user c WHERE email = :value");
-      query.setParameter("value",email);
-      User user = (User) query.getSingleResult();
-      if(user.getPets().size() > 0) {
-        user.getPets().forEach((n) -> n.setUser(null));
-        user.getPets().forEach((n) -> n.getCity().setPets(null));
+      if(!database.getSession().isOpen()){
+        database.getSession().beginTransaction();
       }
-      return user;
+      return database.getSession().get(User.class,email);
     }
     catch (Exception e){
       System.out.println("UserDatabase_Exception: " + e.getMessage());
@@ -37,7 +36,7 @@ public class UserDatabase implements UserPersistence
   @Override public List<User> loadAll()
   {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
+      Query query = database.getSession().createQuery("SELECT c FROM user c");
       List<User> customerList = query.getResultList();
       return customerList;
     }
@@ -49,11 +48,11 @@ public class UserDatabase implements UserPersistence
 
   @Override public void save(User customer)
   {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
+    if(!database.getSession().isOpen()){
+      database.getSession().beginTransaction();
     }
-    database.getEntityManager().persist(customer);
-    database.getEntityManager().getTransaction().commit();
-
+    database.getSession().persist(customer);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
   }
 }

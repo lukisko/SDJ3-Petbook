@@ -47,9 +47,9 @@ public class ModelManager implements Model
   }
 
   @Override public void addPet(String email, Pet pet) {
-    if(!(cityPersistence.loadCity(pet.getCity().getName()).getName().equals(pet.getCity().getName()))){
-      cityPersistence.save(pet.getCity());
-    }
+//    if(!(cityPersistence.loadCity(pet.getCity().getName()).getName().equals(pet.getCity().getName()))){
+//      cityPersistence.save(pet.getCity());
+//    }
     User user = userPersistence.loadUser(email);
     petPersistance.save(user, pet);
   }

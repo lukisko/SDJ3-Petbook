@@ -1,11 +1,12 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "pet")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "pet_table")
-public class Pet
+public class Pet implements Serializable
 {
   @Id
   @Column(name = "id")
@@ -19,7 +20,7 @@ public class Pet
   private String bread;
   @Column(name = "description")
   private String description;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
   @JoinColumn(name="user_email", nullable = false)
   private User user;
   @ManyToOne
@@ -105,6 +106,6 @@ public class Pet
   {
     return "Pet{" + "id=" + id + ", name='" + name + '\'' + ", type='" + type
         + '\'' + ", bread='" + bread + '\'' + ", description='" + description
-        + '\'' + '}';
+        + '\'' + ", user=" + user + ", city=" + city + '}';
   }
 }

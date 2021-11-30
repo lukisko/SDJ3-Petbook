@@ -2,6 +2,7 @@ package DatabasePersistence;
 
 import model.Pet;
 import model.User;
+import org.hibernate.Session;
 
 import javax.persistence.Query;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class PetDatabase implements PetPersistance
   private Database database;
 
 
+
   public PetDatabase(){
     database = Database.getInstance();
   }
@@ -22,10 +24,10 @@ public class PetDatabase implements PetPersistance
   @Override public Pet loadPet(int id)
   {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE id = :idValue");
-      query.setParameter("idValue",id);
-      Pet pet = (Pet)query.getSingleResult();
-      return pet;
+      if(!database.getSession().isOpen()){
+        database.getSession().beginTransaction();
+      }
+      return database.getSession().get(Pet.class,id);
     }
     catch (Exception e){
       System.out.println("PetDatabase_Exception: " + e.getMessage());
@@ -36,7 +38,7 @@ public class PetDatabase implements PetPersistance
   @Override public List<Pet> loadAll()
   {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c");
+      Query query = database.getSession().createQuery("SELECT c FROM pet c");
       List<Pet> petList = query.getResultList();
       return petList;
     }
@@ -48,7 +50,7 @@ public class PetDatabase implements PetPersistance
 
   @Override public List<Pet> LoadListOf(String email) {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
+      Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
       query.setParameter("emailValue",email);
       List<Pet> petList = query.getResultList();
       return petList;
@@ -61,17 +63,14 @@ public class PetDatabase implements PetPersistance
 
   @Override public void save(User user,Pet pet)
   {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
+    if(!database.getSession().isOpen()){
+      database.getSession().beginTransaction();
     }
-    System.out.println(user);
-//    User ss = new User();
-//
-//    ss.setEmail("asd");
-    user.addPet(pet);
+
     pet.setUser(user);
-    user.addPet(pet);
-    database.getEntityManager().persist(pet);
-    database.getEntityManager().getTransaction().commit();
+
+    database.getSession().persist(pet);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
   }
 }

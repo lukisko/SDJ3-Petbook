@@ -19,10 +19,10 @@ public class CityDatabase implements CityPersistence {
 
   @Override public City loadCity(String name) {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM city c WHERE name = :city_name");
-      query.setParameter("city_name",name);
-      City city = (City) query.getSingleResult();
-      return city;
+      if(!database.getSession().isOpen()){
+        database.getSession().beginTransaction();
+      }
+      return database.getSession().get(City.class,name);
     }
     catch (Exception e) {
       System.out.println("CityDatabase_Exception: " + e.getMessage());
@@ -32,7 +32,7 @@ public class CityDatabase implements CityPersistence {
 
   @Override public List<City> loadAll() {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM city c");
+      Query query = database.getSession().createQuery("SELECT c FROM city c");
       List<City> cityList = query.getResultList();
       return cityList;
     }
@@ -43,10 +43,12 @@ public class CityDatabase implements CityPersistence {
   }
 
   @Override public void save(City city) {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
-    }
-    database.getEntityManager().persist(city);
-    database.getEntityManager().getTransaction().commit();
+    if(!database.getSession().isOpen()){
+      database.getSession().beginTransaction();
+    };
+
+    database.getSession().persist(city);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
   }
 }

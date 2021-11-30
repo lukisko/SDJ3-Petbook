@@ -1,32 +1,35 @@
 package DatabasePersistence;
 
 
+import model.City;
+import model.Pet;
+import model.User;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-/**
- * Class Database connects to database repository
- * threw creating EntityManagerFactory which is using
- * persistence xml file to get database information
- */
+
 public class Database
 {
-  private EntityManagerFactory entityManagerFactory;
-  private EntityManager entityManager;
+
+  private Configuration configuration;
+  private SessionFactory factory;
+  private Session session;
 
   private static Database instance;
 
-  /**
-   * Constructor initialising all instant variables
-   */
+
   private Database(){
-    entityManagerFactory = Persistence.createEntityManagerFactory("petBookDBS");
-    entityManager= entityManagerFactory.createEntityManager();
-    entityManager.getTransaction().begin();
+    configuration = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(
+        Pet.class).addAnnotatedClass(City.class).configure();
+    factory = configuration.buildSessionFactory();
+    session = factory.getCurrentSession();
+
   }
 
   public synchronized static Database getInstance() {
@@ -36,12 +39,12 @@ public class Database
     return instance;
   }
 
-  /**
-   * get entityManager of database
-   * @return entityManager, used for communicating with database
-   */
-  public EntityManager getEntityManager(){
-    return entityManager;
+public void beginSession(){
+  session = session.getSessionFactory().openSession();
+  session.beginTransaction();
+}
+  public Session getSession(){
+    return session;
   }
 
 }

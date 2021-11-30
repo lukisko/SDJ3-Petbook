@@ -16,7 +16,7 @@ public class User implements Serializable
   private String email;
   @Column(name = "name")
   private String name;
-  @OneToMany(mappedBy="user", cascade = CascadeType.MERGE)
+  @OneToMany(mappedBy="user", fetch = FetchType.EAGER,cascade=CascadeType.ALL)
   private List<Pet> pets;
 
   public User(){
