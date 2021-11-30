@@ -96,13 +96,6 @@ using business_logic.Model;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 5 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Pages\Index.razor"
-using System.Collections.ObjectModel;
-
-#line default
-#line hidden
-#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
