@@ -22,9 +22,9 @@ public class UserDatabase implements UserPersistence
   @Override public User loadUser(String email)
   {
     try {
-      if(!database.getSession().isOpen()){
-        database.getSession().beginTransaction();
-      }
+      database.beginSession();
+      User user = database.getSession().get(User.class,email);
+      user.getPets().clear();
       return database.getSession().get(User.class,email);
     }
     catch (Exception e){
@@ -48,9 +48,7 @@ public class UserDatabase implements UserPersistence
 
   @Override public void save(User customer)
   {
-    if(!database.getSession().isOpen()){
-      database.getSession().beginTransaction();
-    }
+    database.beginSession();
     database.getSession().persist(customer);
     database.getSession().getTransaction().commit();
     database.getSession().close();

@@ -8,18 +8,27 @@ import javax.imageio.spi.ServiceRegistry;
 public class Test {
   public static void main(String[] args) {
     Model model = new ModelManager();
-
+    User user = new User();
+    user.setEmail("blabla");
     City city = new City();
     city.setName("BA");
     Pet pet = new Pet();
     pet.setCity(city);
 
-    model.addPet("asd",pet);
+    System.out.println(model.getUser("asd"));
+
+    //model.addUser(user);
+
+    model.addPet(user.getEmail(),pet);
+
+
 //    Configuration cfg = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(Pet.class).addAnnotatedClass(City.class);
 //    cfg.configure();
 //    SessionFactory factory = cfg.buildSessionFactory();
 //    Session session = factory.getCurrentSession();
 //    session.beginTransaction();
+//
+//    System.out.println(session.get(User.class, "asd"));
 //
 //
 //    City city = new City();

@@ -24,9 +24,7 @@ public class PetDatabase implements PetPersistance
   @Override public Pet loadPet(int id)
   {
     try {
-      if(!database.getSession().isOpen()){
-        database.getSession().beginTransaction();
-      }
+      database.beginSession();
       return database.getSession().get(Pet.class,id);
     }
     catch (Exception e){
@@ -63,9 +61,7 @@ public class PetDatabase implements PetPersistance
 
   @Override public void save(User user,Pet pet)
   {
-    if(!database.getSession().isOpen()){
-      database.getSession().beginTransaction();
-    }
+    database.beginSession();
 
     pet.setUser(user);
 

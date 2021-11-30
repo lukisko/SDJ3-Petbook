@@ -19,9 +19,7 @@ public class CityDatabase implements CityPersistence {
 
   @Override public City loadCity(String name) {
     try {
-      if(!database.getSession().isOpen()){
-        database.getSession().beginTransaction();
-      }
+      database.beginSession();
       return database.getSession().get(City.class,name);
     }
     catch (Exception e) {
@@ -43,9 +41,7 @@ public class CityDatabase implements CityPersistence {
   }
 
   @Override public void save(City city) {
-    if(!database.getSession().isOpen()){
-      database.getSession().beginTransaction();
-    };
+    database.beginSession();
 
     database.getSession().persist(city);
     database.getSession().getTransaction().commit();

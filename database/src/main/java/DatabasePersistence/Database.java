@@ -1,6 +1,5 @@
 package DatabasePersistence;
 
-
 import model.City;
 import model.Pet;
 import model.User;
@@ -13,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
 public class Database
 {
 
@@ -23,27 +21,35 @@ public class Database
 
   private static Database instance;
 
-
-  private Database(){
-    configuration = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(
-        Pet.class).addAnnotatedClass(City.class).configure();
+  private Database()
+  {
+    configuration = new Configuration().addAnnotatedClass(User.class)
+        .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
 
   }
 
-  public synchronized static Database getInstance() {
-    if (instance == null) {
+  public synchronized static Database getInstance()
+  {
+    if (instance == null)
+    {
       instance = new Database();
     }
     return instance;
   }
 
-public void beginSession(){
-  session = session.getSessionFactory().openSession();
-  session.beginTransaction();
-}
-  public Session getSession(){
+  public void beginSession()
+  {
+    if(!session.getTransaction().isActive())
+    {
+      session = session.getSessionFactory().openSession();
+      session.beginTransaction();
+    }
+  }
+
+  public Session getSession()
+  {
     return session;
   }
 
