@@ -49,7 +49,7 @@ namespace business_logic.Model
             }
             string code = userManager.MakeUserCode(email);
             emailHandler.sendLoginLink(email,code);
-            Console.WriteLine("email is no its way");
+            Console.WriteLine("email is no its way with code: "+code);
             return true;
         }
         public async Task<string> login(string email, string code){
