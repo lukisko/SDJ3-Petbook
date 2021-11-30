@@ -28,9 +28,15 @@ namespace business_logic.Controllers
 
         [HttpPost]
         public async Task<ActionResult<String>> AddPet(Pet pet, [FromQuery] string token){
-
-            Pet newPet = await model.createPetAsync(pet,token);
-            return StatusCode(200,newPet);
+            if (String.IsNullOrEmpty(token)){
+                return StatusCode(400, "token needs to be specified.");
+            }
+            try {
+                Pet newPet = await model.createPetAsync(pet,token);
+                return StatusCode(201,newPet);
+            } catch (AccessViolationException e){
+                return StatusCode(401, e.Message);
+            }
         }
     }
 }
