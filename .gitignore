@@ -3,6 +3,16 @@ business_logic/obj/Debug/net5.0
 
 ClientApp/bin
 *.dll
+*/**/*.dll
+*.pdb
 *.g.cs
 ClientApp/obj/Debug/net5.0/
 ClientApp/obj/Debug/net5.0/ClientApp.assets.cache
+ClientApp/bin/Debug/net5.0/ClientApp.dll
+ClientApp/bin/Debug/net5.0/ClientApp.pdb
+ClientApp/bin/Debug/net5.0/ClientApp.Views.dll
+ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb
+ClientApp/obj/Debug/net5.0/ClientApp.dll
+ClientApp/obj/Debug/net5.0/ClientApp.pdb
+ClientApp/obj/Debug/net5.0/ClientApp.Views.dll
+ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb
