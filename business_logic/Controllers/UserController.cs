@@ -33,7 +33,7 @@ namespace business_logic.Controllers
                 if (String.IsNullOrEmpty(token)){
                     return StatusCode(404,"this email was not found");
                 }
-                return StatusCode(200,"01100110");
+                return StatusCode(200,token);
             }catch (Exception e){
                 return StatusCode(400,"the login was not successful");
             }

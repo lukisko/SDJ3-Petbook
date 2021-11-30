@@ -5,7 +5,7 @@ namespace business_logic.Model
     public interface IModel
     {
         Task<PetList> getPetsAsync();
-        Task<Pet> createPetAsync(Pet pet);
+        Task<Pet> createPetAsync(Pet pet, string token);
         /// <summary>
         /// method to send one time login code to user
         /// </summary>
@@ -20,6 +20,5 @@ namespace business_logic.Model
         /// <returns>if code and email are good return access token, returns empty string otherwise</returns>
         Task<string> login(string email, string code); // is it going to be user or email??
         Task<User> register(User user);
-        string getLoginToken(string email);
     }
 }

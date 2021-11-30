@@ -65,18 +65,19 @@ namespace business_logic.Model.UserPack
         }
 
         public string MakeUserToken(string email){
-            string token = this.createRandomCode(25);
+            string token = "";
+            do {
+                token = this.createRandomCode(25);
+            }while (tokenEmailMap.ContainsKey(token));
             tokenEmailMap[token] = email;
             return token;
         }
 
-        public bool IsCorrectToken(string email, string token){
-            if (emailCodeMap.ContainsKey(email)){
-                if (emailCodeMap[email].Equals(token)){
-                    return true;
-                }
+        public string getUserWithToken(string token){
+            if (!tokenEmailMap.ContainsKey(token)){
+                return null;
             }
-            return false;
+            return tokenEmailMap[token];
         }
 
         private string createRandomCode(int codeLength){

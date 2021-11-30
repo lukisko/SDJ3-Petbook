@@ -38,7 +38,12 @@ namespace business_logic.Model
             return list;
         }
 
-        public async Task<Pet> createPetAsync(Pet pet){
+        public async Task<Pet> createPetAsync(Pet pet,string token){
+            string email = userManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            pet.user.email = email;
             Pet newPet = await tier2Mediator.createPet(pet);
             return newPet;
         }
@@ -79,10 +84,6 @@ namespace business_logic.Model
                 code += ch.ToString();
             }
             return code;
-        }
-
-        public string getLoginToken(string email){
-            return "01100110";
         }
     }
 }
