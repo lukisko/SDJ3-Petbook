@@ -32,6 +32,9 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController,UserController>();
             // services.AddBlazoredModal();
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
 
         }
 

@@ -1,4 +1,4 @@
-﻿@page "/Authentication"
+﻿@page "/Register"
 @using business_logic.Model
 @inject IUserController _userController
 @* @inject IModalService _modalService *@
@@ -9,7 +9,7 @@
     <DataAnnotationsValidator/> <ValidationSummary/>
     <label>Name</label>
     <br/><InputText @bind-Value="_userToRegister.name"/>
-    <label>Email</label>
+    <br/> <label>Email</label>
     <br/><InputText @bind-Value="_userToRegister.email"></InputText>
     <br/><label style="text-decoration-color: red">@_errorMessage</label>
 

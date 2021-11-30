@@ -23,6 +23,9 @@ namespace business_logic.Controllers
         [HttpGet]
         public async Task<ActionResult<String>> GetPets(){
             PetList listToReturn = await model.getPetsAsync();
+            
+            
+            
             return JsonSerializer.Serialize("thanks");//listToReturn.pets);
         }
 

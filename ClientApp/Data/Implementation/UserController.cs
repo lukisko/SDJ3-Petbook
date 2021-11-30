@@ -57,7 +57,6 @@ namespace ClientApp.Data
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-          // would it make sense to return something?
         }
     }
 }
