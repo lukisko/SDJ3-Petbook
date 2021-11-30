@@ -7,65 +7,9 @@
     <projectFile profileName="ClientApp">ClientApp/ClientApp.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5673f42a-5eaf-400b-803d-bd4667d0359b" name="Changes" comment="T3&#10;T2">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Authentication.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Authentication.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Authentication.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Authentication.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/_Imports.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" afterDir="false" />
+    <list default="true" id="5673f42a-5eaf-400b-803d-bd4667d0359b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorCoreGenerate.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.TagHelpers.output.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.TagHelpers.output.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Authentication.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Authentication.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Authentication.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Authentication.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.Manifest.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.Manifest.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,47 +26,20 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/hanch/Desktop/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21bFnuV8onUOOmlC6qYu9zWlfT9" />
   <component name="ProjectViewState">
