@@ -5,6 +5,8 @@ import model.User;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +38,10 @@ public class PetDatabase implements PetPersistance
   @Override public List<Pet> loadAll()
   {
     try {
-      Query query = database.getSession().createQuery("SELECT c FROM pet c");
-      List<Pet> petList = query.getResultList();
-      return petList;
+      CriteriaQuery<Pet> criteria = database.getBuilder().createQuery(Pet.class);
+      criteria.from(Pet.class);
+      List<Pet> data = database.getSession().createQuery(criteria).getResultList();
+      return data;
     }
     catch (Exception e){
       System.out.println("PetDatabase_Exception: " + e.getMessage());

@@ -19,8 +19,9 @@ public class Test {
 
     //model.addUser(user);
 
-    model.addPet(user.getEmail(),pet);
+    //model.addPet(user.getEmail(),pet);
 
+    System.out.println(model.getAllUsers());
 
 //    Configuration cfg = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(Pet.class).addAnnotatedClass(City.class);
 //    cfg.configure();

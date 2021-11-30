@@ -2,8 +2,10 @@ package DatabasePersistence;
 
 import model.City;
 import model.Pet;
+import model.User;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class CityDatabase implements CityPersistence {
@@ -30,9 +32,10 @@ public class CityDatabase implements CityPersistence {
 
   @Override public List<City> loadAll() {
     try {
-      Query query = database.getSession().createQuery("SELECT c FROM city c");
-      List<City> cityList = query.getResultList();
-      return cityList;
+      CriteriaQuery<City> criteria = database.getBuilder().createQuery(City.class);
+      criteria.from(City.class);
+      List<City> data = database.getSession().createQuery(criteria).getResultList();
+      return data;
     }
     catch (Exception e){
       System.out.println("CityDatabase_Exception: " + e.getMessage());

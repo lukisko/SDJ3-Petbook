@@ -11,6 +11,7 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 
 public class Database
 {
@@ -18,6 +19,7 @@ public class Database
   private Configuration configuration;
   private SessionFactory factory;
   private Session session;
+  private CriteriaBuilder builder;
 
   private static Database instance;
 
@@ -27,6 +29,7 @@ public class Database
         .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
+    builder = session.getCriteriaBuilder();
 
   }
 
@@ -53,4 +56,8 @@ public class Database
     return session;
   }
 
+  public CriteriaBuilder getBuilder()
+  {
+    return builder;
+  }
 }

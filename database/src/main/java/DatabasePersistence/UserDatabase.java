@@ -1,9 +1,12 @@
 package DatabasePersistence;
 
 import model.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class UserDatabase implements UserPersistence
@@ -36,9 +39,10 @@ public class UserDatabase implements UserPersistence
   @Override public List<User> loadAll()
   {
     try {
-      Query query = database.getSession().createQuery("SELECT c FROM user c");
-      List<User> customerList = query.getResultList();
-      return customerList;
+      CriteriaQuery<User> criteria = database.getBuilder().createQuery(User.class);
+      criteria.from(User.class);
+      List<User> data = database.getSession().createQuery(criteria).getResultList();
+      return data;
     }
     catch (Exception e){
       System.out.println("UserDatabase_Exception: " + e.getMessage());
