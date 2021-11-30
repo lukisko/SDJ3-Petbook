@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {}
+    "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/ClientApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {
+    "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/ClientApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
+        "projectUniqueName": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/ClientApp.csproj",
         "projectName": "ClientApp",
-        "projectPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
-        "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\obj\\",
+        "projectPath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/ClientApp.csproj",
+        "packagesPath": "/home/lukisko/.nuget/packages/",
+        "outputPath": "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/lukisko/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -37,12 +37,6 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
-              "target": "Package",
-              "version": "[5.0.12, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -53,6 +47,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -61,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.205/RuntimeIdentifierGraph.json"
         }
       }
     }
