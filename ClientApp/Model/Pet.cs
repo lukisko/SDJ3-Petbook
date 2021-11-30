@@ -10,5 +10,6 @@ namespace business_logic.Model
         public string type {get;set;}
         public string breed {get;set;}
         public string description {get;set;}
+        public string status { get; set; }
     }
 }
