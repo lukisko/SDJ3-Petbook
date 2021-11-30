@@ -22,7 +22,15 @@ namespace business_logic.Controllers
         }
 
         [HttpGet]
-        
+        /// <summary>
+        /// final login for user using email and code.
+        /// </summary>
+        /// <param name="email">user's email address</param>
+        /// <param name="code">code that was send to the email address</param>
+        /// <returns>access token needed in other operations</returns>
+        /// <remarks>
+        /// testing
+        /// </remarks>
         public async Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code){
             Console.WriteLine("heeere");
             //return StatusCode(500,"not running tier3");
