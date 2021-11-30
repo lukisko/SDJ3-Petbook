@@ -97,8 +97,8 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
-       
+#line 74 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+           
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;

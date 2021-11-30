@@ -14,7 +14,7 @@ namespace business_logic.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PetsController : ControllerBase
+    public class PetsController : ControllerBase, IPetController
     {
         private IModel model;
         public PetsController(IModel model){
@@ -23,14 +23,14 @@ namespace business_logic.Controllers
         [HttpGet]
         public async Task<ActionResult<String>> GetPets(){
             PetList listToReturn = await model.getPetsAsync();
-            return JsonSerializer.Serialize(listToReturn.pets);
+            return JsonSerializer.Serialize("thanks");//listToReturn.pets);
         }
 
         [HttpPost]
         public async Task<ActionResult<String>> AddPet(Pet pet){
 
             Pet newPet = await model.createPetAsync(pet);
-            return StatusCode(200,newPet);
+            return StatusCode(200,"sorry");//newPet);
         }
     }
 }

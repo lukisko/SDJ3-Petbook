@@ -104,33 +104,6 @@ using business_logic.Model;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 40 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Pages\Index.razor"
-      
-    private IList<Pet> allPets;
-    private IList<Pet> toShowPets;
-
-    protected override async Task OnInitializedAsync()
-    {
-        allPets = await _petController.GetAllPetsAsync();
-        toShowPets = allPets;
-    }
-    private void NavigateToAddPet()
-    {
-        NavMgr.NavigateTo($"/AddPet");
-    }
-
-
-
-
-
-
-
-
-
-#line default
-#line hidden
-#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }
     }

@@ -2,12 +2,12 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/contentModel.xml
 /.idea.SDJ3-Petbook.iml
-/modules.xml
 /projectSettingsUpdater.xml
-# Editor-based HTTP Client requests
-/httpRequests/
+/contentModel.xml
+/modules.xml
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

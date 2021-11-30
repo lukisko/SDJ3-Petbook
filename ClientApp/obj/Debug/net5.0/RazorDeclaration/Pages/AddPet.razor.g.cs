@@ -104,26 +104,6 @@ using business_logic.Model;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 19 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Pages\AddPet.razor"
-      
-    public Pet petToAdd = new Pet() {id = 0};
-
-    private async Task AddNewPet()
-    {
-        await _petController.addPetAsync(petToAdd);
-        NavMgr.NavigateTo("/");
-    }
-
-
-
-
-
-
-
-#line default
-#line hidden
-#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }
     }
