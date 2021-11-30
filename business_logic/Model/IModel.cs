@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using business_logic.Model.UserPack;
 
 namespace business_logic.Model
 {
@@ -19,6 +20,6 @@ namespace business_logic.Model
         /// <param name="code">code that we have send to his/her email</param>
         /// <returns>if code and email are good return access token, returns empty string otherwise</returns>
         Task<string> login(string email, string code); // is it going to be user or email??
-        Task<User> register(User user);
+        Task<AuthorisedUser> register(User user);
     }
 }

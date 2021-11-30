@@ -63,7 +63,7 @@ namespace business_logic.Model
             }
             return "";
         }
-        public async Task<User> register(User user){
+        public async Task<AuthorisedUser> register(User user){
             //change this
             AuthorisedUser authUsr = new AuthorisedUser(){
                 email = user.email,
@@ -72,7 +72,7 @@ namespace business_logic.Model
             };
             Console.WriteLine("something is here");
             await this.sendCode(user.email);
-            User usr = await userManager.CreateUser(authUsr);
+            AuthorisedUser usr = await userManager.CreateUser(authUsr);
             Console.WriteLine("efter creating user");
             return usr;
         }
