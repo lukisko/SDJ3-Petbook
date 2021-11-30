@@ -23,6 +23,8 @@ public class Test {
 
     System.out.println(model.getAllUsers());
 
+    System.out.println(model.getAllPets());
+
 //    Configuration cfg = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(Pet.class).addAnnotatedClass(City.class);
 //    cfg.configure();
 //    SessionFactory factory = cfg.buildSessionFactory();

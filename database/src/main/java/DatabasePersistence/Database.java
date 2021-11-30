@@ -29,8 +29,8 @@ public class Database
         .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
+    session.beginTransaction();
     builder = session.getCriteriaBuilder();
-
   }
 
   public synchronized static Database getInstance()
