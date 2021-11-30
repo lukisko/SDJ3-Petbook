@@ -90,29 +90,15 @@ using ClientApp.Data;
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
-using Blazored;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 13 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
-using Blazored.Modal;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 14 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
-using Blazored.Modal.Services;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 4 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Pages\Index.razor"
 using business_logic.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Pages\Index.razor"
+using System.Collections.ObjectModel;
 
 #line default
 #line hidden

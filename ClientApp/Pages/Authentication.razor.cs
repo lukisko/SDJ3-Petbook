@@ -25,7 +25,7 @@ namespace ClientApp.Pages
             try
             {
                 await _userController.Register(_userToRegister);
-                _modalService.Show<Login>("Login");
+                // _modalService.Show<Login>("Login");
             }
             catch (Exception e)
             {

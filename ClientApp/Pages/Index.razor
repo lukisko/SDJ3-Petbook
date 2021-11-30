@@ -38,20 +38,6 @@ else
     </table>
 }
 
-@code{
-    private IList<Pet> allPets;
-    private IList<Pet> toShowPets;
-
-    protected override async Task OnInitializedAsync()
-    {
-        //allPets = await _petController.GetAllPetsAsync();
-        allPets = new List<Pet>();
-        toShowPets = allPets;
-    }
-    private void NavigateToAddPet()
-    {
-        NavMgr.NavigateTo($"/AddPet");
-    }
 
 
 
