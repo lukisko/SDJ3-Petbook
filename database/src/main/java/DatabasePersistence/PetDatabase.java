@@ -65,9 +65,7 @@ public class PetDatabase implements PetPersistance
   @Override public void save(User user,Pet pet)
   {
     database.beginSession();
-
     pet.setUser(user);
-
     database.getSession().persist(pet);
     database.getSession().getTransaction().commit();
     database.getSession().close();
