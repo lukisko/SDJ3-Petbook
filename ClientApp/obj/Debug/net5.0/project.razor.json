@@ -184,6 +184,92 @@
         }
       },
       {
+        "HashCode": -1623403631,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.App",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.App"
+        }
+      },
+      {
+        "HashCode": -871568063,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.App",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ClientApp.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 831295490,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.SurveyPrompt",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -2120807730,
+        "Kind": "Components.Component",
+        "Name": "ClientApp.Shared.SurveyPrompt",
+        "AssemblyName": "ClientApp",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "ClientApp.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "ClientApp.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": 1686587879,
         "Kind": "Components.Component",
         "Name": "ClientApp.Shared.MainLayout",
@@ -280,59 +366,6 @@
         }
       },
       {
-        "HashCode": 831295490,
-        "Kind": "Components.Component",
-        "Name": "ClientApp.Shared.SurveyPrompt",
-        "AssemblyName": "ClientApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ClientApp.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -2120807730,
-        "Kind": "Components.Component",
-        "Name": "ClientApp.Shared.SurveyPrompt",
-        "AssemblyName": "ClientApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ClientApp.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ClientApp.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1431342468,
         "Kind": "Components.Component",
         "Name": "ClientApp.Shared.NavMenu",
@@ -362,39 +395,6 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "ClientApp.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1623403631,
-        "Kind": "Components.Component",
-        "Name": "ClientApp.App",
-        "AssemblyName": "ClientApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ClientApp.App"
-        }
-      },
-      {
-        "HashCode": -871568063,
-        "Kind": "Components.Component",
-        "Name": "ClientApp.App",
-        "AssemblyName": "ClientApp",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "ClientApp.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "ClientApp.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
