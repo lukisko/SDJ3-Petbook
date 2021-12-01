@@ -4,10 +4,15 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import javax.imageio.spi.ServiceRegistry;
+import java.util.List;
+import java.util.Random;
 
 public class Test {
+
+
   public static void main(String[] args) {
 
+    Model model = new ModelManager();
     User user = new User();
     user.setEmail("jurco10510@gmail.com");
     City city = new City();
@@ -57,11 +62,5 @@ public class Test {
 //    session.getTransaction().commit();
 //    session.close();
 
-  }
-
-  private static Model model = new ModelManager();
-
-  private User getUser(String email){
-    return model.getUser(email);
   }
 }

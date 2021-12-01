@@ -9,4 +9,5 @@ public interface UserPersistence
   User loadUser(String email);
   List<User> loadAll();
   void save(User customer);
+  void delete(User customer);
 }

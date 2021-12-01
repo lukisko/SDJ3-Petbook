@@ -20,8 +20,12 @@ public class ModelManager implements Model
 
   @Override public void addUser(User user)
   {
-    System.out.println("model add");
     userPersistence.save(user);
+  }
+
+  @Override public void removeUser(User user)
+  {
+    userPersistence.delete(user);
   }
 
   @Override public User getUser(String email)
@@ -43,7 +47,7 @@ public class ModelManager implements Model
   }
 
   @Override public List<Pet> getPetList(String email) {
-    return petPersistance.LoadListOf(email);
+    return petPersistance.LoadListOfUser(email);
   }
 
   @Override public void addPet(String email, Pet pet) {
@@ -51,7 +55,12 @@ public class ModelManager implements Model
 //      cityPersistence.save(pet.getCity());
 //    }
     User user = userPersistence.loadUser(email);
+    System.out.println(user);
     petPersistance.save(user, pet);
+  }
+  @Override public void removePet(Pet pet)
+  {
+    petPersistance.delete(pet);
   }
 
   @Override public City getCity(String name) {

@@ -57,6 +57,6 @@ public class User implements Serializable
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''
-        + ", pets=" + pets + '}';
+        + '}';
   }
 }
