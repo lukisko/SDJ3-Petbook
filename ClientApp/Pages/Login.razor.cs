@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
@@ -14,6 +13,10 @@ namespace ClientApp.Pages
 
         protected override async Task OnInitializedAsync()
         {
+            if (String.IsNullOrEmpty(Email))
+            {
+                ShowPopUpDialog = true;
+            }
             _errorMessage = "";
             _confirmationCode = null;
         }
