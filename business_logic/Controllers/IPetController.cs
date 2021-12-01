@@ -9,7 +9,8 @@ namespace business_logic.Controllers
     {
         [HttpGet]
         Task<ActionResult<String>> GetPets([FromQuery] int? id);
+
         [HttpPost]
-        Task<ActionResult<String>> AddPet(Pet pet,[FromQuery] string token);
+        Task<ActionResult<String>> AddPet(Pet pet, [FromQuery] string token);
     }
 }

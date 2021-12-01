@@ -12,13 +12,11 @@ namespace ClientApp.Data.Implementation
 {
     public class PetController : IPetController
     {
-        private string uri = "1https://localhost:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
         public Action<Object> RequestAnswerChange; 
         public PetController()
         {
-           
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
@@ -28,7 +26,7 @@ namespace ClientApp.Data.Implementation
         {
             string serializedPet = JsonSerializer.Serialize(pet);
             HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage= await client.PostAsync($"{uri}/Pets", content);
+            HttpResponseMessage responseMessage= await client.PostAsync($"{StaticVariables.URL}/Pets", content);
             if (responseMessage.StatusCode == HttpStatusCode.OK)
             {
                 RequestAnswerChange.Invoke(responseMessage.Content);
@@ -42,7 +40,7 @@ namespace ClientApp.Data.Implementation
         public async Task<IList<Pet>> GetAllPetsAsync()
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Pets");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
             
             if (!responseMessage.IsSuccessStatusCode)
             {

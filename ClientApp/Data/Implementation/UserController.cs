@@ -12,48 +12,52 @@ namespace ClientApp.Data.Implementation
 {
     public class UserController : IUserController
     {
-        private string uri = "https://localhost:5001";
+        
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
+        private AccessToken _accessToken;
 
         public UserController()
         {
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
+            this._accessToken = new AccessToken();
         }
 
         public async Task<string> Register(User newUser)
-        {   
+        {
             string serializedUser = JsonSerializer.Serialize(newUser);
             HttpContent content = new StringContent(serializedUser, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await client.PostAsync($"{uri}/User", content);
+            HttpResponseMessage responseMessage = await client.PostAsync($"{StaticVariables.URL}/User", content);
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            
+
             string reply = await responseMessage.Content.ReadAsStringAsync();
             return reply;
         }
 
         public async Task<string> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/User?email={email}&code={code}");
-            
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
+
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
+
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
             string reply = await responseMessage.Content.ReadAsStringAsync();
+            _accessToken.Token = reply;
             return reply;
         }
 
         public async Task SendEmail(string email)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Email?email={email}");
-            
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Email?email={email}");
+
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);

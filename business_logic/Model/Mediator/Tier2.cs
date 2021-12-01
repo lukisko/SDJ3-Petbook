@@ -17,10 +17,10 @@ namespace business_logic.Model.Mediator
         private Tier2Pets pets;
         private Tier2User users;
         public Tier2() {
-            client = new TcpClient(HOST,PORT);
-            stream = client.GetStream();
-            pets = new Tier2Pets(this);
-            this.users = new Tier2User(this);
+            // client = new TcpClient(HOST,PORT);
+            // stream = client.GetStream();
+            // pets = new Tier2Pets(this);
+            // this.users = new Tier2User(this);
         }
 
         public Tier2(string host, int port){
