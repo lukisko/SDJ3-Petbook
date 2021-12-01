@@ -9,3 +9,4 @@
 *.dll
 *.pdb
 *.cache
+ClientApp/obj/Debug/net5.0
