@@ -24,11 +24,13 @@ namespace business_logic.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] string token){
+            Console.WriteLine("conneted to get messages!");
             return StatusCode(501,"not implemented geting of messages with a person");
         }
 
         [HttpPost]
         public async Task<ActionResult<string>> SendMessage([FromQuery] string token, Message message){
+            Console.WriteLine("conneted to get messages!");
             return StatusCode(501,"not implemented, sorry");
         }
     }
