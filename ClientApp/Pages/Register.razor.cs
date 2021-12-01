@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using business_logic.Model;
+using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
 {
-    public partial class Authentication : ComponentBase
+    public partial class Register : ComponentBase
     {
         [Parameter] public string Email { get; set; }
 
@@ -16,7 +16,6 @@ namespace ClientApp.Pages
         protected override async Task OnInitializedAsync()
         {
             _userToRegister = new User();
-            Email = _userToRegister.email; //not sure about that
             _errorMessage = "";
         }
 
@@ -25,13 +24,18 @@ namespace ClientApp.Pages
             try
             {
                 await _userController.Register(_userToRegister);
-                // _modalService.Show<Login>("Login");
+                Email = _userToRegister.email;
+                NavMgr.NavigateTo($"/Login/{Email}");
             }
             catch (Exception e)
             {
                 _errorMessage = e.Message;
                 _userToRegister.name = "";
             }
+        }
+        public void NavigateToLogIn()
+        {
+            NavMgr.NavigateTo($"/Login");
         }
     }
 }

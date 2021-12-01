@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
+using ClientApp.Data.Implementation;
 
 namespace ClientApp
 {
@@ -32,6 +33,9 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController,UserController>();
             // services.AddBlazoredModal();
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
 
         }
 

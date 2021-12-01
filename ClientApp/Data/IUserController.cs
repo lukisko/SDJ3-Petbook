@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using business_logic.Model;
-using Microsoft.AspNetCore.Mvc;
+using ClientApp.Model;
 
 namespace ClientApp.Data
 {

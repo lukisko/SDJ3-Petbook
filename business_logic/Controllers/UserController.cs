@@ -51,7 +51,6 @@ namespace business_logic.Controllers
         [HttpPost]
         public async Task<ActionResult<AuthorisedUser>> Register(User newUser){
             Console.WriteLine("heeere2");
-            //return StatusCode(500, "not running tier 3");
             //User usr = await model.register(newUser);
             try {
                 Console.WriteLine(newUser.name);

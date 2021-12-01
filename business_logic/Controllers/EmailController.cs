@@ -15,18 +15,23 @@ namespace business_logic.Controllers
     {
         private IModel model;
 
-        public  EmailController(IModel model){
+        public EmailController(IModel model)
+        {
             this.model = model;
         }
 
         [HttpGet]
-        public async Task<ActionResult<String>> SendEmail([FromQuery] string email){
+        public async Task<ActionResult<String>> SendEmail([FromQuery] string email)
+        {
             //return StatusCode(500,"sorry server down");
-            if (await model.sendCode(email)){
-                    return StatusCode(200);
-                } else {
-                    return StatusCode(400,"the email od not exist or is not in our system.");
-                }
+            if (await model.sendCode(email))
+            {
+                return StatusCode(200);
+            }
+            else
+            {
+                return StatusCode(400, "the email do not exist or is not in our system.");
+            }
         }
     }
 }
