@@ -4,6 +4,7 @@ business_logic/obj/Debug/net5.0
 ClientApp/bin
 *.dll
 */**/*.dll
+*.cache
 *.pdb
 *.g.cs
 ClientApp/obj/Debug/net5.0
