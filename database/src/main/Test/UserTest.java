@@ -25,7 +25,6 @@ public class UserTest
 
     assertNotNull(result);
     assertEquals("asd", result.getEmail());
-    System.out.println(result);
 
   }
   @Test
@@ -45,7 +44,6 @@ public class UserTest
     User result = model.getUser(user.getEmail());
 
     assertNull(result);
-    System.out.println(result);
   }
   @Test
   void addUser(){
@@ -56,7 +54,6 @@ public class UserTest
 
     assertNotNull(result);
     assertEquals("test", result.getEmail());
-    System.out.println(result);
 
     model.removeUser(result);
   }

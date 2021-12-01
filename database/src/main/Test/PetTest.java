@@ -20,7 +20,7 @@ public class PetTest
     testUser = new User();
     testUser.setEmail("test");
     city = new City();
-    city.setName("BA");
+    city.setName("AA");
     pet = new Pet();
     pet.setCity(city);
     pet.setName("test");
@@ -69,14 +69,16 @@ public class PetTest
     assertTrue(5 < result.stream().count());
     assertEquals(64, result.get(3).getId());
 
-    System.out.println(result);
+
   }
   @Test void getAllPetsOfUser()
   {
     List<Pet> result = model.getPetList("blabla");
+
     assertNotNull(result);
     assertTrue(1 < result.stream().count());
     assertEquals(62, result.get(1).getId());
+
   }
 
 

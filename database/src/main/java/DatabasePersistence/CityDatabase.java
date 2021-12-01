@@ -32,6 +32,7 @@ public class CityDatabase implements CityPersistence {
 
   @Override public List<City> loadAll() {
     try {
+      database.beginSession();
       CriteriaQuery<City> criteria = database.getBuilder().createQuery(City.class);
       criteria.from(City.class);
       List<City> data = database.getSession().createQuery(criteria).getResultList();
@@ -47,6 +48,14 @@ public class CityDatabase implements CityPersistence {
     database.beginSession();
 
     database.getSession().persist(city);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+  }
+
+  @Override public void delete(City city)
+  {
+    database.beginSession();
+    database.getSession().delete(city);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }

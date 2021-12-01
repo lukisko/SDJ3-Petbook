@@ -10,4 +10,5 @@ public interface CityPersistence {
   City loadCity(String name);
   List<City> loadAll();
   void save(City city);
+  void delete(City city);
 }
