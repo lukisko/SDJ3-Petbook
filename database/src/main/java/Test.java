@@ -7,23 +7,23 @@ import javax.imageio.spi.ServiceRegistry;
 
 public class Test {
   public static void main(String[] args) {
-    Model model = new ModelManager();
+
     User user = new User();
-    user.setEmail("blabla");
+    user.setEmail("jurco10510@gmail.com");
     City city = new City();
     city.setName("BA");
     Pet pet = new Pet();
     pet.setCity(city);
 
-    System.out.println(model.getUser("asd"));
+    //System.out.println(model.getUser("asd"));
 
     //model.addUser(user);
 
-    //model.addPet(user.getEmail(),pet);
+    model.addPet(user.getEmail(),pet);
 
-    System.out.println(model.getAllUsers());
+    //System.out.println(model.getAllUsers());
 
-    System.out.println(model.getAllPets());
+    //System.out.println(model.getAllPets());
 
 //    Configuration cfg = new Configuration().addAnnotatedClass(User.class).addAnnotatedClass(Pet.class).addAnnotatedClass(City.class);
 //    cfg.configure();
@@ -57,5 +57,11 @@ public class Test {
 //    session.getTransaction().commit();
 //    session.close();
 
+  }
+
+  private static Model model = new ModelManager();
+
+  private User getUser(String email){
+    return model.getUser(email);
   }
 }

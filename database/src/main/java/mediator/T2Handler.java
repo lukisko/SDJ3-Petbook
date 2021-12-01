@@ -58,7 +58,7 @@ public class T2Handler implements Runnable {
             model.getUser(((User) value).getEmail())));
         break;
       case "pet":
-        model.addUser((User) value);
+        model.addPet(((Pet)value).getUser().getEmail(),(Pet) value);
         stringToSend = gson.toJson(new Comunication<Pet>("pet", "Add",
             model.getPet(((Pet) value).getId())));
         break;

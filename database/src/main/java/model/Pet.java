@@ -20,7 +20,7 @@ public class Pet implements Serializable
   private String bread;
   @Column(name = "description")
   private String description;
-  @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+  @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   @JoinColumn(name="user_email", nullable = false)
   private User user;
   @ManyToOne

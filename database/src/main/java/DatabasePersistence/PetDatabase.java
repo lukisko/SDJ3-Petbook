@@ -27,7 +27,9 @@ public class PetDatabase implements PetPersistance
   {
     try {
       database.beginSession();
-      return database.getSession().get(Pet.class,id);
+      Pet pet = database.getSession().get(Pet.class,id);
+      pet.getUser().getPets().clear();
+      return pet;
     }
     catch (Exception e){
       System.out.println("PetDatabase_Exception: " + e.getMessage());
@@ -51,6 +53,7 @@ public class PetDatabase implements PetPersistance
 
   @Override public List<Pet> LoadListOf(String email) {
     try {
+      database.beginSession();
       Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
       query.setParameter("emailValue",email);
       List<Pet> petList = query.getResultList();
@@ -64,9 +67,12 @@ public class PetDatabase implements PetPersistance
 
   @Override public void save(User user,Pet pet)
   {
+    System.out.println();
+    System.out.println(user);
+    System.out.println(pet);
     database.beginSession();
     pet.setUser(user);
-    database.getSession().persist(pet);
+    database.getSession().merge(pet);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }

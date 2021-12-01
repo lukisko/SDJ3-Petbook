@@ -28,7 +28,7 @@ public class UserDatabase implements UserPersistence
       database.beginSession();
       User user = database.getSession().get(User.class,email);
       user.getPets().clear();
-      return database.getSession().get(User.class,email);
+      return user;
     }
     catch (Exception e){
       System.out.println("UserDatabase_Exception: " + e.getMessage());
@@ -39,6 +39,7 @@ public class UserDatabase implements UserPersistence
   @Override public List<User> loadAll()
   {
     try {
+      database.beginSession();
       CriteriaQuery<User> criteria = database.getBuilder().createQuery(User.class);
       criteria.from(User.class);
       List<User> data = database.getSession().createQuery(criteria).getResultList();
