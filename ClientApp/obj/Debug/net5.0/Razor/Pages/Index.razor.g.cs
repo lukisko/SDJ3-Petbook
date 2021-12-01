@@ -123,7 +123,7 @@ else
             __builder.AddAttribute(2, "class", "container flex flex-wrap pt-4 pb-10 m-auto mt-6 md:mt-15 lg:px-12 xl:px-16");
             __builder.OpenElement(3, "div");
             __builder.AddAttribute(4, "class", "w-full px-0 lg:px-4");
-            __builder.AddMarkupContent(5, "<h2 class=\"px-12 text-base font-bold text-center md:text-2xl text-pink-700\"></h2>\n\n        ");
+            __builder.AddMarkupContent(5, "<h2 class=\"px-12 text-base font-bold text-center md:text-2xl text-pink-700\"></h2>\r\n\r\n        ");
             __builder.OpenElement(6, "div");
             __builder.AddAttribute(7, "class", "flex flex-wrap items-center justify-center py-4 pt-0");
             __builder.OpenElement(8, "div");
@@ -134,7 +134,7 @@ else
             __builder.AddAttribute(13, "class", "w-full px-4 py-6 rounded-t-lg card-section-1");
             __builder.OpenElement(14, "h3");
             __builder.AddAttribute(15, "class", "mx-auto text-base font-semibold text-center underline text-pink-500 group-hover:text-blue");
-            __builder.AddMarkupContent(16, "\n                  Type: ");
+            __builder.AddMarkupContent(16, "\r\n                  Type: ");
             __builder.AddContent(17, 
 #nullable restore
 #line 24 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Index.razor"
@@ -145,10 +145,10 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(18, "\n                ");
+            __builder.AddMarkupContent(18, "\r\n                ");
             __builder.OpenElement(19, "p");
             __builder.AddAttribute(20, "class", "text-5xl font-bold text-center group-hover:text-blue text-pink-500");
-            __builder.AddMarkupContent(21, "\n                  Name: ");
+            __builder.AddMarkupContent(21, "\r\n                  Name: ");
             __builder.AddContent(22, 
 #nullable restore
 #line 27 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Index.razor"
@@ -160,10 +160,10 @@ else
             );
             __builder.AddMarkupContent(23, " <span class=\"text-3xl\"></span>");
             __builder.CloseElement();
-            __builder.AddMarkupContent(24, "\n                ");
+            __builder.AddMarkupContent(24, "\r\n                ");
             __builder.OpenElement(25, "p");
             __builder.AddAttribute(26, "class", "text-xs text-center uppercase group-hover:text-blue text-pink-500");
-            __builder.AddMarkupContent(27, "\n                  Breed: ");
+            __builder.AddMarkupContent(27, "\r\n                  Breed: ");
             __builder.AddContent(28, 
 #nullable restore
 #line 30 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Index.razor"
@@ -175,12 +175,12 @@ else
             );
             __builder.CloseElement();
             __builder.CloseElement();
-            __builder.AddMarkupContent(29, "\n              ");
+            __builder.AddMarkupContent(29, "\r\n              ");
             __builder.OpenElement(30, "div");
             __builder.AddAttribute(31, "class", "flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-pink-500");
             __builder.OpenElement(32, "p");
             __builder.AddAttribute(33, "class", "text-xl text-white");
-            __builder.AddMarkupContent(34, "\n                  Description: ");
+            __builder.AddMarkupContent(34, "\r\n                  Description: ");
             __builder.AddContent(35, 
 #nullable restore
 #line 36 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Index.razor"
@@ -191,10 +191,10 @@ else
 #nullable disable
             );
             __builder.CloseElement();
-            __builder.AddMarkupContent(36, "\n                ");
+            __builder.AddMarkupContent(36, "\r\n                ");
             __builder.OpenElement(37, "button");
             __builder.AddAttribute(38, "class", "w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-pink-500");
-            __builder.AddMarkupContent(39, "\n                  Adopt ");
+            __builder.AddMarkupContent(39, "\r\n                  Adopt ");
             __builder.AddContent(40, 
 #nullable restore
 #line 39 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Index.razor"
@@ -226,7 +226,7 @@ else
 #line default
 #line hidden
 #nullable disable
-            __builder.AddMarkupContent(41, "\n\n\n}");
+            __builder.AddMarkupContent(41, "\r\n\r\n\r\n}");
         }
         #pragma warning restore 1998
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }

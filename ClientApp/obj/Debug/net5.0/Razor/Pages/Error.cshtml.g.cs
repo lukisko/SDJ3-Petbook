@@ -12,7 +12,7 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5fc1fa8622c460db99a8316efbdd2daaf3f91392", @"/Pages/Error.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d34b2926283ff24ca8df004582bdc5243447734a", @"/Pages/Error.cshtml")]
     public class Pages_Error : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("href", new global::Microsoft.AspNetCore.Html.HtmlString("~/css/bootstrap/bootstrap.min.css"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -76,7 +76,7 @@ namespace AspNetCore
                 }
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
-                WriteLiteral("\n");
+                WriteLiteral("\r\n");
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_HeadTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.HeadTagHelper>();
@@ -99,7 +99,7 @@ namespace AspNetCore
 #line default
 #line hidden
 #nullable disable
-                WriteLiteral("                <p>\n                    <strong>Request ID:</strong> <code>");
+                WriteLiteral("                <p>\r\n                    <strong>Request ID:</strong> <code>");
 #nullable restore
 #line 24 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Error.cshtml"
                                                   Write(Model.RequestId);
@@ -107,7 +107,7 @@ namespace AspNetCore
 #line default
 #line hidden
 #nullable disable
-                WriteLiteral("</code>\n                </p>\n");
+                WriteLiteral("</code>\r\n                </p>\r\n");
 #nullable restore
 #line 26 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Error.cshtml"
             }
@@ -140,7 +140,7 @@ namespace AspNetCore
             }
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
-            WriteLiteral("\n\n</html>\n");
+            WriteLiteral("\r\n\r\n</html>\r\n");
         }
         #pragma warning restore 1998
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

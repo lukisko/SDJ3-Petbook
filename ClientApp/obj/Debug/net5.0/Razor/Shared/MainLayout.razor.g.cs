@@ -93,15 +93,15 @@ using ClientApp.Data;
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "page");
-            __builder.AddAttribute(2, "b-0ncd5rlljf");
+            __builder.AddAttribute(2, "b-9hqbptr0vy");
             __builder.OpenComponent<ClientApp.Shared.NavMenu>(3);
             __builder.CloseComponent();
             __builder.CloseElement();
-            __builder.AddMarkupContent(4, "\n\n    ");
+            __builder.AddMarkupContent(4, "\r\n\r\n    ");
             __builder.OpenElement(5, "div");
             __builder.AddAttribute(6, "class", "main");
-            __builder.AddAttribute(7, "b-0ncd5rlljf");
-            __builder.AddMarkupContent(8, "<div class=\"top-row \" b-0ncd5rlljf><a href=\"https://docs.microsoft.com/aspnet/\" target=\"_blank\" b-0ncd5rlljf></a></div>\n\n            ");
+            __builder.AddAttribute(7, "b-9hqbptr0vy");
+            __builder.AddMarkupContent(8, "<div class=\"top-row \" b-9hqbptr0vy><a href=\"https://docs.microsoft.com/aspnet/\" target=\"_blank\" b-9hqbptr0vy></a></div>\r\n\r\n            ");
             __builder.AddContent(9, 
 #nullable restore
 #line 13 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\MainLayout.razor"

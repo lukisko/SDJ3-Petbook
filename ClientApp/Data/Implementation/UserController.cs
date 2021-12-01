@@ -23,40 +23,37 @@ namespace ClientApp.Data.Implementation
             client = new HttpClient(clientHandler);
         }
 
-        public async Task<User> Register(User newUser)
-        {
+        public async Task<string> Register(User newUser)
+        {   
             string serializedUser = JsonSerializer.Serialize(newUser);
             HttpContent content = new StringContent(serializedUser, Encoding.UTF8, "application/json");
             HttpResponseMessage responseMessage = await client.PostAsync($"{uri}/User", content);
-            Console.WriteLine( "Register "+responseMessage.Content.ReadAsStringAsync().Result);
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
+            
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            User user = JsonSerializer.Deserialize<User>(reply);
-            return user;
+            return reply;
         }
 
-        public async Task<User> Login(string email, string code)
+        public async Task<string> Login(string email, string code)
         {
             HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/User?email={email}&code={code}");
-            Console.WriteLine("login"+responseMessage.Content.ReadAsStringAsync().Result);
+            
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            User user = JsonSerializer.Deserialize<User>(reply);
-            return user;
+            return reply;
         }
 
         public async Task SendEmail(string email)
         {
             HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Email?email={email}");
-            Console.WriteLine("Sendmail"+responseMessage.Content.ReadAsStringAsync().Result);
+            
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);

@@ -42,6 +42,7 @@ namespace business_logic.Controllers
                 if (String.IsNullOrEmpty(token)){
                     return StatusCode(404,"the login was not succesfull");
                 }
+                Console.WriteLine("send the token");
                 return StatusCode(200,token);
             }catch (Exception e){
                 return StatusCode(400,"the login was not successful");
