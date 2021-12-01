@@ -11,9 +11,10 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-
 *.dll
 *.pdb
 *.cache
 ClientApp/obj/Debug/net5.0
 ClientApp/bin/Debug/net5.0
+
+

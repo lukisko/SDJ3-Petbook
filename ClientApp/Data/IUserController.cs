@@ -11,7 +11,7 @@ namespace ClientApp.Data
         /// <param name="newUser"></param>
         /// <exception cref=""></exception>
         /// <returns></returns>
-        Task<User> Register(User newUser);
+        Task<string> Register(User newUser);
 
         /// <summary>
         /// 
@@ -19,7 +19,7 @@ namespace ClientApp.Data
         /// <param name="email"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        Task<User> Login(string email, string code);
+        Task<string> Login(string email, string code);
 
 
         /// <summary>

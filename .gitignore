@@ -1,7 +1,7 @@
 business_logic/bin
 business_logic/obj/Debug/net5.0
-
-ClientApp/bin
+ClientApp/bin/
+business_logic/obj
 *.dll
 */**/*.dll
 *.cache

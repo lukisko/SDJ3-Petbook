@@ -14,7 +14,7 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<PetList> requestPets(){
-            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",new Pet(){type="test",breed="ing",name="none"});
+            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","GetAll",new Pet(){type="test",breed="ing",name="none"});
 
             Comunication<PetList> PetList = await tier2.requestServerAsync<Comunication<Pet>,Comunication<PetList>>(communicationClass);
 

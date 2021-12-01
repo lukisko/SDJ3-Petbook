@@ -28,6 +28,7 @@ namespace ClientApp.Pages
                 await _userController.Login(Email, _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
+                NavMgr.NavigateTo("/");
             }
             catch (Exception e)
             {
@@ -35,11 +36,11 @@ namespace ClientApp.Pages
             }
         }
 
-        private async void SendCode(string email)
+        private  void SendCode(string email)
         {
             try
-            {
-                await _userController.SendEmail(email);
+            {   // maybe awaitable in the future
+                 _userController.SendEmail(email);
                 ShowPopUpDialog = false;
             }
             catch (Exception e)
