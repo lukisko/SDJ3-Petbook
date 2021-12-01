@@ -6,6 +6,8 @@ namespace business_logic.Model
     public interface IModel
     {
         Task<PetList> getPetsAsync();
+
+        Task<Pet> getPetAsync(int id);
         Task<Pet> createPetAsync(Pet pet, string token);
         /// <summary>
         /// method to send one time login code to user

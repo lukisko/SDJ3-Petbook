@@ -36,6 +36,10 @@ namespace business_logic.Model.Mediator
             return await pets.requestPets();
         }
 
+        public async Task<Pet> requestPet(int id){
+            return await pets.requestPet(id);
+        }
+
         public async Task<Pet> createPet(Pet newPet){
             return await pets.createPet(newPet);
         }

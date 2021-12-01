@@ -7,6 +7,7 @@ namespace business_logic.Model.Mediator
     public interface ITier2Mediator
     {
         Task<PetList> requestPets();
+        Task<Pet> requestPet(int id);
         Task<Pet> createPet(Pet newPet);
 
         Task<AuthorisedUser> GetUser(AuthorisedUser user);

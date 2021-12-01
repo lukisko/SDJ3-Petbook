@@ -38,6 +38,11 @@ namespace business_logic.Model
             return list;
         }
 
+        public async Task<Pet> getPetAsync(int id){
+            Pet thePet = await tier2Mediator.requestPet(id);
+            return thePet;
+        }
+
         public async Task<Pet> createPetAsync(Pet pet,string token){
             string email = userManager.getUserWithToken(token);
             if (email == null){
@@ -70,9 +75,9 @@ namespace business_logic.Model
                 name = user.name,
                 pets = new Pet[0]
             };
-            Console.WriteLine("something is here");
-            await this.sendCode(user.email);
+            //Console.WriteLine("something is here");
             AuthorisedUser usr = await userManager.CreateUser(authUsr);
+            await this.sendCode(user.email);
             Console.WriteLine("efter creating user");
             return usr;
         }

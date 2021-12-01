@@ -8,7 +8,7 @@ namespace business_logic.Controllers
     public interface IPetController
     {
         [HttpGet]
-        Task<ActionResult<String>> GetPets();
+        Task<ActionResult<String>> GetPets([FromQuery] int? id);
         [HttpPost]
         Task<ActionResult<String>> AddPet(Pet pet,[FromQuery] string token);
     }

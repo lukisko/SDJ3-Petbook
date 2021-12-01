@@ -22,6 +22,15 @@ namespace business_logic.Model.Mediator
             return PetList.value;
         }
 
+        public async Task<Pet> requestPet(int id){
+            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","Get",new Pet(){type="test",breed="ing",id=id});
+
+            Comunication<Pet> PetList = await tier2.requestServerAsync<Comunication<Pet>,Comunication<Pet>>(communicationClass);
+
+            Console.WriteLine(JsonSerializer.Serialize(PetList));
+            return PetList.value;
+        }
+
         public async Task<Pet> createPet(Pet newPet){
             Comunication<Pet> commClass = new Comunication<Pet>("pet","Add",newPet);
 

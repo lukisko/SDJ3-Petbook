@@ -21,9 +21,12 @@ namespace business_logic.Controllers
             this.model = model;
         }
         [HttpGet]
-        public async Task<ActionResult<String>> GetPets(){
-            PetList listToReturn = await model.getPetsAsync();
-            return JsonSerializer.Serialize(listToReturn.pets);
+        public async Task<ActionResult<string>> GetPets([FromQuery] int? id){
+            if (id == null){
+                return StatusCode(501,"Not implemented");
+            }
+            Pet pet = await model.getPetAsync((int) id);
+            return StatusCode(200,JsonSerializer.Serialize(new Pet[]{pet}));
         }
 
         [HttpPost]
