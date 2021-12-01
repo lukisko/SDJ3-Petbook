@@ -1,7 +1,4 @@
-﻿@inject AuthenticationStateProvider AuthenticationStateProvider
-@inject NavigationManager NavigationManager
-    
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+﻿    <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -18,15 +15,10 @@
                     <!-- Nav Links -->
                     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                         <li><a class="hover:text-gray-200" href="">Home</a></li>
-                        <AuthorizeView>
-                            <Authorized>
-                                <li><a class="hover:text-gray-200" href="/AddPet">Add Pet</a></li>
-                            </Authorized>
-                            <NotAuthorized>
-                                <li><a class="hover:text-gray-200" href="/Login">Login</a></li>
-                                <li><a class="hover:text-gray-200" href="/Register">Register</a></li>
-                            </NotAuthorized>
-                        </AuthorizeView>
+                        <li><a class="hover:text-gray-200" href="/AddPet">Add Pet</a></li>
+                        <li><a class="hover:text-gray-200" href="/Login">Login</a></li>
+                        <li><a class="hover:text-gray-200" href="/Register">Register</a></li>
+                        <li><a class="hover:text-gray-200" href="/PetProfile">PetProfile</a></li>
                     </ul>
                     <!-- Header Icons -->
                     <div class="hidden xl:flex items-center space-x-5 items-center">

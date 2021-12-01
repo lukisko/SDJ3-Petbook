@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
 using Microsoft.AspNetCore.Components.Authorization;
+using ClientApp.Model;
 
 namespace ClientApp
 {
@@ -32,13 +33,15 @@ namespace ClientApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IPetController, PetController>();
+            services.AddScoped<IUserController, UserController>();
+            services.AddScoped<IMessageController, MessageController>();
             services.AddScoped<IUserController,UserController>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             // services.AddBlazoredModal();
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-
+            services.AddScoped<AccessToken>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

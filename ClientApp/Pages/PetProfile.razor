@@ -1,0 +1,37 @@
+﻿@page "/PetProfile"
+@inject NavigationManager NavMgr
+
+
+
+@*profile pane container*@
+<div>
+    @*profile picture, name, options container,edit button*@
+    <div >
+        @* profile picture container*@
+        <div>
+
+        </div>
+        @*name container*@
+        <div>
+
+        </div>
+        @*pet options container*@
+        <div>
+
+        </div>
+        @*edit button container*@
+        <div>
+            <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToEditProfile())">Edit Profile</button>
+        </div>
+
+    </div>
+    <hr/>
+    @*profile options buttons*@
+    <div>
+        <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetPosts())">Posts</button>
+        <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToAboutPetProfile())">About</button>
+        <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetFollowings())">Followings</button>
+        <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetGroups())">Groups</button>
+    </div>
+
+</div>
