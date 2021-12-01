@@ -76,10 +76,13 @@ namespace business_logic.Model
                 pets = new Pet[0]
             };
             //Console.WriteLine("something is here");
-            AuthorisedUser usr = await userManager.CreateUser(authUsr);
-            await this.sendCode(user.email);
-            Console.WriteLine("efter creating user");
-            return usr;
+            if (! await userManager.emailExist(user.email)){
+                AuthorisedUser usr = await userManager.CreateUser(authUsr);
+                await this.sendCode(user.email);
+                Console.WriteLine("efter creating user");
+                return usr;
+            }
+            throw new Exception("email already exist.");
         }
 
         private string createRandomCode(int codeLength){

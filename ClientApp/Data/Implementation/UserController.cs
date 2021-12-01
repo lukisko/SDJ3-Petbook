@@ -41,7 +41,7 @@ namespace ClientApp.Data.Implementation
 
         public async Task<User> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}?email={email}&code={code}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/User?email={email}&code={code}");
             Console.WriteLine("login"+responseMessage.Content.ReadAsStringAsync().Result);
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
@@ -55,7 +55,7 @@ namespace ClientApp.Data.Implementation
 
         public async Task SendEmail(string email)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/{email}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Email?email={email}");
             Console.WriteLine("Sendmail"+responseMessage.Content.ReadAsStringAsync().Result);
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
