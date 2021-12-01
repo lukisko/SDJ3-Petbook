@@ -58,4 +58,12 @@ public class UserDatabase implements UserPersistence
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
+
+  @Override public void delete(User customer)
+  {
+    database.beginSession();
+    database.getSession().delete(customer);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+  }
 }
