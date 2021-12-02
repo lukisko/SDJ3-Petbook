@@ -1,8 +1,7 @@
 namespace business_logic.Model
 {
-    public class City
+    public class Country
     {
         public string name {get;set;}
-        public Country country {get;set;}
     }
 }

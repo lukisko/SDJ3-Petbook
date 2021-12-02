@@ -25,6 +25,36 @@ namespace business_logic.Model.Mediator
             return petList;
         }
 
+        /*public async Task<PetList> requestWalkingPet(){
+            Comunication<Pet> communicationClass = new Comunication<Pet>("adoptionPet","Get",new Pet(){type="test",breed="ing",name="none"});
+
+            Comunication<IList<Pet>> Pets = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(communicationClass);
+
+            Console.WriteLine(JsonSerializer.Serialize(Pets));
+            PetList petList = new PetList(){pets=Pets.value};
+            return petList;
+        }
+
+        public async Task<PetList> requestWalkingPets(){
+            Comunication<Pet> communicationClass = new Comunication<Pet>("adoptionPet","GetAll",new Pet(){type="test",breed="ing",name="none"});
+
+            Comunication<IList<Pet>> Pets = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(communicationClass);
+
+            Console.WriteLine(JsonSerializer.Serialize(Pets));
+            PetList petList = new PetList(){pets=Pets.value};
+            return petList;
+        }
+
+        public async Task<PetList> requestWalkingPets(){
+            Comunication<Pet> communicationClass = new Comunication<Pet>("adoptiionPet","GetAll",new Pet(){type="test",breed="ing",name="none"});
+
+            Comunication<IList<Pet>> Pets = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(communicationClass);
+
+            Console.WriteLine(JsonSerializer.Serialize(Pets));
+            PetList petList = new PetList(){pets=Pets.value};
+            return petList;
+        }*/
+
         public async Task<Pet> requestPet(int id){
             Comunication<Pet> communicationClass = new Comunication<Pet>(theType,"Get",new Pet(){type="test",breed="ing",id=id});
 
