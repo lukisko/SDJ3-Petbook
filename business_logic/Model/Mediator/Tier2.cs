@@ -44,6 +44,13 @@ namespace business_logic.Model.Mediator
             return await pets.createPet(newPet);
         }
 
+        public async Task<Pet> updatePet(Pet newPet){
+            return await pets.updatePet(newPet);
+        }
+        public async Task<Pet> deletePet(Pet oldPet){
+            return await pets.deletePet(oldPet);
+        }
+
         public async Task<AuthorisedUser> GetUser(AuthorisedUser user){
             Console.WriteLine("in tier2");
             Console.WriteLine(this.users);
