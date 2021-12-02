@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.List;
 
 public class T2Handler implements Runnable {
 
@@ -32,6 +33,9 @@ public class T2Handler implements Runnable {
       case "Get":
         get("user", value);
         break;
+      case "GetAll":
+        getAll("user", value);
+        break;
       case "Add":
         add("user", value);
         break;
@@ -42,6 +46,12 @@ public class T2Handler implements Runnable {
     switch (method) {
       case "Get":
         get("pet",value);
+        break;
+      case "GetAll":
+        getAll("pet", value);
+        break;
+      case "GetAllOf":
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
         break;
       case "Add":
         add("pet", value);
@@ -86,6 +96,30 @@ public class T2Handler implements Runnable {
         break;
     }
     System.out.println("GET " + stringToSend);
+    byte[] toSendBytes = stringToSend.getBytes();
+    try {
+      os.write(toSendBytes);
+    }
+    catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  private void getAll(String object, Object value)
+  {
+    String stringToSend = "";
+    switch (object)
+    {
+      case "user":
+        stringToSend = gson.toJson(
+            new Comunication<List<User>>("user", "GetAll", model.getAllUsers()));
+        break;
+      case "pet":
+        stringToSend = gson.toJson(
+            new Comunication<List<Pet>>("user", "GetAll", model.getAllPets()));
+        break;
+    }
+    System.out.println("GET_ALL " + stringToSend);
     byte[] toSendBytes = stringToSend.getBytes();
     try {
       os.write(toSendBytes);
