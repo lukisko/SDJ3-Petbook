@@ -19,7 +19,7 @@ namespace ClientApp.Pages
             _errorMessage = "";
         }
 
-        private async void RegisterUser()
+        private async Task RegisterUser()
         {
             try
             {
