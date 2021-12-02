@@ -29,6 +29,7 @@ public class PetDatabase implements PetPersistance
       database.beginSession();
       Pet pet = database.getSession().get(Pet.class,id);
       pet.getUser().getPets().clear();
+      pet.getCity().getPets().clear();
       return pet;
     }
     catch (Exception e){

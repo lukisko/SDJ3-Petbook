@@ -23,4 +23,14 @@ public class City {
   public void setPets(List<Pet> pets) {
     this.pets = pets;
   }
+
+  public List<Pet> getPets()
+  {
+    return pets;
+  }
+
+  @Override public String toString()
+  {
+    return "City{" + "name='" + name + '}';
+  }
 }
