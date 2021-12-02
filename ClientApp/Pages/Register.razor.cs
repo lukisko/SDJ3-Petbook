@@ -19,12 +19,11 @@ namespace ClientApp.Pages
             _errorMessage = "";
         }
 
-        private async void RegisterUser()
+        private async Task RegisterUser()
         {
             try
             {
                 await _userController.Register(_userToRegister);
-                Console.WriteLine("registered");
                 Email = _userToRegister.email;
                 NavMgr.NavigateTo($"/Login/{Email}");
             }

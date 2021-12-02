@@ -21,7 +21,7 @@ namespace ClientApp.Pages
             _confirmationCode = null;
         }
 
-        private async void LoginUser()
+        private async Task LoginUser()
         {
             try
             {
@@ -36,11 +36,11 @@ namespace ClientApp.Pages
             }
         }
 
-        private  void SendCode(string email)
+        private async  Task SendCode(string email)
         {
             try
             {   // maybe awaitable in the future
-                 _userController.SendEmail(email);
+                await _userController.SendEmail(email);
                 ShowPopUpDialog = false;
             }
             catch (Exception e)
