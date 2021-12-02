@@ -16,11 +16,12 @@ namespace ClientApp.Pages
             _errorMessage = "";
         }
 
-        public async void SendMessage()
+        public  async Task  SendMessage()
         {
             try
             {
                 await _messageController.SendMessageAsync(_newMessage);
+                Console.WriteLine("I'm here Pane");
             }
             catch (Exception e)
             {

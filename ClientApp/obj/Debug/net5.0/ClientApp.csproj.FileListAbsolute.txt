@@ -609,3 +609,5 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.p
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.genruntimeconfig.cache
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\PetProfile.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\PetProfile.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\MessagePane.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\MessagePane.razor.g.cs
