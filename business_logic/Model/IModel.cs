@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using business_logic.Model.UserPack;
+using System.Collections.Generic;
 
 namespace business_logic.Model
 {
@@ -8,6 +9,9 @@ namespace business_logic.Model
         Task<PetList> getPetsAsync();
 
         Task<Pet> getPetAsync(int id);
+
+        Task<IList<Pet>> getPetsAsync(AuthorisedUser user);
+        Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status);
         Task<Pet> createPetAsync(Pet pet, string token);
         /// <summary>
         /// method to send one time login code to user

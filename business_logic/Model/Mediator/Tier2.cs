@@ -40,6 +40,10 @@ namespace business_logic.Model.Mediator
             return await pets.requestPet(id);
         }
 
+        public async Task<IList<Pet>> requestPets(AuthorisedUser user){
+            return await pets.GetByUserEmail(user);
+        }
+
         public async Task<Pet> createPet(Pet newPet){
             return await pets.createPet(newPet);
         }
