@@ -31,7 +31,8 @@ namespace ClientApp.Data.Implementation
             string serializedMessage = JsonSerializer.Serialize(message);
             HttpContent content = new StringContent(serializedMessage, Encoding.UTF8, "application/json");
             HttpResponseMessage responseMessage =
-                await client.PostAsync($"{StaticVariables.URL}/Message?token={_accessToken}", content);
+                await client.PostAsync($"{StaticVariables.URL}/Message?token={""}", content);
+            Console.WriteLine("I'm here");
             if (responseMessage.StatusCode == HttpStatusCode.NotImplemented)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);

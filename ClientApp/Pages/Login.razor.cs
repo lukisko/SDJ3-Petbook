@@ -11,17 +11,17 @@ namespace ClientApp.Pages
         private string _errorMessage;
         private bool ShowPopUpDialog;
 
-        protected override async Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
             if (String.IsNullOrEmpty(Email))
             {
                 ShowPopUpDialog = true;
             }
+
             _errorMessage = "";
             _confirmationCode = null;
         }
-
-        private async void LoginUser()
+        private async Task LoginUser()
         {
             try
             {
@@ -36,11 +36,11 @@ namespace ClientApp.Pages
             }
         }
 
-        private  void SendCode(string email)
+        private async Task SendCode(string email)
         {
             try
-            {   // maybe awaitable in the future
-                 _userController.SendEmail(email);
+            {
+                await _userController.SendEmail(email);
                 ShowPopUpDialog = false;
             }
             catch (Exception e)
@@ -48,7 +48,6 @@ namespace ClientApp.Pages
                 _errorMessage = e.Message;
             }
         }
-
         public void NavigateToRegister()
         {
             NavMgr.NavigateTo("/Register");
