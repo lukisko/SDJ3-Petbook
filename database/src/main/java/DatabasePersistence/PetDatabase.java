@@ -45,6 +45,7 @@ public class PetDatabase implements PetPersistance
       criteria.from(Pet.class);
       List<Pet> data = database.getSession().createQuery(criteria).getResultList();
       data.forEach((n) -> n.getUser().getPets().clear());
+      data.forEach((n) -> n.getCity().getPets().clear());
       return data;
     }
     catch (Exception e){
