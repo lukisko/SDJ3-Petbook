@@ -1,5 +1,5 @@
 import model.*;
-import org.checkerframework.checker.units.qual.C;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,74 +10,92 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PetTest
 {
   private Model model;
-  private User testUser;
+  private User user;
+  private Country country;
   private City city;
   private Pet pet;
+  private Pet pet1;
+  private Pet pet2;
 
   @BeforeEach void setUp()
   {
     model = new ModelManager();
-    testUser = new User();
-    testUser.setEmail("test");
-    city = new City();
-    city.setName("AA");
-    pet = new Pet();
-    pet.setCity(city);
-    pet.setName("test");
+    user = new User("test");
+    country = new Country("test");
+    city = new City("test");
+    city.setCountry(country);
+    pet = new Pet("test",city);
+    pet1 = new Pet("test1",city);
+    pet2 = new Pet("test2",city);
 
+    model.addUser(user);
+    model.addCountry(country);
+    model.addCity(country.getName(),city);
+    model.addPet(user.getEmail(),pet);
   }
+  @AfterEach
+  void setDown(){
+    model.removePet(model.getPet(getId(0)));
+    model.removeCity(model.getCity(city.getName()));
+    model.removeCountry(model.getCountry(country.getName()));
+    model.removeUser(model.getUser(user.getEmail()));
+  }
+
   @Test void getPet()
   {
-    Pet result = model.getPet(63);
-
-    assertNotNull(result);
-    assertEquals("string", result.getName());
-    System.out.println(result);
-  }
-  @Test void addPet()
-  {
-    testUser = createUser();
-    model.addPet(testUser.getEmail(), pet);
-    Pet result = model.getPet(getId());
+    Pet result = model.getPet(getId(0));
 
     assertNotNull(result);
     assertEquals("test", result.getName());
 
-    model.removePet(result);
-    removeUser();
+  }
+  @Test void addPet()
+  {
+    model.addPet(user.getEmail(), pet1);
+    Pet result = model.getPet(getId(1));
+    model.removePet(model.getPet(getId(1)));
+
+    assertNotNull(result);
+    assertEquals("test1", result.getName());
   }
   @Test void removePet()
   {
-    testUser = createUser();
-    model.addPet(testUser.getEmail(), pet);
-    List<Pet> result = model.getPetList(testUser.getEmail());
+    int id = getId(0);
 
-    assertEquals(1,result.size());
-    assertEquals("test", result.get(0).getName());
+    assertNotNull(model.getPet(id));
 
-    model.removePet(result.get(0));
-    result = model.getPetList(testUser.getEmail());
-    removeUser();
+    model.removePet(model.getPet(getId(0)));
 
-    assertEquals(0,result.size());
+    assertNull(model.getPet(id));
+
+    model.addPet(user.getEmail(), pet);
   }
   @Test void getAllPets()
   {
+
+    model.addPet(user.getEmail(), pet1);
+    model.addPet(user.getEmail(), pet2);
     List<Pet> result = model.getAllPets();
+    model.removePet(model.getPet(getId(2)));
+    model.removePet(model.getPet(getId(1)));
 
     assertNotNull(result);
-    assertTrue(5 < result.stream().count());
-    assertEquals(64, result.get(3).getId());
+    assertTrue(2 < (long) result.size());
+    assertEquals(getId(0), result.get(0).getId());
 
 
   }
   @Test void getAllPetsOfUser()
   {
-    List<Pet> result = model.getPetList("blabla");
+    model.addPet(user.getEmail(), pet1);
+    model.addPet(user.getEmail(), pet2);
+    List<Pet> result = model.getPetList(user.getEmail());
+    model.removePet(model.getPet(getId(2)));
+    model.removePet(model.getPet(getId(1)));
 
     assertNotNull(result);
-    assertTrue(1 < result.stream().count());
-    assertEquals(62, result.get(1).getId());
+    assertTrue(2 < (long) result.size());
+    assertEquals(user.getEmail(), result.get(1).getUser().getEmail());
 
   }
 
@@ -85,21 +103,13 @@ public class PetTest
 
 
 
-  private User createUser()
-  {
-    model.addUser(testUser);
-    return model.getUser(testUser.getEmail());
-  }
 
-  private void removeUser()
-  {
-    model.removeUser(testUser);
-  }
 
-  private int getId()
+
+
+  private int getId(int position)
   {
-    List<Pet> pets = model.getPetList(testUser.getEmail());
-    System.out.println(pets);
-    return pets.get(0).getId();
+    List<Pet> pets = model.getPetList(user.getEmail());
+    return pets.get(position).getId();
   }
 }

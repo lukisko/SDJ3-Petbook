@@ -17,6 +17,11 @@ public interface Model
 
   City getCity(String name);
   List<City> getAllCities();
-  void addCity(City city);
+  void addCity(String name, City city);
   void removeCity(City city);
+
+  Country getCountry(String name);
+  List<Country> getAllCountries();
+  void addCountry(Country country);
+  void removeCountry(Country country);
 }
