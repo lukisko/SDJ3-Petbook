@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
@@ -17,10 +18,11 @@ namespace business_logic.Model.Mediator
         public async Task<PetList> requestPets(){
             Comunication<Pet> communicationClass = new Comunication<Pet>(theType,"GetAll",new Pet(){type="test",breed="ing",name="none"});
 
-            Comunication<PetList> PetList = await tier2.requestServerAsync<Comunication<Pet>,Comunication<PetList>>(communicationClass);
+            Comunication<IList<Pet>> Pets = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(communicationClass);
 
-            Console.WriteLine(JsonSerializer.Serialize(PetList));
-            return PetList.value;
+            Console.WriteLine(JsonSerializer.Serialize(Pets));
+            PetList petList = new PetList(){pets=Pets.value};
+            return petList;
         }
 
         public async Task<Pet> requestPet(int id){
@@ -42,11 +44,11 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<Pet> deletePet(Pet petToDelete){
-            Comunication<Pet> commClass = new Comunication<Pet>(theType,"Delete",petToDelete);
+            Comunication<Pet> commClass = new Comunication<Pet>(theType,"Remove",petToDelete);
 
-            Pet thePet = await tier2.requestServerAsync<Comunication<Pet>,Pet>(commClass);
+            Comunication<string> serverResponse = await tier2.requestServerAsync<Comunication<Pet>,Comunication<string>>(commClass);
 
-            return thePet;
+            return petToDelete;
         }
 
         public async Task<Pet> updatePet(Pet petToUpdate){ //may by changed in connection for better handling in Tier3
