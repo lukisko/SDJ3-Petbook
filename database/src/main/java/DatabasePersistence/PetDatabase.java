@@ -41,6 +41,7 @@ public class PetDatabase implements PetPersistance
   @Override public List<Pet> loadAll()
   {
     try {
+      database.beginSession();
       CriteriaQuery<Pet> criteria = database.getBuilder().createQuery(Pet.class);
       criteria.from(Pet.class);
       List<Pet> data = database.getSession().createQuery(criteria).getResultList();
@@ -70,12 +71,9 @@ public class PetDatabase implements PetPersistance
 
   @Override public void save(User user,Pet pet)
   {
-    System.out.println();
+
     pet.setUser(user);
     user.addPet(pet);
-    System.out.println(user + "" + user.getPets());
-    System.out.println(pet);
-    System.out.println();
     database.beginSession();
     database.getSession().save(pet);
     database.getSession().getTransaction().commit();

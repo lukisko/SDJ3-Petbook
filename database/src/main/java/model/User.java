@@ -22,6 +22,10 @@ public class User implements Serializable
   public User(){
     pets = new ArrayList<>();
   }
+  public User(String email){
+    this.email = email;
+    pets = new ArrayList<>();
+  }
   public void setEmail(String email)
   {
     this.email = email;

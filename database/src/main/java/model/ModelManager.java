@@ -10,12 +10,14 @@ public class ModelManager implements Model
   private UserPersistence userPersistence;
   private PetPersistance petPersistance;
   private CityPersistence cityPersistence;
+  private CountryPersistence countryPersistence;
 
 
   public ModelManager(){
     userPersistence = new UserDatabase();
     petPersistance = new PetDatabase();
     cityPersistence = new CityDatabase();
+    countryPersistence = new CountryDatabase();
   }
 
   @Override public void addUser(User user)
@@ -51,11 +53,7 @@ public class ModelManager implements Model
   }
 
   @Override public void addPet(String email, Pet pet) {
-    if(cityPersistence.loadCity(pet.getCity().getName()) == null){
-      addCity(pet.getCity());
-    }
     User user = userPersistence.loadUser(email);
-    System.out.println(user);
     petPersistance.save(user, pet);
   }
   @Override public void removePet(Pet pet)
@@ -71,12 +69,33 @@ public class ModelManager implements Model
     return cityPersistence.loadAll();
   }
 
-  @Override public void addCity(City city) {
-    cityPersistence.save(city);
+  @Override public void addCity(String name, City city) {
+    Country country = countryPersistence.loadCountry(name);
+    cityPersistence.save(country, city);
   }
 
   @Override public void removeCity(City city)
   {
     cityPersistence.delete(city);
+  }
+
+  @Override public Country getCountry(String name)
+  {
+    return countryPersistence.loadCountry(name);
+  }
+
+  @Override public List<Country> getAllCountries()
+  {
+    return countryPersistence.loadAll();
+  }
+
+  @Override public void addCountry(Country country)
+  {
+    countryPersistence.save(country);
+  }
+
+  @Override public void removeCountry(Country country)
+  {
+    countryPersistence.delete(country);
   }
 }

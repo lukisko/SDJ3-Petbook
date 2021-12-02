@@ -2,28 +2,22 @@ package DatabasePersistence;
 
 import model.City;
 import model.Country;
-import model.Pet;
-import model.User;
 
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class CityDatabase implements CityPersistence {
-
-
+public class CountryDatabase implements CountryPersistence
+{
   private Database database;
 
-
-  public CityDatabase(){
+  public CountryDatabase(){
     database = Database.getInstance();
   }
-
-
-  @Override public City loadCity(String name) {
+  @Override public Country loadCountry(String name)
+  {
     try {
       database.beginSession();
-      return database.getSession().get(City.class,name);
+      return database.getSession().get(Country.class,name);
     }
     catch (Exception e) {
       System.out.println("CityDatabase_Exception: " + e.getMessage());
@@ -31,12 +25,13 @@ public class CityDatabase implements CityPersistence {
     }
   }
 
-  @Override public List<City> loadAll() {
+  @Override public List<Country> loadAll()
+  {
     try {
       database.beginSession();
-      CriteriaQuery<City> criteria = database.getBuilder().createQuery(City.class);
-      criteria.from(City.class);
-      List<City> data = database.getSession().createQuery(criteria).getResultList();
+      CriteriaQuery<Country> criteria = database.getBuilder().createQuery(Country.class);
+      criteria.from(Country.class);
+      List<Country> data = database.getSession().createQuery(criteria).getResultList();
       return data;
     }
     catch (Exception e){
@@ -45,18 +40,18 @@ public class CityDatabase implements CityPersistence {
     }
   }
 
-  @Override public void save(Country country,City city) {
+  @Override public void save(Country country)
+  {
     database.beginSession();
-    city.setCountry(country);
-    database.getSession().persist(city);
+    database.getSession().persist(country);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
 
-  @Override public void delete(City city)
+  @Override public void delete(Country country)
   {
     database.beginSession();
-    database.getSession().delete(city);
+    database.getSession().delete(country);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
