@@ -7,9 +7,10 @@ namespace ClientApp.Pages
 {
     public partial class AddPet : ComponentBase
     {
-        public Pet petToAdd = new Pet() {Id = 0, Birthdate = new DateTime(2013, 03, 03)};
-        private City city = new City();
-        private Country country = new Country();
+        public Pet petToAdd = new Pet() {Id = 0, Birthdate = new DateTime(2013, 03, 03), Status = "Regular", City = new City()
+        {
+            country = new Country()
+        }};
 
         private async Task AddNewPet()
         {
