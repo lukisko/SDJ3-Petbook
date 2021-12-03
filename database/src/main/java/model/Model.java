@@ -12,7 +12,7 @@ public interface Model
   Pet getPet(int id);
   List<Pet> getAllPets();
   List<Pet> getPetList(String email);
-  void addPet(Pet pet);
+  int addPet(Pet pet);
   void removePet(Pet pet);
 
   City getCity(String name);

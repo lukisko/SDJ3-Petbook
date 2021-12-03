@@ -52,8 +52,8 @@ public class ModelManager implements Model
     return petPersistance.LoadListOfUser(email);
   }
 
-  @Override public void addPet(Pet pet) {
-    petPersistance.save(pet);
+  @Override public int addPet(Pet pet) {
+    return petPersistance.save(pet);
   }
   @Override public void removePet(Pet pet)
   {

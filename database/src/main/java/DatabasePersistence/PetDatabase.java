@@ -65,12 +65,13 @@ public class PetDatabase implements PetPersistance
       return petList;
   }
 
-  @Override public void save(Pet pet)
+  @Override public int save(Pet pet)
   {
     database.beginSession();
     database.getSession().save(pet);
     database.getSession().getTransaction().commit();
     database.getSession().close();
+    return pet.getId();
   }
 
   @Override public void delete(Pet pet)
