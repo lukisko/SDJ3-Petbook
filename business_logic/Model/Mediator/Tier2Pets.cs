@@ -84,7 +84,7 @@ namespace business_logic.Model.Mediator
             return thePet;
         }
 
-        public async Task<Pet> deletePet(Pet petToDelete){
+        public async Task<Pet> deletePet(Pet petToDelete){//TODO delete 
             Comunication<Pet> commClass = new Comunication<Pet>(theType,"Remove",petToDelete);
 
             Comunication<string> serverResponse = await tier2.requestServerAsync<Comunication<Pet>,Comunication<string>>(commClass);

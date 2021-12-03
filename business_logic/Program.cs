@@ -30,6 +30,8 @@ namespace business_logic
 
             //string json = JsonSerializer.Serialize(petCom);
             //Comunication<Pet> petNew = JsonSerializer.Deserialize<Comunication<Pet>>(json);
+            //Console.WriteLine(JsonSerializer.Serialize(new Pet(){name="test",BirthDate=new DateTime(2012,10,24)}));
+
             //Console.WriteLine(json);
             //Console.WriteLine(petNew.value.user.email);
             CreateHostBuilder(args).Build().Run();
