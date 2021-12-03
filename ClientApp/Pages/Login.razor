@@ -18,6 +18,13 @@
                     <div class="bg-transparent h-screen flex flex-col sm:justify-center items-center">
                         <div class="absolute sm:max-w-sm w-full">
                             <div class="relative w-full rounded-3xl  px-6 py-4 bg-pink-900 hover:scale- ">
+                                <div class="flex flex-row-reverse">
+                                    <button class="rounded-xl hover:bg-gray-400  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToMainPage())">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6 fill-current text-white " viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div >
                                 <div class="font-sans text-xl text-black-700 text-center">
                                     <div class="block mt-3 mb-10 text-white font-bold text-2xl ">
                                         Log In
@@ -49,6 +56,13 @@ else
                     <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
                         <div class="absolute sm:max-w-sm w-full">
                             <div class="relative w-full rounded-3xl  px-6 py-4 bg-pink-900 hover:scale- ">
+                                <div class="flex flex-row-reverse">
+                                    <button class="rounded-xl hover:bg-gray-400  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToMainPage())">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6 fill-current text-white " viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </button>
+                                </div >
                                 <div class="font-sans text-xl text-black-700 text-center">
                                     <div class="block mt-3 mb-10 text-white font-bold text-2xl ">
                                         Log In
@@ -72,4 +86,3 @@ else
         </div>
     </div>
 }
-

@@ -17,6 +17,7 @@ namespace ClientApp.Pages
             {
                 ShowPopUpDialog = true;
             }
+
             _errorMessage = "";
             _confirmationCode = null;
         }
@@ -48,6 +49,12 @@ namespace ClientApp.Pages
             {
                 _errorMessage = e.Message;
             }
+        }
+
+
+        private void NavigateToMainPage()
+        {
+            NavMgr.NavigateTo("/");
         }
 
         public void NavigateToRegister()

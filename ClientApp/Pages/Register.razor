@@ -9,11 +9,18 @@
         <!-- This element is to trick the browser into centering the modal contents. -->
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-         <div class="inline-block align-bottom   rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"> 
+        <div class="inline-block align-bottom   rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <EditForm Model="@_userToRegister" OnValidSubmit="@RegisterUser">
                 <div class="relative min-h-screen flex flex-col sm:justify-center items-center">
                     <div class="absolute sm:max-w-sm w-full">
                         <div class="relative w-full rounded-3xl  px-6 py-4 bg-pink-900 hover:scale- ">
+                            <div class="flex flex-row-reverse">
+                                <button class="rounded-xl hover:bg-gray-400  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToMainPage())">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6 fill-current text-white " viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div >
                             <div class="font-sans text-xl text-black-700 text-center">
                                 <div class="block mt-3 mb-10 text-white font-bold text-2xl ">
                                     Sign up
@@ -35,4 +42,4 @@
             </EditForm>
         </div>
     </div>
- </div> 
+</div>
