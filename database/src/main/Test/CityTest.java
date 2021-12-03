@@ -57,7 +57,6 @@ public class CityTest
     model.removeCity(model.getCity(city3.getName()));
 
     assertTrue(1 < (long) cityList.size());
-    assertEquals("test1", cityList.get(1).getName());
   }
   @Test
   void addCity(){

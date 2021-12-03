@@ -13,11 +13,14 @@ public class Status
   @Column(name = "name")
   private String name;
   @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
-  @JoinColumn(name="pet_id")
+  @JoinColumn(name="pet_id", nullable = false)
   private Pet pet;
   @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   @JoinColumn(name="user_email")
   private User user;
+
+  public Status(){
+  }
 
   public Pet getPet()
   {
@@ -27,5 +30,31 @@ public class Status
   public void setPet(Pet pet)
   {
     this.pet = pet;
+  }
+
+  public int getId()
+  {
+    return id;
+  }
+
+  public void setUser(User user)
+  {
+    this.user = user;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+
+  @Override public String toString()
+  {
+    return "Status{" + "id=" + id + ", name='" + name + '}';
   }
 }

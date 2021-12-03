@@ -24,4 +24,10 @@ public interface Model
   List<Country> getAllCountries();
   void addCountry(Country country);
   void removeCountry(Country country);
+
+  Status getStatus(int id);
+  List<Status>  getStatusList(int id);
+  List<Status> getAllStatuses();
+  int addStatus(Status status);
+  void removeStatus(Status status);
 }
