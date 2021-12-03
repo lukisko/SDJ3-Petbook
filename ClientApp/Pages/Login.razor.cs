@@ -21,6 +21,7 @@ namespace ClientApp.Pages
             _errorMessage = "";
             _confirmationCode = null;
         }
+
         private async Task LoginUser()
         {
             try
@@ -48,6 +49,12 @@ namespace ClientApp.Pages
                 _errorMessage = e.Message;
             }
         }
+
+        private void NavigateToMainPage()
+        {
+            NavMgr.NavigateTo("/");
+        }
+
         public void NavigateToRegister()
         {
             NavMgr.NavigateTo("/Register");

@@ -34,6 +34,10 @@ namespace ClientApp.Pages
                 _userToRegister.name = "";
             }
         }
+        private void NavigateToMainPage()
+        {
+            NavMgr.NavigateTo("/");
+        }
         public void NavigateToLogIn()
         {
             NavMgr.NavigateTo($"/Login");
