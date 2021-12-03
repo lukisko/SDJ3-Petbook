@@ -96,6 +96,12 @@ namespace business_logic.Model.Mediator
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
             Console.WriteLine("receiving: \t"+response);
 
+            Comunication<Object> comm = JsonSerializer.Deserialize<Comunication<Object>>(response);
+            if (String.IsNullOrEmpty(comm.type) || comm.type.Equals("error")){
+                Console.WriteLine("Error from T3:\n"+response);
+                throw new SystemException("internal system error");
+            }
+
             V theResponseObj = JsonSerializer.Deserialize<V>(response);
             return theResponseObj;
         }
