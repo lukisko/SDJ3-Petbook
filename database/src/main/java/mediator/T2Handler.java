@@ -12,7 +12,8 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.List;
 
-public class T2Handler implements Runnable {
+public class T2Handler implements Runnable
+{
 
   private InputStream is;
   private OutputStream os;
@@ -20,7 +21,8 @@ public class T2Handler implements Runnable {
   private Gson gson;
   private Model model;
 
-  public T2Handler(Socket socket, Model model) throws IOException {
+  public T2Handler(Socket socket, Model model) throws IOException
+  {
     this.model = model;
     is = socket.getInputStream();
     os = socket.getOutputStream();
@@ -28,8 +30,10 @@ public class T2Handler implements Runnable {
     gson = new Gson();
   }
 
-  private void user(String method, User value) {
-    switch (method) {
+  private void user(String method, User value)
+  {
+    switch (method)
+    {
       case "Get":
         get("user", value);
         break;
@@ -44,10 +48,13 @@ public class T2Handler implements Runnable {
         break;
     }
   }
-  private void pet(String method, Pet value) {
-    switch (method) {
+
+  private void pet(String method, Pet value)
+  {
+    switch (method)
+    {
       case "Get":
-        get("pet",value);
+        get("pet", value);
         break;
       case "GetAll":
         getAll("pet", value);
@@ -61,109 +68,163 @@ public class T2Handler implements Runnable {
     }
   }
 
-  private void add(String object, Object value) {
+  private void add(String object, Object value)
+  {
     String stringToSend = "";
-    switch (object) {
-      case "user":
-        model.addUser((User) value);
-        stringToSend = gson.toJson(new Comunication<User>("user", "Add",
-            model.getUser(((User) value).getEmail())));
-        break;
-      case "pet":
-        model.addPet(((Pet)value).getUser().getEmail(),(Pet) value);
-        stringToSend = gson.toJson(new Comunication<Pet>("pet", "Add",
-            model.getPet(((Pet) value).getId())));
-        break;
+    try
+    {
+      switch (object)
+      {
+        case "user":
+          model.addUser((User) value);
+          stringToSend = gson.toJson(new Comunication<User>("user", "Add",
+              model.getUser(((User) value).getEmail())));
+          break;
+        case "pet":
+          model.addPet( (Pet) value);
+          stringToSend = gson.toJson(new Comunication<Pet>("pet", "Add",
+              model.getPet(((Pet) value).getId())));
+          break;
+      }
+    }
+    catch (Exception e)
+    {
+      stringToSend = e.toString();
     }
     System.out.println("ADD " + stringToSend);
     byte[] toSendBytes = stringToSend.getBytes();
-    try {
-      os.write(toSendBytes);
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-  private void remove(String object, Object value){
-    String stringToSend = "";
-    switch (object) {
-      case "user":
-        //for future
-        break;
-      case "pet":
-        model.removePet((Pet) value);
-        stringToSend = gson.toJson(new Comunication<String>("pet", "Remove",
-            "OK"));
-        break;
-    }
-    System.out.println("REMOVE " + stringToSend);
-    byte[] toSendBytes = stringToSend.getBytes();
-    try {
-      os.write(toSendBytes);
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-  private void get(String object, Object value) {
-    String stringToSend = "";
-    switch (object) {
-      case "user":
-        stringToSend = gson.toJson(new Comunication<User>("user", "Get",
-            model.getUser(((User) value).getEmail())));
-        break;
-      case "pet":
-        stringToSend = gson.toJson(new Comunication<Pet>("pet", "Get",
-            model.getPet(((Pet) value).getId())));
-        break;
-    }
-    System.out.println("GET " + stringToSend);
-    byte[] toSendBytes = stringToSend.getBytes();
-    try {
-      os.write(toSendBytes);
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-  private void getAll(String object, Object value) {
-    String stringToSend = "";
-    switch (object)
+    try
     {
-      case "user":
-        stringToSend = gson.toJson(
-            new Comunication<List<User>>("user", "GetAll", model.getAllUsers()));
-        break;
-      case "pet":
-        stringToSend = gson.toJson(
-            new Comunication<List<Pet>>("pet", "GetAll", model.getAllPets()));
-        break;
-    }
-    System.out.println("GET_ALL " + stringToSend);
-    byte[] toSendBytes = stringToSend.getBytes();
-    try {
       os.write(toSendBytes);
     }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-  private void getAllOf( Object value) {
-    String stringToSend = gson.toJson(
-        new Comunication<List<Pet>>("pet", "GetAllOf", model.getPetList(((User)value).getEmail())));
-    System.out.println("GET_ALL_OF " + stringToSend);
-    byte[] toSendBytes = stringToSend.getBytes();
-    try {
-      os.write(toSendBytes);
-    }
-    catch (IOException e) {
+    catch (IOException e)
+    {
       e.printStackTrace();
     }
   }
 
-  @Override public void run() {
-    while (running) {
-      try {
+  private void remove(String object, Object value)
+  {
+    String stringToSend = "";
+    try
+    {
+      switch (object)
+      {
+        case "user":
+          //for future
+          break;
+        case "pet":
+          model.removePet((Pet) value);
+          stringToSend = gson
+              .toJson(new Comunication<String>("pet", "Remove", "OK"));
+          break;
+      }
+    }
+    catch (Exception e){
+      stringToSend = e.toString();
+    }
+    System.out.println("REMOVE " + stringToSend);
+    byte[] toSendBytes = stringToSend.getBytes();
+    try
+    {
+      os.write(toSendBytes);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private void get(String object, Object value)
+  {
+    String stringToSend = "";
+    try
+    {
+      switch (object)
+      {
+        case "user":
+          stringToSend = gson.toJson(new Comunication<User>("user", "Get", model.getUser(((User) value).getEmail())));
+          break;
+        case "pet":
+          stringToSend = gson.toJson(new Comunication<Pet>("pet", "Get", model.getPet(((Pet) value).getId())));
+          break;
+      }
+    }
+    catch (Exception e){
+      stringToSend = e.toString();
+    }
+    System.out.println("GET " + stringToSend);
+    byte[] toSendBytes = stringToSend.getBytes();
+    try
+    {
+      os.write(toSendBytes);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private void getAll(String object, Object value)
+  {
+    String stringToSend = "";
+    try
+    {
+      switch (object)
+      {
+        case "user":
+          stringToSend = gson.toJson(
+              new Comunication<List<User>>("user", "GetAll", model.getAllUsers()));
+          break;
+        case "pet":
+          stringToSend = gson.toJson(new Comunication<List<Pet>>("pet", "GetAll", model.getAllPets()));
+          break;
+      }
+    }
+    catch (Exception e){
+      stringToSend = e.toString();
+    }
+    System.out.println("GET_ALL " + stringToSend);
+    byte[] toSendBytes = stringToSend.getBytes();
+    try
+    {
+      os.write(toSendBytes);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private void getAllOf(Object value)
+  {
+    String stringToSend = "";
+    try
+    {
+      stringToSend = gson.toJson(new Comunication<List<Pet>>("pet", "GetAllOf",
+          model.getPetList(((User) value).getEmail())));
+    }
+    catch (Exception e){
+      stringToSend = e.toString();
+    }
+      System.out.println("GET_ALL_OF " + stringToSend);
+    byte[] toSendBytes = stringToSend.getBytes();
+    try
+    {
+      os.write(toSendBytes);
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  @Override public void run()
+  {
+    while (running)
+    {
+      try
+      {
 
         byte[] lenBytes = new byte[500];
         is.read(lenBytes, 0, 500);
@@ -173,7 +234,8 @@ public class T2Handler implements Runnable {
         Comunication request = gson
             .fromJson(received.trim(), Comunication.class);
 
-        switch (request.getType()) {
+        switch (request.getType())
+        {
           case "user":
             User user = new Gson()
                 .fromJson(new Gson().toJson(request.getValue()), User.class);
@@ -188,7 +250,8 @@ public class T2Handler implements Runnable {
         System.out.println();
       }
 
-      catch (Exception e) {
+      catch (Exception e)
+      {
         e.printStackTrace();
       }
     }

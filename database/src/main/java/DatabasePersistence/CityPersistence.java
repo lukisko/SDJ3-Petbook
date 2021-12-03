@@ -10,6 +10,6 @@ import java.util.List;
 public interface CityPersistence {
   City loadCity(String name);
   List<City> loadAll();
-  void save(Country country,City city);
+  void save(City city);
   void delete(City city);
 }

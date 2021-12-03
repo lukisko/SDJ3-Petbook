@@ -15,29 +15,17 @@ public class CountryDatabase implements CountryPersistence
   }
   @Override public Country loadCountry(String name)
   {
-    try {
       database.beginSession();
       return database.getSession().get(Country.class,name);
-    }
-    catch (Exception e) {
-      System.out.println("CityDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public List<Country> loadAll()
   {
-    try {
       database.beginSession();
       CriteriaQuery<Country> criteria = database.getBuilder().createQuery(Country.class);
       criteria.from(Country.class);
       List<Country> data = database.getSession().createQuery(criteria).getResultList();
       return data;
-    }
-    catch (Exception e){
-      System.out.println("CityDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public void save(Country country)

@@ -27,7 +27,10 @@ public class CityTest
     city2 = new City("test1");
     city3 = new City("test2");
     model.addCountry(country);
-    model.addCity(country.getName(), city1);
+    city1.setCountry(country);
+    city2.setCountry(country);
+    city3.setCountry(country);
+    model.addCity(city1);
   }
   @AfterEach
   void setDown(){
@@ -47,8 +50,8 @@ public class CityTest
   }
   @Test
   void getAllCites(){
-    model.addCity(country.getName(), city2);
-    model.addCity(country.getName(), city3);
+    model.addCity(city2);
+    model.addCity(city3);
     List<City> cityList = model.getAllCities();
     model.removeCity(model.getCity(city2.getName()));
     model.removeCity(model.getCity(city3.getName()));
