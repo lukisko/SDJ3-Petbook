@@ -13,8 +13,7 @@ namespace ClientApp.Model
         public string Description { get; set; }
         public string Status { get; set; }
         public DateTime Birthdate { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public City City { get; set; }
         public User user { get; set; }
     }
 }
