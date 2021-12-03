@@ -30,11 +30,9 @@ public class Pet implements Serializable
 
 
   public Pet(){}
-  public Pet(String name, String type, String bread, String description){
+  public Pet(String name, City city){
     this.name = name;
-    this.type = type;
-    this.bread = bread;
-    this.description = description;
+    this.city = city;
   }
 
   public int getId()

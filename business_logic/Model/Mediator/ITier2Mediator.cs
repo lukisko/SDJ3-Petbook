@@ -8,6 +8,7 @@ namespace business_logic.Model.Mediator
     {
         Task<PetList> requestPets();
         Task<Pet> requestPet(int id);
+        Task<IList<Pet>> requestPets(AuthorisedUser user);
         Task<Pet> createPet(Pet newPet);
         Task<Pet> updatePet(Pet newPet);
         Task<Pet> deletePet(Pet oldPet);

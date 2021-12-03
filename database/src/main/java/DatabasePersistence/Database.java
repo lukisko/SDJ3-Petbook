@@ -1,6 +1,7 @@
 package DatabasePersistence;
 
 import model.City;
+import model.Country;
 import model.Pet;
 import model.User;
 import org.hibernate.Hibernate;
@@ -26,7 +27,8 @@ public class Database
   private Database()
   {
     configuration = new Configuration().addAnnotatedClass(User.class)
-        .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).configure();
+        .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).addAnnotatedClass(
+            Country.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
     session.beginTransaction();

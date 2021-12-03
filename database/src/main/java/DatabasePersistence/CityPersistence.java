@@ -1,6 +1,7 @@
 package DatabasePersistence;
 
 import model.City;
+import model.Country;
 import model.Pet;
 import model.User;
 

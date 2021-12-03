@@ -25,6 +25,13 @@ namespace business_logic
             //await med.requestPets();
             //IEmailHandler emailHandler = new EmailHandler();
             //emailHandler.sendEmail("lukas.pleva126@gmail.com","title","hello world");
+
+            //Comunication<Pet> petCom = new Comunication<Pet>("type","method",new Pet(){user = new User(){email="ahoj"}});
+
+            //string json = JsonSerializer.Serialize(petCom);
+            //Comunication<Pet> petNew = JsonSerializer.Deserialize<Comunication<Pet>>(json);
+            //Console.WriteLine(json);
+            //Console.WriteLine(petNew.value.user.email);
             CreateHostBuilder(args).Build().Run();
         }
 

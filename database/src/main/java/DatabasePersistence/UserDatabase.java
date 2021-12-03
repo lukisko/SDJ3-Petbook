@@ -24,31 +24,23 @@ public class UserDatabase implements UserPersistence
 
   @Override public User loadUser(String email)
   {
-    try {
+
       database.beginSession();
       User user = database.getSession().get(User.class,email);
-      user.getPets().clear();
+      if(user != null)
+      {
+        user.getPets().clear();
+      }
       return user;
-    }
-    catch (Exception e){
-      System.out.println("UserDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public List<User> loadAll()
   {
-    try {
       database.beginSession();
       CriteriaQuery<User> criteria = database.getBuilder().createQuery(User.class);
       criteria.from(User.class);
       List<User> data = database.getSession().createQuery(criteria).getResultList();
       return data;
-    }
-    catch (Exception e){
-      System.out.println("UserDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public void save(User customer)

@@ -21,13 +21,12 @@ namespace business_logic.Controllers
             this.model = model;
         }
         [HttpGet]
-        public async Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id){
-            if (id == null){
-                PetList list = await model.getPetsAsync();
-                return StatusCode(200,list);
+        public async Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id, [FromQuery] string email, [FromQuery] string status){
+            try {
+                return StatusCode(200,await model.getPetsAsync(id,email,status));
+            } catch (Exception e){
+                return StatusCode(500,e.Message);
             }
-            Pet pet = await model.getPetAsync((int) id);
-            return StatusCode(200,JsonSerializer.Serialize(new Pet[]{pet}));
         }
 
         [HttpPost]

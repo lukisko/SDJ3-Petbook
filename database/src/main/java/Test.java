@@ -24,7 +24,7 @@ public class Test {
 
     //model.addUser(user);
 
-    model.addPet(user.getEmail(),pet);
+    model.addPet(pet);
 
     //System.out.println(model.getAllUsers());
 
