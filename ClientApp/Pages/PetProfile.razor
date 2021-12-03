@@ -9,20 +9,22 @@
     <div class=" m-3">
         @* profile picture container*@
         <div class="flex inline-block">
-            <div class="object-none object-left-top w-xl h-xl mt-6 mx-8">
+            <div class="object-none object-left-top w-s h-s mt-6 mx-8">
                 <img class="object-cover rounded-full " src="Images/dog.jpg">
             </div>
             @*name container*@
-            <div class="grid grid-cols-1 gap-1">
-                <label class="">Name 2Name</label>
-            
-            @*pet options container*@
-            <div class="flex inline-block">
-                <button class="bg-green-300  py-1 px-1 m-4 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToAboutPetProfile())">Walking Pet</button>
-                <button class="bg-green-300  py-1 px-1 m-7 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetFollowings())">Foster Pet</button>
-                <button class="bg-green-300  py-1 px-1 m-7 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetGroups())">Adopting Pet</button>
+            <div class="grid grid-cols-1 gap-1 place-items-start h-48" >
+                <div class=" ">
+                    <label class=" ">Name 2Name</label>
+                </div>
+                @*pet options container*@
+                <div class="h-48 flex flex-wrap content-end ">
+                    <button class=" bg-white  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToAboutPetProfile())">Walking Pet</button>
+                    <button class="bg-white ml-4  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetFollowings())">Foster Pet</button>
+                    <button class="bg-white ml-4   p-1   rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetGroups())">Adopting Pet</button>
+                </div>
             </div>
-            </div>
+
         </div>
         @*edit button container*@
         <div class=" grid grid-cols-1 gap-1">
@@ -35,12 +37,12 @@
         </div>
 
     </div>
-    <hr clas="bg-white px-5 "/>
+    <hr clas="bg-white max-w-s mx-auto "/>
     @*profile options buttons*@
-    <div class="flex inline-block  ">
-        <button class=" bg-white w-full py-1 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetPosts())">Posts</button>
-        <button class="bg-white w-full py-1 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToAboutPetProfile())">About</button>
-        <button class="bg-white w-full py-1 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetFollowings())">Followings</button>
-        <button class="bg-white w-full py-1 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetGroups())">Groups</button>
+    <div class="flex inline-block m-3  ">
+        <button class=" bg-white py-1 px-2 ml-9 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetPosts())">Posts</button>
+        <button class="bg-white  px-2 ml-4 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToAboutPetProfile())">About</button>
+        <button class="bg-white px-2 ml-4  mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetFollowings())">Followings</button>
+        <button class="bg-white  px-2 ml-4 mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToPetGroups())">Groups</button>
     </div>
 </div>
