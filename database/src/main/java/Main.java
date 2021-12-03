@@ -11,7 +11,7 @@ public class Main
   public static void main(String[] args)
   {
     Model model = new ModelManager();
-    T3Server server = new T3Server(model);
+    T3Server server = new T3Server(model); 
     server.run();
   }
 }

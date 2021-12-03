@@ -12,12 +12,12 @@ public interface Model
   Pet getPet(int id);
   List<Pet> getAllPets();
   List<Pet> getPetList(String email);
-  void addPet(String email,Pet pet);
+  int addPet(Pet pet);
   void removePet(Pet pet);
 
   City getCity(String name);
   List<City> getAllCities();
-  void addCity(String name, City city);
+  void addCity(City city);
   void removeCity(City city);
 
   Country getCountry(String name);

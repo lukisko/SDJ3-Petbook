@@ -25,13 +25,16 @@ public class PetTest
     city = new City("test");
     city.setCountry(country);
     pet = new Pet("test",city);
+    pet.setUser(user);
     pet1 = new Pet("test1",city);
+    pet1.setUser(user);
     pet2 = new Pet("test2",city);
+    pet2.setUser(user);
 
     model.addUser(user);
     model.addCountry(country);
-    model.addCity(country.getName(),city);
-    model.addPet(user.getEmail(),pet);
+    model.addCity(city);
+    model.addPet(pet);
   }
   @AfterEach
   void setDown(){
@@ -51,7 +54,7 @@ public class PetTest
   }
   @Test void addPet()
   {
-    model.addPet(user.getEmail(), pet1);
+    model.addPet(pet1);
     Pet result = model.getPet(getId(1));
     model.removePet(model.getPet(getId(1)));
 
@@ -68,13 +71,13 @@ public class PetTest
 
     assertNull(model.getPet(id));
 
-    model.addPet(user.getEmail(), pet);
+    model.addPet(pet);
   }
   @Test void getAllPets()
   {
 
-    model.addPet(user.getEmail(), pet1);
-    model.addPet(user.getEmail(), pet2);
+    model.addPet(pet1);
+    model.addPet(pet2);
     List<Pet> result = model.getAllPets();
     model.removePet(model.getPet(getId(2)));
     model.removePet(model.getPet(getId(1)));
@@ -87,8 +90,8 @@ public class PetTest
   }
   @Test void getAllPetsOfUser()
   {
-    model.addPet(user.getEmail(), pet1);
-    model.addPet(user.getEmail(), pet2);
+    model.addPet(pet1);
+    model.addPet(pet2);
     List<Pet> result = model.getPetList(user.getEmail());
     model.removePet(model.getPet(getId(2)));
     model.removePet(model.getPet(getId(1)));

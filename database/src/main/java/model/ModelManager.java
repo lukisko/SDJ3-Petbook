@@ -52,9 +52,8 @@ public class ModelManager implements Model
     return petPersistance.LoadListOfUser(email);
   }
 
-  @Override public void addPet(String email, Pet pet) {
-    User user = userPersistence.loadUser(email);
-    petPersistance.save(user, pet);
+  @Override public int addPet(Pet pet) {
+    return petPersistance.save(pet);
   }
   @Override public void removePet(Pet pet)
   {
@@ -69,9 +68,8 @@ public class ModelManager implements Model
     return cityPersistence.loadAll();
   }
 
-  @Override public void addCity(String name, City city) {
-    Country country = countryPersistence.loadCountry(name);
-    cityPersistence.save(country, city);
+  @Override public void addCity(City city) {
+    cityPersistence.save(city);
   }
 
   @Override public void removeCity(City city)
