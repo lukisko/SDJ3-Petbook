@@ -36,11 +36,35 @@ namespace business_logic.Model
             
             PetList list = await tier2Mediator.requestPets();
             return list;
-        }
+        }//to delete
 
         public async Task<Pet> getPetAsync(int id){
             Pet thePet = await tier2Mediator.requestPet(id);
             return thePet;
+        }//to delete
+
+        public async Task<IList<Pet>> getPetsAsync(AuthorisedUser user){
+            IList<Pet> thePet = await tier2Mediator.requestPets(user);
+            return thePet;
+        }//to delete
+
+        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status){
+            if (id != null){ //TODO make full filtering
+                Pet thePet = await tier2Mediator.requestPet((int)id);
+                return new List<Pet>(){thePet};
+            }
+            if (!String.IsNullOrEmpty(userEmail)){
+                if (await userManager.emailExist(userEmail)){
+                    AuthorisedUser authUser = new AuthorisedUser() {email = userEmail};
+                    return await tier2Mediator.requestPets(authUser);
+                }
+                return new List<Pet>();
+            }
+            if (!String.IsNullOrEmpty(status)){
+                IList<Pet> petList = new List<Pet>();
+                return petList;
+            }
+            return (await tier2Mediator.requestPets()).pets;
         }
 
         public async Task<Pet> createPetAsync(Pet pet,string token){
