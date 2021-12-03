@@ -30,6 +30,7 @@ public class UserDatabase implements UserPersistence
       if(user != null)
       {
         user.getPets().clear();
+        user.getStatuses().clear();
       }
       return user;
   }

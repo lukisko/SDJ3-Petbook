@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(name = "pet")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -20,6 +21,10 @@ public class Pet implements Serializable
   private String bread;
   @Column(name = "description")
   private String description;
+  @Column(name = "birthday")
+  private String birthday;
+  @OneToMany(mappedBy="pet", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
+  private List<Status> statuses;
   @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   @JoinColumn(name="user_email", nullable = false)
   private User user;
@@ -40,9 +45,6 @@ public class Pet implements Serializable
     return id;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
 
   public void setUser(User user) {
     this.user = user;
@@ -58,32 +60,12 @@ public class Pet implements Serializable
     this.name = name;
   }
 
-  public String getType()
-  {
-    return type;
-  }
-
-  public void setType(String type)
-  {
-    this.type = type;
-  }
-
-  public String getBread()
-  {
-    return bread;
-  }
-
   public City getCity() {
     return city;
   }
 
   public User getUser() {
     return user;
-  }
-
-  public void setBread(String bread)
-  {
-    this.bread = bread;
   }
 
   public String getDescription()
@@ -94,6 +76,11 @@ public class Pet implements Serializable
   public void setDescription(String description)
   {
     this.description = description;
+  }
+
+  public List<Status> getStatuses()
+  {
+    return statuses;
   }
 
   public void setCity(City city) {

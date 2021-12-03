@@ -18,6 +18,8 @@ public class User implements Serializable
   private String name;
   @OneToMany(mappedBy="user", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   private List<Pet> pets;
+  @OneToMany(mappedBy="user", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
+  private List<Status> statuses;
 
   public User(){
     pets = new ArrayList<>();
@@ -51,12 +53,11 @@ public class User implements Serializable
     return pets;
   }
 
-  public void addPet(Pet pet){
-    pets.add(pet);
+  public List<Status> getStatuses()
+  {
+    return statuses;
   }
-  public void removePet(Pet pet){
 
-  }
 
   @Override public String toString()
   {

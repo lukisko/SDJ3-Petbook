@@ -32,6 +32,7 @@ public class PetDatabase implements PetPersistance
       {
         pet.getUser().getPets().clear();
         pet.getCity().getPets().clear();
+        pet.getStatuses().forEach(n -> n.setPet(null));
       }
       return pet;
     }
@@ -51,6 +52,7 @@ public class PetDatabase implements PetPersistance
       {
         data.forEach((n) -> n.getUser().getPets().clear());
         data.forEach((n) -> n.getCity().getPets().clear());
+        data.forEach((n) -> n.getStatuses().forEach((a) -> a.setPet(null)));
       }
       return data;
   }
