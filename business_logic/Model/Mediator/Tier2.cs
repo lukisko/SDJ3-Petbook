@@ -16,11 +16,10 @@ namespace business_logic.Model.Mediator
         private NetworkStream stream;
         private Tier2Pets pets;
         private Tier2User users;
-        public Tier2() {
-            client = new TcpClient(HOST,PORT);
-            stream = client.GetStream();
-            pets = new Tier2Pets(this);
-            this.users = new Tier2User(this);
+        private Tier2City cities;
+        private Tier2Country countries;
+        public Tier2() : this(HOST,PORT) {
+            
         }
 
         public Tier2(string host, int port){
@@ -30,6 +29,9 @@ namespace business_logic.Model.Mediator
 
             pets = new Tier2Pets(this);
             this.users = new Tier2User(this);
+            cities = new Tier2City(this);
+            countries = new Tier2Country(this);
+
         }
 
         public async Task<PetList> requestPets(){
@@ -62,6 +64,22 @@ namespace business_logic.Model.Mediator
         }
         public async Task<AuthorisedUser> MakeUser(AuthorisedUser user){
             return await users.MakeUser(user);
+        }
+
+        public async Task<City> GetCity(City city){
+            return await cities.getCity(city);
+        }
+
+        public async Task<City> AddCity(City city){
+            return await cities.addCity(city);
+        }
+
+        public async Task<Country> GetCountry(Country country){
+            return await countries.getCountry(country);
+        }
+
+        public async Task<Country> AddCountry(Country country){
+            return await countries.addCountry(country);
         }
 
         public async Task<V> requestServerAsync<T,V>(T classToSend){
