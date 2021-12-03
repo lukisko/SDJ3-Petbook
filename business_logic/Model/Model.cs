@@ -3,6 +3,7 @@ using business_logic.Model.Mediator;
 using System;
 using System.Collections.Generic;
 using business_logic.Model.UserPack;
+using business_logic.Model.PetPack;
 
 namespace business_logic.Model
 {
@@ -11,6 +12,7 @@ namespace business_logic.Model
         private ITier2Mediator tier2Mediator;
         private IEmailHandler emailHandler;
         private IUserManager userManager;
+        private IPetManager petManager;
         private Dictionary<string,string> emailCodeMap;
 
         private Random random;
@@ -20,6 +22,7 @@ namespace business_logic.Model
             emailHandler = new EmailHandler();
             random = new Random(1538);
             userManager = new UserManager(tier2Mediator);
+            petManager = new PetManager(tier2Mediator);
             emailCodeMap = new Dictionary<string, string>();
         }
         //////change this down part
@@ -34,29 +37,29 @@ namespace business_logic.Model
         }
         public async Task<PetList> getPetsAsync(){
             
-            PetList list = await tier2Mediator.requestPets();
+            PetList list = await petManager.requestPets();
             return list;
         }//to delete
 
         public async Task<Pet> getPetAsync(int id){
-            Pet thePet = await tier2Mediator.requestPet(id);
+            Pet thePet = await petManager.requestPet(id);
             return thePet;
         }//to delete
 
         public async Task<IList<Pet>> getPetsAsync(AuthorisedUser user){
-            IList<Pet> thePet = await tier2Mediator.requestPets(user);
+            IList<Pet> thePet = await petManager.requestPets(user);
             return thePet;
         }//to delete
 
-        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status){
+        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status){//TODO maybe move to PetManager
             if (id != null){ //TODO make full filtering
-                Pet thePet = await tier2Mediator.requestPet((int)id);
+                Pet thePet = await petManager.requestPet((int)id);
                 return new List<Pet>(){thePet};
             }
             if (!String.IsNullOrEmpty(userEmail)){
                 if (await userManager.emailExist(userEmail)){
                     AuthorisedUser authUser = new AuthorisedUser() {email = userEmail};
-                    return await tier2Mediator.requestPets(authUser);
+                    return await petManager.requestPets(authUser);
                 }
                 return new List<Pet>();
             }
@@ -64,7 +67,7 @@ namespace business_logic.Model
                 IList<Pet> petList = new List<Pet>();
                 return petList;
             }
-            return (await tier2Mediator.requestPets()).pets;
+            return (await petManager.requestPets()).pets;
         }
 
         public async Task<Pet> createPetAsync(Pet pet,string token){
@@ -73,7 +76,7 @@ namespace business_logic.Model
                 throw new AccessViolationException("user is not authorised");
             }
             pet.user.email = email;
-            Pet newPet = await tier2Mediator.createPet(pet);
+            Pet newPet = await petManager.createPet(pet);
             return newPet;
         }
 

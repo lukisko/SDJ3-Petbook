@@ -13,6 +13,11 @@ namespace business_logic.Model.Mediator
         Task<Pet> updatePet(Pet newPet);
         Task<Pet> deletePet(Pet oldPet);
 
+        Task<City> GetCity(City city);
+        Task<City> AddCity(City city);
+        Task<Country> GetCountry(Country country);
+        Task<Country> AddCountry(Country country);
+
         Task<AuthorisedUser> GetUser(AuthorisedUser user);
         Task<AuthorisedUser> MakeUser(AuthorisedUser user);
     }
