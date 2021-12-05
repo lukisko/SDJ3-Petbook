@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -11,6 +10,7 @@ namespace ClientApp.Pages
         {
             country = new Country()
         }};
+        public Pet petToAdd = new Pet() {id = 0};
 
         private async Task AddNewPet()
         {

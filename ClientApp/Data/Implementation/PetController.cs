@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Text;
 using ClientApp.Model;
 
+
 namespace ClientApp.Data.Implementation
 {
     public class PetController : IPetController
@@ -26,7 +27,7 @@ namespace ClientApp.Data.Implementation
         {
             string serializedPet = JsonSerializer.Serialize(pet);
             HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage= await client.PostAsync($"{StaticVariables.URL}/Pets", content);
+            HttpResponseMessage responseMessage= await client.PostAsync($"{StaticVariables.URL}/Pets?token={"somestring"}", content);
             if (responseMessage.StatusCode == HttpStatusCode.OK)
             {
                 RequestAnswerChange.Invoke(responseMessage.Content);
@@ -37,19 +38,32 @@ namespace ClientApp.Data.Implementation
             }
         }
 
-        public async Task<IList<Pet>> GetAllPetsAsync()
+        public async Task<IList<Pet>> GetAllPetsAsync(int? id,string email, string status)
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets?id={id}&email={email}&status={status}");
             
-            if (!responseMessage.IsSuccessStatusCode)
+            if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
-                throw new Exception("Not good");
+                throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            
             String reply = await responseMessage.Content.ReadAsStringAsync();
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
+        }
+        public async Task UpdatePetAsync(Pet pet)
+        {
+            string serializedPet = JsonSerializer.Serialize(pet);
+            HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
+            HttpResponseMessage responseMessage= await client.PostAsync($"{StaticVariables.URL}/Pets?token={"somestring"}", content);
+            if (responseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                RequestAnswerChange.Invoke(responseMessage.Content);
+            }
+            else
+            {
+                throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
+            }
         }
     }
 }

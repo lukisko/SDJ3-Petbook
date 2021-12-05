@@ -13,6 +13,7 @@ namespace  ClientApp.Pages
        protected override async Task OnInitializedAsync()
        {
           // allPets = await _petController.GetAllPetsAsync();
+          allPets.Add(new Pet());
            toShowPets = allPets;
        }
        private void NavigateToAddPet()
