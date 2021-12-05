@@ -86,14 +86,29 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.OpenElement(0, "CascadingBlazoredModal");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.Router>(1);
-            __builder.AddAttribute(2, "AppAssembly", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Reflection.Assembly>(
+            __builder.OpenComponent<Blazored.Modal.CascadingBlazoredModal>(0);
+            __builder.AddAttribute(1, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.Router>(2);
+                __builder2.AddAttribute(3, "AppAssembly", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Reflection.Assembly>(
 #nullable restore
 #line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\App.razor"
                           typeof(Program).Assembly
@@ -101,8 +116,8 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
-            ));
-            __builder.AddAttribute(3, "PreferExactMatches", 
+                ));
+                __builder2.AddAttribute(4, "PreferExactMatches", 
 #nullable restore
 #line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\App.razor"
                                                                          true
@@ -110,10 +125,10 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
-            );
-            __builder.AddAttribute(4, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.RouteView>(5);
-                __builder2.AddAttribute(6, "RouteData", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(
+                );
+                __builder2.AddAttribute(5, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder3) => {
+                    __builder3.OpenComponent<Microsoft.AspNetCore.Components.RouteView>(6);
+                    __builder3.AddAttribute(7, "RouteData", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(
 #nullable restore
 #line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\App.razor"
                                    routeData
@@ -121,8 +136,8 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
-                ));
-                __builder2.AddAttribute(7, "DefaultLayout", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
+                    ));
+                    __builder3.AddAttribute(8, "DefaultLayout", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
 #nullable restore
 #line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\App.razor"
                                                               typeof(MainLayout)
@@ -130,13 +145,13 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+                    ));
+                    __builder3.CloseComponent();
+                }
                 ));
-                __builder2.CloseComponent();
-            }
-            ));
-            __builder.AddAttribute(8, "NotFound", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.LayoutView>(9);
-                __builder2.AddAttribute(10, "Layout", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
+                __builder2.AddAttribute(9, "NotFound", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.OpenComponent<Microsoft.AspNetCore.Components.LayoutView>(10);
+                    __builder3.AddAttribute(11, "Layout", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
 #nullable restore
 #line 7 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\App.razor"
                                  typeof(MainLayout)
@@ -144,16 +159,18 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
-                ));
-                __builder2.AddAttribute(11, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.AddMarkupContent(12, "<p>Sorry, there\'s nothing at this address.</p>");
+                    ));
+                    __builder3.AddAttribute(12, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
+                        __builder4.AddMarkupContent(13, "<p>Sorry, there\'s nothing at this address.</p>");
+                    }
+                    ));
+                    __builder3.CloseComponent();
                 }
                 ));
                 __builder2.CloseComponent();
             }
             ));
             __builder.CloseComponent();
-            __builder.CloseElement();
         }
         #pragma warning restore 1998
     }

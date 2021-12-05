@@ -89,6 +89,27 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 1 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Pages;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -97,20 +118,60 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
-           
-    private bool collapseNavMenu = true;
+#line 161 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+ 
+    private bool ProfileWindow { get; set; }
+    private bool BurgerMenu { get; set; }
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    protected async override Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        ProfileWindow = false;
     }
+
+
+    void ShowSendCode()
+    {
+        _modalService.Show<SendCode>();
+    }
+
+    void ShowRegister()
+    {
+        _modalService.Show<Register>();
+    }
+
+    public void DropDownProfileWindow()
+    {
+        if (ProfileWindow)
+        {
+            ProfileWindow = false;
+        }
+        else
+        {
+            ProfileWindow = true;
+            BurgerMenu = true;
+        }
+    }
+
+    public void DropDownBurgerMenu()
+    {
+        if (BurgerMenu)
+        {
+            BurgerMenu = false;
+        }
+        else
+        {
+            BurgerMenu = true;
+        }
+    }
+
+
+
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService _modalService { get; set; }
     }
 }
 #pragma warning restore 1591

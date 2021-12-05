@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
 {
     public partial class Login : ComponentBase
     {
-        [Parameter] public string Email { get; set; }
+        [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+        private string Email { get; set; }
         private string _confirmationCode;
         private string _errorMessage;
-        private bool ShowPopUpDialog;
+
 
         protected override async Task OnInitializedAsync()
         {
-            if (String.IsNullOrEmpty(Email))
-            {
-                ShowPopUpDialog = true;
-            }
+            
 
             _errorMessage = "";
             _confirmationCode = null;
@@ -26,10 +25,12 @@ namespace ClientApp.Pages
         {
             try
             {
+               // await _userController.Login(Email, _confirmationCode);
                 await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email, _confirmationCode);
                 //await _userController.Login(Email, _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
+               await ModalInstance.CloseAsync();
                 NavMgr.NavigateTo("/");
             }
             catch (Exception e)
@@ -43,7 +44,7 @@ namespace ClientApp.Pages
             try
             {   // maybe awaitable in the future
                 await _userController.SendEmail(email);
-                ShowPopUpDialog = false;
+                
             }
             catch (Exception e)
             {
@@ -51,15 +52,13 @@ namespace ClientApp.Pages
             }
         }
 
-
+        void ShowRegister()
+        {
+            _modalService.Show<Register>("Sign Up");
+        }
         private void NavigateToMainPage()
         {
-            NavMgr.NavigateTo("/");
-        }
-
-        public void NavigateToRegister()
-        {
-            NavMgr.NavigateTo("/Register");
+            _modalService.Show<Register>("Sign Up");
         }
     }
 }

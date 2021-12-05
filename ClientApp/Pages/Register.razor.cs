@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Blazored.Modal;
+using Blazored.Modal.Services;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -7,8 +9,8 @@ namespace ClientApp.Pages
 {
     public partial class Register : ComponentBase
     {
-        [Parameter] public string Email { get; set; }
-
+        [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+        private string Email { get; set; }
         private User _userToRegister;
         private string _errorMessage;
 
@@ -23,9 +25,11 @@ namespace ClientApp.Pages
         {
             try
             {
-                await _userController.Register(_userToRegister);
+                // await _userController.Register(_userToRegister);
+                Console.WriteLine("registered");
                 Email = _userToRegister.email;
-                NavMgr.NavigateTo($"/Login/{Email}");
+                _modalService.Show<SendCode>();
+                await ModalInstance.CloseAsync();
             }
             catch (Exception e)
             {
@@ -33,13 +37,16 @@ namespace ClientApp.Pages
                 _userToRegister.name = "";
             }
         }
+
         private void NavigateToMainPage()
         {
             NavMgr.NavigateTo("/");
         }
-        public void NavigateToLogIn()
+
+        public async void ShowLogIn()
         {
-            NavMgr.NavigateTo($"/Login");
+            _modalService.Show<SendCode>();
+            await ModalInstance.CloseAsync();
         }
     }
 }

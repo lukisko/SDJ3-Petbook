@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blazored.Modal;
 using ClientApp.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -12,8 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
-using Microsoft.AspNetCore.Components.Authorization;
 using ClientApp.Model;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ClientApp
 {
@@ -37,11 +38,12 @@ namespace ClientApp
             services.AddScoped<IMessageController, MessageController>();
             services.AddScoped<IUserController,UserController>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            // services.AddBlazoredModal();
+            
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
             services.AddScoped<AccessToken>();
+            services.AddBlazoredModal();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
