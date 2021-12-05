@@ -5,8 +5,8 @@ namespace business_logic.Model
     public class Status
     {
         string userEmail {get;set;}
-        StatusName status {get;set;}
+        User user {get;set;}
         int id {get;set;}
-        int petId {get;set;}
+        Pet pet {get;set;}
     }
 }
