@@ -6,7 +6,7 @@ namespace ClientApp.Pages
 {
     public partial class AddPet : ComponentBase
     {
-        public Pet petToAdd = new Pet() {Id = 0};
+        public Pet petToAdd = new Pet() {id = 0};
 
         private async Task AddNewPet()
         {

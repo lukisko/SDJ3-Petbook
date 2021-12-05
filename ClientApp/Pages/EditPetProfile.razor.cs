@@ -8,11 +8,11 @@ namespace ClientApp.Pages
     {
         
         
-        public Pet petToAdd = new Pet() {Id = 0};
+        public Pet petToAdd = new Pet() {id = 0};
 
         private async Task AddNewPet()
         {
-            //await _petController.AddPetAsync(petToAdd);
+           // await _petController.AddPetAsync(petToAdd);
             NavMgr.NavigateTo("/");
         }
     }

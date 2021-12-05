@@ -1,5 +1,6 @@
 ﻿@using ClientApp.Pages
 @inject IModalService _modalService
+@inject NavigationManager NavMgr
 <nav class="bg-pink-900">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
@@ -7,11 +8,11 @@
                 <!-- Mobile menu button-->
                 <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white  hover:text-gray-600  focus:outline-none  focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" @onclick="@(() => DropDownBurgerMenu())">
                     <span class="sr-only">Open main menu</span>
-                    
+
                     <svg class=" h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
-                    
+
                     <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
@@ -38,20 +39,20 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div class="hidden sm:block sm:ml-6">
                     <div class=" ml-10 flex space-x-9">
-                        <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
                             <span class="sr-only">Browse Pets</span>
-                         
+
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                             </svg>
                         </button>
-                        <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateHome">
                             <span class="sr-only">Go home</span>
-                           
+
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                             </svg>
@@ -72,7 +73,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="ml-8 ">
                     <div c>
                         <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(() => DropDownProfileWindow())">
@@ -88,11 +89,11 @@
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-1">Switch Profile</a>
 
 
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"  role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowSendCode)">
+                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowSendCode)">
                                 Log In
                             </a>
                             <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
-                               Sign Up
+                                Sign Up
                             </a>
 
 
@@ -126,14 +127,14 @@
 
                 <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" @onclick="() => NavigateToBrowsePets()"/>
                     </svg>
                     <a class=" space-x-6" aria-current="page">Browse Pets</a>
                 </div>
 
                 <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" @onclick="() => NavigateHome()"/>
                     </svg>
                     <a class=" space-x-6" aria-current="page">Home</a>
                 </div>
@@ -147,7 +148,7 @@
 
                 <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
                     <svg class="h-5 w-auto mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" @onclick="NavigateAddPet"/>
                     </svg>
                     <a class=" space-x-6" aria-current="page">Notifications</a>
                 </div>
@@ -176,6 +177,19 @@
     void ShowRegister()
     {
         _modalService.Show<Register>();
+    }
+
+    void NavigateToBrowsePets()
+    {
+        NavMgr.NavigateTo("/BrowsePets");
+    }
+    void NavigateHome()
+    {
+        NavMgr.NavigateTo("/");
+    }
+    void NavigateAddPet()
+    {
+        NavMgr.NavigateTo("/AddPet");
     }
 
     public void DropDownProfileWindow()
