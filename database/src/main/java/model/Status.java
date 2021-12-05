@@ -20,6 +20,7 @@ public class Status
   private User user;
 
   public Status(){
+    System.out.println("just do it.");
   }
 
   public Pet getPet()
