@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 
 namespace ClientApp.Pages
 {
     public partial class Login : ComponentBase
     {
-        [Parameter] public string Email { get; set; }
+        [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+        private string Email { get; set; }
         private string _confirmationCode;
         private string _errorMessage;
-        private bool ShowPopUpDialog;
+
 
         protected async override Task OnInitializedAsync()
         {
-            if (String.IsNullOrEmpty(Email))
-            {
-                ShowPopUpDialog = true;
-            }
-
             _errorMessage = "";
             _confirmationCode = null;
         }
@@ -26,10 +23,10 @@ namespace ClientApp.Pages
         {
             try
             {
-                await _userController.Login(Email, _confirmationCode);
+               // await _userController.Login(Email, _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
-                NavMgr.NavigateTo("/");
+               await ModalInstance.CloseAsync();
             }
             catch (Exception e)
             {
@@ -37,27 +34,9 @@ namespace ClientApp.Pages
             }
         }
 
-        private async Task SendCode(string email)
+        void ShowRegister()
         {
-            try
-            {
-                await _userController.SendEmail(email);
-                ShowPopUpDialog = false;
-            }
-            catch (Exception e)
-            {
-                _errorMessage = e.Message;
-            }
-        }
-
-        private void NavigateToMainPage()
-        {
-            NavMgr.NavigateTo("/");
-        }
-
-        public void NavigateToRegister()
-        {
-            NavMgr.NavigateTo("/Register");
+            _modalService.Show<Register>("Sign Up");
         }
     }
 }
