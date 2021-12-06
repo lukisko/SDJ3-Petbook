@@ -96,6 +96,24 @@ using ClientApp.Data;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 20 "C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\Shared\MainLayout.razor"
+ 
+    [CascadingParameter] protected Task<AuthenticationState>AuthStat { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var user = (await AuthStat).User;
+        // if(!user.Identity.IsAuthenticated)
+        //     NavigationManager.NavigateTo($"/Login");
+    //   NavigatonManager:NavigateTo($"/Login?returnUrl={Uri.EscapeDataString(NavigationManager: Uri)}");
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591
