@@ -6,9 +6,7 @@ namespace business_logic.Model
 {
     public interface IModel
     {
-        Task<PetList> getPetsAsync();
-
-        Task<Pet> getPetAsync(int id);
+        Task<PetList> getPetsAsync();   
 
         Task<IList<Pet>> getPetsAsync(AuthorisedUser user);
         Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status);
@@ -28,6 +26,8 @@ namespace business_logic.Model
         /// <param name="code">code that we have send to his/her email</param>
         /// <returns>if code and email are good return access token, returns empty string otherwise</returns>
         Task<string> login(string email, string code); // is it going to be user or email??
+
+        Task<AuthorisedUser> GetAuthorisedUser(string token);
         Task<AuthorisedUser> register(User user);
     }
 }

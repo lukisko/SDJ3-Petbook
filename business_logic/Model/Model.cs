@@ -41,11 +41,6 @@ namespace business_logic.Model
             return list;
         }//to delete
 
-        public async Task<Pet> getPetAsync(int id){
-            Pet thePet = await petManager.requestPet(id);
-            return thePet;
-        }//to delete
-
         public async Task<IList<Pet>> getPetsAsync(AuthorisedUser user){
             IList<Pet> thePet = await petManager.requestPets(user);
             return thePet;
@@ -117,6 +112,15 @@ namespace business_logic.Model
                 return userManager.MakeUserToken(email);
             }
             return "";
+        }
+
+        public async Task<AuthorisedUser> GetAuthorisedUser(string token){
+            string email = userManager.getUserWithToken(token);
+            if (email == null){
+                return null;
+            }
+            AuthorisedUser user = await userManager.GetUser(email);
+            return user;
         }
         public async Task<AuthorisedUser> register(User user){
             //change this
