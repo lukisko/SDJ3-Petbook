@@ -105,11 +105,11 @@
                                 
                                 @if (AccountsWindow)
                                 {
-                                    <ul class="absolute rounded-md shadow-lg   pl-5 ml-50 mt-5">
+                                    <ul class="absolute rounded-md shadow-lg  pl-5 ml-50 mt-5 ">
                                             @foreach (Pet item in _toShowPetsPetProfiles)
                                             {
-                                                <li class="block  flex flex-row w-full">
-                                                    <a class="  py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
+                                                <li class="block  flex flex-row w-full ">
+                                                    <a class="  py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row px-4 py-2" role="menuitem" tabindex="-1" id="user-menu-item-1">
                                                         <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
                                                         @item.name
                                                     </a>
