@@ -90,7 +90,7 @@
                     <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
 
-                        <ul >
+                        <ul>
                             <li>
                                 <a href="/PetProfile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                             </li>
@@ -105,30 +105,26 @@
                                 
                                 @if (AccountsWindow)
                                 {
-                                    <div class="absolute   pl-5 ml-24 -mt-10 shadow-lg    bg-white" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                                        <ul class="  ">
+                                    <ul class="absolute rounded-md shadow-lg   pl-5 ml-50 mt-5">
                                             @foreach (Pet item in _toShowPetsPetProfiles)
                                             {
                                                 <li class="block  flex flex-row w-full">
-                                                    <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
-                                                    <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
+                                                    <a class="  py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
+                                                        <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
                                                         @item.name
                                                     </a>
                                                 </li>
                                             }
-                                            <li class="block  hover:bg-gray-100 block whitespace-no-wrap ">
+                                            <li class="block  hover:bg-gray-100 block whitespace-no-wrap flex flex-row ">
                                                 <a class="  text-sm text-gray-700 hover:bg-gray-100  " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
-                                                    <div class="flex flex-row">
-                                                        <label >Add Profile</label>
+                                                    <label >Add Profile</label>
                                                         <!-- icon by feathericons.com -->
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                                         </svg>
-                                                    </div>
                                                 </a>
                                             </li>
                                         </ul>
-                                    </div>
                                 }
 
                             </li>
@@ -145,7 +141,6 @@
                                 </a>
                             </li>
                         </ul>
-
                     </div>
                 }
             </div>
