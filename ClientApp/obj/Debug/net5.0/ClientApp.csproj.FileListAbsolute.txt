@@ -617,3 +617,5 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\bin\Debug\net5.0\Blazored.Mo
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SendCode.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\SendCode.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\BrowsePets.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\BrowsePets.razor.g.cs

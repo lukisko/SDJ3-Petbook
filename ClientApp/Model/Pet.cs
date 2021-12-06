@@ -7,6 +7,7 @@ namespace ClientApp.Model
 {
     public class Pet
     {
+        public string imageUrl { get; set; }
         public int id {get; set;}
         public string name {get; set;}
         public string type {get;set;}

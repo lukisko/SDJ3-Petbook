@@ -47,7 +47,9 @@ namespace ClientApp.Data.Implementation
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
+            //if check for the token 
+            // store it 
+            HttpResponseMessage responseMessage2 = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
             string reply = await responseMessage.Content.ReadAsStringAsync();
             _accessToken.Token = reply;

@@ -110,6 +110,20 @@ using ClientApp.Pages;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Data.Implementation;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -118,13 +132,37 @@ using ClientApp.Pages;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 161 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 220 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
+    private bool AccountsWindow { get; set; }
+    private IList<Pet> _allPetProfiles;
+    private IList<Pet> _toShowPetsPetProfiles;
+    Pet pet1 { get; set; }
+    Pet pet2 { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
+        pet1 = new Pet();
+        pet2 = new Pet();
+        _allPetProfiles = new List<Pet>();
+        _toShowPetsPetProfiles = new List<Pet>();
+    //_allPetProfiles = await _petController.GetAllUserPetsAsync();
+        pet1.imageUrl = "Images/dog2.jpg";
+        pet1.name = "Jackie Bo";
+        pet1.breed = "Terrier";
+
+
+        pet2.imageUrl = "Images/dog.jpg";
+        pet2.id = 2;
+        pet2.name = "Andrew Wong";
+        pet2.breed = "Terrier";
+
+        _allPetProfiles.Add(pet1);
+        _allPetProfiles.Add(pet2);
+
+        _toShowPetsPetProfiles = _allPetProfiles;
         ProfileWindow = false;
     }
 
@@ -134,9 +172,31 @@ using ClientApp.Pages;
         _modalService.Show<SendCode>();
     }
 
+
     void ShowRegister()
     {
         _modalService.Show<Register>();
+    }
+
+    void ShowAddPet()
+    {
+        NavMgr.NavigateTo($"/AddPet");
+        _modalService.Show<AddPet>();
+    }
+
+    void NavigateToBrowsePets()
+    {
+        NavMgr.NavigateTo("/BrowsePets");
+    }
+
+    void NavigateHome()
+    {
+        NavMgr.NavigateTo("/");
+    }
+
+    void NavigateAddPet()
+    {
+        NavMgr.NavigateTo("/AddPet");
     }
 
     public void DropDownProfileWindow()
@@ -148,7 +208,18 @@ using ClientApp.Pages;
         else
         {
             ProfileWindow = true;
-            BurgerMenu = true;
+        }
+    }
+
+    public void DropDownAccountsWindow()
+    {
+        if (AccountsWindow)
+        {
+            AccountsWindow = false;
+        }
+        else
+        {
+            AccountsWindow = true;
         }
     }
 
@@ -171,6 +242,8 @@ using ClientApp.Pages;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService _modalService { get; set; }
     }
 }

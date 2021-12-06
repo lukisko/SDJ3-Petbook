@@ -28,5 +28,9 @@ namespace ClientApp.Data
         /// <param name="email"></param>
         /// <returns></returns>
         Task SendEmail(string email);
+        
+        
+        
+       
     }
 }
