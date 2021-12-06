@@ -39,7 +39,7 @@ namespace ClientApp.Data.Implementation
             return reply;
         }
 
-        public async Task<User> Login(string email, string code)
+        public async Task<string> Login(string email, string code)
         {
             HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
 
@@ -47,17 +47,12 @@ namespace ClientApp.Data.Implementation
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
+            //if check for the token 
+            // store it 
+            HttpResponseMessage responseMessage2 = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
-            string token = await responseMessage.Content.ReadAsStringAsync();
-            HttpResponseMessage responseMessage2 = await client.GetAsync($"{StaticVariables.URL}/AuthorisedUser?token={token}");
-            
-            if (responseMessage2.StatusCode == HttpStatusCode.BadRequest)
-            {
-                throw new AuthenticationException(responseMessage2.Content.ReadAsStringAsync().Result);
-            }
-            string userAsJson = await responseMessage2.Content.ReadAsStringAsync();
-            User reply = JsonSerializer.Deserialize<User>(userAsJson);
-            _accessToken.Token = token;
+            string reply = await responseMessage.Content.ReadAsStringAsync();
+            _accessToken.Token = reply;
             return reply;
         }
 

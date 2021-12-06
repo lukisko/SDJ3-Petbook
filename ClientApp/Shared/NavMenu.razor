@@ -108,10 +108,10 @@
                                     @if (AccountsWindow)
                                     {
                                         <div class="" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                                            <ul class="block  ">
+                                            <ul class=" absolute  text-gray-700 pl-5 ml-24 -mt-10  ">
                                                 @foreach (Pet item in _toShowPetsPetProfiles)
                                                 {
-                                                    <li class="block">
+                                                    <li class="block bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                                                         <div class="flex flex-row">
                                                             <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
                                                             <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
@@ -121,7 +121,7 @@
                                                     </li>
                                                 }
 
-                                                <li class="block">
+                                                <li class="block bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap ">
                                                     <a class=" px-4  text-sm text-gray-700 hover:bg-gray-100  " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
                                                         <div class="flex flex-row">
                                                             <label >Add Profile</label>

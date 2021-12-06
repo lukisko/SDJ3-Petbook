@@ -13,10 +13,8 @@ namespace ClientApp.Pages
         private string _errorMessage;
 
 
-        protected override async Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
-            
-
             _errorMessage = "";
             _confirmationCode = null;
         }
@@ -26,25 +24,9 @@ namespace ClientApp.Pages
             try
             {
                // await _userController.Login(Email, _confirmationCode);
-                await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email, _confirmationCode);
-                //await _userController.Login(Email, _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
                await ModalInstance.CloseAsync();
-                NavMgr.NavigateTo("/");
-            }
-            catch (Exception e)
-            {
-                _errorMessage = e.Message;
-            }
-        }
-
-        private async  Task SendCode(string email)
-        {
-            try
-            {   // maybe awaitable in the future
-                await _userController.SendEmail(email);
-                
             }
             catch (Exception e)
             {
@@ -53,10 +35,6 @@ namespace ClientApp.Pages
         }
 
         void ShowRegister()
-        {
-            _modalService.Show<Register>("Sign Up");
-        }
-        private void NavigateToMainPage()
         {
             _modalService.Show<Register>("Sign Up");
         }

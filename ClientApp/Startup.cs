@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.Modal;
-using ClientApp.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +13,6 @@ using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
 using ClientApp.Model;
-using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ClientApp
 {
@@ -36,9 +34,6 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController, UserController>();
             services.AddScoped<IMessageController, MessageController>();
-            services.AddScoped<IUserController,UserController>();
-            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
