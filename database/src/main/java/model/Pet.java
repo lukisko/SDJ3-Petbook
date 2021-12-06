@@ -18,11 +18,11 @@ public class Pet implements Serializable
   @Column(name = "type")
   private String type;
   @Column(name = "bread")
-  private String bread;
+  private String breed;
   @Column(name = "description")
   private String description;
   @Column(name = "birthday")
-  private String birthday;
+  private String birthdate;
   @OneToMany(mappedBy="pet", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   private List<Status> statuses;
   @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
@@ -90,8 +90,8 @@ public class Pet implements Serializable
   @Override public String toString()
   {
     return "Pet{" + "id=" + id + ", name='" + name + '\'' + ", type='" + type
-        + '\'' + ", bread='" + bread + '\'' + ", description='" + description
-        + '\'' + ", birthday='" + birthday + '\'' + ", statuses=" + statuses
+        + '\'' + ", bread='" + breed + '\'' + ", description='" + description
+        + '\'' + ", birthday='" + birthdate + '\'' + ", statuses=" + statuses
         + ", user=" + user + ", city=" + city + '}';
   }
 }
