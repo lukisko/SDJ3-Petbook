@@ -12,10 +12,7 @@ namespace ClientApp.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            int petId = 0;
-            string email = "georgewashigton@gmail.com";
-            string petStatus = "status"; 
-             allPets = await _petController.GetAllPetsAsync(petId,email,petStatus);
+            allPets = await _petController.GetAllPetsAsync();
             toShowPets = allPets;
             
         }

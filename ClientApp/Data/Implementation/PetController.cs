@@ -38,10 +38,10 @@ namespace ClientApp.Data.Implementation
             }
         }
 
-        public async Task<IList<Pet>> GetAllPetsAsync(int? id,string email, string status)
+        public async Task<IList<Pet>> GetAllPetsAsync()
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets?id={id}&email={email}&status={status}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
             
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
@@ -51,6 +51,12 @@ namespace ClientApp.Data.Implementation
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
         }
+
+        public Task<IList<Pet>> GetAllUserPetsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task UpdatePetAsync(Pet pet)
         {
             string serializedPet = JsonSerializer.Serialize(pet);
