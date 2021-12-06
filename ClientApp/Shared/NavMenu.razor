@@ -95,51 +95,42 @@
                                 <a href="/PetProfile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
                             </li>
                             <li>
-                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
-                                    <div class="flex flex-row">
-                                        <label >Switch Profile</label>
-                                        <div class="rounded-full border border-grey w-5 h-5 flex items-center justify-center test mt-0.5 ml-14">
-                                            <!-- icon by feathericons.com -->
-                                            <svg class="h-5 w-5 text-gray-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
+                                    <label >Switch Profile</label>
+                                        <!-- icon by feathericons.com -->
+                                            <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                             </svg>
-                                        </div>
-                                    </div>
-                                    @if (AccountsWindow)
-                                    {
-                                        <div class="" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                                            <ul class=" absolute  text-gray-700 pl-5 ml-24 -mt-10  ">
-                                                @foreach (Pet item in _toShowPetsPetProfiles)
-                                                {
-                                                    <li class="block bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
-                                                        <div class="flex flex-row">
-                                                            <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
-                                                            <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
-                                                                @item.name
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                }
-
-                                                <li class="block bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap ">
-                                                    <a class=" px-4  text-sm text-gray-700 hover:bg-gray-100  " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
-                                                        <div class="flex flex-row">
-                                                            <label >Add Profile</label>
-                                                            <div class="rounded-full border border-grey  flex items-center justify-center test  ml-14">
-                                                                <!-- icon by feathericons.com -->
-                                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
+                                </a>
+                                
+                                @if (AccountsWindow)
+                                {
+                                    <div class="absolute   pl-5 ml-24 -mt-10 shadow-lg    bg-white" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                        <ul class="  ">
+                                            @foreach (Pet item in _toShowPetsPetProfiles)
+                                            {
+                                                <li class="block  flex flex-row w-full">
+                                                    <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                                                    <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1">
+                                                        @item.name
                                                     </a>
                                                 </li>
+                                            }
+                                            <li class="block  hover:bg-gray-100 block whitespace-no-wrap ">
+                                                <a class="  text-sm text-gray-700 hover:bg-gray-100  " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
+                                                    <div class="flex flex-row">
+                                                        <label >Add Profile</label>
+                                                        <!-- icon by feathericons.com -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                }
 
-                                            </ul>
-
-                                        </div>
-                                    }
-                                </a>
                             </li>
 
                             <li>

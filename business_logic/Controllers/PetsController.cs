@@ -29,6 +29,11 @@ namespace business_logic.Controllers
             }
         }
 
+        public Task<ActionResult<string>> GetPets(int? id)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost]
         public async Task<ActionResult<String>> AddPet(Pet pet, [FromQuery] string token){
             if (String.IsNullOrEmpty(token)){

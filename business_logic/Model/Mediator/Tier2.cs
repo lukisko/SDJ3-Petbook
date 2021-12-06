@@ -40,8 +40,43 @@ namespace business_logic.Model.Mediator
             return await pets.requestPet(id);
         }
 
+        public Task<IList<Pet>> requestPets(AuthorisedUser user)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Pet> createPet(Pet newPet){
             return await pets.createPet(newPet);
+        }
+
+        public Task<Pet> updatePet(Pet newPet)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Pet> deletePet(Pet oldPet)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<City> GetCity(City city)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<City> AddCity(City city)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Country> GetCountry(Country country)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Country> AddCountry(Country country)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<AuthorisedUser> GetUser(AuthorisedUser user){

@@ -132,7 +132,7 @@ using ClientApp.Data.Implementation;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 220 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 211 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }

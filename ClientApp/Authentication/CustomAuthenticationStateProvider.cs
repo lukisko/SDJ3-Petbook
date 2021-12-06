@@ -54,11 +54,11 @@ namespace ClientApp.Authentication
             ClaimsIdentity identity = new ClaimsIdentity();
             try
             {
-                User user =await userService.Login(username, code);
-                identity = SetupClaimsForUser(user);
-                string serialisedData = JsonSerializer.Serialize(user);
-                jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", user);
-                cachedUser = user;
+               // User user =await userService.Login(username, code);
+                // identity = SetupClaimsForUser(user);
+                // string serialisedData = JsonSerializer.Serialize(user);
+                // jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", user);
+                // cachedUser = user;
                 Console.WriteLine("CAched user" +cachedUser);
             }
             catch (Exception e)
