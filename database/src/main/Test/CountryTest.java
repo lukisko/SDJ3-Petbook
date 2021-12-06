@@ -50,7 +50,6 @@ public class CountryTest
     model.removeCountry(model.getCountry(country3.getName()));
 
     assertTrue(1 < (long) countries.size());
-    assertEquals("test1", countries.get(1).getName());
   }
   @Test
   void addCity(){

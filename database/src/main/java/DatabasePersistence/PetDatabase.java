@@ -31,9 +31,14 @@ public class PetDatabase implements PetPersistance
       if(pet != null)
       {
         pet.getUser().getPets().clear();
+        pet.getUser().getStatuses().clear();
         pet.getCity().getPets().clear();
+        pet.getCity().getCountry().getCities().clear();
         pet.getStatuses().forEach(n -> n.setPet(null));
+        pet.getStatuses().forEach(n -> n.getUser().getStatuses().clear());
+        pet.getStatuses().forEach(n -> n.getUser().getPets().clear());
       }
+      System.out.println(pet);
       return pet;
     }
     catch (Exception e){
@@ -51,8 +56,12 @@ public class PetDatabase implements PetPersistance
       if(data != null)
       {
         data.forEach((n) -> n.getUser().getPets().clear());
+        data.forEach((n) -> n.getUser().getStatuses().clear());
         data.forEach((n) -> n.getCity().getPets().clear());
+        data.forEach((n) -> n.getCity().getCountry().getCities().clear());
         data.forEach((n) -> n.getStatuses().forEach((a) -> a.setPet(null)));
+        data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getStatuses().clear()));
+        data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getPets().clear()));
       }
       return data;
   }
@@ -65,12 +74,13 @@ public class PetDatabase implements PetPersistance
       return petList;
   }
 
-  @Override public void save(Pet pet)
+  @Override public int save(Pet pet)
   {
     database.beginSession();
     database.getSession().save(pet);
     database.getSession().getTransaction().commit();
     database.getSession().close();
+    return pet.getId();
   }
 
   @Override public void delete(Pet pet)

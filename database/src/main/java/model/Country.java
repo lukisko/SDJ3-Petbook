@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "country")
@@ -14,7 +15,7 @@ public class Country
   private List<City> cities;
 
   public Country(){
-
+    cities = new ArrayList<>();
   }
   public Country(String name){
     this.name = name;

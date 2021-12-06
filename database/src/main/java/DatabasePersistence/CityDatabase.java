@@ -22,7 +22,13 @@ public class CityDatabase implements CityPersistence {
 
   @Override public City loadCity(String name) {
       database.beginSession();
-      return database.getSession().get(City.class,name);
+      City city = database.getSession().get(City.class,name);
+      if(city != null)
+      {
+        city.getPets().clear();
+        city.getCountry().getCities().clear();
+      }
+      return city;
   }
 
   @Override public List<City> loadAll() {
@@ -30,6 +36,10 @@ public class CityDatabase implements CityPersistence {
       CriteriaQuery<City> criteria = database.getBuilder().createQuery(City.class);
       criteria.from(City.class);
       List<City> data = database.getSession().createQuery(criteria).getResultList();
+      if(data != null){
+        data.forEach(n -> n.getPets().clear());
+        data.forEach(n -> n.getCountry().getCities().clear());
+      }
       return data;
   }
 

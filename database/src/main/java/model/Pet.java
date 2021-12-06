@@ -91,6 +91,7 @@ public class Pet implements Serializable
   {
     return "Pet{" + "id=" + id + ", name='" + name + '\'' + ", type='" + type
         + '\'' + ", bread='" + bread + '\'' + ", description='" + description
-        + '\'' + ", user=" + user + ", city=" + city + '}';
+        + '\'' + ", birthday='" + birthday + '\'' + ", statuses=" + statuses
+        + ", user=" + user + ", city=" + city + '}';
   }
 }

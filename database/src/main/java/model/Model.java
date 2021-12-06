@@ -12,7 +12,7 @@ public interface Model
   Pet getPet(int id);
   List<Pet> getAllPets();
   List<Pet> getPetList(String email);
-  void addPet(Pet pet);
+  int addPet(Pet pet);
   void removePet(Pet pet);
 
   City getCity(String name);
@@ -24,4 +24,10 @@ public interface Model
   List<Country> getAllCountries();
   void addCountry(Country country);
   void removeCountry(Country country);
+
+  Status getStatus(int id);
+  List<Status>  getStatusList(int id);
+  List<Status> getAllStatuses();
+  int addStatus(Status status);
+  void removeStatus(Status status);
 }

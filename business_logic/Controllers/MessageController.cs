@@ -25,6 +25,26 @@ namespace business_logic.Controllers
         [HttpGet]
         public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] string token){
             Console.WriteLine("conneted to get messages!");
+            await model.sendCode("pleva@usa.com");
+            string token2 = await model.login("pleva@usa.com","FCVVPPA");
+            Pet pet = new Pet(){
+                name = "REX",
+                type = "dog",
+                description = "good dog",
+                Birthdate = new DateTime(2020,10,10),
+                statuses = new List<Status>(),
+                user = new User(){
+                    name = "Lukisko",
+                    email = "pleva@usa.com"
+                },
+                city = new City(){
+                    name = "theCity",
+                    country = new Country(){
+                        name = "USA"
+                    }
+                }
+            };
+            await model.createPetAsync(pet,token2);
             return StatusCode(501,"not implemented geting of messages with a person");
         }
 

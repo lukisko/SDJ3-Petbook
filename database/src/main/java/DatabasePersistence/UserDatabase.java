@@ -41,6 +41,10 @@ public class UserDatabase implements UserPersistence
       CriteriaQuery<User> criteria = database.getBuilder().createQuery(User.class);
       criteria.from(User.class);
       List<User> data = database.getSession().createQuery(criteria).getResultList();
+      if (data != null){
+        data.forEach(n -> n.getPets().clear());
+        data.forEach(n -> n.getStatuses().clear());
+      }
       return data;
   }
 

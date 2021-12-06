@@ -57,17 +57,22 @@ public class CityTest
     model.removeCity(model.getCity(city3.getName()));
 
     assertTrue(1 < (long) cityList.size());
-    assertEquals("test1", cityList.get(1).getName());
   }
   @Test
   void addCity(){
+    model.addCity(city2);
+    model.addCity(city3);
+    City result1 = model.getCity(city1.getName());
+    City result2 = model.getCity(city2.getName());
+    model.removeCity(model.getCity(city2.getName()));
+    model.removeCity(model.getCity(city3.getName()));
 
-    City result = model.getCity(city1.getName());
+    assertNotNull(result1);
+    assertEquals("test",result1.getName());
+    assertNotNull(result2);
+    assertEquals("test1",result2.getName());
 
-    assertNotNull(result);
-    assertEquals("test",result.getName());
-
-    model.removeCity(result);
+    //model.removeCity(result1);
   }
   @Test
   void removeCity(){

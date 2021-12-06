@@ -2,9 +2,7 @@ package mediator;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
-import model.Model;
-import model.Pet;
-import model.User;
+import model.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +39,7 @@ public class T2Handler implements Runnable
         getAll("user", value);
         break;
       case "GetAllOf":
-        getAllOf(value);
+        getAllOf("user",value);
         break;
       case "Add":
         add("user", value);
@@ -60,10 +58,59 @@ public class T2Handler implements Runnable
         getAll("pet", value);
         break;
       case "Add":
+        System.out.println("PET ADD");
         add("pet", value);
         break;
       case "Remove":
         remove("pet", value);
+        break;
+      case "GetAllOf":
+        getAllOf("status",value);
+        break;
+    }
+  }
+  private void country(String method, Country value)
+  {
+    switch (method)
+    {
+      case "Get":
+        get("country", value);
+        break;
+      case "GetAll":
+        getAll("country", value);
+        break;
+      case "Add":
+        add("country", value);
+        break;
+    }
+  }
+  private void city(String method, City value)
+  {
+    switch (method)
+    {
+      case "Get":
+        get("city", value);
+        break;
+      case "GetAll":
+        getAll("city", value);
+        break;
+      case "Add":
+        add("city", value);
+        break;
+    }
+  }
+  private void status(String method, Status value)
+  {
+    switch (method)
+    {
+      case "Get":
+        get("status", value);
+        break;
+      case "GetAll":
+        getAll("status", value);
+        break;
+      case "Add":
+        add("status", value);
         break;
     }
   }
@@ -71,6 +118,7 @@ public class T2Handler implements Runnable
   private void add(String object, Object value)
   {
     String stringToSend = "";
+    int id = 0;
     try
     {
       switch (object)
@@ -81,9 +129,24 @@ public class T2Handler implements Runnable
               model.getUser(((User) value).getEmail())));
           break;
         case "pet":
-          model.addPet( (Pet) value);
+          id = model.addPet((Pet) value);
           stringToSend = gson.toJson(new Comunication<Pet>("pet", "Add",
-              model.getPet(((Pet) value).getId())));
+              model.getPet(id)));
+          break;
+        case "country":
+          model.addCountry((Country) value);
+          stringToSend = gson.toJson(new Comunication<Country>("country", "Add",
+              model.getCountry(((Country) value).getName())));
+          break;
+        case "city":
+          model.addCity((City) value);
+          stringToSend = gson.toJson(new Comunication<City>("city", "Add",
+              model.getCity(((City) value).getName())));
+          break;
+        case "status":
+          id = model.addStatus((Status) value);
+          stringToSend = gson.toJson(new Comunication<Status>("status", "Add",
+              model.getStatus(id)));
           break;
       }
     }
@@ -118,9 +181,25 @@ public class T2Handler implements Runnable
           stringToSend = gson
               .toJson(new Comunication<String>("pet", "Remove", "OK"));
           break;
+        case "city":
+          model.removeCity((City) value);
+          stringToSend = gson
+              .toJson(new Comunication<String>("city", "Remove", "OK"));
+          break;
+        case "country":
+          model.removeCountry((Country) value);
+          stringToSend = gson
+              .toJson(new Comunication<String>("country", "Remove", "OK"));
+          break;
+        case "status":
+          model.removeStatus((Status) value);
+          stringToSend = gson
+              .toJson(new Comunication<String>("status", "Remove", "OK"));
+          break;
       }
     }
-    catch (Exception e){
+    catch (Exception e)
+    {
       stringToSend = e.toString();
     }
     System.out.println("REMOVE " + stringToSend);
@@ -143,14 +222,29 @@ public class T2Handler implements Runnable
       switch (object)
       {
         case "user":
-          stringToSend = gson.toJson(new Comunication<User>("user", "Get", model.getUser(((User) value).getEmail())));
+          stringToSend = gson.toJson(new Comunication<User>("user", "Get",
+              model.getUser(((User) value).getEmail())));
           break;
         case "pet":
-          stringToSend = gson.toJson(new Comunication<Pet>("pet", "Get", model.getPet(((Pet) value).getId())));
+          stringToSend = gson.toJson(new Comunication<Pet>("pet", "Get",
+              model.getPet(((Pet) value).getId())));
+          break;
+        case "city":
+          stringToSend = gson.toJson(new Comunication<City>("city", "Get",
+              model.getCity(((City) value).getName())));
+          break;
+        case "country":
+          stringToSend = gson.toJson(new Comunication<Country>("country", "Get",
+              model.getCountry(((Country) value).getName())));
+          break;
+        case "status":
+          stringToSend = gson.toJson(new Comunication<Status>("status", "Get",
+              model.getStatus(((Status) value).getId())));
           break;
       }
     }
-    catch (Exception e){
+    catch (Exception e)
+    {
       stringToSend = e.toString();
     }
     System.out.println("GET " + stringToSend);
@@ -174,14 +268,29 @@ public class T2Handler implements Runnable
       {
         case "user":
           stringToSend = gson.toJson(
-              new Comunication<List<User>>("user", "GetAll", model.getAllUsers()));
+              new Comunication<List<User>>("user", "GetAll",
+                  model.getAllUsers()));
           break;
         case "pet":
-          stringToSend = gson.toJson(new Comunication<List<Pet>>("pet", "GetAll", model.getAllPets()));
+          stringToSend = gson.toJson(
+              new Comunication<List<Pet>>("pet", "GetAll", model.getAllPets()));
+          break;
+        case "city":
+          stringToSend = gson.toJson(
+              new Comunication<List<City>>("city", "GetAll", model.getAllCities()));
+          break;
+        case "country":
+          stringToSend = gson.toJson(
+              new Comunication<List<Country>>("country", "GetAll", model.getAllCountries()));
+          break;
+        case "status":
+          stringToSend = gson.toJson(new Comunication<List<Status>>("country", "Get",
+              model.getAllStatuses()));
           break;
       }
     }
-    catch (Exception e){
+    catch (Exception e)
+    {
       stringToSend = e.toString();
     }
     System.out.println("GET_ALL " + stringToSend);
@@ -196,18 +305,28 @@ public class T2Handler implements Runnable
     }
   }
 
-  private void getAllOf(Object value)
+  private void getAllOf(String object, Object value)
   {
     String stringToSend = "";
     try
     {
-      stringToSend = gson.toJson(new Comunication<List<Pet>>("pet", "GetAllOf",
-          model.getPetList(((User) value).getEmail())));
+      switch (object)
+      {
+        case "user":
+          stringToSend = gson.toJson(new Comunication<List<Pet>>("pet", "GetAllOf",
+              model.getPetList(((User) value).getEmail())));
+          break;
+        case "pet":
+          stringToSend = gson.toJson(
+              new Comunication<List<Status>>("status", "GetAll", model.getStatusList(((Pet) value).getId())));
+          break;
+      }
     }
-    catch (Exception e){
+    catch (Exception e)
+    {
       stringToSend = e.toString();
     }
-      System.out.println("GET_ALL_OF " + stringToSend);
+    System.out.println("GET_ALL_OF " + stringToSend);
     byte[] toSendBytes = stringToSend.getBytes();
     try
     {
@@ -245,6 +364,21 @@ public class T2Handler implements Runnable
             Pet pet = new Gson()
                 .fromJson(new Gson().toJson(request.getValue()), Pet.class);
             pet(request.getMethod(), pet);
+            break;
+          case "country":
+            Country country = new Gson()
+                .fromJson(new Gson().toJson(request.getValue()), Country.class);
+            country(request.getMethod(), country);
+            break;
+          case "city":
+            City city = new Gson()
+                .fromJson(new Gson().toJson(request.getValue()), City.class);
+            city(request.getMethod(), city);
+            break;
+          case "status":
+            Status status = new Gson()
+                .fromJson(new Gson().toJson(request.getValue()), Status.class);
+            status(request.getMethod(), status);
             break;
         }
         System.out.println();

@@ -11,6 +11,7 @@ public class ModelManager implements Model
   private PetPersistance petPersistance;
   private CityPersistence cityPersistence;
   private CountryPersistence countryPersistence;
+  private StatusPersistence statusPersistence;
 
 
   public ModelManager(){
@@ -18,6 +19,7 @@ public class ModelManager implements Model
     petPersistance = new PetDatabase();
     cityPersistence = new CityDatabase();
     countryPersistence = new CountryDatabase();
+    statusPersistence = new StatusDatabase();
   }
 
   @Override public void addUser(User user)
@@ -52,8 +54,8 @@ public class ModelManager implements Model
     return petPersistance.LoadListOfUser(email);
   }
 
-  @Override public void addPet(Pet pet) {
-    petPersistance.save(pet);
+  @Override public int addPet(Pet pet) {
+    return petPersistance.save(pet);
   }
   @Override public void removePet(Pet pet)
   {
@@ -95,5 +97,30 @@ public class ModelManager implements Model
   @Override public void removeCountry(Country country)
   {
     countryPersistence.delete(country);
+  }
+
+  @Override public Status getStatus(int id)
+  {
+    return statusPersistence.loadStatus(id);
+  }
+
+  @Override public List<Status> getStatusList(int id)
+  {
+    return statusPersistence.loadStatusOfPet(id);
+  }
+
+  @Override public List<Status> getAllStatuses()
+  {
+    return statusPersistence.loadAll();
+  }
+
+  @Override public int addStatus(Status status)
+  {
+    return statusPersistence.save(status);
+  }
+
+  @Override public void removeStatus(Status status)
+  {
+    statusPersistence.delete(status);
   }
 }
