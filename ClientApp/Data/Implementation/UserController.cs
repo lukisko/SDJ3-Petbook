@@ -37,7 +37,7 @@ namespace ClientApp.Data.Implementation
             return reply;
         }
 
-        public async Task<string> Login(string email, string code)
+        public async Task<User> Login(string email, string code)
         {
             HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/User?email={email}&code={code}");
             
@@ -46,7 +46,8 @@ namespace ClientApp.Data.Implementation
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
-            string reply = await responseMessage.Content.ReadAsStringAsync();
+            string userAsJson = await responseMessage.Content.ReadAsStringAsync();
+            User reply = JsonSerializer.Deserialize<User>(userAsJson);
             return reply;
         }
 

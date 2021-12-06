@@ -89,6 +89,13 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\Pages\AddPet.razor"
+           [Authorize]
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/AddPet")]
     public partial class AddPet : Microsoft.AspNetCore.Components.ComponentBase
     {

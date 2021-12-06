@@ -31,7 +31,7 @@ namespace business_logic.Controllers
                 name = "REX",
                 type = "dog",
                 description = "good dog",
-                Birthday = new DateTime(2020,10,10),
+                Birthdate = new DateTime(2020,10,10),
                 statuses = new List<Status>(),
                 user = new User(){
                     name = "Lukisko",

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ClientApp.Model;
 
 namespace ClientApp.Data
@@ -19,7 +20,7 @@ namespace ClientApp.Data
         /// <param name="email"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        Task<string> Login(string email, string code);
+        Task<User> Login(string email, string code);
 
 
         /// <summary>
