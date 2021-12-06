@@ -33,6 +33,9 @@ public class UserHandler
       case "Add":
         response = add(value);
         break;
+//      case "Remove":
+//        response = remove(value);
+//        break;
     }
   }
 
@@ -54,9 +57,10 @@ public class UserHandler
     return gson.toJson(new Comunication<User>("user", "Add",
         model.getUser(value.getEmail())));
   }
-  public String remove(User value){
-    return null;
-  }
+//  public String remove(User value){
+//    return null; // for future
+//  }
+
   public String getResponse(String method, User value)
   {
     findMethod(method, value);

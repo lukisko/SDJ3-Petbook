@@ -16,7 +16,12 @@ public class CountryDatabase implements CountryPersistence
   @Override public Country loadCountry(String name)
   {
       database.beginSession();
-      return database.getSession().get(Country.class,name);
+      Country country = database.getSession().get(Country.class,name);
+      if(country != null)
+      {
+        country.getCities().clear();
+      }
+      return country;
   }
 
   @Override public List<Country> loadAll()
@@ -25,6 +30,10 @@ public class CountryDatabase implements CountryPersistence
       CriteriaQuery<Country> criteria = database.getBuilder().createQuery(Country.class);
       criteria.from(Country.class);
       List<Country> data = database.getSession().createQuery(criteria).getResultList();
+    if(data != null)
+    {
+      data.forEach(n -> n.getCities().clear());
+    }
       return data;
   }
 

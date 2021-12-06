@@ -23,6 +23,7 @@ public class User implements Serializable
 
   public User(){
     pets = new ArrayList<>();
+    statuses = new ArrayList<>();
   }
   public User(String email){
     this.email = email;
@@ -58,10 +59,9 @@ public class User implements Serializable
     return statuses;
   }
 
-
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''
-        + '}';
+        + ", pets=" + pets + ", statuses=" + statuses + '}';
   }
 }
