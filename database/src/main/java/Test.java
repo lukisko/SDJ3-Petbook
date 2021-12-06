@@ -13,13 +13,21 @@ public class Test {
   public static void main(String[] args) {
 
     Model model = new ModelManager();
-    Country country = model.getCountry("string");
-    City city1 = new City("a");
-    city1.setCountry(country);
-    City city2 = new City("b");
-    city2.setCountry(country);
-    model.addCity(city1);
-    model.addCity(city2);
+    Pet pet = new Pet();
+    City city = new City();
+    User user = new User("asd");
+    Country country = new Country("asd");
 
+    model.addCountry(country);
+
+    city.setName("asd");
+    city.setCountry(model.getCountry("asd"));
+
+    pet.setUser(user);
+    pet.setCity(city);
+
+    model.addUser(user);
+    model.addCity(city);
+    model.addPet(pet);
   }
 }

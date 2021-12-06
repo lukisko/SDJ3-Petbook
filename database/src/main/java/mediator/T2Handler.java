@@ -58,6 +58,7 @@ public class T2Handler implements Runnable
         getAll("pet", value);
         break;
       case "Add":
+        System.out.println("PET ADD");
         add("pet", value);
         break;
       case "Remove":

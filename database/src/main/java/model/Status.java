@@ -43,6 +43,11 @@ public class Status
     this.user = user;
   }
 
+  public User getUser()
+  {
+    return user;
+  }
+
   public void setName(String name)
   {
     this.name = name;
@@ -53,9 +58,9 @@ public class Status
     return name;
   }
 
-
   @Override public String toString()
   {
-    return "Status{" + "id=" + id + ", name='" + name + '}';
+    return "Status{" + "id=" + id + ", name='" + name + '\'' + ", pet=" + pet
+        + ", user=" + user + '}';
   }
 }
