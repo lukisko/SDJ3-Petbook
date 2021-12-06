@@ -12,6 +12,8 @@ namespace business_logic.Model
 
         Task<IList<Pet>> getPetsAsync(AuthorisedUser user);
         Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status);
+        Task<Pet> deletePetAsync(Pet pet, string token);
+        Task<Pet> updatePetAsync(Pet pet, string token);
         Task<Pet> createPetAsync(Pet pet, string token);
         /// <summary>
         /// method to send one time login code to user

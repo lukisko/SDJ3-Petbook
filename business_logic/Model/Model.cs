@@ -76,7 +76,30 @@ namespace business_logic.Model
                 throw new AccessViolationException("user is not authorised");
             }
             pet.user.email = email;
+            pet.user.name = (await userManager.GetUser(email)).name;
             Pet newPet = await petManager.createPet(pet);
+            return newPet;
+        }
+
+        public async Task<Pet> deletePetAsync(Pet pet, string token){
+            string email = userManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            pet.user.email = email;
+            pet.user.name = (await userManager.GetUser(email)).name;
+            await petManager.deletePet(pet);
+            return pet;
+        }
+
+        public async Task<Pet> updatePetAsync(Pet pet, string token){
+            string email = userManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            pet.user.email = email;
+            pet.user.name = (await userManager.GetUser(email)).name;
+            Pet newPet = await petManager.updatePet(pet);
             return newPet;
         }
 
