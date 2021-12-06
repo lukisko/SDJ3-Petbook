@@ -46,7 +46,14 @@ namespace ClientApp.Data.Implementation
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
-            string userAsJson = await responseMessage.Content.ReadAsStringAsync();
+            string token = await responseMessage.Content.ReadAsStringAsync();
+            HttpResponseMessage responseMessage2 = await client.GetAsync($"{uri}/AuthorisedUser?token={token}");
+            
+            if (responseMessage2.StatusCode == HttpStatusCode.BadRequest)
+            {
+                throw new AuthenticationException(responseMessage2.Content.ReadAsStringAsync().Result);
+            }
+            string userAsJson = await responseMessage2.Content.ReadAsStringAsync();
             User reply = JsonSerializer.Deserialize<User>(userAsJson);
             return reply;
         }

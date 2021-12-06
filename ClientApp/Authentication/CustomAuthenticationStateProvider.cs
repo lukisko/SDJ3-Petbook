@@ -55,8 +55,8 @@ namespace ClientApp.Authentication
             try
             {
                 User user =await userService.Login(username, code);
-                // identity = SetupClaimsForUser(user);
-                // string serialisedData = JsonSerializer.Serialize(user);
+                identity = SetupClaimsForUser(user);
+                string serialisedData = JsonSerializer.Serialize(user);
                 jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", user);
                 cachedUser = user;
                 Console.WriteLine("CAched user" +cachedUser);
