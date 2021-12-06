@@ -87,10 +87,14 @@ namespace business_logic.Model
             return pet;
         }
 
-        public async Task<Pet> updatePetAsync(Pet pet, string token){
+        public async Task<Pet> updatePetAsync(Pet pet, string token){ // just owner can modify pet
             string email = userManager.getUserWithToken(token);
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
+            }
+            Pet databasePet = await petManager.requestPet(pet.id);
+            if (databasePet.user.email != email){
+                throw new AccessViolationException("just owner of pet can modify it.");
             }
             pet.user.email = email;
             pet.user.name = (await userManager.GetUser(email)).name;

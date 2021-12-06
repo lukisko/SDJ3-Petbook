@@ -18,6 +18,7 @@ namespace business_logic.Model.Mediator
         private Tier2User users;
         private Tier2City cities;
         private Tier2Country countries;
+        private Tier2Status statuses;
         public Tier2() : this(HOST,PORT) {
             
         }
@@ -31,6 +32,7 @@ namespace business_logic.Model.Mediator
             this.users = new Tier2User(this);
             cities = new Tier2City(this);
             countries = new Tier2Country(this);
+            statuses = new Tier2Status(this);
 
         }
 
@@ -55,6 +57,19 @@ namespace business_logic.Model.Mediator
         }
         public async Task<Pet> deletePet(Pet oldPet){
             return await pets.deletePet(oldPet);
+        }
+
+        public async Task<Status> getStatus(Status status){
+            return await statuses.getStatus(status);
+        }
+        public async Task<Status> addStatus(Status newStatus){
+            return await statuses.addStatus(newStatus);
+        }
+        public async Task<Status> updateStatus(Status newerStatus){
+            return await statuses.updateStatus(newerStatus);
+        }
+        public async Task<Status> removeStatus(Status oldStatus){
+            return await statuses.removeStatus(oldStatus);
         }
 
         public async Task<AuthorisedUser> GetUser(AuthorisedUser user){
