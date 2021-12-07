@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using business_logic.Model.UserPack;
 using business_logic.Model.PetPack;
+using business_logic.Model.MessagePack;
+using System.Linq;
 
 namespace business_logic.Model
 {
@@ -13,6 +15,7 @@ namespace business_logic.Model
         private IEmailHandler emailHandler;
         private IUserManager userManager;
         private IPetManager petManager;
+        private IMessageManager messageManager;
         private Dictionary<string,string> emailCodeMap;
 
         private Random random;
@@ -24,6 +27,7 @@ namespace business_logic.Model
             userManager = new UserManager(tier2Mediator);
             petManager = new PetManager(tier2Mediator);
             emailCodeMap = new Dictionary<string, string>();
+            messageManager = new MessageController();
         }
         //////change this down part
         public bool Login(string email){
@@ -145,6 +149,28 @@ namespace business_logic.Model
                 return usr;
             }
             throw new Exception("email already exist.");
+        }
+
+        public async Task sendMessage(Message message, string token){
+            string email = userManager.getUserWithToken(token);
+            AuthorisedUser usr = await userManager.GetUser(email);
+            int senderId = message.SenderPetId;
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.pets.Where((Pet pet) => {return pet.id == senderId;}).Count() > 0){
+                messageManager.sendMessage(message);
+            } else {
+                throw new AccessViolationException("you are not owner of the pet.");
+            }
+        }
+        public async Task<IList<Message>> GetMessages(int petId, string token){//make it authenticaitons
+            string email = userManager.getUserWithToken(token);
+            AuthorisedUser usr = await userManager.GetUser(email);
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.pets.Where((Pet pet) => {return pet.id == petId;}).Count() > 0){
+                return messageManager.getMessages(petId);
+            } else {
+                throw new AccessViolationException("you are not owner of the pet.");
+            }
         }
 
         private string createRandomCode(int codeLength){

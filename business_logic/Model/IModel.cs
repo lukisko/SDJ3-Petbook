@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using business_logic.Model.UserPack;
 using System.Collections.Generic;
+using business_logic.Model.PetPack;
 
 namespace business_logic.Model
 {
@@ -59,5 +60,8 @@ namespace business_logic.Model
         /// <param name="user">object with name and email that will be set in database</param>
         /// <returns>returns object </returns>
         Task<AuthorisedUser> register(User user);
+
+        Task sendMessage(Message message, string token);
+        Task<IList<Message>> GetMessages(int petId, string token);
     }
 }
