@@ -20,7 +20,7 @@ namespace ClientApp.Data
         /// <param name="email"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        Task<string> Login(string email, string code);
+        Task<User> Login(string email, string code);
 
 
         /// <summary>

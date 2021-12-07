@@ -21,6 +21,8 @@ namespace ClientApp.Data
         Task<IList<Pet>> GetAllPetsAsync();
 
          Task<IList<Pet>> GetAllUserPetsAsync();
+         
+         Task<Pet> GetPetProfileAsync(int petId);
         // Task UpdatePet(Pet pet);
         // Task DeletePet(int petId);
  

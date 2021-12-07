@@ -37,8 +37,9 @@ namespace ClientApp
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-            services.AddScoped<AccessToken>();
             services.AddBlazoredModal();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +58,9 @@ namespace ClientApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
+            app.UseSession();
+            
 
             app.UseRouting();
 
