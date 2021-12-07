@@ -97,7 +97,7 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 62 "C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 69 "C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
            
     private bool collapseNavMenu = true;
 
@@ -111,6 +111,8 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
     }
 }
 #pragma warning restore 1591

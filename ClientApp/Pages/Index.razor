@@ -47,39 +47,3 @@ else
     </div>
    } 
   } 
- 
- 
- 
-@* @if (toShowPets == null) *@
-@* { *@
-@*     <p>No pets found</p> *@
-@* } *@
-@* else *@
-@* { *@
-@* $1$     <table class="min-w-max w-full table-auto shadow-xl"> #1# *@
-@*         <thead class="table-primary"> *@
-@*         <tr> *@
-    @*         <th>Id</th> *@
-    @*         <th>Name</th> *@
-    @*         <th>Type</th> *@
-    @*         <th>Breed</th> *@
-    @*         <th>Description</th> *@
-    @*     </tr> *@
-    @*     </thead> *@
-    @*     <tbody> *@
-    @*     @foreach (var item in toShowPets) *@
-    @*     { *@
-    @*         <tr> *@
-    @*             <td>@item.id</td> *@
-    @*             <td>@item.name</td> *@
-    @*             <td>@item.type</td> *@
-    @*             <td>@item.breed</td> *@
-    @*             <td>@item.description</td> *@
-    @*         </tr> *@
-    @*     } *@
-    @*     </tbody> *@
-    @* </table> *@
-
-
-
-}
