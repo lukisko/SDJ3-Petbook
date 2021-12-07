@@ -35,6 +35,9 @@ public class PetHandler
       case "GetAllOf":
         response = getAllOf(value);
         break;
+      case "Update":
+        response = update(value);
+        break;
     }
   }
   private String get(Pet value){
@@ -93,6 +96,17 @@ public class PetHandler
         return e.getMessage();
       }
     }
+  private String update(Pet value){
+    try
+    {
+      return gson.toJson(new Comunication<Pet>("pet", "Update",
+          model.updatePet(value)));
+    }
+    catch (Exception e){
+      System.out.println(e.getMessage());
+      return e.getMessage();
+    }
+  }
 
   public String getResponse(String method, Pet value)
   {
