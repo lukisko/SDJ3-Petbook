@@ -23,6 +23,8 @@ public class Pet implements Serializable
   private String description;
   @Column(name = "birthday")
   private String birthdate;
+  @Column(name = "gender")
+  private char gender;
   @OneToMany(mappedBy="pet", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   private List<Status> statuses;
   @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
