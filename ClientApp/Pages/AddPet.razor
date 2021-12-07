@@ -1,11 +1,10 @@
 @page "/AddPet"
-@attribute [Authorize]
 @inject IPetController _petController
 @inject NavigationManager NavMgr
 
 <EditForm Model="@petToAdd" OnValidSubmit="@AddNewPet">
     <DataAnnotationsValidator/> <ValidationSummary/>
-<div class="grid min-h-screen place-items-center" style="margin-top: -1rem;">
+<div class="grid min-h-screen place-items-center" style="margin-top: -5rem;">
   <div class="w-11/12 p-3 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12" >
     <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal">please fill in your pet information 🐶</span></h1>
     <form class="mt-6">
@@ -22,22 +21,27 @@
       </div>
       <label for="Breed" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Breed</label>
       <InputText id="Breed" type="text" name="breed" placeholder="Bichon Maltese" autocomplete="breed" @bind-Value="petToAdd.breed" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
-      <label for="Birthday" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Birth date</label>
-      <InputDate id="Birthday" type="date" name="Birthdate" autocomplete="Birthday" @bind-Value="petToAdd.Birthdate" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
       <label for="Description" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Description</label>
-      <InputText id="Description" name="Description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToAdd.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
-      <label for="City" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">City</label>
-      <InputText id="City"  name="City" placeholder="Varde" autocomplete="City" @bind-Value="petToAdd.city.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
-      <label for="Country" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Country</label>
-      <InputText id="Country" name="Country" placeholder="Denmark" autocomplete="Country" @bind-Value="petToAdd.city.country.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
+      <InputText id="Description" type="password" name="Description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToAdd.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required />
       
       <p for="Status" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Status</p>
-      <InputSelect @bind-Value="petToAdd.status">
-        <option value="Regular">Regular</option>
-        <option value="Adoption">Adoption</option>
-        <option value="Fostering">Fostering</option>
-        <option value="Walking">Walking</option>
-      </InputSelect>
+        <InputSelect @bind-Value="petToAdd.statuses">
+                        <option value="Regular">Regular</option>
+                        <option value="Adoption">Adoption</option>
+                        <option value="Fostering">Fostering</option>
+                        <option value="Walking">Walking</option>
+                    </InputSelect>
+      @*   <InputRadio id="Regular" type="radio" name="Status" value="Regular" @bind-Value="petToAdd.status"/> *@
+      @* <label for="Regular">Regular</label><br> *@
+      @* *@
+      @*   <InputRadio id="Adoption" type="radio" name="Status" value="Adoption" @bind-Value="petToAdd.status"/> *@
+      @* <label for="Adoption">Adoption</label><br> *@
+      @* *@
+      @*   <InputRadio id="Walking" type="radio" name="Status" value="Walking" @bind-Value="petToAdd.status"/> *@
+      @* <label for="Walking">Walking</label><br> *@
+      @* *@
+      @*   <InputRadio id="Fostering" type="radio" name="Status" value="Fostering" @bind-Value="petToAdd.status"/> *@
+      @* <label for="Fostering">Fostering</label><br> *@
       
       <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-pink shadow-lg focus:outline-none hover:bg-pink-900 hover:shadow-none">
         Create Pet Profile
@@ -46,3 +50,20 @@
   </div>
 </div>
 </EditForm>
+
+
+     @* <div class="form-group"> Name:<br/> <InputText @bind-Value="petToAdd.name"/> </div> *@
+@*     <div class="form-group"> Type:<br/> <InputText @bind-Value="petToAdd.type"/> </div> *@
+@*     <div class="form-group"> Breed:<br/> <InputText @bind-Value="petToAdd.breed"/> </div> *@
+@*     <div class="form-group"> Description: <br/> <InputText @bind-Value="petToAdd.description"/> </div> *@
+@* *@
+@*     <p class="actions"> <button class="btn btn-success mb-2" type="submit">Add Pet</button> </p> *@
+
+
+
+
+
+
+
+
+}

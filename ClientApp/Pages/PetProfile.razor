@@ -1,0 +1,44 @@
+﻿@page "/PetProfile/{petId:int}"
+@inject NavigationManager NavMgr
+@inject IPetController _petController
+@*profile pane container*@
+<div class="bg-pink-300 mt-12 mx-12 rounded-xl font-mono text-xl ">
+    @*profile picture, name, options container,edit button*@
+    <div class="grid grid-cols-2 m-3  ">
+        @* profile picture container*@
+        <div class="flex inline-block">
+            <img alt="Dog profile picture" class=" rounded-full w-30 h-30 mt-6 mx-8" src="Images/dog.jpg">
+            
+            @*name container*@
+
+            <div class="grid grid-cols-2 gap-1 mt-8 font-medium">
+                <div class="relative row-span-5 col-span-3 ">
+                    <label class="absolute bottom-0 left-0 text-white text-3xl ">Jackie Jo</label>
+                </div>
+                <div class="col-span-3 place-self-end mb-12">
+                    <label class=" bg-white  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Walking Pet</label>
+                    <label class=" bg-white ml-4  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Foster Pet</label>
+                    <label class=" bg-white ml-4   p-1   rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Adopting Pet</label>
+                </div>
+            </div>
+        </div>
+        <div class="relative">
+            <button class=" mr-8 absolute bottom-0 right-0 flex inline-block  w-auto bg-white py-1  rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToEditProfile())">
+                <svg xmlns="http://www.w3.org/2000/svg" class=" ml-1 mt-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+                <label class=" ml-1 mr-2">Edit Profile</label>
+            </button>
+        </div>
+    </div>
+    <div class="max-w-s mx-15">
+        <hr class="border-solid border-1 border-light-blue-500 mx-11 "/>
+    </div>
+    @*profile options buttons*@
+    <div class="flex inline-block m-3  ">
+        <button class=" bg-white py-1 px-2 ml-8 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80"   >Posts</button>
+        <button class="bg-white  py-1 px-2 ml-5 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >About</button>
+        <button class="bg-white py-1 px-2 ml-5  mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Followings</button>
+        <button class="bg-white  py-1 px-2 ml-5 mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Groups</button>
+    </div>
+</div>

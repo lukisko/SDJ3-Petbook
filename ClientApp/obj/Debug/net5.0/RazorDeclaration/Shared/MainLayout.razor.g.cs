@@ -89,6 +89,20 @@ using ClientApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
@@ -96,24 +110,6 @@ using ClientApp.Data;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 20 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\MainLayout.razor"
- 
-    [CascadingParameter] protected Task<AuthenticationState>AuthStat { get; set; }
-
-    protected async override Task OnInitializedAsync()
-    {
-        base.OnInitialized();
-        var user = (await AuthStat).User;
-        // if(!user.Identity.IsAuthenticated)
-        //     NavigationManager.NavigateTo($"/Login");
-    //   NavigatonManager:NavigateTo($"/Login?returnUrl={Uri.EscapeDataString(NavigationManager: Uri)}");
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Net;
@@ -8,17 +7,17 @@ using System.Text.Json;
 using System.Text;
 using ClientApp.Model;
 
+
 namespace ClientApp.Data.Implementation
 {
     public class PetController : IPetController
     {
-        private string uri = "https://localhost:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-        public Action<Object> RequestAnswerChange; 
+        public Action<Object> RequestAnswerChange;
+
         public PetController()
         {
-           
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
@@ -28,7 +27,8 @@ namespace ClientApp.Data.Implementation
         {
             string serializedPet = JsonSerializer.Serialize(pet);
             HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage= await client.PostAsync($"{uri}/Pets", content);
+            HttpResponseMessage responseMessage =
+                await client.PostAsync($"{StaticVariables.URL}/Pets?token={"somestring"}", content);
             if (responseMessage.StatusCode == HttpStatusCode.OK)
             {
                 RequestAnswerChange.Invoke(responseMessage.Content);
@@ -42,16 +42,51 @@ namespace ClientApp.Data.Implementation
         public async Task<IList<Pet>> GetAllPetsAsync()
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/Pets");
-            
-            if (!responseMessage.IsSuccessStatusCode)
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
+
+            if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
-                throw new Exception("Not good");
+                throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            
+
             String reply = await responseMessage.Content.ReadAsStringAsync();
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
+        }
+
+        public Task<IList<Pet>> GetAllUserPetsAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Pet> GetPetProfileAsync(int petId)
+        {
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets?petId={petId}");
+
+            // if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
+            // {
+            //     throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
+            // }
+
+            string reply = await responseMessage.Content.ReadAsStringAsync();
+            Pet pet = JsonSerializer.Deserialize<Pet>(reply);
+            return pet;
+        }
+
+        public async Task UpdatePetAsync(Pet pet)
+        {
+            string serializedPet = JsonSerializer.Serialize(pet);
+            HttpContent content = new StringContent(serializedPet, Encoding.UTF8, "application/json");
+            HttpResponseMessage responseMessage =
+                await client.PostAsync($"{StaticVariables.URL}/Pets?token={"somestring"}", content);
+            if (responseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                RequestAnswerChange.Invoke(responseMessage.Content);
+            }
+            else
+            {
+                throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
+            }
         }
     }
 }

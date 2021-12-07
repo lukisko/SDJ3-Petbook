@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Mail;
 
 
@@ -6,15 +7,15 @@ namespace ClientApp.Model
 {
     public class Pet
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string type { get; set; }
-        public string breed { get; set; }
-        public string description { get; set; }
-        public string status { get; set; }
-        public DateTime Birthdate { get; set; }
-        public char gender {get;set;}
-        public City city { get; set; }
-        public User user { get; set; }
+        public string imageUrl { get; set; }
+        public int id {get; set;}
+        public string name {get; set;}
+        public string type {get;set;}
+        public string breed {get;set;}
+        public string description {get;set;}
+        public IList<Status> statuses { get; set; }
+        public DateTime Birthday {get;set;}
+        public City city {get;set;}
+        public User user {get;set;}
     }
 }
