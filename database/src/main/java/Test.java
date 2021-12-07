@@ -25,8 +25,8 @@ public class Test {
 //    pet2.setPet(thepet);
 //    model.updatePet(pet2);
     Model model = new ModelManager();
-    //System.out.println(model.getAllUsers());
-    System.out.println(model.getAllPets());
-    System.out.println(model.getAllPets());
+
+    System.out.println(model.getStatusList(6));
+
   }
 }

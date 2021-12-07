@@ -29,11 +29,10 @@ public class  PetDatabase implements PetPersistance
         pet.getUser().getStatuses().clear();
         pet.getCity().getPets().clear();
         pet.getCity().getCountry().getCities().clear();
-        pet.getStatuses().forEach(n -> n.setPet(null));
-        pet.getStatuses().forEach(n -> n.getUser().getStatuses().clear());
-        pet.getStatuses().forEach(n -> n.getUser().getPets().clear());
+        pet.getStatuses().forEach(status -> status.setPet(null));
+        pet.getStatuses().forEach(status -> status.getUser().getStatuses().clear());
+        pet.getStatuses().forEach(status -> status.getUser().getPets().clear());
       }
-      System.out.println(pet);
       return pet;
     }
     catch (Exception e){
@@ -50,15 +49,12 @@ public class  PetDatabase implements PetPersistance
     List<Pet> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null)
     {
-      data.forEach((n) -> n.getUser().getPets().clear());
-      data.forEach((n) -> n.getUser().getStatuses().clear());
-      data.forEach((n) -> n.getCity().getPets().clear());
-      data.forEach((n) -> n.getCity().getCountry().getCities().clear());
-      data.forEach((n) -> n.getStatuses().forEach((a) -> a.setPet(null)));
-      data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getStatuses().clear()));
-      data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getPets().clear()));
+      data.forEach((pet) -> pet.getUser().getPets().clear());
+      data.forEach((pet) -> pet.getUser().getStatuses().clear());
+      data.forEach((pet) -> pet.getCity().getPets().clear());
+      data.forEach((pet) -> pet.getCity().getCountry().getCities().clear());
+      data.forEach((pet) -> pet.getStatuses().clear());
     }
-    database.getSession().flush();
     return data;
   }
 
