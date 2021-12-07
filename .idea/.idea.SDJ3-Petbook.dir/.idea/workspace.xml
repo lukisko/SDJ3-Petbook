@@ -8,16 +8,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ClientApp/Shared/MessagePane.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/UserDatabase.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/UserPersistence.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/target/classes/model/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Model/Pet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Model/Pet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/AddPet.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/AddPet.razor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/App.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Authentication/CustomAuthenticationStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Authentication/CustomAuthenticationStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/ClientApp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/ClientApp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/IMessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/IMessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/IPetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/IPetController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/PetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/PetController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Model/StaticVariables.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Model/StaticVariables.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Index.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Index.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Login.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Register.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Register.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Register.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Register.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/SendCode.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/SendCode.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/SendCode.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/SendCode.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.runtimeconfig.dev.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorComponent.input.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorComponent.input.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.RazorCoreGenerate.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.TagHelpers.output.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.TagHelpers.output.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" afterDir="false" />
@@ -25,52 +53,73 @@
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/_Imports.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/apphost.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.Manifest.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.Manifest.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/staticwebassets/ClientApp.StaticWebAssets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/PetsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/PetsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business_logic/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityPersistence.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityPersistence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CountryDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CountryDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CountryPersistence.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CountryPersistence.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/Database.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetPersistance.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetPersistance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusPersistence.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusPersistence.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/Comunication.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/Comunication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/T2Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/T2Handler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/T3Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/T3Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CityHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CityHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CommunicationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CommunicationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CountryHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/CountryHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/PetHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/PetHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/UserHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/UserHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/model/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/City.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/model/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Country.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/model/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/model/ModelManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/ModelManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/model/Pet.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Pet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/model/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Status.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/test-classes/CityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/CityTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/test-classes/CountryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/CountryTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/test-classes/PetTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/PetTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/test-classes/StatusTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/StatusTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/test-classes/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/UserTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/database/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/database/DatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/database/DatabaseCredentials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/database/DatabaseHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/mediator/Comunication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/mediator/ComunicationPet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/mediator/T2Handler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/mediator/T3Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/model/Pet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project-SDJ3/model/PetList.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +129,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Login(front)&amp;T3" />
+        <entry key="$PROJECT_DIR$" value="Client_Controller" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,28 +144,46 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/ITier2Mediator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/IModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/SurveyPrompt.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/BrowsePets.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/_Imports.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business_logic/Model/Model.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/IModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f4690e732f84ca9a1afbdcaceab37426c990/12/EventCallbackWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/ITier2Mediator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/BrowsePets.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/SurveyPrompt.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Data/Implementation/UserController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21bFnuV8onUOOmlC6qYu9zWlfT9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ChangesTree.GroupingKeys" value="" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.4422944" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
@@ -125,7 +192,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="XThreadsFramesViewSplitterKey" value="0.39628482" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.ClientApp">
@@ -383,6 +450,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="[]" />
     <MESSAGE value="a" />
@@ -403,6 +471,11 @@
     <MESSAGE value="dropdown_accounts" />
     <MESSAGE value="last_update" />
     <MESSAGE value="nav_account_menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="nav_account_menu" />
+    <MESSAGE value="user_controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="user_controller" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

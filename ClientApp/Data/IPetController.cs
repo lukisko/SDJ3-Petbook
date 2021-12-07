@@ -12,7 +12,7 @@ namespace ClientApp.Data
         /// </summary>
         /// <param name="pet"></param>
         /// <returns></returns>
-        Task AddPetAsync(Pet pet);
+        Task<Pet> AddPetAsync(Pet pet);
 
         /// <summary>
         /// 
@@ -23,12 +23,14 @@ namespace ClientApp.Data
          Task<IList<Pet>> GetAllUserPetsAsync();
          
          Task<Pet> GetPetProfileAsync(int petId);
-        // Task UpdatePet(Pet pet);
-        // Task DeletePet(int petId);
- 
+
+         Task<Pet> UpdatePetAsync(Pet pet);
         
-        // Task AdoptPetAsync(string userEmail, int petId);
-        // Task FosterPetAsync(string userEmail, int petId);
-        // Task WalkPetAsync(string userEmail, int petId);
+         Task DeletePet(int petId);
+
+
+         // Task AdoptPetAsync(string userEmail, int petId);
+         // Task FosterPetAsync(string userEmail, int petId);
+         // Task WalkPetAsync(string userEmail, int petId);
     }
 }

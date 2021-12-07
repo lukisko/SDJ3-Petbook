@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
 using ClientApp.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace ClientApp
 {
@@ -34,12 +36,12 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController, UserController>();
             services.AddScoped<IMessageController, MessageController>();
+            services.AddScoped<StaticVariables>();
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
             services.AddBlazoredModal();
-            services.AddDistributedMemoryCache();
-            services.AddSession();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,17 +60,16 @@ namespace ClientApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            
             app.UseSession();
-            
-
             app.UseRouting();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+               
             });
+            
         }
     }
 }

@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {}
+    "C:\\Users\\nicol\\RiderProjects\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {
+    "C:\\Users\\nicol\\RiderProjects\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
+        "projectUniqueName": "C:\\Users\\nicol\\RiderProjects\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
         "projectName": "ClientApp",
-        "projectPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
-        "packagesPath": "C:\\Users\\hanch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\ClientApp\\obj\\",
+        "projectPath": "C:\\Users\\nicol\\RiderProjects\\SDJ3-Petbook\\ClientApp\\ClientApp.csproj",
+        "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nicol\\RiderProjects\\SDJ3-Petbook\\ClientApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+        ],
         "configFilePaths": [
-          "C:\\Users\\hanch\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,6 +52,10 @@
               "target": "Package",
               "version": "[5.0.12, )"
             },
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
@@ -69,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Blazored.Modal;
+using ClientApp.Authentication;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace ClientApp.Pages
 {
@@ -23,20 +25,25 @@ namespace ClientApp.Pages
         {
             try
             {
-               // await _userController.Login(Email, _confirmationCode);
-                Email = null;
+                await _userController.Login(Email, _confirmationCode);
+               // await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
+               //     _confirmationCode);
+               Email = null;
                 _confirmationCode = null;
-               await ModalInstance.CloseAsync();
+                await ModalInstance.CloseAsync();
+                NavMgr.NavigateTo("/");
             }
             catch (Exception e)
             {
                 _errorMessage = e.Message;
+                Console.WriteLine(e);
             }
         }
 
-        void ShowRegister()
+        async void ShowRegister()
         {
             _modalService.Show<Register>("Sign Up");
+            await ModalInstance.CloseAsync();
         }
     }
 }

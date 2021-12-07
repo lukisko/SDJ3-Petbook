@@ -4,43 +4,28 @@
 @inject IModalService _modalService
 
 
-<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-        <!-- This element is to trick the browser into centering the modal contents. -->
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block align-bottom   rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <EditForm Model="@_userToRegister" OnValidSubmit="@RegisterUser">
-                <div class="relative min-h-screen flex flex-col sm:justify-center items-center">
-                    <div class="absolute sm:max-w-sm w-full">
-                        <div class="relative w-full rounded-3xl  px-6 py-4 bg-pink-900 hover:scale- ">
-                            <div class="flex flex-row-reverse">
-                                <button class="rounded-xl hover:bg-gray-400  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToMainPage())">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class=" h-6 w-6 fill-current text-white " viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                </button>
-                            </div >
-                            <div class="font-sans text-xl text-black-700 text-center">
-                                <div class="block mt-3 mb-10 text-white font-bold text-2xl ">
-                                    Sign up
-                                </div>
-                                <InputText class="text-center mt-5 block w-full border-none bg-gray-50 h-11 rounded-xl shadow-lg hover:bg-pink-300 focus:bg-pink-100 focus:ring-0 focus:border-white" type="text" placeholder="Name" @bind-Value="_userToRegister.name"/>
-                                <InputText class="text-center mt-5 block w-full border-none bg-gray-50 h-11 rounded-xl shadow-lg hover:bg-pink-300 focus:bg-pink-100    focus:border-white" type="email" placeholder="Email" @bind-Value="_userToRegister.email"/>
-                                <DataAnnotationsValidator/> <ValidationSummary/>
-                                <div class="text-red-500 text-center">@_errorMessage</div>
-
-                                <div class="flex flex-row">
-                                    <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" type="submit">Register</button>
-                                    <button class="bg-white w-full py-3 m-7 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(ShowLogIn)">Log in</button>
-                                </div>
-
-                            </div>
-                        </div >
-                    </div >
-                </div>
-            </EditForm>
+<div class="min-h-full flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-xl">
+    <div class="w-auto space-y-7  ">
+        <div>
+            <img class="mx-auto h-38 w-auto" src="Images/Logo1.png" alt="PetBook Logo">
+            <h2 class="mt-1 text-center  text-xl font-bold text-gray-700">
+                Sign up
+            </h2>
         </div>
+        <EditForm Model="@_userController" OnValidSubmit="@(RegisterUser)">
+            <div class=" shadow-sm space-y-px  ">
+                <div class="flex flex-col space-y-2 rounded-xl">
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" required placeholder="Name" @bind-Value="_userToRegister.name"/>
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="email" required placeholder="Email" @bind-Value="_userToRegister.email"/>
+                </div>
+            </div>
+            <DataAnnotationsValidator/> <ValidationSummary/>
+            <div class="text-red-500 text-center">@_errorMessage</div>
+            <div class="flex flex-row mt-4 space-x-4 ">
+                <button class="bg-gray-200 w-full py-1  rounded-xl hover:bg-pink-300    focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" type="submit">Sign Up</button>
+                <button class="bg-white w-full py-1  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="() => ShowLogIn()">Log in</button>
+            </div>
+        </EditForm>
     </div>
 </div>

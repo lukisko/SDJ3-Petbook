@@ -1,0 +1,79 @@
+﻿@page "/MessagePane/{petId:int}"
+@using ClientApp.Model
+@inject IPetController _petController
+@inject IMessageController _messageController
+
+
+@if (LogPaneWindow)
+{
+    <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+
+        <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
+            @foreach (Pet item in _toShowMessageLog)
+            {
+                <li class=" rounded-md ">
+                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ShowMessagePane(@item.id))">
+                        <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                        <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@if (MessagePaneWindow)
+{
+    <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
+        @* <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label> *@
+        <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
+            @foreach (Pet item in _toShowMessageLog)
+            {
+                <li class=" rounded-md ">
+                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ShowMessagePane(@item.id))">
+                        <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                        <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
+                    </a>
+                </li>
+            }
+        </ul>
+        <InputText class=""></InputText>
+    </div>
+}
+
+@code {
+    private bool ProfileWindow { get; set; }
+    private bool BurgerMenu { get; set; }
+    private bool LogPaneWindow { get; set; }
+    private bool MessagePaneWindow { get; set; }
+    private IList<Pet> _allPetMessagesWithAPet;
+    private IList<Pet> _toShowPetProfileMessagesWithAPet;
+
+    private IList<Pet> _allMessageLog;
+    private IList<Pet> _toShowMessageLog;
+    private User userLoggedIn { get; set; }
+    
+    Pet pet1 { get; set; }
+    Pet pet2 { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        
+        
+    }
+
+    async void ShowMessagePane(int messageToPetId)
+    {
+        if (LogPaneWindow)
+        {
+            LogPaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = true;
+        }
+    }
+
+
+}
