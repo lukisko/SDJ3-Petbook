@@ -15,5 +15,6 @@ namespace business_logic.Model
         public DateTime Birthdate {get;set;}
         public City city {get;set;}
         public User user {get;set;}
+        public char gender {get;set;}
     }
 }
