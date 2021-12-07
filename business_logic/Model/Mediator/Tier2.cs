@@ -106,7 +106,7 @@ namespace business_logic.Model.Mediator
             
 
             //receiving
-            byte[] dataFromServer = new byte[2048];
+            byte[] dataFromServer = new byte[4000];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
             Console.WriteLine("*****\nreceiving: \t"+response + "\n");

@@ -37,6 +37,7 @@ public class  PetDatabase implements PetPersistance
     }
     catch (Exception e){
       System.out.println("PetDatabase_Exception: " + e.getMessage());
+      e.printStackTrace();
       return null;
     }
   }

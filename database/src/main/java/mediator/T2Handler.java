@@ -38,9 +38,9 @@ public class T2Handler implements Runnable
       try
       {
 
-        byte[] lenBytes = new byte[500];
-        is.read(lenBytes, 0, 500);
-        String received = new String(lenBytes, 0, 500);
+        byte[] lenBytes = new byte[4000];
+        is.read(lenBytes, 0, 4000);
+        String received = new String(lenBytes, 0, 4000);
         received.trim();
         System.out.println("THE REQUEST:  " + received);
         Comunication request = gson
