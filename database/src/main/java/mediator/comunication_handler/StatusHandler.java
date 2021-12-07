@@ -74,7 +74,7 @@ public class StatusHandler
     try
     {
       model.removeStatus(value);
-      return gson.toJson(new Comunication<String>("status", "Add",
+      return gson.toJson(new Comunication<String>("status", "Remove",
           "OK"));
     }
     catch (Exception e){

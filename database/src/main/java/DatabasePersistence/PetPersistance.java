@@ -12,4 +12,5 @@ public interface PetPersistance
   List<Pet> LoadListOfUser(String email);
   int save(Pet pet);
   void delete(Pet pet);
+  Pet update(Pet pet);
 }

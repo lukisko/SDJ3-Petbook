@@ -62,6 +62,11 @@ public class ModelManager implements Model
     petPersistance.delete(pet);
   }
 
+  @Override public Pet updatePet(Pet pet)
+  {
+    return petPersistance.update(pet);
+  }
+
   @Override public City getCity(String name) {
     return cityPersistence.loadCity(name);
   }
