@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using ClientApp.Model;
+using Microsoft.AspNetCore.Http;
 
 namespace ClientApp.Data.Implementation
 {
@@ -14,15 +15,14 @@ namespace ClientApp.Data.Implementation
     {
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-       // public Action<Object> RequestAnswerChange;
-        private AccessToken _accessToken;
+       
+       
 
-        public MessageController(AccessToken accessToken)
+        public MessageController()
         {
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
-            this._accessToken = accessToken;
         }
 
 

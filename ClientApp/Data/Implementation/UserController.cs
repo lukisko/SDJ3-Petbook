@@ -1,28 +1,32 @@
 ﻿using System;
+using System.Web;
 using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using ClientApp.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 
 namespace ClientApp.Data.Implementation
 {
     public class UserController : IUserController
     {
-        
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-        private AccessToken _accessToken;
+
+        private HttpContext _context;
 
         public UserController()
         {
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
-            this._accessToken = new AccessToken();
+            _context = new DefaultHttpContext();
         }
 
         public async Task<string> Register(User newUser)
@@ -39,21 +43,36 @@ namespace ClientApp.Data.Implementation
             return reply;
         }
 
-        public async Task<string> Login(string email, string code)
+        public async Task<User> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
+            HttpResponseMessage responseMessage =
+                await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
 
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
+
+            if (responseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                string token =
+                    responseMessage.Content.ReadAsStringAsync().Result;
+                _context.Session.SetString(StaticVariables.AccessToken, token);
+                var tok = _context.Session.GetString(StaticVariables.AccessToken);
+                Console.WriteLine(tok);
+            }
+
             //if check for the token 
             // store it 
-            HttpResponseMessage responseMessage2 = await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
+            HttpResponseMessage responseMessage2 =
+                await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
             Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            _accessToken.Token = reply;
-            return reply;
+
+            User user = new User();
+
+
+            return user;
         }
 
         public async Task SendEmail(string email)

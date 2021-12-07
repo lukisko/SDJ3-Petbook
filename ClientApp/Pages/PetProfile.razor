@@ -1,5 +1,6 @@
-﻿@page "/PetProfile"
+﻿@page "/PetProfile/{petId:int}"
 @inject NavigationManager NavMgr
+@inject IPetController _petController
 @*profile pane container*@
 <div class="bg-pink-300 mt-12 mx-12 rounded-xl font-mono text-xl ">
     @*profile picture, name, options container,edit button*@

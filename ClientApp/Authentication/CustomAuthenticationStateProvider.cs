@@ -8,13 +8,13 @@ using ClientApp.Model;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 
-namespace ClientApp.Authentication 
+namespace ClientApp.Authentication
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
-                private readonly IJSRuntime jsRuntime;
+        private readonly IJSRuntime jsRuntime;
         private readonly IUserController userService;
-        
+
         private User cachedUser;
 
         public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserController userService)
@@ -22,7 +22,7 @@ namespace ClientApp.Authentication
             this.jsRuntime = jsRuntime;
             this.userService = userService;
         }
-        
+
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             var identity = new ClaimsIdentity();
@@ -32,9 +32,10 @@ namespace ClientApp.Authentication
                 if (!string.IsNullOrEmpty(userAsJson))
                 {
                     User tmp = JsonSerializer.Deserialize<User>(userAsJson);
+                    identity = SetupClaimsForUser(cachedUser);
                     ValidateLogin(tmp.email, tmp.code);
                 }
-            } 
+            }
             else
             {
                 identity = SetupClaimsForUser(cachedUser);
@@ -42,29 +43,27 @@ namespace ClientApp.Authentication
 
             ClaimsPrincipal cachedClaimsPrincipal = new ClaimsPrincipal(identity);
             return await Task.FromResult(new AuthenticationState(cachedClaimsPrincipal));
-           
         }
 
-        public async Task ValidateLogin(string username, string code)
+        public async Task ValidateLogin(string email, string code)
         {
-            Console.WriteLine("Validating log in");
-            if (string.IsNullOrEmpty(username)) throw new Exception("Enter username");
+            if (string.IsNullOrEmpty(email)) throw new Exception("Enter mail");
             if (string.IsNullOrEmpty(code)) throw new Exception("Enter code");
 
             ClaimsIdentity identity = new ClaimsIdentity();
             try
             {
-               // User user =await userService.Login(username, code);
-                // identity = SetupClaimsForUser(user);
-                // string serialisedData = JsonSerializer.Serialize(user);
-                // jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", user);
-                // cachedUser = user;
-                Console.WriteLine("CAched user" +cachedUser);
+                User user = await userService.Login(email, code);
+                identity = SetupClaimsForUser(user);
+                string serialisedData = JsonSerializer.Serialize(user);
+                await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
+                cachedUser = user;
             }
             catch (Exception e)
             {
                 throw e;
             }
+
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
         }
 
@@ -81,7 +80,7 @@ namespace ClientApp.Authentication
             List<Claim> claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, user.name));
             claims.Add(new Claim("Email", user.email));
-            
+
             ClaimsIdentity identity = new ClaimsIdentity(claims, "apiauth_type");
             return identity;
         }

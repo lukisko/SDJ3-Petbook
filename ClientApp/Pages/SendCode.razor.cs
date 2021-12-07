@@ -22,7 +22,7 @@ namespace ClientApp.Pages
             {
                 //await _userController.SendEmail(email);
                 _modalService.Show<Login>();
-              await  ModalInstance.CloseAsync();
+             // await  ModalInstance.CloseAsync();
 
             }
             catch (Exception e)
