@@ -1,18 +1,13 @@
 package DatabasePersistence;
 
 import model.Pet;
-import model.User;
-import org.hibernate.Session;
 
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import java.util.ArrayList;
 import java.util.List;
 
 public class  PetDatabase implements PetPersistance
 {
-
   private Database database;
 
 
@@ -49,29 +44,30 @@ public class  PetDatabase implements PetPersistance
 
   @Override public List<Pet> loadAll()
   {
-      database.beginSession();
-      CriteriaQuery<Pet> criteria = database.getBuilder().createQuery(Pet.class);
-      criteria.from(Pet.class);
-      List<Pet> data = database.getSession().createQuery(criteria).getResultList();
-      if(data != null)
-      {
-        data.forEach((n) -> n.getUser().getPets().clear());
-        data.forEach((n) -> n.getUser().getStatuses().clear());
-        data.forEach((n) -> n.getCity().getPets().clear());
-        data.forEach((n) -> n.getCity().getCountry().getCities().clear());
-        data.forEach((n) -> n.getStatuses().forEach((a) -> a.setPet(null)));
-        data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getStatuses().clear()));
-        data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getPets().clear()));
-      }
-      return data;
+    database.beginSession();
+    CriteriaQuery<Pet> criteria = database.getBuilder().createQuery(Pet.class);
+    criteria.from(Pet.class);
+    List<Pet> data = database.getSession().createQuery(criteria).getResultList();
+    if(data != null)
+    {
+      data.forEach((n) -> n.getUser().getPets().clear());
+      data.forEach((n) -> n.getUser().getStatuses().clear());
+      data.forEach((n) -> n.getCity().getPets().clear());
+      data.forEach((n) -> n.getCity().getCountry().getCities().clear());
+      data.forEach((n) -> n.getStatuses().forEach((a) -> a.setPet(null)));
+      data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getStatuses().clear()));
+      data.forEach((n) -> n.getStatuses().forEach(a -> a.getUser().getPets().clear()));
+    }
+    database.getSession().flush();
+    return data;
   }
 
   @Override public List<Pet> LoadListOfUser(String email) {
-      database.beginSession();
-      Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
-      query.setParameter("emailValue",email);
-      List<Pet> petList = query.getResultList();
-      return petList;
+    database.beginSession();
+    Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
+    query.setParameter("emailValue",email);
+    List<Pet> petList = query.getResultList();
+    return petList;
   }
 
   @Override public int save(Pet pet)

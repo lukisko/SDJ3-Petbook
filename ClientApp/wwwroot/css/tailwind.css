@@ -17,6 +17,47 @@ Use a better box model (opinionated).
   box-sizing: border-box;
 }
 
+/*
+SVG
+*/
+.custom-shape-divider-top-1638800534 {
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1638800534 svg {
+    position: relative;
+    display: block;
+    width: calc(133% + 1.3px);
+    height: 252px;
+}
+
+.custom-shape-divider-top-1638800534 .shape-fill {
+    fill: #FF04DE;
+}
+
+.custom-shape-divider-bottom-1638803667 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1638803667 svg {
+    position: relative;
+    display: block;
+    width: calc(110% + 1.3px);
+    height: 390px;
+}
+
+.custom-shape-divider-bottom-1638803667 .shape-fill {
+    fill: #FF04DE;
+}
 /**
 Use a more readable tab size (opinionated).
 */
@@ -15384,7 +15425,11 @@ video {
 
 .bg-pink {
   --tw-bg-opacity: 1;
-  background-color: rgba(255, 105, 180, var(--tw-bg-opacity));
+  background-color: rgba(255, 4, 222, var(--tw-bg-opacity));
+}
+.bg-blue {
+  --tw-bg-opacity: 1;
+  background-color: rgba(0, 221, 245, var(--tw-bg-opacity));
 }
 
 .bg-gray-50 {

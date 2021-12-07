@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClientApp.Authentication;
+using Blazored.Modal;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
-using Microsoft.AspNetCore.Components.Authorization;
+using ClientApp.Model;
 
 namespace ClientApp
 {
@@ -32,13 +32,14 @@ namespace ClientApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IPetController, PetController>();
-            services.AddScoped<IUserController,UserController>();
-            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            // services.AddBlazoredModal();
+            services.AddScoped<IUserController, UserController>();
+            services.AddScoped<IMessageController, MessageController>();
             services
                 .AddControllersWithViews()
                 .AddRazorRuntimeCompilation();
-
+            services.AddBlazoredModal();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +58,9 @@ namespace ClientApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            
+            app.UseSession();
+            
 
             app.UseRouting();
 

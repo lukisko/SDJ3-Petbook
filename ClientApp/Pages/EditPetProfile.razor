@@ -1,0 +1,69 @@
+﻿@page "/EditPetProfile"
+@inject IPetController _petController
+@inject NavigationManager NavMgr
+@* <div class="bg-pink-300 rounded-xl font-mono text-xl "> *@
+
+@* <EditForm Model="@petToAdd" OnValidSubmit="@AddNewPet"> *@
+@*     <DataAnnotationsValidator/> <ValidationSummary/> *@
+@*     <div class="grid min-h-screen place-items-center" style="margin-top: -5rem;"> *@
+@*         <div class="w-11/12 p-3 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12"> *@
+@*             <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal">please fill in your pet information 🐶</span></h1> *@
+@*             <form class="mt-6"> *@
+@*                 <div class="flex justify-between gap-3"> *@
+@*                     <span class="w-1/2"> *@
+@*                         <label for="Name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label> *@
+@*                         $1$ <input id="Name" name="name" autocomplete="given-name" type="text" placeholder="Lucky" @bind-Value="petToAdd.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> #1# *@
+@*                         <InputText id="Name" name="name" placeholder="Lucky" autocomplete="given-name" @bind-Value="petToAdd.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
+@*                     </span> *@
+@*                     <span class="w-1/2"> *@
+@*                         <label for="Type" class="block text-xs font-semibold text-gray-600 uppercase">Type</label> *@
+@*                         <InputText id="Type" name="type" placeholder="Dog" autocomplete="animal-type" @bind-Value="petToAdd.type" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
+@*                     </span> *@
+@*                 </div> *@
+@*                 <label for="Breed" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Breed</label> *@
+@*                 <InputText id="Breed" type="text" name="breed" placeholder="Bichon Maltese" autocomplete="breed" @bind-Value="petToAdd.breed" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
+@*                 <label for="Description" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Description</label> *@
+@*                 <InputText id="Description" type="password" name="Description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToAdd.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
+@* *@
+@*                 <p for="Status" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Status</p> *@
+@*                 <InputSelect @bind-Value="petToAdd.statuses"> *@
+@*                     <option value="Regular">Regular</option> *@
+@*                     <option value="Adoption">Adoption</option> *@
+@*                     <option value="Fostering">Fostering</option> *@
+@*                     <option value="Walking">Walking</option> *@
+@*                 </InputSelect> *@
+@*                 $1$   <InputRadio id="Regular" type="radio" name="Status" value="Regular" @bind-Value="petToAdd.status"/> #1# *@
+@*                 $1$ <label for="Regular">Regular</label><br> #1# *@
+@*                 $1$ #1# *@
+@*                 $1$   <InputRadio id="Adoption" type="radio" name="Status" value="Adoption" @bind-Value="petToAdd.status"/> #1# *@
+@*                 $1$ <label for="Adoption">Adoption</label><br> #1# *@
+@*                 $1$ #1# *@
+@*                 $1$   <InputRadio id="Walking" type="radio" name="Status" value="Walking" @bind-Value="petToAdd.status"/> #1# *@
+@*                 $1$ <label for="Walking">Walking</label><br> #1# *@
+@*                 $1$ #1# *@
+@*                 $1$   <InputRadio id="Fostering" type="radio" name="Status" value="Fostering" @bind-Value="petToAdd.status"/> #1# *@
+@*                 $1$ <label for="Fostering">Fostering</label><br> #1# *@
+@* *@
+@*                 <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-pink shadow-lg focus:outline-none hover:bg-pink-900 hover:shadow-none"> *@
+@*                     Create Pet Profile *@
+@*                 </button> *@
+@*             </form> *@
+@*         </div> *@
+@*     </div> *@
+@* </EditForm> *@
+
+<div class="custom-shape-divider-top-1638800534 bg-blue">
+    <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+</div>
+
+<div class=" bg-blue custom-shape-divider-bottom-1638803667">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+</div>
+
+
+
+@* </div> *@

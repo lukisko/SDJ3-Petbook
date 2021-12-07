@@ -20,7 +20,9 @@ namespace ClientApp.Data
         /// <returns> IList with all pets account</returns>
         Task<IList<Pet>> GetAllPetsAsync();
 
-        // Task<IList<Pet>> GetAllUserPetsAsync(string userEmail);
+         Task<IList<Pet>> GetAllUserPetsAsync();
+         
+         Task<Pet> GetPetProfileAsync(int petId);
         // Task UpdatePet(Pet pet);
         // Task DeletePet(int petId);
  

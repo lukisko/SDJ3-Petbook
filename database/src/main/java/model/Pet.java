@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "pet")
@@ -36,10 +37,13 @@ public class Pet implements Serializable
 
 
 
-  public Pet(){}
+  public Pet(){
+    statuses = new ArrayList<>();
+  }
   public Pet(String name, City city){
     this.name = name;
     this.city = city;
+    statuses = new ArrayList<>();
   }
 
   public int getId()
