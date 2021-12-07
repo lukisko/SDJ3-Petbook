@@ -75,4 +75,13 @@ public class StatusDatabase implements StatusPersistence
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
+
+  @Override public Status update(Status status)
+  {
+    database.beginSession();
+    database.getSession().update(status);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+    return status;
+  }
 }

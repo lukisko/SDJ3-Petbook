@@ -31,4 +31,5 @@ public interface Model
   List<Status> getAllStatuses();
   int addStatus(Status status);
   void removeStatus(Status status);
+  Status updateStatus(Status status);
 }
