@@ -11,6 +11,8 @@ namespace business_logic.Controllers
         [HttpGet]
         Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id, [FromQuery] string email, [FromQuery] string status);
         [HttpPost]
-        Task<ActionResult<String>> AddPet(Pet pet,[FromQuery] string token);
+        Task<ActionResult<Pet>> AddPet(Pet pet,[FromQuery] string token);
+        [HttpPut]
+        Task<ActionResult<Pet>> UpdatePet(Pet pet, [FromQuery] string token);
     }
 }

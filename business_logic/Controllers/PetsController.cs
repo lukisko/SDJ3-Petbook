@@ -30,7 +30,7 @@ namespace business_logic.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<String>> AddPet(Pet pet, [FromQuery] string token){
+        public async Task<ActionResult<Pet>> AddPet(Pet pet, [FromQuery] string token){
             if (String.IsNullOrEmpty(token)){
                 return StatusCode(400, "token needs to be specified.");
             }
@@ -39,6 +39,19 @@ namespace business_logic.Controllers
                 return StatusCode(201,newPet);
             } catch (AccessViolationException e){
                 return StatusCode(401, e.Message);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<Pet>> UpdatePet(Pet pet, [FromQuery] string token){
+            if (String.IsNullOrEmpty(token)){
+                return StatusCode(400, "token needs to be specified.");
+            }
+            try {
+                Pet newerPet = await model.updatePetAsync(pet,token);
+                return StatusCode(201, newerPet);
+            } catch (AccessViolationException e){
+                return StatusCode(401,e.Message);
             }
         }
     }

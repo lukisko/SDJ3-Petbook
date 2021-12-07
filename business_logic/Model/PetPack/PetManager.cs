@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.Mediator;
+using System.Linq;
 
 namespace business_logic.Model.PetPack
 {
@@ -40,10 +41,93 @@ namespace business_logic.Model.PetPack
             return pet;
         }
         public async Task<Pet> updatePet(Pet newPet){
+            Pet oldPet = await tier2Mediator.requestPet(newPet.id);//you can not change id of pet
+            if (oldPet == null){
+                return null;
+            }
+
+            //checking if a new status is added, old one is updated or deleted
+            List<Status> orderedNewStatus = this.orderStatusesByIdLowToHigh((List<Status>) newPet.statuses);
+            List<Status> orderedOldStatus = this.orderStatusesByIdLowToHigh((List<Status>) oldPet.statuses);
+            int oldLength = orderedOldStatus.Count;
+            int notCheckedIndex = 0;
+            foreach (Status newStatus in orderedNewStatus){
+                if (notCheckedIndex>=oldLength){
+                    await tier2Mediator.addStatus(newStatus);
+                }
+                if (newStatus.id<orderedOldStatus[notCheckedIndex].id){
+                    await tier2Mediator.addStatus(newStatus);
+                } else if (newStatus.id == orderedOldStatus[notCheckedIndex].id){
+                    if (newStatus.user.email != orderedOldStatus[notCheckedIndex].user.email){
+                        Status theStatus = await tier2Mediator.getStatus(newStatus);
+                        User theUser = await tier2Mediator.GetUser(new AuthorisedUser(){email = newStatus.user.email});
+                        theStatus.user = theUser;
+                        await tier2Mediator.updateStatus(theStatus);
+                    }
+                    notCheckedIndex++;
+                } else {
+                    await tier2Mediator.removeStatus(orderedOldStatus[notCheckedIndex]);
+                    notCheckedIndex++;
+                }
+
+
+            }
+
+            if (newPet.city.country.name != oldPet.city.country.name){//if the pet is in new country or city, we need to check it
+                Country newCountry = await tier2Mediator.GetCountry(newPet.city.country);
+                if (newCountry == null){
+                    newCountry = await tier2Mediator.AddCountry(newPet.city.country);
+                }
+                //check if the city needs to be added
+                newPet.city.country = newCountry;
+                City newCity = await tier2Mediator.GetCity(newPet.city);
+                if (newCity == null){
+                    newCity = await tier2Mediator.AddCity(newPet.city);
+                }
+                newPet.city = newCity;
+            } else if (newPet.city.name != oldPet.city.name){
+                City newCity = await tier2Mediator.GetCity(newPet.city);
+                if (newCity == null){
+                    newCity = await tier2Mediator.AddCity(newPet.city);
+                }
+                newPet.city = newCity;
+            }
             return await tier2Mediator.updatePet(newPet);
         }
         public async Task<Pet> deletePet(Pet oldPet){
             return await tier2Mediator.deletePet(oldPet);
+        }
+
+        private List<Status> orderStatusesByIdLowToHigh(List<Status> list){
+            int length = list.Count;
+            if (length < 3){
+                if (length < 2){
+                    return list;
+                }
+                if (list[0].id>list[1].id){
+                    return new List<Status>(){list[1],list[0]};
+                }
+                return list;
+            }
+            //making quicksort
+            List<Status> lowerOrEqualValue = new List<Status>();
+            List<Status> higerValue = new List<Status>();
+            List<Status> returnValue = new List<Status>(length);
+
+            int separateValue = list[0].id;
+
+            foreach (Status status in list){
+                if (status.id> separateValue){
+                    higerValue.Add(status);
+                } else {
+                    lowerOrEqualValue.Add(status);
+                }
+            }
+
+            returnValue.AddRange(this.orderStatusesByIdLowToHigh(lowerOrEqualValue));
+            returnValue.AddRange(this.orderStatusesByIdLowToHigh(higerValue));
+
+            return returnValue;
         }
     }
 }
