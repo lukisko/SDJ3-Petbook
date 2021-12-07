@@ -15,7 +15,7 @@ namespace business_logic
 {
     public class Program
     {
-        public async static Task Main(string[] args)
+        public static void Main(string[] args)
         {
             //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
             //await test.requestPets(); //delete also async

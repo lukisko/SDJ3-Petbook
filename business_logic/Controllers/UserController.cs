@@ -44,7 +44,7 @@ namespace business_logic.Controllers
                 }
                 Console.WriteLine("send the token");
                 return StatusCode(200,token);
-            }catch (Exception e){
+            }catch {
                 return StatusCode(400,"the login was not successful");
             }
         }

@@ -32,18 +32,19 @@ namespace business_logic.Controllers
             try{
                 await model.register(new Model.User(){name = "test", email = emailAddress});
                 response+= "test 1 succeded\n";
-            } catch (Exception e){
+            } catch {
                 Console.WriteLine("Test 1 failed or you did not change email address!");
-                response+= "test 1 not succeded\n";
+                response+= "test 1 (register) not succeded\n";
             }
+
             Console.WriteLine("\ntest 2 started:");
             try{
                 token = await model.login(emailAddress,"FCVVPPA");
                 Console.WriteLine("Test 2 successful");
                 response+= "test 2 succeded\n";
-            } catch (Exception e){
+            } catch {
                 Console.WriteLine("Test 2 failed!");
-                response+= "test 2 not succeded\n";
+                response+= "test 2 (login) not succeded\n";
             }
 
             Console.WriteLine("\ntest 3 started:");
@@ -71,10 +72,10 @@ namespace business_logic.Controllers
                 thePet = await model.createPetAsync(pet, token);
                 Console.WriteLine("Test 3 successful");
                 response+= "test 3 succeded\n";
-            } catch (Exception e){
+            } catch (Exception e) {
                 Console.WriteLine("Test 3 failed!");
                 Console.WriteLine(e);
-                response+= "test 3 not succeded \n";
+                response+= "test 3 (add pet) not succeded \n";
             }
             //0/////////////////////////////////////
             Console.WriteLine("\ntest 4 started:");
@@ -82,9 +83,9 @@ namespace business_logic.Controllers
                 await model.getPetsAsync();
                 Console.WriteLine("Test 4 successful");
                 response+= "test 4 succeded\n";
-            } catch (Exception e){
+            } catch {
                 Console.WriteLine("Test 4 failed!");
-                response+= "test 4 not succeded\n";
+                response+= "test 4 (get all pets) not succeded\n";
             }
             //0/////////////////////////////////////
             Console.WriteLine("\ntest 5 started:");
@@ -92,9 +93,9 @@ namespace business_logic.Controllers
                 await model.getPetsAsync(new AuthorisedUser(){email =emailAddress});
                 Console.WriteLine("Test 5 successful");
                 response+= "test 5 succeded\n";
-            } catch (Exception e){
+            } catch {
                 Console.WriteLine("Test 5 failed!");
-                response+= "test 5 not succeded\n";
+                response+= "test 5 (get pets or a user) not succeded\n";
             }
             //0/////////////////////////////////////
             Console.WriteLine("\ntest 6 started:");
@@ -104,15 +105,51 @@ namespace business_logic.Controllers
                     id = 0
                 };
                 thePet.statuses.Add(status);
-                await model.updatePetAsync(thePet, token);
+                Pet pet = await model.updatePetAsync(thePet, token);
+                if (pet.statuses.Count == 0){
+                    throw new Exception("status was not added");
+                }
                 Console.WriteLine("Test 6 successful");
                 response+= "test 6 succeded\n";
-            } catch (Exception e){
+            } catch {
                 Console.WriteLine("Test 6 failed!");
-                response+= "test 6 not succeded\n";
+                response+= "test 6 (add status) not succeded\n";
+            }
+            //0/////////////////////////////////////
+            Console.WriteLine("\ntest 7 started:");
+            try{
+                thePet.statuses = new List<Status>();
+                await model.updatePetAsync(thePet, token);
+                Console.WriteLine("Test 7 successful");
+                response+= "test 7 succeded\n";
+            } catch {
+                Console.WriteLine("Test 7 failed!");
+                response+= "test 7 (remove status) not succeded\n";
+            }
+            //0/////////////////////////////////////
+            Console.WriteLine("\nTest 8 started:");
+            try{
+                await model.deletePetAsync(thePet,token);
+                Console.WriteLine("Test 8 successful");
+                response+= "test 7 succeded\n";
+            } catch {
+                Console.WriteLine("Test 8 failed!");
+                response+= "test 8 (remove pet) not succeded\n";
             }
             return StatusCode(301, response);
             
+        }
+
+        private string makeTest(Action testMethod, int number, string testType){
+            Console.WriteLine($"\ntest "+number+" ({testType})started:");
+            try {
+                testMethod();
+                Console.WriteLine("Test "+number+" succesfull.");
+                return $"test {number} succeded\n";
+            } catch {
+                Console.WriteLine($"Test {number} failed!");
+                return $"test {number} ({testType}) not succesfull";
+            }
         }
     }
 }
