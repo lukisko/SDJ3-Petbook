@@ -9,8 +9,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/EditPetProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/EditPetProfile.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/wwwroot/css/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/wwwroot/css/tailwind.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +155,7 @@
       <workItem from="1638778480994" duration="10383000" />
       <workItem from="1638866102673" duration="13748000" />
       <workItem from="1638883875056" duration="532000" />
-      <workItem from="1638884434973" duration="3450000" />
+      <workItem from="1638884434973" duration="4659000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>

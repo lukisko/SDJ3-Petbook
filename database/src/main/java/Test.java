@@ -26,7 +26,7 @@ public class Test {
 //    model.updatePet(pet2);
     Model model = new ModelManager();
 
-    System.out.println(model.getStatusList(6));
+    System.out.println(model.getPetList("pleva@usa.com"));
 
   }
 }

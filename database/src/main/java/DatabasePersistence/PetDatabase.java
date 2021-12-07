@@ -63,6 +63,12 @@ public class  PetDatabase implements PetPersistance
     Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
     query.setParameter("emailValue",email);
     List<Pet> petList = query.getResultList();
+    if(petList != null){
+      petList.forEach(pet -> pet.getStatuses().clear());
+      petList.forEach(pet -> pet.getUser().getPets().clear());
+      petList.forEach(pet -> pet.getUser().getStatuses().clear());
+      petList.forEach(pet -> pet.getCity().getCountry().getCities().clear());
+    }
     return petList;
   }
 
