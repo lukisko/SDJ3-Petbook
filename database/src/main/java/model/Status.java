@@ -19,9 +19,6 @@ public class Status
   @JoinColumn(name="user_email")
   private User user;
 
-  public Status(){
-    System.out.println("just do it.");
-  }
 
   public Pet getPet()
   {
