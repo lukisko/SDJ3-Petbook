@@ -100,7 +100,7 @@ namespace business_logic.Model.Mediator
         public async Task<V> requestServerAsync<T,V>(T classToSend){
             //sending
             string s = JsonSerializer.Serialize(classToSend);
-            Console.WriteLine("sending: \t"+s);
+            Console.WriteLine("*****\nsending: \t"+s + "\n");
             byte[] dataToServer = Encoding.ASCII.GetBytes(s);
             await stream.WriteAsync(dataToServer);
             
@@ -109,7 +109,7 @@ namespace business_logic.Model.Mediator
             byte[] dataFromServer = new byte[2048];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
-            Console.WriteLine("receiving: \t"+response);
+            Console.WriteLine("*****\nreceiving: \t"+response + "\n");
 
             Comunication<Object> comm = JsonSerializer.Deserialize<Comunication<Object>>(response);
             if (String.IsNullOrEmpty(comm.type) || comm.type.Equals("error")){

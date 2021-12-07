@@ -3,6 +3,7 @@ using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.Mediator;
 using System.Linq;
+using System;
 
 namespace business_logic.Model.PetPack
 {
@@ -49,6 +50,9 @@ namespace business_logic.Model.PetPack
             //checking if a new status is added, old one is updated or deleted
             List<Status> orderedNewStatus = this.orderStatusesByIdLowToHigh((List<Status>) newPet.statuses);
             List<Status> orderedOldStatus = this.orderStatusesByIdLowToHigh((List<Status>) oldPet.statuses);
+            Console.WriteLine(orderedNewStatus);
+            Console.WriteLine(orderedOldStatus);
+            
             int oldLength = orderedOldStatus.Count;
             int notCheckedIndex = 0;
             foreach (Status newStatus in orderedNewStatus){
@@ -69,8 +73,11 @@ namespace business_logic.Model.PetPack
                     await tier2Mediator.removeStatus(orderedOldStatus[notCheckedIndex]);
                     notCheckedIndex++;
                 }
+            }
 
-
+            while (notCheckedIndex < orderedOldStatus.Count){
+                await tier2Mediator.removeStatus(orderedOldStatus[notCheckedIndex]);
+                notCheckedIndex++;
             }
 
             if (newPet.city.country.name != oldPet.city.country.name){//if the pet is in new country or city, we need to check it

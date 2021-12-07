@@ -98,6 +98,10 @@ namespace business_logic.Model
             }
             pet.user.email = email;
             pet.user.name = (await userManager.GetUser(email)).name;
+            foreach (Status status in pet.statuses){
+                status.pet = Pet.copy(pet);
+                status.pet.statuses = new List<Status>();
+            };
             Pet newPet = await petManager.updatePet(pet);
             return newPet;
         }
