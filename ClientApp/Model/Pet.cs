@@ -1,19 +1,19 @@
 using System;
 using System.Net.Mail;
-
+using System.Collections.Generic;
 
 namespace ClientApp.Model
 {
     public class Pet
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Breed { get; set; }
-        public string Description { get; set; }
-        public string Status { get; set; }
-        public DateTime Birthdate { get; set; }
-        public City City { get; set; }
-        public User user { get; set; }
+        public int id {get; set;}
+        public string name {get; set;}
+        public string type {get;set;}
+        public string breed {get;set;}
+        public string description {get;set;}
+        public IList<Status> statuses { get; set; }
+        public DateTime Birthdate {get;set;}
+        public City city {get;set;}
+        public User user {get;set;}
     }
 }
