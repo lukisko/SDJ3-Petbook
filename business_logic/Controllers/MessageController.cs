@@ -23,35 +23,22 @@ namespace business_logic.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] string token){
-            Console.WriteLine("conneted to get messages!");
-            await model.sendCode("pleva@usa.com");
-            string token2 = await model.login("pleva@usa.com","FCVVPPA");
-            Pet pet = new Pet(){
-                name = "REX",
-                type = "dog",
-                description = "good dog",
-                birthdate = new DateTime(2020,10,10),
-                statuses = new List<Status>(),
-                user = new User(){
-                    name = "Lukisko",
-                    email = "pleva@usa.com"
-                },
-                city = new City(){
-                    name = "theCity",
-                    country = new Country(){
-                        name = "USA"
-                    }
-                }
-            };
-            await model.createPetAsync(pet,token2);
-            return StatusCode(501,"not implemented geting of messages with a person");
+        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int petId, [FromQuery] string token){
+            try{
+                return StatusCode(201, await model.GetMessages(petId, token));
+            } catch (AccessViolationException e){
+                return StatusCode(401,e.Message);
+            }
         }
 
         [HttpPost]
         public async Task<ActionResult<string>> SendMessage([FromQuery] string token, Message message){
-            Console.WriteLine("conneted to get messages!");
-            return StatusCode(501,"not implemented, sorry");
+            try{
+                await model.sendMessage(message,token);
+                return StatusCode(201);
+            } catch (AccessViolationException e){
+                return StatusCode(401,e.Message);
+            }
         }
     }
 }
