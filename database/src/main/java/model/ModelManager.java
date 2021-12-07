@@ -64,7 +64,9 @@ public class ModelManager implements Model
 
   @Override public Pet updatePet(Pet pet)
   {
-    return petPersistance.update(pet);
+    Pet toUpdate = petPersistance.loadPet(pet.getId());
+    toUpdate.setPet(pet);
+    return petPersistance.update(toUpdate);
   }
 
   @Override public City getCity(String name) {
@@ -127,5 +129,12 @@ public class ModelManager implements Model
   @Override public void removeStatus(Status status)
   {
     statusPersistence.delete(status);
+  }
+
+  @Override public Status updateStatus(Status status)
+  {
+    Status toUpdate = statusPersistence.loadStatus(status.getId());
+    toUpdate.setStatus(status);
+    return statusPersistence.update(toUpdate);
   }
 }

@@ -55,6 +55,12 @@ public class Status
     return name;
   }
 
+  public void setStatus(Status status){
+    this.name = status.name;
+    this.user = status.user;
+    this.pet = status.pet;
+  }
+
   @Override public String toString()
   {
     return "Status{" + "id=" + id + ", name='" + name + '\'' + ", pet=" + pet

@@ -75,6 +75,26 @@ public class Pet implements Serializable
     return user;
   }
 
+  public String getType()
+  {
+    return type;
+  }
+
+  public char getGender()
+  {
+    return gender;
+  }
+
+  public String getBirthdate()
+  {
+    return birthdate;
+  }
+
+  public String getBreed()
+  {
+    return breed;
+  }
+
   public String getDescription()
   {
     return description;
@@ -83,6 +103,16 @@ public class Pet implements Serializable
   public void setDescription(String description)
   {
     this.description = description;
+  }
+
+  public void setPet(Pet pet){
+    this.name = pet.getName();
+    this.city = pet.getCity();
+    this.user = pet.getUser();
+    this.type = pet.getType();
+    this.breed = pet.getBreed();
+    this.gender = pet.getGender();
+    this.statuses = pet.getStatuses();
   }
 
   public List<Status> getStatuses()

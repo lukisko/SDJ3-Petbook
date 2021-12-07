@@ -1,3 +1,5 @@
+import com.google.gson.Gson;
+import mediator.Comunication;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,22 +14,15 @@ public class Test {
 
   public static void main(String[] args) {
 
-    Model model = new ModelManager();
-    Pet pet = new Pet();
-    City city = new City();
-    User user = new User("asd");
-    Country country = new Country("asd");
-
-    model.addCountry(country);
-    model.addUser(user);
-
-    city.setName("asd");
-    city.setCountry(model.getCountry("asd"));
-
-    pet.setUser(user);
-    pet.setCity(city);
-
-    model.addCity(city);
-    model.addPet(pet);
+//    Gson gson = new Gson();
+//    Model model = new ModelManager();
+//    Pet pet = model.getPet(6);
+//    pet.setName("working");
+//    String received = gson.toJson(pet);
+//
+//    Pet thepet = gson.fromJson(received, Pet.class);
+//    Pet pet2 = model.getPet(6);
+//    pet2.setPet(thepet);
+//    model.updatePet(pet2);
   }
 }

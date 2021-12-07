@@ -12,4 +12,5 @@ public interface StatusPersistence
   List<Status> loadAll();
   int save(Status status);
   void delete(Status status);
+  Status update(Status status);
 }
