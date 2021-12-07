@@ -97,7 +97,7 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 20 "C:\Users\ionge\Desktop\VIA UNIVERSITY\3sem\SEP3\SDJ3-Petbook\ClientApp\Shared\MainLayout.razor"
+#line 20 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\MainLayout.razor"
  
     [CascadingParameter] protected Task<AuthenticationState>AuthStat { get; set; }
 
