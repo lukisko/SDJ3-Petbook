@@ -7,7 +7,7 @@ namespace ClientApp.Pages
 {
     public partial class AddPet : ComponentBase
     {
-        public Pet petToAdd = new Pet() {Id = 0, Birthdate = new DateTime(2013, 03, 03), Status = "Regular", City = new City()
+        public Pet petToAdd = new Pet() {id = 0, Birthdate = new DateTime(2013, 03, 03), statuses = {}, city = new City()
         {
             country = new Country()
         }};
