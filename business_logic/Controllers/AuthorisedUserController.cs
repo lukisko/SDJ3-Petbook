@@ -26,8 +26,10 @@ namespace business_logic.Controllers
         public async Task<ActionResult<AuthorisedUser>> getAuthorisedUser([FromQuery] string token){
             AuthorisedUser user = await model.GetAuthorisedUser(token);
             if (user == null){
+                
                 return StatusCode(404,"user with that access token was not found");
             }
+            user.pets= (await model.getPetsAsync(user)).ToArray();
             return StatusCode(200,user);
         }
     }
