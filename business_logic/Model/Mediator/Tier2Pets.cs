@@ -78,10 +78,10 @@ namespace business_logic.Model.Mediator
         public async Task<Pet> createPet(Pet newPet){
             Comunication<Pet> commClass = new Comunication<Pet>(theType,"Add",newPet);
 
-            Pet thePet = await tier2.requestServerAsync<Comunication<Pet>,Pet>(commClass);
+            Comunication<Pet> thePet = await tier2.requestServerAsync<Comunication<Pet>,Comunication<Pet>>(commClass);
 
             Console.WriteLine(JsonSerializer.Serialize(thePet));
-            return thePet;
+            return thePet.value;
         }
 
         public async Task<Pet> deletePet(Pet petToDelete){//TODO delete 

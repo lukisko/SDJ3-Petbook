@@ -12,7 +12,7 @@ namespace business_logic.Model
         public string breed {get;set;}
         public string description {get;set;}
         public IList<Status> statuses { get; set; }
-        public DateTime Birthdate {get;set;}
+        public DateTime birthdate {get;set;}
         public City city {get;set;}
         public User user {get;set;}
         public char gender {get;set;}
