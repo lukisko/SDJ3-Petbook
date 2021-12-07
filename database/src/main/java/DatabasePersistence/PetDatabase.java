@@ -90,4 +90,13 @@ public class PetDatabase implements PetPersistance
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
+
+  @Override public Pet update(Pet pet)
+  {
+    database.beginSession();
+    database.getSession().update(pet);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+    return pet;
+  }
 }

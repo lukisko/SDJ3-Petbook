@@ -18,16 +18,17 @@ public class Test {
     User user = new User("asd");
     Country country = new Country("asd");
 
-    model.addCountry(country);
+
 
     city.setName("asd");
     city.setCountry(model.getCountry("asd"));
 
     pet.setUser(user);
     pet.setCity(city);
+    pet.setId(1);
+    pet.setName("change");
 
-    model.addUser(user);
-    model.addCity(city);
-    model.addPet(pet);
+
+    model.updatePet(pet);
   }
 }
