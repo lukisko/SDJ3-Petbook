@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
@@ -7,7 +8,7 @@ namespace ClientApp.Pages
 {
     public partial class AddPet : ComponentBase
     {
-        public Pet petToAdd = new Pet() {id = 0, Birthdate = new DateTime(2013, 03, 03), status = "Regular", city = new City()
+        public Pet petToAdd = new Pet() {id = 0, birthdate = new DateTime(2013, 03, 03), statuses = new List<Status>(), city = new City()
         {
             country = new Country()
         }};
