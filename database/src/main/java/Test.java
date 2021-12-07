@@ -14,19 +14,18 @@ public class Test {
 
   public static void main(String[] args) {
 
-//    Gson gson = new Gson();
-//    Model model = new ModelManager();
-//    Pet pet = model.getPet(6);
-//    pet.setName("working");
-//    String received = gson.toJson(pet);
-//
-//    Pet thepet = gson.fromJson(received, Pet.class);
-//    Pet pet2 = model.getPet(6);
-//    pet2.setPet(thepet);
-//    model.updatePet(pet2);
+    Gson gson = new Gson();
     Model model = new ModelManager();
+    Pet pet = new Pet();
+    pet.setId(6);
+    Status status = new Status();
+    status.setName("fostering");
 
-    System.out.println(model.getPetList("pleva@usa.com"));
+
+    status.setPet(pet);
+
+    model.addStatus(status);
+
 
   }
 }

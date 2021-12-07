@@ -31,11 +31,11 @@ SVG
     position: relative;
     display: block;
     width: calc(133% + 1.3px);
-    height: 252px;
+    height: 250px;
 }
 
 .custom-shape-divider-top-1638800534 .shape-fill {
-    fill: #00029E;
+    fill: rgba(52, 211, 153, var(--tw-bg-opacity));
 }
 
 .custom-shape-divider-bottom-1638803667 {
@@ -52,11 +52,11 @@ SVG
     position: relative;
     display: block;
     width: calc(110% + 1.3px);
-    height: 390px;
+    height: 290px;
 }
 
 .custom-shape-divider-bottom-1638803667 .shape-fill {
-    fill: #00029E;
+    fill: rgba(52, 211, 153, var(--tw-bg-opacity));
 }
 /**
 Use a more readable tab size (opinionated).
@@ -15425,7 +15425,7 @@ video {
 
 .bg-pink {
   --tw-bg-opacity: 1;
-  background-color: rgba(255, 4, 222, var(--tw-bg-opacity));
+  background-color: #00029E;;
 }
 .bg-blue {
   --tw-bg-opacity: 1;
