@@ -87,7 +87,7 @@ namespace business_logic.Model.Mediator
         public async Task<Pet> deletePet(Pet petToDelete){//TODO delete 
             Comunication<Pet> commClass = new Comunication<Pet>(theType,"Remove",petToDelete);
 
-            Comunication<string> serverResponse = await tier2.requestServerAsync<Comunication<Pet>,Comunication<string>>(commClass);
+            Comunication<Pet> serverResponse = await tier2.requestServerAsync<Comunication<Pet>,Comunication<Pet>>(commClass);
 
             return petToDelete;
         }
@@ -95,9 +95,9 @@ namespace business_logic.Model.Mediator
         public async Task<Pet> updatePet(Pet petToUpdate){ //may by changed in connection for better handling in Tier3
             Comunication<Pet> commClass = new Comunication<Pet>(theType,"Update",petToUpdate);
 
-            Pet thePet = await tier2.requestServerAsync<Comunication<Pet>,Pet>(commClass);
+            Comunication<Pet> thePet = await tier2.requestServerAsync<Comunication<Pet>,Comunication<Pet>>(commClass);
 
-            return thePet;
+            return thePet.value;
         }
     }
 }
