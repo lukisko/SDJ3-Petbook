@@ -56,6 +56,7 @@ namespace business_logic.Model.PetPack
             int oldLength = orderedOldStatus.Count;
             int notCheckedIndex = 0;
             foreach (Status newStatus in orderedNewStatus){
+                newStatus.pet.id = newPet.id;
                 if (notCheckedIndex>=oldLength){
                     await tier2Mediator.addStatus(newStatus);
                 }
