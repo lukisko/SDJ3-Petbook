@@ -6,6 +6,7 @@ namespace business_logic.Model.MessagePack
     public interface IMessageManager
     {
         void sendMessage(Message message);
-        IList<Message> getMessages(int identifier);
+        IList<Message> getMessages(int receiverId, int senderId);
+        IList<int> getPetIdOfMessages(int receiverId);
     }
 }

@@ -15,29 +15,67 @@ namespace business_logic.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class MessageController :ControllerBase
+    public class MessageController : ControllerBase
     {
         private IModel model;
-        public MessageController(IModel model){
+        public MessageController(IModel model)
+        {
             this.model = model;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int receiverPetId,[FromQuery] int? senderPetId, [FromQuery] string token){
-            try{
-                return StatusCode(201, await model.GetMessages(receiverPetId, token));
-            } catch (AccessViolationException e){
-                return StatusCode(401,e.Message);
+        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int receiverPetId, [FromQuery] int? senderPetId, [FromQuery] string token)
+        {
+            if (senderPetId == null)
+            {
+                try
+                {
+                    return StatusCode(201, await model.GetMessagePets(receiverPetId, token));
+                }
+                catch (AccessViolationException e)
+                {
+                    return StatusCode(401, e.Message);
+                }
+            }
+            else
+            {
+                try
+                {
+                    return StatusCode(201, await model.GetMessages(receiverPetId, (int)senderPetId, token));
+                }
+                catch (AccessViolationException e)
+                {
+                    return StatusCode(401, e.Message);
+                }
+            }
+
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IList<Pet>>> GetMessages([FromQuery] int receiverPetId, [FromQuery] string token)
+        {
+            try
+            {
+                return StatusCode(201, await model.GetMessagePets(receiverPetId, token));
+            }
+            catch (AccessViolationException e)
+            {
+                return StatusCode(401, e.Message);
             }
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> SendMessage([FromQuery] string token, Message message){
-            try{
-                await model.sendMessage(message,token);
+        public async Task<ActionResult<string>> SendMessage([FromQuery] string token, Message message)
+        {
+            try
+            {
+                await model.sendMessage(message, token);
                 return StatusCode(201);
-            } catch (AccessViolationException e){
-                return StatusCode(401,e.Message);
+            }
+            catch (AccessViolationException e)
+            {
+                return StatusCode(401, e.Message);
             }
         }
     }

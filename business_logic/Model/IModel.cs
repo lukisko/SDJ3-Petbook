@@ -62,6 +62,7 @@ namespace business_logic.Model
         Task<AuthorisedUser> register(User user);
 
         Task sendMessage(Message message, string token);
-        Task<IList<Message>> GetMessages(int petId, string token);
+        Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token);
+        Task<IList<Pet>> GetMessagePets(int receiverPetId, string token);
     }
 }
