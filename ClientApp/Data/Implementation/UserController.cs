@@ -53,25 +53,30 @@ namespace ClientApp.Data.Implementation
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
 
-            if (responseMessage.StatusCode == HttpStatusCode.OK)
+            if (responseMessage.StatusCode == HttpStatusCode.NotFound)
             {
-                string token =
-                    responseMessage.Content.ReadAsStringAsync().Result;
-                _context.Session.SetString(StaticVariables.AccessToken, token);
-                var tok = _context.Session.GetString(StaticVariables.AccessToken);
-                Console.WriteLine(tok);
+                throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
 
-            //if check for the token 
-            // store it 
-            HttpResponseMessage responseMessage2 =
-                await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
-            Console.WriteLine(responseMessage.Content.ReadAsStringAsync().Result);
-            string reply = await responseMessage.Content.ReadAsStringAsync();
+            var token = responseMessage.Content.ReadAsStringAsync().Result;
+            StaticVariables.AccessTokensLibrary.Add(StaticVariables.AccessToken, token);
 
-            User user = new User();
+            // test
+            var tok = StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken];
 
+            Console.WriteLine(tok);
+            //test
+            HttpResponseMessage authUserResponseMessage =
+                await client.GetAsync(
+                    $"{StaticVariables.URL}/AuthorisedUser?token={tok}");
+            if (responseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new AuthenticationException(authUserResponseMessage.Content.ReadAsStringAsync().Result);
+            }
 
+            Console.WriteLine(authUserResponseMessage.Content.ReadAsStringAsync().Result);
+            string reply = await authUserResponseMessage.Content.ReadAsStringAsync();
+            User user = JsonConvert.DeserializeObject<User>(reply);
             return user;
         }
 

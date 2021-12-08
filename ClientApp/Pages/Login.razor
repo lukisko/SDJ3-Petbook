@@ -1,37 +1,31 @@
 ﻿@page "/Login"
-@page "/Login/{Email}"
+
 
 @inject IUserController _userController
 @inject NavigationManager NavMgr
 @inject IModalService _modalService
 
 
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-xl">
+<div class="min-h-full flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-xl">
     <div class="w-auto space-y-7  ">
         <div>
-            <img class="mx-auto h-38 w-auto" src="Images/Logo1.png" alt="Workflow">
+            <img class="mx-auto h-38 w-auto" src="Images/Logo1.png" alt="PetBook Logo">
             <h2 class="mt-1 text-center text-3xl font-bold text-gray-500">
-                Sign in to your account
+                Log in to your account
             </h2>
         </div>
-        <EditForm Model="@_userController" OnValidSubmit="@LoginUser">
+        <EditForm Model="@_userController" OnValidSubmit="@(LoginUser)">
             <div class=" shadow-sm space-y-px  ">
-                <div>
-                    <InputText class="rounded-xl appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="email" placeholder="Email" @bind-Value="Email">@Email</InputText>
+                <div class="flex flex-col space-y-2 rounded-xl">
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" required placeholder="Email" @bind-Value="Email"/>
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" required placeholder="Confirmation Code" @bind-Value="_confirmationCode"/>
                 </div>
-                <div class="flex space-y-5">
-                    <InputText class="rounded-xl appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" placeholder="Code" @bind-Value="_confirmationCode"/>
-                </div>
-            </div >
+            </div>
             <DataAnnotationsValidator/> <ValidationSummary/>
             <div class="text-red-500 text-center">@_errorMessage</div>
-            <div class="flex flex-wrap content-center">
-                <button type="submit" class="group relative w- flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Log in
-                </button>
-                <button  class="group relative w- flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-black  bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @onclick="ShowRegister">
-                    Sign Up
-                </button>
+            <div class="flex flex-row mt-4 space-x-4 ">
+                <button class="bg-pink-200 w-full py-1  rounded-xl hover:bg-pink-400    focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" type="submit">Log in</button>
+                <button class="bg-white w-full py-1  rounded-xl hover:bg-gray-300   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="() => ShowRegister()">Sign up</button>
             </div>
         </EditForm>
     </div>

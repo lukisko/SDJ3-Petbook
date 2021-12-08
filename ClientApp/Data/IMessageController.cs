@@ -7,7 +7,9 @@ namespace ClientApp.Data
     public interface IMessageController
     {
        Task SendMessageAsync(Message message);
-      Task<IList<Message>> GetAllMessagesWithAUserAsync(int receiverPetId);
+      Task<IList<Message>> GetAllMessagesAsync(int receiverPetId);
+     // Task<IList<Message>> GetAllMessageLog(int petId);
+
       
     }
 }

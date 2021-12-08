@@ -33,14 +33,13 @@ namespace ClientApp.Authentication
                 {
                     User tmp = JsonSerializer.Deserialize<User>(userAsJson);
                     identity = SetupClaimsForUser(cachedUser);
-                    ValidateLogin(tmp.email, tmp.code);
+                  await ValidateLogin(tmp.email, tmp.code);
                 }
             }
             else
             {
                 identity = SetupClaimsForUser(cachedUser);
             }
-
             ClaimsPrincipal cachedClaimsPrincipal = new ClaimsPrincipal(identity);
             return await Task.FromResult(new AuthenticationState(cachedClaimsPrincipal));
         }
@@ -73,6 +72,7 @@ namespace ClientApp.Authentication
             var user = new ClaimsPrincipal(new ClaimsIdentity());
             jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
+            StaticVariables.AccessTokensLibrary.Remove(StaticVariables.AccessToken);
         }
 
         private ClaimsIdentity SetupClaimsForUser(User user)

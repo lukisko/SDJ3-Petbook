@@ -4,10 +4,11 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace ClientApp.Data.Implementation
 {
@@ -15,8 +16,7 @@ namespace ClientApp.Data.Implementation
     {
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-       
-       
+
 
         public MessageController()
         {
@@ -31,21 +31,33 @@ namespace ClientApp.Data.Implementation
             string serializedMessage = JsonSerializer.Serialize(message);
             HttpContent content = new StringContent(serializedMessage, Encoding.UTF8, "application/json");
             HttpResponseMessage responseMessage =
-                await client.PostAsync($"{StaticVariables.URL}/Message?token={""}", content);
-            Console.WriteLine("I'm here");
-            if (responseMessage.StatusCode == HttpStatusCode.NotImplemented)
+                await client.PostAsync(
+                    $"{StaticVariables.URL}/Message?token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}",
+                    content);
+
+            if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            Console.WriteLine(reply);
-            // return reply;
+            // the timer to send requests for response 
         }
 
-        public Task<IList<Message>> GetAllMessagesWithAUserAsync(int receiverPetId)
+
+        public async Task<IList<Message>> GetAllMessagesAsync(int petId)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage responseMessage = await client.GetAsync(
+                $"{StaticVariables.URL}/Message?petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+
+            if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
+            }
+            IList<Message> messages = new List<Message>();
+            string reply = await responseMessage.Content.ReadAsStringAsync();
+            messages = JsonConvert.DeserializeObject<IList<Message>>(reply);
+            return messages;
         }
     }
 }

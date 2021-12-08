@@ -37,15 +37,25 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<PetList> requestPets(){
-            return await pets.requestPets();
+            PetList petList = await pets.requestPets();
+            foreach (Pet pet in petList.pets){
+                pet.statuses = await statuses.getStatusesOf(pet);
+            }
+            return petList;
         }
 
         public async Task<Pet> requestPet(int id){
-            return await pets.requestPet(id);
+            Pet pet = await pets.requestPet(id);
+            pet.statuses = await statuses.getStatusesOf(pet);
+            return pet;
         }
 
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
-            return await pets.GetByUserEmail(user);
+            IList<Pet> petList = await pets.GetByUserEmail(user);
+            foreach (Pet pet in petList){
+                pet.statuses = await statuses.getStatusesOf(pet);
+            }
+            return petList;
         }
 
         public async Task<Pet> createPet(Pet newPet){
@@ -106,7 +116,7 @@ namespace business_logic.Model.Mediator
             
 
             //receiving
-            byte[] dataFromServer = new byte[4000];
+            byte[] dataFromServer = new byte[8000];
             int byteReads = await stream.ReadAsync(dataFromServer,0,dataFromServer.Length);
             string response = Encoding.ASCII.GetString(dataFromServer, 0, byteReads);
             Console.WriteLine("*****\nreceiving: \t"+response + "\n");
