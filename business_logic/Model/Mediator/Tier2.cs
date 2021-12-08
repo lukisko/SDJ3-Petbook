@@ -83,9 +83,10 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<AuthorisedUser> GetUser(AuthorisedUser user){
-            Console.WriteLine("in tier2");
             Console.WriteLine(this.users);
-            return await this.users.GetUser(user);
+            AuthorisedUser authUser = await this.users.GetUser(user);
+            //authUser.pets = 
+            return authUser;
         }
         public async Task<AuthorisedUser> MakeUser(AuthorisedUser user){
             return await users.MakeUser(user);
