@@ -131,7 +131,7 @@ namespace business_logic.Controllers
             try{
                 await model.deletePetAsync(thePet,token);
                 Console.WriteLine("Test 8 successful");
-                response+= "test 7 succeded\n";
+                response+= "test 8 succeded\n";
             } catch {
                 Console.WriteLine("Test 8 failed!");
                 response+= "test 8 (remove pet) not succeded\n";

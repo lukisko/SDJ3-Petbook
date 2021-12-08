@@ -16,15 +16,15 @@ public class Test {
 
     Gson gson = new Gson();
     Model model = new ModelManager();
-    Pet pet = new Pet();
-    pet.setId(6);
+    Pet pet = model.getPet(6);
     Status status = new Status();
     status.setName("fostering");
-
-
     status.setPet(pet);
+    String toSend = gson.toJson(status);
+    Status status1 = gson.fromJson(toSend, Status.class);
 
-    model.addStatus(status);
+
+    model.addStatus(status1);
 
 
   }
