@@ -41,23 +41,39 @@ namespace ClientApp.Data.Implementation
             }
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            // the timer to send requests for response 
         }
 
 
-        public async Task<IList<Message>> GetAllMessagesAsync(int petId)
+        public async Task<IList<Message>> GetAllMessagesAsync(int receiverId, int senderId)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
-                $"{StaticVariables.URL}/Message?petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+                $"{StaticVariables.URL}/Message?receiver={receiverId}&senderId={senderId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
 
             if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
+
             IList<Message> messages = new List<Message>();
             string reply = await responseMessage.Content.ReadAsStringAsync();
             messages = JsonConvert.DeserializeObject<IList<Message>>(reply);
             return messages;
+        }
+
+        public async Task<IList<Pet>> GetAllMessagePets(int loggedInPet)
+        {
+            HttpResponseMessage responseMessage = await client.GetAsync(
+                $"{StaticVariables.URL}/Message?petId={loggedInPet}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+
+            if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
+            }
+
+            IList<Pet> pets = new List<Pet>();
+            string reply = await responseMessage.Content.ReadAsStringAsync();
+            pets = JsonConvert.DeserializeObject<IList<Pet>>(reply);
+            return pets;
         }
     }
 }

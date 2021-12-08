@@ -139,39 +139,47 @@ using ClientApp.Authentication;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 230 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 321 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
     private bool AccountsWindow { get; set; }
+    private bool LogPaneWindow { get; set; }
+    private bool MessagePaneWindow { get; set; }
+
     private IList<Pet> _allPetProfiles;
     private IList<Pet> _toShowPetsPetProfiles;
+
     private User userLoggedIn { get; set; }
-    Pet pet1 { get; set; }
-    Pet pet2 { get; set; }
+
+    private IList<Pet> _allPetMessagesWithAPet;
+    private IList<Message> _toShowPetProfileMessagesWithAPet;
+
+    private IList<Pet> _allMessageLog;
+    private IList<Pet> _toShowMessageLog;
+    private Pet petLoggedIn { get; set; }
+    private int petToSendMessage { get; set; }
+    Message newMessage;
+
+    private string _messageBody;
+
 
     protected async override Task OnInitializedAsync()
     {
-        pet1 = new Pet();
-        pet2 = new Pet();
+        petLoggedIn = new Pet();
+
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
-    //get the logged in user
-
-    //_allPetProfiles = await _petController.GetAllUserPetsAsync();
-        pet1.imageUrl = "Images/dog2.jpg";
-        pet1.name = "Jackie Bo";
-        pet1.breed = "Terrier";
 
 
-        pet2.imageUrl = "Images/dog.jpg";
-        pet2.id = 2;
-        pet2.name = "Andrew Wong";
-        pet2.breed = "Terrier";
-
-        _allPetProfiles.Add(pet1);
-        _allPetProfiles.Add(pet2);
-
+        if (_allPetProfiles.Count == 1)
+        {
+            int petId = _allPetProfiles[0].id;
+            petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        }
+        else
+        {
+        }
         _toShowPetsPetProfiles = _allPetProfiles;
         ProfileWindow = false;
         AccountsWindow = false;
@@ -193,13 +201,12 @@ using ClientApp.Authentication;
     void ShowAddPet()
     {
         NavMgr.NavigateTo($"/AddPet");
-        //_modalService.Show<AddPet>();
+    //_modalService.Show<AddPet>();
     }
-    
+
     void ShowMessagePane()
     {
         NavMgr.NavigateTo($"/MessagePane");
-    
     }
 
     void NavigateToBrowsePets()
@@ -219,7 +226,7 @@ using ClientApp.Authentication;
 
     void LogOut()
     {
-    //   ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
     }
 
     void NavigateToPetProfile(int petId)
@@ -227,8 +234,9 @@ using ClientApp.Authentication;
         NavMgr.NavigateTo($"/PetProfile/{petId}");
     }
 
-    public void DropDownProfileWindow()
+    public async Task DropDownProfileWindow()
     {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -264,6 +272,44 @@ using ClientApp.Authentication;
         }
     }
 
+    async Task ShowMessagePane(int messageToPetId)
+    {
+        petToSendMessage = messageToPetId;
+        _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(messageToPetId, petLoggedIn.id);
+        if (MessagePaneWindow)
+        {
+            MessagePaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = false;
+            MessagePaneWindow = true;
+        }
+    }
+
+    async Task ShowLogPane()
+    {
+        _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
+        if (LogPaneWindow)
+        {
+            LogPaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = true;
+        }
+    }
+
+    async Task SendMessage()
+    {
+        newMessage = new Message();
+        newMessage.MessageBody = _messageBody;
+        newMessage.SenderPetId = petLoggedIn.id;
+        newMessage.ReceiverPetId = petToSendMessage;
+        await _messageController.SendMessageAsync(newMessage);
+        _messageBody = "";
+    }
+
 
 
 
@@ -271,6 +317,8 @@ using ClientApp.Authentication;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageController _messageController { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService _modalService { get; set; }

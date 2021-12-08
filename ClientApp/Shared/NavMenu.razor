@@ -5,15 +5,17 @@
 @inject IModalService _modalService
 @inject NavigationManager NavMgr
 @inject IPetController _petController
+@inject IMessageController _messageController
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 
 <nav class="bg-green-400 ">
-    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div class="relative flex items-center justify-between h-16">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Mobile menu button-->
-                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white  hover:text-gray-600  focus:outline-none  focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" @onclick="@(() => DropDownBurgerMenu())">
-                    <span class="sr-only">Open main menu</span>
+<div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex items-center justify-between h-16">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+            <!-- Mobile menu button-->
+            <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white  hover:text-gray-600  focus:outline-none  focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" @onclick="@(() => DropDownBurgerMenu())">
+                <span class="sr-only">Open main menu</span>
 
                 <svg class=" h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -63,15 +65,15 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
                     </button>
-                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span class="sr-only">View notifications</span>
+                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowMessagePane">
+                        <span class="sr-only">View Messages</span>
                         <!-- Heroicon name: outline/bell -->
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                         </svg>
                     </button>
-                    <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="() => ShowMessagePane()">
-                        <span class="sr-only">View Messages</span>
+                    <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span class="sr-only">View Notifications</span>
                         <!-- Heroicon name: outline/bell -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -81,12 +83,27 @@
             </div>
 
             <div class="ml-8 ">
-                <div c>
-                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                    </button>
-                </div>
+                <AuthorizeView >
+                    <Authorized >
+                        <div>
+                            <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                            </button>
+                        </div>
+                    </Authorized>
+                    <NotAuthorized >
+                        <div>
+                            <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                            </button>
+                        </div>
+                    </NotAuthorized>
+
+                </AuthorizeView>
+
+
                 @if (ProfileWindow)
                 {
                     <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
@@ -106,6 +123,14 @@
                                     <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
                                         @foreach (Pet item in _toShowPetsPetProfiles)
                                         {
+                                            if (_allPetProfiles.Count == 0)
+                                            {
+                                                <li class=" rounded-md ">
+                                                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
+                                                        <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
+                                                    </a>
+                                                </li>
+                                            }
                                             <li class=" rounded-md ">
                                                 <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
                                                     <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
@@ -161,9 +186,9 @@
                                         <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LogOut)">
                                             Log out
                                         </a>
-                                    </li></Authorized>
+                                    </li>
+                                </Authorized>
                             </AuthorizeView>
-
                         </ul>
                     </div>
                 }
@@ -171,12 +196,8 @@
         </div>
     </div>
 </div>
-
-<!-- Mobile menu, show/hide based on menu state. -->
 <div class="sm:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-
         @if (BurgerMenu)
         {
             <div class=" flex items-center  justify-start my-2">
@@ -197,7 +218,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" @onclick="() => NavigateToBrowsePets()"/>
                 </svg>
-                <a class=" space-x-6" aria-current="page">Browse Pets</a>
+                <a class="space-x-6" aria-current="page">Browse Pets</a>
             </div>
 
             <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
@@ -226,39 +247,117 @@
 </div>
 </nav>
 
+@if (LogPaneWindow)
+{
+    <div class=" mr-96  absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        <label class="mt-2 ml-2 flex-shrink-0 text-2xl">Messages</label>
+        <ul >
+            @foreach (Pet item in _toShowMessageLog)
+            {
+                <li class=" rounded-md w-full mt-4 ">
+                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ShowMessagePane(@item.id))">
+                        <img class="h-12 w-12 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                        <label class="mt-2 ml-2 flex-shrink-0 text-xl"> @item.name</label>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@* <button class="bg-black text-white" @onclick="ShowLogPane">Log Pane</button> *@
+@* <button class="mr-5  bg-black text-white" @onclick="@(() => ShowMessagePane(1))">MessagePane</button> *@
+
+@if (MessagePaneWindow)
+{
+    <div class="  absolute bottom-7 right-52 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        <div class="flex flex-row m-2">
+
+            @* <img class="h-8 w-8 rounded-full" src="@petToSendMessage.imageUrl" alt="Pet Profile Picture"> *@
+            @* <label class="mt-1 ml-2 flex-shrink-0"> @petToSendMessage.id</label> *@
+
+            <a @onclick="() => MessagePaneWindow = false">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-44 text-gray-500 hover:text-gray-800 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </a>
+        </div>
+        <div class="w-auto ">
+            <hr class="border-solid border-1 border-light-blue-500 mx-3 "/>
+        </div>
+
+        <div class="grid grid cols-2 gap-4 overflow-y-auto m-3 w-auto h-72 ">
+            @foreach (Message item in _toShowPetProfileMessagesWithAPet)
+            {
+                if (@item.SenderPetId == petLoggedIn.id)
+                {
+                    <div class=" col-span-1 row-span-2 bg-gray-400 rounded-md text-black justify-self-start p-1 mr-3">
+                        @item.MessageBody
+                    </div>
+                }
+                else
+                {
+                    <div class=" col-span-2 bg-blue-200 rounded-md text-black justify-self-end p-1 ml-3">
+                        @item.MessageBody
+                    </div>
+                }
+            }
+        </div>
+
+        <EditForm Model="@_messageController" OnValidSubmit="@(SendMessage)">
+            <div class="flex flex-row m-2">
+                <InputText class=" mr-1 rounded-xl relative block w-full px-3 py-1 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" @bind-Value="_messageBody"></InputText>
+                <button class="flex-shrink-0 bg-gray-200 w-1/3  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80">Send</button>
+            </div>
+        </EditForm>
+    </div>
+}
+
+
+
+
+
 @code
 {
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
     private bool AccountsWindow { get; set; }
+    private bool LogPaneWindow { get; set; }
+    private bool MessagePaneWindow { get; set; }
+
     private IList<Pet> _allPetProfiles;
     private IList<Pet> _toShowPetsPetProfiles;
+
     private User userLoggedIn { get; set; }
-    Pet pet1 { get; set; }
-    Pet pet2 { get; set; }
+
+    private IList<Pet> _allPetMessagesWithAPet;
+    private IList<Message> _toShowPetProfileMessagesWithAPet;
+
+    private IList<Pet> _allMessageLog;
+    private IList<Pet> _toShowMessageLog;
+    private Pet petLoggedIn { get; set; }
+    private int petToSendMessage { get; set; }
+    Message newMessage;
+
+    private string _messageBody;
+
 
     protected async override Task OnInitializedAsync()
     {
-        pet1 = new Pet();
-        pet2 = new Pet();
+        petLoggedIn = new Pet();
+
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
-    //get the logged in user
-
-    //_allPetProfiles = await _petController.GetAllUserPetsAsync();
-        pet1.imageUrl = "Images/dog2.jpg";
-        pet1.name = "Jackie Bo";
-        pet1.breed = "Terrier";
 
 
-        pet2.imageUrl = "Images/dog.jpg";
-        pet2.id = 2;
-        pet2.name = "Andrew Wong";
-        pet2.breed = "Terrier";
-
-        _allPetProfiles.Add(pet1);
-        _allPetProfiles.Add(pet2);
-
+        if (_allPetProfiles.Count == 1)
+        {
+            int petId = _allPetProfiles[0].id;
+            petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        }
+        else
+        {
+        }
         _toShowPetsPetProfiles = _allPetProfiles;
         ProfileWindow = false;
         AccountsWindow = false;
@@ -280,13 +379,12 @@
     void ShowAddPet()
     {
         NavMgr.NavigateTo($"/AddPet");
-        //_modalService.Show<AddPet>();
+    //_modalService.Show<AddPet>();
     }
-    
+
     void ShowMessagePane()
     {
         NavMgr.NavigateTo($"/MessagePane");
-    
     }
 
     void NavigateToBrowsePets()
@@ -306,7 +404,7 @@
 
     void LogOut()
     {
-    //   ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
     }
 
     void NavigateToPetProfile(int petId)
@@ -314,8 +412,9 @@
         NavMgr.NavigateTo($"/PetProfile/{petId}");
     }
 
-    public void DropDownProfileWindow()
+    public async Task DropDownProfileWindow()
     {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -349,6 +448,44 @@
         {
             BurgerMenu = true;
         }
+    }
+
+    async Task ShowMessagePane(int messageToPetId)
+    {
+        petToSendMessage = messageToPetId;
+        _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(messageToPetId, petLoggedIn.id);
+        if (MessagePaneWindow)
+        {
+            MessagePaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = false;
+            MessagePaneWindow = true;
+        }
+    }
+
+    async Task ShowLogPane()
+    {
+        _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
+        if (LogPaneWindow)
+        {
+            LogPaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = true;
+        }
+    }
+
+    async Task SendMessage()
+    {
+        newMessage = new Message();
+        newMessage.MessageBody = _messageBody;
+        newMessage.SenderPetId = petLoggedIn.id;
+        newMessage.ReceiverPetId = petToSendMessage;
+        await _messageController.SendMessageAsync(newMessage);
+        _messageBody = "";
     }
 
 
