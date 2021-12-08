@@ -42,9 +42,9 @@ namespace business_logic.Model.Mediator
         public async Task<Status> removeStatus(Status oldStatus){
             Comunication<Status> communicationClass = new Comunication<Status>("status","Remove",oldStatus);
 
-            Comunication<Status> theStatus = await tier2.requestServerAsync<Comunication<Status>,Comunication<Status>>(communicationClass);
+            Comunication<string> answer = await tier2.requestServerAsync<Comunication<Status>,Comunication<string>>(communicationClass);
 
-            return theStatus.value;
+            return oldStatus;
         }
     }
 }

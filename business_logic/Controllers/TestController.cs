@@ -105,13 +105,15 @@ namespace business_logic.Controllers
                     id = 0
                 };
                 thePet.statuses.Add(status);
-                Pet pet = await model.updatePetAsync(thePet, token);
+                await model.updatePetAsync(thePet, token);
+                Pet pet = (await model.getPetsAsync(thePet.id,null,null))[0];
                 if (pet.statuses.Count == 0){
                     throw new Exception("status was not added");
                 }
-                Console.WriteLine("Test 6 successful");
+                Console.WriteLine("Test 6 successful, there are "+pet.statuses.Count+" statuses.");
                 response+= "test 6 succeded\n";
-            } catch {
+            } catch (Exception e){
+                Console.WriteLine(e);
                 Console.WriteLine("Test 6 failed!");
                 response+= "test 6 (add status) not succeded\n";
             }
