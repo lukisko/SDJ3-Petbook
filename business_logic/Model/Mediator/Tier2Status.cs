@@ -36,6 +36,15 @@ namespace business_logic.Model.Mediator
 
             return theStatus.value;
         }
+
+        public async Task<IList<Status>> requestStatusByName(string statusName){
+            Comunication<Status> communicationClass = new Comunication<Status>("status","GetAllOf",new Status(){name = statusName});
+
+            Comunication<IList<Status>> pets = await tier2.requestServerAsync<Comunication<Status>,Comunication<IList<Status>>>(communicationClass);
+
+            return pets.value;
+        }
+
         public async Task<Status> updateStatus(Status newerStatus){
             Comunication<Status> communicationClass = new Comunication<Status>("status","Update",newerStatus);
 
