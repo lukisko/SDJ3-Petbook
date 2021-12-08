@@ -24,11 +24,13 @@ namespace business_logic.Model.MessagePack
         public IList<Message> getMessages(int receiverId, int senderId){
             if (dictionary.ContainsKey(receiverId)){
                 IList<Message> messages = dictionary[receiverId];
+                int length = messages.Count;
                 IList<Message> returnMessages = new List<Message>();
-                foreach (Message messg in messages){
+                for (int i = messages.Count-1; i>=0;i--){
+                    Message messg = messages[i];
                     if (messg.SenderPetId == senderId){
                         returnMessages.Add(messg);
-                        messages.Remove(messg);
+                        messages.RemoveAt(i);
                     }
                 }
                 return returnMessages;
@@ -38,7 +40,14 @@ namespace business_logic.Model.MessagePack
         }
 
         public IList<int> getPetIdOfMessages(int receiverId){
-            throw new NotImplementedException("not implemented sorry");
+            List<int> petIds = new List<int>();
+            if (dictionary.ContainsKey(receiverId)){
+                IList<Message> messages = dictionary[receiverId];
+                foreach (Message mesg in messages){
+                    petIds.Add(mesg.SenderPetId);
+                }
+            }
+            return petIds;
         }
     }
 }

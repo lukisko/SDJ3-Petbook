@@ -21,6 +21,10 @@ namespace business_logic.Model.Mediator
         public async Task<IList<Status>> getStatusesOf(Pet pet){
             Comunication<Pet> communicationClass = new Comunication<Pet>("pet","GetAllOf",pet);
 
+            if (pet == null){
+                return new List<Status>();
+            }
+
             Comunication<IList<Status>> theStatus = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Status>>>(communicationClass);
 
             return theStatus.value;
