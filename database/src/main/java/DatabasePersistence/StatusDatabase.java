@@ -23,8 +23,13 @@ public class StatusDatabase implements StatusPersistence
       status.getPet().getUser().getPets().clear();
       status.getPet().getUser().getStatuses().clear();
       status.getPet().getCity().getCountry().getCities().clear();
-      status.getUser().getStatuses().clear();
-      status.getUser().getPets().clear();
+      status.getPet().getCity().getPets().clear();
+      status.getPet().getStatuses().clear();
+      if(status.getUser() != null)
+      {
+        status.getUser().getStatuses().clear();
+        status.getUser().getPets().clear();
+      }
     }
     return status;
   }
@@ -37,6 +42,7 @@ public class StatusDatabase implements StatusPersistence
       statusList.forEach(n -> n.getPet().getUser().getPets().clear());
       statusList.forEach(n -> n.getPet().getUser().getStatuses().clear());
       statusList.forEach(n -> n.getPet().getCity().getCountry().getCities().clear());
+      statusList.forEach(n -> n.getPet().getCity().getPets().clear());
       statusList.forEach(n -> n.getUser().getStatuses().clear());
       statusList.forEach(n -> n.getUser().getPets().clear());
     }
@@ -53,6 +59,7 @@ public class StatusDatabase implements StatusPersistence
       data.forEach(n -> n.getPet().getUser().getPets().clear());
       data.forEach(n -> n.getPet().getCity().getCountry().getCities().clear());
       data.forEach(n-> n.getPet().getCity().getCountry().getCities().clear());
+      data.forEach(n -> n.getPet().getCity().getPets().clear());
       data.forEach(n -> n.getUser().getStatuses().clear());
       data.forEach(n -> n.getUser().getPets().clear());
     }

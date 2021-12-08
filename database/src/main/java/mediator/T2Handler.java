@@ -42,6 +42,8 @@ public class T2Handler implements Runnable
         is.read(lenBytes, 0, 4000);
         String received = new String(lenBytes, 0, 4000);
         received.trim();
+        System.out.println();
+        System.out.println("*********************************************************************************************************************");
         System.out.println("THE REQUEST:  " + received);
         Comunication request = gson
             .fromJson(received.trim(), Comunication.class);
@@ -74,9 +76,9 @@ public class T2Handler implements Runnable
             stringToSend = handler.typeStatus(request.getMethod(), status);
             break;
         }
-        System.out.println();
 
-        System.out.println("Response " + stringToSend);
+        System.out.println("Response: " + stringToSend);
+        System.out.println("*********************************************************************************************************************");
         byte[] toSendBytes = stringToSend.getBytes();
         os.write(toSendBytes);
       }
