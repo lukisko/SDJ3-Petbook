@@ -16,18 +16,18 @@ public class Test {
 
     Gson gson = new Gson();
     Model model = new ModelManager();
-    Pet pet = model.getPet(6);
-    Status status = new Status();
-    status.setName("fostering");
-    status.setPet(pet);
-    String toSend = gson.toJson(status);
-    Status status1 = gson.fromJson(toSend, Status.class);
+    Pet pet = model.getPet(1000);
+    Status statusAdd = new Status();
+    statusAdd.setPet(pet);
+    statusAdd.setName("sas");
 
 
-    String asd = gson.toJson(model.addStatus(status1));
+//    model.addStatus(statusAdd);
+    String send = gson.toJson(statusAdd);
+    Status remove = gson.fromJson(send, Status.class);
+    remove.setId(91);
+    model.removeStatus(remove);
 
-    System.out.println(gson.fromJson(asd, Pet.class));
-    //System.out.println(model.getAllStatuses());
 
 
   }

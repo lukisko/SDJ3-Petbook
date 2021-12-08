@@ -88,7 +88,7 @@ public class PetHandler
       try
       {
         model.removePet(value);
-        return gson.toJson(new Comunication<String>("pet", "Add",
+        return gson.toJson(new Comunication<String>("pet", "Remove",
             "OK"));
       }
       catch (Exception e){
