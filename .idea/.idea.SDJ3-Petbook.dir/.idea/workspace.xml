@@ -9,40 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/ClientApp.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/business_logic.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business_logic/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/ModelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/Test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/PetHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/PetHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/ModelManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/ModelManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Status.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +146,7 @@
       <workItem from="1638866102673" duration="13748000" />
       <workItem from="1638883875056" duration="532000" />
       <workItem from="1638884434973" duration="11920000" />
-      <workItem from="1638951639549" duration="5991000" />
+      <workItem from="1638951639549" duration="7599000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
