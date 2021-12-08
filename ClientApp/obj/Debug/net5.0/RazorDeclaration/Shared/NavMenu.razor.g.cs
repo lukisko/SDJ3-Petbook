@@ -139,7 +139,7 @@ using ClientApp.Authentication;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 321 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 336 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -204,11 +204,6 @@ using ClientApp.Authentication;
     //_modalService.Show<AddPet>();
     }
 
-    void ShowMessagePane()
-    {
-        NavMgr.NavigateTo($"/MessagePane");
-    }
-
     void NavigateToBrowsePets()
     {
         NavMgr.NavigateTo("/BrowsePets");
@@ -236,7 +231,6 @@ using ClientApp.Authentication;
 
     public async Task DropDownProfileWindow()
     {
-        _allPetProfiles = await _petController.GetAllUserPetsAsync();
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -248,8 +242,9 @@ using ClientApp.Authentication;
         }
     }
 
-    public void DropDownAccountsWindow()
+    public async void DropDownAccountsWindow()
     {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
         if (AccountsWindow)
         {
             AccountsWindow = false;
