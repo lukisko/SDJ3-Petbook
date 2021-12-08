@@ -16,17 +16,8 @@ public class Test {
 
     Gson gson = new Gson();
     Model model = new ModelManager();
-    Pet pet = model.getPet(1000);
-    Status statusAdd = new Status();
-    statusAdd.setPet(pet);
-    statusAdd.setName("sas");
 
-
-//    model.addStatus(statusAdd);
-    String send = gson.toJson(statusAdd);
-    Status remove = gson.fromJson(send, Status.class);
-    remove.setId(91);
-    model.removeStatus(remove);
+    System.out.println(model.getPetList("pleva@usa.com"));
 
 
 
