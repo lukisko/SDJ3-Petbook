@@ -9,14 +9,24 @@ namespace ClientApp.Pages
     {
         private IList<Pet> allPets;
         private IList<Pet> toShowPets;
+        private string color;
 
         protected override async Task OnInitializedAsync()
         {
             allPets = await _petController.GetAllPetsAsync();
             toShowPets = allPets;
-            
         }
-        
+
+        public string GEtColor(Pet pet)
+        {
+            if (pet.gender.Equals('M'))
+            {
+                return "blue";
+            }
+            else
+            {
+                return "pink";
+            }
+        }
     }
 }
-

@@ -58,6 +58,32 @@ public class StatusDatabase implements StatusPersistence
     return statusList;
   }
 
+  @Override public List<Status> getAllOf(String statusName)
+  {
+    database.beginSession();
+    Query query = database.getSession().createQuery("SELECT c FROM status c WHERE name = :name");
+    query.setParameter("name",statusName);
+    List<Status> statusList = query.getResultList();
+    if(statusList != null){
+      statusList.forEach(status -> status.getPet().getUser().getPets().clear());
+      statusList.forEach(status -> status.getPet().getUser().getStatuses().clear());
+      statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
+      statusList.forEach(status -> status.getPet().getCity().getPets().clear());
+      statusList.forEach(status -> status.getPet().getStatuses().clear());
+      statusList.forEach(status -> {
+        if(status.getUser() != null)
+        {
+          status.getUser().getStatuses().clear();
+        }});
+      statusList.forEach(status -> {
+        if (status.getUser() != null)
+        {
+          status.getUser().getPets().clear();
+        }});
+    }
+    return statusList;
+  }
+
   @Override public List<Status> loadAll()
   {
     database.beginSession();

@@ -125,6 +125,11 @@ public class ModelManager implements Model
     return statusPersistence.loadAll();
   }
 
+  @Override public List<Status> getAllStatusesWithName(String name)
+  {
+    return statusPersistence.getAllOf(name);
+  }
+
   @Override public int addStatus(Status status)
   {
     status.setPet(getPet(status.getPet().getId()));
