@@ -37,15 +37,25 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<PetList> requestPets(){
-            return await pets.requestPets();
+            PetList petList = await pets.requestPets();
+            foreach (Pet pet in petList.pets){
+                pet.statuses = await statuses.getStatusesOf(pet);
+            }
+            return petList;
         }
 
         public async Task<Pet> requestPet(int id){
-            return await pets.requestPet(id);
+            Pet pet = await pets.requestPet(id);
+            pet.statuses = await statuses.getStatusesOf(pet);
+            return pet;
         }
 
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
-            return await pets.GetByUserEmail(user);
+            IList<Pet> petList = await pets.GetByUserEmail(user);
+            foreach (Pet pet in petList){
+                pet.statuses = await statuses.getStatusesOf(pet);
+            }
+            return petList;
         }
 
         public async Task<Pet> createPet(Pet newPet){

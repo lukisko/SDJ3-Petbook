@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace business_logic.Model.Mediator
 {
@@ -13,6 +14,14 @@ namespace business_logic.Model.Mediator
             Comunication<Status> communicationClass = new Comunication<Status>("status","Get",status);
 
             Comunication<Status> theStatus = await tier2.requestServerAsync<Comunication<Status>,Comunication<Status>>(communicationClass);
+
+            return theStatus.value;
+        }
+
+        public async Task<IList<Status>> getStatusesOf(Pet pet){
+            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","GetAllOf",pet);
+
+            Comunication<IList<Status>> theStatus = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Status>>>(communicationClass);
 
             return theStatus.value;
         }
