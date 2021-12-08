@@ -31,9 +31,8 @@ namespace ClientApp.Authentication
                 string userAsJson = await jsRuntime.InvokeAsync<string>("sessionStorage.getItem", "currentUser");
                 if (!string.IsNullOrEmpty(userAsJson))
                 {
-                    User tmp = JsonSerializer.Deserialize<User>(userAsJson);
+                    cachedUser= JsonSerializer.Deserialize<User>(userAsJson);
                     identity = SetupClaimsForUser(cachedUser);
-                  await ValidateLogin(tmp.email, tmp.code);
                 }
             }
             else

@@ -4,7 +4,7 @@ using Blazored.Modal;
 using ClientApp.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-
+using ClientApp.Authentication;
 namespace ClientApp.Pages
 {
     public partial class Login : ComponentBase
@@ -25,9 +25,9 @@ namespace ClientApp.Pages
         {
             try
             {
-                await _userController.Login(Email, _confirmationCode);
-               // await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
-               //     _confirmationCode);
+               
+                await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
+                   _confirmationCode);
                Email = null;
                 _confirmationCode = null;
                 await ModalInstance.CloseAsync();

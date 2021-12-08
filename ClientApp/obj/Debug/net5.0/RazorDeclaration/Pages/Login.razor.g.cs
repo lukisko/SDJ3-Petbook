@@ -103,6 +103,13 @@ using Blazored.Modal.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\Login.razor"
+using ClientApp.Authentication;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Login")]
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -111,6 +118,7 @@ using Blazored.Modal.Services;
         {
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService _modalService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IUserController _userController { get; set; }

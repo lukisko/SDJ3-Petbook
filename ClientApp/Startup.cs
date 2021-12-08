@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.Modal;
+using ClientApp.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
 using ClientApp.Data.Implementation;
 using ClientApp.Model;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -36,6 +38,7 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController, UserController>();
             services.AddScoped<IMessageController, MessageController>();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddScoped<StaticVariables>();
             services
                 .AddControllersWithViews()
@@ -60,7 +63,6 @@ namespace ClientApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSession();
             app.UseRouting();
             
             app.UseEndpoints(endpoints =>
