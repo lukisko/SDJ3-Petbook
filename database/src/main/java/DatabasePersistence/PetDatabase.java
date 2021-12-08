@@ -29,9 +29,7 @@ public class  PetDatabase implements PetPersistance
         pet.getUser().getStatuses().clear();
         pet.getCity().getPets().clear();
         pet.getCity().getCountry().getCities().clear();
-        pet.getStatuses().forEach(status -> status.setPet(null));
-        pet.getStatuses().forEach(status -> status.getUser().getStatuses().clear());
-        pet.getStatuses().forEach(status -> status.getUser().getPets().clear());
+        pet.getStatuses().clear();
       }
       return pet;
     }

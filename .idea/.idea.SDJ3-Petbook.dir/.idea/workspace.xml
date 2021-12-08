@@ -31,7 +31,6 @@
       <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/mediator/T2Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/mediator/T2Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/ModelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/ModelManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" afterDir="false" />
@@ -175,7 +174,7 @@
       <workItem from="1638778480994" duration="10383000" />
       <workItem from="1638866102673" duration="13748000" />
       <workItem from="1638883875056" duration="532000" />
-      <workItem from="1638884434973" duration="11186000" />
+      <workItem from="1638884434973" duration="11920000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>

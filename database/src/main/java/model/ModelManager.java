@@ -123,6 +123,7 @@ public class ModelManager implements Model
 
   @Override public int addStatus(Status status)
   {
+    status.setPet(getPet(status.getPet().getId()));
     return statusPersistence.save(status);
   }
 
