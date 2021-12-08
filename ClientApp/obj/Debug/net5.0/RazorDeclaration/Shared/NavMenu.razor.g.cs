@@ -193,7 +193,13 @@ using ClientApp.Authentication;
     void ShowAddPet()
     {
         NavMgr.NavigateTo($"/AddPet");
-        _modalService.Show<AddPet>();
+        //_modalService.Show<AddPet>();
+    }
+    
+    void ShowMessagePane()
+    {
+        NavMgr.NavigateTo($"/MessagePane");
+    
     }
 
     void NavigateToBrowsePets()

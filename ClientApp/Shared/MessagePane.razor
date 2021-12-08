@@ -1,13 +1,14 @@
-﻿@page "/MessagePane/{petId:int}"
+﻿@page "/MessagePane"
 @using ClientApp.Model
 @inject IPetController _petController
 @inject IMessageController _messageController
 
+<button @onclick="ShowLogPane"></button>
+<button @onclick="@(()=>ShowMessagePane(1))"></button>
 
 @if (LogPaneWindow)
 {
     <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-
         <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
             @foreach (Pet item in _toShowMessageLog)
             {
@@ -21,7 +22,6 @@
         </ul>
     </div>
 }
-
 @if (MessagePaneWindow)
 {
     <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
@@ -64,6 +64,17 @@
     }
 
     async void ShowMessagePane(int messageToPetId)
+    {
+        if (MessagePaneWindow)
+        {
+            MessagePaneWindow = false;
+        }
+        else
+        {
+            MessagePaneWindow = true;
+        }
+    }
+    async void ShowLogPane()
     {
         if (LogPaneWindow)
         {
