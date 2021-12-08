@@ -102,6 +102,9 @@ namespace business_logic.Model.PetPack
             return await tier2Mediator.updatePet(newPet);
         }
         public async Task<Pet> deletePet(Pet oldPet){
+            foreach (Status status in oldPet.statuses){
+                await tier2Mediator.removeStatus(status);
+            }
             return await tier2Mediator.deletePet(oldPet);
         }
 

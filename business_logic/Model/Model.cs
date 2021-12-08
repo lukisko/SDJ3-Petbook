@@ -85,9 +85,12 @@ namespace business_logic.Model
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
             }
-            pet.user.email = email;
-            pet.user.name = (await userManager.GetUser(email)).name;
-            await petManager.deletePet(pet);
+            Pet realPet =  await petManager.requestPet(pet.id);
+            if (!realPet.user.email.Equals(email)){
+                throw new AccessViolationException("you do not have right to delete this pet");
+            }
+            
+            await petManager.deletePet(realPet);
             return pet;
         }
 
