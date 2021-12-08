@@ -135,6 +135,7 @@ namespace business_logic.Model
                 return null;
             }
             AuthorisedUser user = await userManager.GetUser(email);
+            user.pets = (await this.getPetsAsync(null,user.email,null)).ToArray();
             return user;
         }
         public async Task<AuthorisedUser> register(User user){
@@ -156,7 +157,7 @@ namespace business_logic.Model
 
         public async Task sendMessage(Message message, string token){
             string email = userManager.getUserWithToken(token);
-            AuthorisedUser usr = await userManager.GetUser(email);
+            AuthorisedUser usr = await this.GetAuthorisedUser(token);
             int senderId = message.SenderPetId;
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == senderId;}).Count() > 0){
@@ -165,12 +166,33 @@ namespace business_logic.Model
                 throw new AccessViolationException("you are not owner of the pet.");
             }
         }
-        public async Task<IList<Message>> GetMessages(int petId, string token){//make it authenticaitons
+        public async Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
+            string email = userManager.getUserWithToken(token);
+            if ((await this.getPetsAsync(senderPetId,null,null)).Count == 0){
+                messageManager.getMessages(receiverPetId, senderPetId);
+                return new List<Message>();
+            }
+            AuthorisedUser usr = await this.GetAuthorisedUser(token);
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
+                return messageManager.getMessages(receiverPetId,senderPetId);
+            } else {
+                throw new AccessViolationException("you are not owner of the pet.");
+            }
+        }
+
+        public async Task<IList<Pet>> GetMessagePets(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
+            usr.pets = (await this.getPetsAsync(null,email,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
-            if (usr.pets.Where((Pet pet) => {return pet.id == petId;}).Count() > 0){
-                return messageManager.getMessages(petId);
+            if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
+                IList<int> listOfId = messageManager.getPetIdOfMessages(receiverPetId);
+                List<Pet> petList = new List<Pet>();
+                foreach (int petId in listOfId){
+                    petList.AddRange(await this.getPetsAsync(petId,null,null));
+                }
+                return petList;
             } else {
                 throw new AccessViolationException("you are not owner of the pet.");
             }

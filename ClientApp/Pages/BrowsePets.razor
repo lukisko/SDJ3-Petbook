@@ -4,46 +4,114 @@
 @inject IUserController _userController
 @inject IPetController _petController
 
+
 @if (toShowPets == null)
 {
     <p>No pets found</p>
 }
 else
 {
-    @foreach (var item in toShowPets)
-    {
-        <div class="container flex flex-wrap pt-4 pb-10 m-auto mt-6 md:mt-15 lg:px-12 xl:px-16">
-            <div class="w-full px-0 lg:px-4">
-                <h2 class="px-12 text-base font-bold text-center md:text-2xl text-pink-700">
-
-                </h2>
-                <div class="flex flex-wrap items-center justify-center py-4 pt-0">
-                    <div class="w-full p-4 md:w-1/2 lg:w-1/4 plan-card">
-                        <label class="flex flex-col rounded-lg shadow-lg group relative cursor-pointer hover:shadow-2xl">
-                            <div class="w-full px-4 py-6 rounded-t-lg card-section-1">
-                                <h3 class="mx-auto text-base font-semibold text-center underline text-pink-500 group-hover:text-blue">
-                                    Type: @item.type
-                                </h3>
-                                <p class="text-5xl font-bold text-center group-hover:text-blue text-pink-500">
-                                    Name: @item.name <span class="text-3xl"></span>
-                                </p>
-                                <p class="text-xs text-center uppercase group-hover:text-blue text-pink-500">
-                                    Breed: @item.breed
-                                </p>
-                            </div>
-                            <div
-                                class="flex flex-col items-center justify-center w-full h-full py-6 rounded-b-lg bg-pink-500">
-                                <p class="text-xl text-white">
-                                    Description: @item.description
-                                </p>
-                                <button class="w-5/6 py-2 mt-2 font-semibold text-center uppercase bg-white border border-transparent rounded text-pink-500">
-                                    Adopt @item.statuses
-                                </button>
-                            </div>
-                        </label>
-                    </div>
+    <div class="grid grid-cols-3 ">
+        @foreach (var item in toShowPets)
+        {
+            <div class="py-10 h-200 w-100 bg-pink-100 flex justify-center items-center">
+                <div class="h-56 w-72 absolute flex justify-center items-center pt-12">
+                    @if(item.statuses.Count > 0){
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
+                    }
+                    else
+                    {
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/dog.jpg">
+                    }
                 </div>
+                @if (item.gender.Equals('M'))
+                {
+                    <div class="h-56 mx-4 w-5/6 bg-blue-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                        <div>
+                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
+                                <h1 class="text-white">Profile</h1>
+                                <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                    <span class="text-sm mr-2">Message</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                    </svg>
+                                </button>
+
+                            </div>
+                            
+                            <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
+                                @foreach (Status status in item.statuses)
+                                {
+                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                        <span class=" text-sm mr-2">@status.name</span>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Type</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
+                                </div>
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Breed</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                                </div>
+                            </div>
+                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                <h1 class="text-gray-700 font-bold">@item.name</h1>
+                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="h-56 mx-4 w-5/6 bg-pink-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                        <div>
+                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-5">
+                                <h1 class="text-white">Profile</h1>
+                                <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                    <span class="text-sm mr-2">Message</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                    </svg>
+                                </button>
+
+                            </div>
+
+                            <div class="w-full flex justify-between items-baseline px-3 pb-8">
+                                @foreach (Status status in item.statuses)
+                                {
+                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                        <span class=" text-sm mr-2">@status.name</span>
+                                    </button>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Type</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
+                                </div>
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Breed</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                                </div>
+                            </div>
+                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                <h1 class="text-gray-700 font-bold">@item.name</h1>
+                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-    }
+        }
+    </div>
 }

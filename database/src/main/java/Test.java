@@ -16,18 +16,9 @@ public class Test {
 
     Gson gson = new Gson();
     Model model = new ModelManager();
-    Pet pet = model.getPet(6);
-    Status status = new Status();
-    status.setName("fostering");
-    status.setPet(pet);
-    String toSend = gson.toJson(status);
-    Status status1 = gson.fromJson(toSend, Status.class);
 
+    System.out.println(model.getPetList("pleva@usa.com"));
 
-    String asd = gson.toJson(model.addStatus(status1));
-
-    System.out.println(gson.fromJson(asd, Pet.class));
-    //System.out.println(model.getAllStatuses());
 
 
   }

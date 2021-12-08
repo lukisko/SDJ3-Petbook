@@ -35,13 +35,16 @@ namespace business_logic.Model.UserPack
         }
 
         public async Task<AuthorisedUser> GetUser(string email){
-            if (emailUserMap.ContainsKey(email)){
+            AuthorisedUser usr = new AuthorisedUser(){email = email};
+            AuthorisedUser realUser = await tier2Mediator.GetUser(usr);
+            return realUser;
+            /*if (emailUserMap.ContainsKey(email)){
                 return emailUserMap[email];
             } else {
                 AuthorisedUser usr = new AuthorisedUser(){email = email};
                 AuthorisedUser realUser = await tier2Mediator.GetUser(usr);
                 return realUser;
-            }
+            }*/
         }
 
         public async Task<AuthorisedUser> CreateUser(AuthorisedUser user){

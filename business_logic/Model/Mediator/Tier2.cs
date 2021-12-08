@@ -46,12 +46,19 @@ namespace business_logic.Model.Mediator
 
         public async Task<Pet> requestPet(int id){
             Pet pet = await pets.requestPet(id);
+            if (pet == null){
+                return null;
+            }
             pet.statuses = await statuses.getStatusesOf(pet);
             return pet;
         }
 
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
             IList<Pet> petList = await pets.GetByUserEmail(user);
+            Console.WriteLine(petList);
+            if (petList == null){
+                return new List<Pet>();
+            }
             foreach (Pet pet in petList){
                 pet.statuses = await statuses.getStatusesOf(pet);
             }
@@ -83,9 +90,10 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<AuthorisedUser> GetUser(AuthorisedUser user){
-            Console.WriteLine("in tier2");
             Console.WriteLine(this.users);
-            return await this.users.GetUser(user);
+            AuthorisedUser authUser = await this.users.GetUser(user);
+            //authUser.pets = 
+            return authUser;
         }
         public async Task<AuthorisedUser> MakeUser(AuthorisedUser user){
             return await users.MakeUser(user);

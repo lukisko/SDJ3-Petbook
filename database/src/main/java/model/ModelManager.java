@@ -29,7 +29,8 @@ public class ModelManager implements Model
 
   @Override public void removeUser(User user)
   {
-    userPersistence.delete(user);
+    User userToRemove = userPersistence.loadUser(user.getEmail());
+    userPersistence.delete(userToRemove);
   }
 
   @Override public User getUser(String email)
@@ -59,7 +60,8 @@ public class ModelManager implements Model
   }
   @Override public void removePet(Pet pet)
   {
-    petPersistance.delete(pet);
+    Pet petToRemove = petPersistance.loadPet(pet.getId());
+    petPersistance.delete(petToRemove);
   }
 
   @Override public Pet updatePet(Pet pet)
@@ -83,7 +85,8 @@ public class ModelManager implements Model
 
   @Override public void removeCity(City city)
   {
-    cityPersistence.delete(city);
+    City cityToRemove = cityPersistence.loadCity(city.getName());
+    cityPersistence.delete(cityToRemove);
   }
 
   @Override public Country getCountry(String name)
@@ -103,7 +106,8 @@ public class ModelManager implements Model
 
   @Override public void removeCountry(Country country)
   {
-    countryPersistence.delete(country);
+    Country countryToRemove = countryPersistence.loadCountry(country.getName());
+    countryPersistence.delete(countryToRemove);
   }
 
   @Override public Status getStatus(int id)
@@ -121,6 +125,11 @@ public class ModelManager implements Model
     return statusPersistence.loadAll();
   }
 
+  @Override public List<Status> getAllStatusesWithName(String name)
+  {
+    return statusPersistence.getAllOf(name);
+  }
+
   @Override public int addStatus(Status status)
   {
     status.setPet(getPet(status.getPet().getId()));
@@ -129,7 +138,8 @@ public class ModelManager implements Model
 
   @Override public void removeStatus(Status status)
   {
-    statusPersistence.delete(status);
+    Status statusToDelete = statusPersistence.loadStatus(status.getId());
+    statusPersistence.delete(statusToDelete);
   }
 
   @Override public Status updateStatus(Status status)

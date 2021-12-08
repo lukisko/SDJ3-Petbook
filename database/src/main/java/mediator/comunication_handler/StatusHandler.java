@@ -35,6 +35,12 @@ public class StatusHandler
       case "Remove":
         response = remove(value);
         break;
+      case "GetAllOf":
+        response = getAllOf(value);
+        break;
+      case "Update":
+        response = update(value);
+        break;
     }
   }
   private String get(Status value){
@@ -76,6 +82,29 @@ public class StatusHandler
       model.removeStatus(value);
       return gson.toJson(new Comunication<String>("status", "Remove",
           "OK"));
+    }
+    catch (Exception e){
+      System.out.println(e.getMessage());
+      return e.getMessage();
+    }
+  }
+  private String getAllOf(Status value){
+    try
+    {
+
+      return gson.toJson(new Comunication<List<Status>>("status", "GetAllOf",
+          model.getAllStatusesWithName(value.getName())));
+    }
+    catch (Exception e){
+      System.out.println(e.getMessage());
+      return e.getMessage();
+    }
+  }
+  private String update(Status value){
+    try
+    {
+      return gson.toJson(new Comunication<Status>("status", "Update",
+          model.updateStatus(value)));
     }
     catch (Exception e){
       System.out.println(e.getMessage());

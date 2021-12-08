@@ -59,8 +59,7 @@ namespace business_logic.Model.PetPack
                 newStatus.pet.id = newPet.id;
                 if (notCheckedIndex>=oldLength){
                     await tier2Mediator.addStatus(newStatus);
-                }
-                if (newStatus.id<orderedOldStatus[notCheckedIndex].id){
+                } else if (newStatus.id<orderedOldStatus[notCheckedIndex].id){
                     await tier2Mediator.addStatus(newStatus);
                 } else if (newStatus.id == orderedOldStatus[notCheckedIndex].id){
                     if (newStatus.user.email != orderedOldStatus[notCheckedIndex].user.email){

@@ -39,12 +39,47 @@ public class StatusDatabase implements StatusPersistence
     query.setParameter("petId",id);
     List<Status> statusList = query.getResultList();
     if(statusList != null){
-      statusList.forEach(n -> n.getPet().getUser().getPets().clear());
-      statusList.forEach(n -> n.getPet().getUser().getStatuses().clear());
-      statusList.forEach(n -> n.getPet().getCity().getCountry().getCities().clear());
-      statusList.forEach(n -> n.getPet().getCity().getPets().clear());
-      statusList.forEach(n -> n.getUser().getStatuses().clear());
-      statusList.forEach(n -> n.getUser().getPets().clear());
+      statusList.forEach(status -> status.getPet().getUser().getPets().clear());
+      statusList.forEach(status -> status.getPet().getUser().getStatuses().clear());
+      statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
+      statusList.forEach(status -> status.getPet().getCity().getPets().clear());
+      statusList.forEach(status -> status.getPet().getStatuses().clear());
+      statusList.forEach(status -> {
+        if(status.getUser() != null)
+        {
+          status.getUser().getStatuses().clear();
+        }});
+      statusList.forEach(status -> {
+        if (status.getUser() != null)
+        {
+          status.getUser().getPets().clear();
+        }});
+    }
+    return statusList;
+  }
+
+  @Override public List<Status> getAllOf(String statusName)
+  {
+    database.beginSession();
+    Query query = database.getSession().createQuery("SELECT c FROM status c WHERE name = :name");
+    query.setParameter("name",statusName);
+    List<Status> statusList = query.getResultList();
+    if(statusList != null){
+      statusList.forEach(status -> status.getPet().getUser().getPets().clear());
+      statusList.forEach(status -> status.getPet().getUser().getStatuses().clear());
+      statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
+      statusList.forEach(status -> status.getPet().getCity().getPets().clear());
+      statusList.forEach(status -> status.getPet().getStatuses().clear());
+      statusList.forEach(status -> {
+        if(status.getUser() != null)
+        {
+          status.getUser().getStatuses().clear();
+        }});
+      statusList.forEach(status -> {
+        if (status.getUser() != null)
+        {
+          status.getUser().getPets().clear();
+        }});
     }
     return statusList;
   }
@@ -56,12 +91,21 @@ public class StatusDatabase implements StatusPersistence
     criteria.from(Status.class);
     List<Status> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null){
-      data.forEach(n -> n.getPet().getUser().getPets().clear());
-      data.forEach(n -> n.getPet().getCity().getCountry().getCities().clear());
-      data.forEach(n-> n.getPet().getCity().getCountry().getCities().clear());
-      data.forEach(n -> n.getPet().getCity().getPets().clear());
-      data.forEach(n -> n.getUser().getStatuses().clear());
-      data.forEach(n -> n.getUser().getPets().clear());
+      data.forEach(status -> status.getPet().getUser().getPets().clear());
+      data.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
+      data.forEach(status-> status.getPet().getCity().getCountry().getCities().clear());
+      data.forEach(status -> status.getPet().getCity().getPets().clear());
+      data.forEach(status -> status.getPet().getStatuses().clear());
+      data.forEach(status -> {
+        if(status.getUser() != null)
+        {
+          status.getUser().getStatuses().clear();
+        }});
+      data.forEach(status -> {
+        if (status.getUser() != null)
+        {
+          status.getUser().getPets().clear();
+        }});
     }
     return data;
   }

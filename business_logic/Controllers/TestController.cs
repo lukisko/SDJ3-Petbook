@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using business_logic.Model;
 using System.Net.Http;
 using business_logic.Model.UserPack;
+using business_logic.Model.MessagePack;
+using business_logic.Model.PetPack;
 
 namespace business_logic.Controllers
 {
@@ -25,8 +27,9 @@ namespace business_logic.Controllers
         public async Task<ActionResult<String>> TestEverything([FromQuery] string newEmailAddress)
         {
             string response = "";
+            int number = 1;
             Pet thePet = new Pet();
-            Console.WriteLine("Test 1 started:");
+            Console.WriteLine($"Test {number} started:");
             string emailAddress = newEmailAddress;
             string token = "";
             try{
@@ -105,37 +108,96 @@ namespace business_logic.Controllers
                     id = 0
                 };
                 thePet.statuses.Add(status);
-                Pet pet = await model.updatePetAsync(thePet, token);
+                await model.updatePetAsync(thePet, token);
+                Pet pet = (await model.getPetsAsync(thePet.id,null,null))[0];
                 if (pet.statuses.Count == 0){
                     throw new Exception("status was not added");
                 }
-                Console.WriteLine("Test 6 successful");
+                Console.WriteLine("Test 6 successful, there are "+pet.statuses.Count+" statuses.");
                 response+= "test 6 succeded\n";
-            } catch {
+            } catch (Exception e){
+                Console.WriteLine(e);
                 Console.WriteLine("Test 6 failed!");
                 response+= "test 6 (add status) not succeded\n";
             }
             //0/////////////////////////////////////
-            Console.WriteLine("\ntest 7 started:");
+            number = 7;
+            Console.WriteLine($"\nTest {number} started:");
+            try{
+                Status status = new Status(){
+                    name = "walking",
+                    id = 0,
+                    user = new User(){
+                        name = "Lukas",
+                        email = "pleva@usa.com"
+                    }
+                };
+                thePet.statuses = new List<Status>(){status};
+                await model.updatePetAsync(thePet,token);
+                thePet = (await model.getPetsAsync(thePet.id,null,null))[0];
+                if (thePet.statuses[0].user.email != "pleva@usa.com"){
+                    throw new Exception("update do not work.");
+                }
+                Console.WriteLine($"Test {number} successful");
+                response+= $"test {number} succeded\n";
+            } catch (Exception e){
+                Console.WriteLine($"Test {number} failed!\n{e}");
+                response+= $"test {number} (update status) not succeded\n";
+            }
+            //0/////////////////////////////////////
+            number = 8;
+            Console.WriteLine($"\ntest {number} started:");
+            try{
+                await model.GetAuthorisedUser(token);
+                Console.WriteLine($"Test {number} successful");
+                response+= $"test {number} succeded\n";
+            } catch (Exception e){
+                Console.WriteLine($"Test {number} failed!\n{e}");
+                response+= $"test {number} (get all pets of) not succeded\n";
+            }
+            //0/////////////////////////////////////
+            number = 9;
+            Console.WriteLine($"\ntest {number} started:");
+            try{
+                Message msg = new Message(){
+                    ReceiverPetId = 5,
+                    SenderPetId = thePet.id,
+                    MessageBody = "hello Pet.",
+                    DateTime = new DateTime()
+                };
+                await model.sendMessage(msg,token);
+                Console.WriteLine($"Test {number} successful");
+                response+= $"test {number} succeded\n";
+            } catch (Exception e){
+                Console.WriteLine($"Test {number} failed!\n{e}");
+                response+= $"test {number} (send message) not succeded\n";
+            }/*
+            //0/////////////////////////////////////
+            number = 10;
+            Console.WriteLine($"\ntest {number} started:");
             try{
                 thePet.statuses = new List<Status>();
                 await model.updatePetAsync(thePet, token);
-                Console.WriteLine("Test 7 successful");
-                response+= "test 7 succeded\n";
+                Console.WriteLine($"Test {number} successful");
+                response+= $"test {number} succeded\n";
             } catch {
-                Console.WriteLine("Test 7 failed!");
-                response+= "test 7 (remove status) not succeded\n";
+                Console.WriteLine($"Test {number} failed!");
+                response+= $"test {number} (remove status) not succeded\n";
             }
             //0/////////////////////////////////////
-            Console.WriteLine("\nTest 8 started:");
+            number = 11;
+            Console.WriteLine($"\nTest {number} started:");
             try{
                 await model.deletePetAsync(thePet,token);
-                Console.WriteLine("Test 8 successful");
-                response+= "test 8 succeded\n";
+                Console.WriteLine($"Test {number} successful");
+                response+= $"test {number} succeded\n";
             } catch {
-                Console.WriteLine("Test 8 failed!");
-                response+= "test 8 (remove pet) not succeded\n";
-            }
+                Console.WriteLine($"Test {number} failed!");
+                response+= $"test {number} (remove pet) not succeded\n";
+            }*/
+
+            model.sendCode("pleva@usa.com");
+            
             return StatusCode(301, response);
             
         }

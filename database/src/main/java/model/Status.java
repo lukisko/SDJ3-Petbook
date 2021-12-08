@@ -19,7 +19,10 @@ public class Status
   @JoinColumn(name="user_email")
   private User user;
 
-
+  public void setId(int id)
+  {
+    this.id = id;
+  }
   public Pet getPet()
   {
     return pet;
