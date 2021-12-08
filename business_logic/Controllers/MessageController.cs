@@ -23,9 +23,9 @@ namespace business_logic.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int petId, [FromQuery] string token){
+        public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int receiverPetId,[FromQuery] int? senderPetId, [FromQuery] string token){
             try{
-                return StatusCode(201, await model.GetMessages(petId, token));
+                return StatusCode(201, await model.GetMessages(receiverPetId, token));
             } catch (AccessViolationException e){
                 return StatusCode(401,e.Message);
             }
