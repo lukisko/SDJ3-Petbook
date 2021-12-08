@@ -76,6 +76,10 @@ namespace business_logic.Model.Mediator
             return await pets.deletePet(oldPet);
         }
 
+        public async Task<IList<Pet>> requestPetsByStatus(string status){
+            return await pets.requestPetByStatus(status);
+        }
+
         public async Task<Status> getStatus(Status status){
             return await statuses.getStatus(status);
         }

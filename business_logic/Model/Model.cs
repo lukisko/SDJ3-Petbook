@@ -50,23 +50,73 @@ namespace business_logic.Model
             return thePet;
         }//to delete
 
-        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status){//TODO maybe move to PetManager
-            if (id != null){ //TODO make full filtering
+        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status, 
+        string type, string breed, char? gender, DateTime? birthday){//TODO maybe move to PetManager
+
+            IList<Pet> petList = null; // if no filtering has take place have it as null
+            Func<Pet,bool> petFilter = new Func<Pet,bool>((Pet pet)=>{return true;});
+
+            if (id != null){
                 Pet thePet = await petManager.requestPet((int)id);
                 return new List<Pet>(){thePet};
             }
-            if (!String.IsNullOrEmpty(userEmail)){
-                if (await userManager.emailExist(userEmail)){
-                    AuthorisedUser authUser = new AuthorisedUser() {email = userEmail};
-                    return await petManager.requestPets(authUser);
+            
+
+            if (!String.IsNullOrEmpty(userEmail)){ // filter be email
+                if (petList == null){
+                    if (await userManager.emailExist(userEmail)){
+                        AuthorisedUser authUser = new AuthorisedUser() {email = userEmail};
+                        petList =  await petManager.requestPets(authUser);
+                    }
+                } else {
+                    petFilter = new Func<Pet,bool>((pet) =>{return petFilter(pet) && (pet.user.email==userEmail);});
                 }
-                return new List<Pet>();
             }
-            if (!String.IsNullOrEmpty(status)){
-                IList<Pet> petList = new List<Pet>();
-                return petList;
+            if (!String.IsNullOrEmpty(status)){ //filter by status -- DO NOT WORK
+                if (petList == null){
+                    petList = await petManager.getPetsByStatus(status);
+                } else {
+                    petFilter = new Func<Pet,bool>((pet) =>{
+                        return petFilter(pet) && (
+                            (pet.statuses.Where((statusIn) => {return statusIn.name == status;}).Count())>0
+                            );
+                    });
+                }
             }
-            return (await petManager.requestPets()).pets;
+
+            if (petList == null){
+                petList = (await petManager.requestPets()).pets;/////////////////////////
+            }
+
+            if (!String.IsNullOrEmpty(type)){
+                petList = petList.Where((pet)=>{
+                    if (pet.type == null) return false;
+                    return pet.type.Equals(type);
+                }).ToList();
+                /*petFilter = new Func<Pet, bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.type == type;
+                });*/
+            }
+
+            if (!String.IsNullOrEmpty(breed)){ // filter by breed
+                petFilter = new Func<Pet,bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.breed == breed;
+                });
+            }
+
+            if ( ((int) gender) != 0){
+                petFilter = new Func<Pet,bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.gender == gender;
+                });
+            }
+
+            if (!birthday.Equals(new DateTime())){
+                petFilter = new Func<Pet,bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.birthdate.Equals(birthday);
+                });
+            }
+
+            return petList.Where(petFilter).ToList();
         }
 
         public async Task<Pet> createPetAsync(Pet pet,string token){
@@ -135,7 +185,7 @@ namespace business_logic.Model
                 return null;
             }
             AuthorisedUser user = await userManager.GetUser(email);
-            user.pets = (await this.getPetsAsync(null,user.email,null)).ToArray();
+            user.pets = (await this.getPetsAsync(null,user.email,null,null,null,null,null)).ToArray();
             return user;
         }
         public async Task<AuthorisedUser> register(User user){
@@ -168,7 +218,7 @@ namespace business_logic.Model
         }
         public async Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
             string email = userManager.getUserWithToken(token);
-            if ((await this.getPetsAsync(senderPetId,null,null)).Count == 0){
+            if ((await this.getPetsAsync(senderPetId,null,null,null,null,null,null)).Count == 0){
                 messageManager.getMessages(receiverPetId, senderPetId);
                 return new List<Message>();
             }
@@ -184,13 +234,13 @@ namespace business_logic.Model
         public async Task<IList<Pet>> GetMessagePets(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
-            usr.pets = (await this.getPetsAsync(null,email,null)).ToArray();
+            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
                 IList<int> listOfId = messageManager.getPetIdOfMessages(receiverPetId);
                 List<Pet> petList = new List<Pet>();
                 foreach (int petId in listOfId){
-                    petList.AddRange(await this.getPetsAsync(petId,null,null));
+                    petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null));
                 }
                 return petList;
             } else {

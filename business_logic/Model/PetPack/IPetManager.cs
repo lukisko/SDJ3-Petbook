@@ -9,6 +9,7 @@ namespace business_logic.Model.PetPack
         Task<PetList> requestPets();
         Task<Pet> requestPet(int id);
         Task<IList<Pet>> requestPets(AuthorisedUser user);
+        Task<IList<Pet>> getPetsByStatus(string status);
         Task<Pet> createPet(Pet newPet);
         /// <summary>
         /// method that is supposed to update a pet. you can not update id of the pet
