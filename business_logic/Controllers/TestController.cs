@@ -156,7 +156,7 @@ namespace business_logic.Controllers
                 response+= $"test {number} (get all pets of) not succeded\n";
             }
             //0/////////////////////////////////////
-            number = 8;
+            number = 9;
             Console.WriteLine($"\ntest {number} started:");
             try{
                 Message msg = new Message(){
@@ -171,9 +171,9 @@ namespace business_logic.Controllers
             } catch (Exception e){
                 Console.WriteLine($"Test {number} failed!\n{e}");
                 response+= $"test {number} (send message) not succeded\n";
-            }
+            }/*
             //0/////////////////////////////////////
-            number = 9;
+            number = 10;
             Console.WriteLine($"\ntest {number} started:");
             try{
                 thePet.statuses = new List<Status>();
@@ -185,7 +185,7 @@ namespace business_logic.Controllers
                 response+= $"test {number} (remove status) not succeded\n";
             }
             //0/////////////////////////////////////
-            number = 10;
+            number = 11;
             Console.WriteLine($"\nTest {number} started:");
             try{
                 await model.deletePetAsync(thePet,token);
@@ -194,7 +194,7 @@ namespace business_logic.Controllers
             } catch {
                 Console.WriteLine($"Test {number} failed!");
                 response+= $"test {number} (remove pet) not succeded\n";
-            }
+            }*/
 
             model.sendCode("pleva@usa.com");
             
