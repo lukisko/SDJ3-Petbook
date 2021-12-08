@@ -62,7 +62,7 @@ public class StatusDatabase implements StatusPersistence
   @Override public int save(Status status)
   {
     database.beginSession();
-    database.getSession().persist(status);
+    database.getSession().save(status);
     database.getSession().getTransaction().commit();
     database.getSession().close();
     return status.getId();

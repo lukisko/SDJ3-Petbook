@@ -63,7 +63,7 @@ public class Status
 
   @Override public String toString()
   {
-    return "Status{" + "id=" + id + ", name='" + name
+    return "Status{" + "id=" + id + ", name='" + name + '\'' + ", pet=" + pet
         + ", user=" + user + '}';
   }
 }
