@@ -26,8 +26,8 @@ namespace ClientApp.Pages
             try
             {
                 await _userController.Login(Email, _confirmationCode);
-               // await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
-               //     _confirmationCode);
+                await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
+                   _confirmationCode);
                Email = null;
                 _confirmationCode = null;
                 await ModalInstance.CloseAsync();

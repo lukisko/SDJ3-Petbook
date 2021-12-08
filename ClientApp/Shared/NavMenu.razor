@@ -5,6 +5,7 @@
 @inject IModalService _modalService
 @inject NavigationManager NavMgr
 @inject IPetController _petController
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 
 <nav class="bg-green-400 ">
@@ -300,7 +301,7 @@
 
     void LogOut()
     {
-    //   ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
     }
 
     void NavigateToPetProfile(int petId)
