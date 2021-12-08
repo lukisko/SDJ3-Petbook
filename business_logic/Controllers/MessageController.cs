@@ -52,18 +52,18 @@ namespace business_logic.Controllers
 
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IList<Pet>>> GetMessages([FromQuery] int receiverPetId, [FromQuery] string token)
-        {
-            try
-            {
-                return StatusCode(201, await model.GetMessagePets(receiverPetId, token));
-            }
-            catch (AccessViolationException e)
-            {
-                return StatusCode(401, e.Message);
-            }
-        }
+        // [HttpGet]
+        // public async Task<ActionResult<IList<Pet>>> GetMessages([FromQuery] int receiverPetId, [FromQuery] string token)
+        // {
+        //     try
+        //     {
+        //         return StatusCode(201, await model.GetMessagePets(receiverPetId, token));
+        //     }
+        //     catch (AccessViolationException e)
+        //     {
+        //         return StatusCode(401, e.Message);
+        //     }
+        // }
 
         [HttpPost]
         public async Task<ActionResult<string>> SendMessage([FromQuery] string token, Message message)
