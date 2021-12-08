@@ -14,9 +14,7 @@ namespace ClientApp.Pages
         {
             allPets = await _petController.GetAllPetsAsync();
             toShowPets = allPets;
-            
         }
         
     }
 }
-

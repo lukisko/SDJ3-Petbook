@@ -29,6 +29,7 @@ public interface Model
   Status getStatus(int id);
   List<Status>  getStatusList(int id);
   List<Status> getAllStatuses();
+  List<Status> getAllStatusesWithName(String name);
   int addStatus(Status status);
   void removeStatus(Status status);
   Status updateStatus(Status status);

@@ -2,9 +2,9 @@
 {
     public class Status
     {
-        string userEmail {get;set;}
-        User user {get;set;}
-        int id {get;set;}
-        Pet pet {get;set;}
+        public string name {get;set;}
+        public User user {get;set;}
+        public int id {get;set;}
+        public Pet pet {get;set;}
     }
 }
