@@ -24,7 +24,10 @@ public class Test {
     Status status1 = gson.fromJson(toSend, Status.class);
 
 
-    model.addStatus(status1);
+    String asd = gson.toJson(model.addStatus(status1));
+
+    System.out.println(gson.fromJson(asd, Pet.class));
+    //System.out.println(model.getAllStatuses());
 
 
   }
