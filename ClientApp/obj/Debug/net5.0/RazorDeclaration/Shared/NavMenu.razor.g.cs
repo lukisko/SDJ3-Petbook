@@ -296,16 +296,13 @@ using System.Runtime.CompilerServices;
     async Task ShowLogPane()
     {
         LoggedInPet();
-        Console.WriteLine("Show log pane" + petLoggedIn.id);
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
-        Console.WriteLine("Nr of messages" + _toShowMessageLog.Count);
         if (LogPaneWindow)
         {
             LogPaneWindow = false;
         }
         else
         {
-            
             LogPaneWindow = true;
         }
     }
