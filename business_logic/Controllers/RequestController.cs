@@ -30,7 +30,7 @@ namespace business_logic.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<IList<Request>>> sendRequest([FromQuery] string token, Request request){
+        public async Task<ActionResult<string>> sendRequest([FromQuery] string token, Request request){
             return StatusCode(501,"not implemented");
         }
         
