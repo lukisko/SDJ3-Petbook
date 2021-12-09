@@ -66,31 +66,35 @@ namespace ClientApp.Data.Implementation
         public async Task<IList<Pet>> GetAllUserPetsAsync()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
-                $"{StaticVariables.URL}/Pets?token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+                $"{StaticVariables.URL}/AuthorisedUser?token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
 
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            IList<Pet> pets = new List<Pet>();
+
+            AuthorisedUser authUser = new AuthorisedUser();
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            pets = JsonSerializer.Deserialize<IList<Pet>>(reply);
-            return pets;
+            authUser = JsonSerializer.Deserialize<AuthorisedUser>(reply);
+            Console.WriteLine("Get all user pets" + authUser.pets[0].id);
+
+            return authUser.pets;
         }
 
         public async Task<Pet> GetPetProfileAsync(int petId)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
-                $"{StaticVariables.URL}/Pets?petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
-
+                $"{StaticVariables.URL}/Pets?id={petId}");
+            Console.WriteLine("Pet controller" + petId);
             // if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             // {
             //     throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             // }
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            Pet pet = JsonSerializer.Deserialize<Pet>(reply);
-            return pet;
+            IList<Pet> pet = JsonSerializer.Deserialize<IList<Pet>>(reply);
+            Console.WriteLine(pet[0].id);
+            return pet[0];
         }
 
         public async Task<Pet> UpdatePetAsync(Pet pet)
@@ -131,5 +135,6 @@ namespace ClientApp.Data.Implementation
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
         }
+        
     }
 }

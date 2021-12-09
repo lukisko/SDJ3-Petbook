@@ -18,5 +18,6 @@ namespace ClientApp.Model
         public DateTime birthdate {get;set;}
         public City city {get;set;}
         public User user {get;set;}
+        
     }
 }

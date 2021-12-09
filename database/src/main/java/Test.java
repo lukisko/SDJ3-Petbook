@@ -17,7 +17,10 @@ public class Test {
     Gson gson = new Gson();
     Model model = new ModelManager();
 
-    System.out.println(model.getPetList("pleva@usa.com"));
+
+    List<Status> statusList = model.getAllStatusesWithName("walking");
+    String stringToSend = gson.toJson(statusList);
+    byte[] toSendBytes = stringToSend.getBytes();
 
 
 
