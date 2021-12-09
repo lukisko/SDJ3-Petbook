@@ -24,13 +24,12 @@ namespace ClientApp.Pages
         }
 
         private async Task RegisterUser()
-        {
+        { 
             try
             {
                  await _userController.Register(_userToRegister);
-                 Console.WriteLine("registered");
-                Email = _userToRegister.email;
-                _modalService.Show<SendCode>();
+                 Email = _userToRegister.email;
+                _modalService.Show<Login>();
                 await ModalInstance.CloseAsync();
             }
             catch (Exception e)
