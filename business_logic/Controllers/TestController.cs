@@ -33,8 +33,8 @@ namespace business_logic.Controllers
             string emailAddress = newEmailAddress;
             string token = "";
             try{
-                //await model.register(new Model.User(){name = "test", email = emailAddress});
-                await model.sendCode(emailAddress);
+                await model.register(new Model.User(){name = "test", email = emailAddress});
+                //await model.sendCode(emailAddress);
                 response+= "test 1 succeded\n";
             } catch {
                 Console.WriteLine("Test 1 failed or you did not change email address!");
@@ -127,7 +127,7 @@ namespace business_logic.Controllers
             try{
                 Status status = new Status(){
                     name = "walking",
-                    id = 0,///////this is makeing it to add and remove the status
+                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0].statuses[0].id,
                     user = new User(){
                         name = "Lukas",
                         email = "pleva@usa.com"

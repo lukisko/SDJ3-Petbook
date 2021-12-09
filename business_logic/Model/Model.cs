@@ -76,11 +76,7 @@ namespace business_logic.Model
                 if (petList == null){
                     petList = await petManager.getPetsByStatus(status);
                 } else {
-                    petFilter = new Func<Pet,bool>((pet) =>{
-                        return petFilter(pet) && (
-                            (pet.statuses.Where((statusIn) => {return statusIn.name == status;}).Count())>0
-                            );
-                    });
+                    
                 }
             }
 
@@ -104,13 +100,13 @@ namespace business_logic.Model
                 });
             }
 
-            if ( ((int) gender) != 0){
+            if (gender != null && ((int) gender) != 0){
                 petFilter = new Func<Pet,bool>((petInside)=>{
                     return petFilter(petInside) && petInside.gender == gender;
                 });
             }
 
-            if (!birthday.Equals(new DateTime())){
+            if (birthday!= null && !birthday.Equals(new DateTime())){
                 petFilter = new Func<Pet,bool>((petInside)=>{
                     return petFilter(petInside) && petInside.birthdate.Equals(birthday);
                 });
