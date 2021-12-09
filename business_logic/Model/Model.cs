@@ -134,6 +134,14 @@ namespace business_logic.Model
                 name = (await userManager.GetUser(email)).name
             };
             Pet newPet = await petManager.createPet(pet);
+            if (pet.statuses.Count > 0)
+            {
+                foreach (var status in pet.statuses)
+                {
+                    newPet.statuses.Add(status);
+                }
+                await updatePetAsync(newPet, token);
+            }
             return newPet;
         }
 
