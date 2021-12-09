@@ -76,7 +76,14 @@ namespace business_logic.Model
                 if (petList == null){
                     petList = await petManager.getPetsByStatus(status);
                 } else {
-                    
+                    petList = petList.Where((pet)=>{
+                        if (pet.statuses == null) return false;
+                        foreach(Status statusIn in pet.statuses){
+                            if (statusIn == null) continue;
+                            if (statusIn.name == status) return true;
+                        }
+                        return false;
+                    }).ToList();
                 }
             }
 
@@ -91,28 +98,30 @@ namespace business_logic.Model
                 }).ToList();
                 /*petFilter = new Func<Pet, bool>((petInside)=>{
                     return petFilter(petInside) && petInside.type == type;
-                });*/
+                });*/ 
             }
 
             if (!String.IsNullOrEmpty(breed)){ // filter by breed
-                petFilter = new Func<Pet,bool>((petInside)=>{
-                    return petFilter(petInside) && petInside.breed == breed;
-                });
+                petList = petList.Where((pet) =>{
+                    if (pet.breed == null) return false;
+                    return pet.breed.Equals(breed);
+                }).ToList();
             }
 
             if (gender != null && ((int) gender) != 0){
-                petFilter = new Func<Pet,bool>((petInside)=>{
-                    return petFilter(petInside) && petInside.gender == gender;
-                });
+                petList = petList.Where(pet =>{
+                    return pet.gender == gender;
+                }).ToList();
             }
 
             if (birthday!= null && !birthday.Equals(new DateTime())){
-                petFilter = new Func<Pet,bool>((petInside)=>{
-                    return petFilter(petInside) && petInside.birthdate.Equals(birthday);
-                });
+                petList = petList.Where(pet =>{
+                    if (pet.birthdate == null) return false;
+                    return pet.birthdate.Equals(birthday);
+                }).ToList();
             }
 
-            return petList.Where(petFilter).ToList();
+            return petList;
         }
 
         public async Task<Pet> createPetAsync(Pet pet,string token){
