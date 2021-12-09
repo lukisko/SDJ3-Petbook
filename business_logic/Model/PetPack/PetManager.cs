@@ -66,7 +66,16 @@ namespace business_logic.Model.PetPack
                 } else if (newStatus.id<orderedOldStatus[notCheckedIndex].id){
                     await tier2Mediator.addStatus(newStatus);
                 } else if (newStatus.id == orderedOldStatus[notCheckedIndex].id){
-                    if (newStatus.user.email != orderedOldStatus[notCheckedIndex].user.email){
+                    //if the first value is not null and second value is not equal - update
+                    //if the first one is null and the second one is not null - update
+                    //*first == new; second == old
+
+                    //update if both of them are not null AND (one of them is null OR they are different)
+                    if ((!(newStatus.user == null && orderedOldStatus[notCheckedIndex].user == null)) && 
+                        (
+                            (newStatus.user == null ^ orderedOldStatus[notCheckedIndex].user == null) ||
+                            !(newStatus.user.email.Equals(orderedOldStatus[notCheckedIndex].user.email))
+                        ) ){
                         Status theStatus = await tier2Mediator.getStatus(newStatus);
                         User theUser = await tier2Mediator.GetUser(new AuthorisedUser(){email = newStatus.user.email});
                         theStatus.user = theUser;
