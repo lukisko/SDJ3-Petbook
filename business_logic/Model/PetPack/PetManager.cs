@@ -41,6 +41,13 @@ namespace business_logic.Model.PetPack
                 theCity = await tier2Mediator.AddCity(city);
             }
 
+            if (newPet.statuses != null){
+                foreach (Status status in newPet.statuses){
+                    status.pet = Pet.copy(newPet);
+                    await tier2Mediator.addStatus(status);
+                }
+            }
+
             newPet.city = theCity;
             Pet pet = await tier2Mediator.createPet(newPet);
             return pet;
