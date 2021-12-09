@@ -47,7 +47,7 @@ namespace ClientApp.Data.Implementation
         public async Task<IList<Message>> GetAllMessagesAsync(int receiverId, int senderId)
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
-                $"{StaticVariables.URL}/Message?receiver={receiverId}&senderId={senderId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+                $"{StaticVariables.URL}/Message?receiverPetId={receiverId}&senderPetId={senderId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
 
             if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -62,8 +62,9 @@ namespace ClientApp.Data.Implementation
 
         public async Task<IList<Pet>> GetAllMessagePets(int loggedInPet)
         {
+            Console.WriteLine($"Loggedinpet{loggedInPet}");
             HttpResponseMessage responseMessage = await client.GetAsync(
-                $"{StaticVariables.URL}/Message?petId={loggedInPet}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+                $"{StaticVariables.URL}/Message?receiverPetId={loggedInPet}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
 
             if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -73,6 +74,7 @@ namespace ClientApp.Data.Implementation
             IList<Pet> pets = new List<Pet>();
             string reply = await responseMessage.Content.ReadAsStringAsync();
             pets = JsonConvert.DeserializeObject<IList<Pet>>(reply);
+            
             return pets;
         }
     }

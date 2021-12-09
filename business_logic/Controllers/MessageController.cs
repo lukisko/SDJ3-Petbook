@@ -25,7 +25,8 @@ namespace business_logic.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IList<Message>>> GetMessages([FromQuery] int receiverPetId, [FromQuery] int? senderPetId, [FromQuery] string token)
-        {
+        {   
+            Console.WriteLine($"senderPetID{receiverPetId}senderPetId{senderPetId}token{token} ");
             if (senderPetId == null)
             {
                 try

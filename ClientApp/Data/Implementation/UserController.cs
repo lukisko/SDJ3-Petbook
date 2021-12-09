@@ -58,12 +58,12 @@ namespace ClientApp.Data.Implementation
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
 
+            StaticVariables.AccessToken = GenerateRandomKey();
             var token = responseMessage.Content.ReadAsStringAsync().Result;
             StaticVariables.AccessTokensLibrary.Add(StaticVariables.AccessToken, token);
 
             // test
             var tok = StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken];
-
             Console.WriteLine(tok);
             //test
             HttpResponseMessage authUserResponseMessage =
@@ -88,6 +88,14 @@ namespace ClientApp.Data.Implementation
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
+        }
+
+        private string GenerateRandomKey()
+        {
+            Random r = new Random();
+            var x = r.Next(0, 1000000);
+            string s = x.ToString("000000");
+            return s;
         }
     }
 }

@@ -131,6 +131,13 @@ using ClientApp.Authentication;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using System.Runtime.CompilerServices;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavMenu : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -139,7 +146,7 @@ using ClientApp.Authentication;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 336 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 333 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -167,20 +174,11 @@ using ClientApp.Authentication;
     protected async override Task OnInitializedAsync()
     {
         petLoggedIn = new Pet();
-
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
 
-
-        if (_allPetProfiles.Count == 1)
-        {
-            int petId = _allPetProfiles[0].id;
-            petLoggedIn = await _petController.GetPetProfileAsync(petId);
-        }
-        else
-        {
-        }
         _toShowPetsPetProfiles = _allPetProfiles;
+
         ProfileWindow = false;
         AccountsWindow = false;
         BurgerMenu = false;
@@ -229,6 +227,19 @@ using ClientApp.Authentication;
         NavMgr.NavigateTo($"/PetProfile/{petId}");
     }
 
+    async void LoggedInPet()
+    {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
+        if (_allPetProfiles.Count == 1)
+        {
+            int petId = _allPetProfiles[0].id;
+            petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        }
+        else
+        {
+        }
+    }
+
     public async Task DropDownProfileWindow()
     {
         if (ProfileWindow)
@@ -244,7 +255,7 @@ using ClientApp.Authentication;
 
     public async void DropDownAccountsWindow()
     {
-        _allPetProfiles = await _petController.GetAllUserPetsAsync();
+        LoggedInPet();
         if (AccountsWindow)
         {
             AccountsWindow = false;
@@ -284,13 +295,17 @@ using ClientApp.Authentication;
 
     async Task ShowLogPane()
     {
+        LoggedInPet();
+        Console.WriteLine("Show log pane" + petLoggedIn.id);
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
+        Console.WriteLine("Nr of messages" + _toShowMessageLog.Count);
         if (LogPaneWindow)
         {
             LogPaneWindow = false;
         }
         else
         {
+            
             LogPaneWindow = true;
         }
     }

@@ -2,6 +2,7 @@
 @using ClientApp.Model
 @using ClientApp.Data.Implementation
 @using ClientApp.Authentication
+@using System.Runtime.CompilerServices
 @inject IModalService _modalService
 @inject NavigationManager NavMgr
 @inject IPetController _petController
@@ -96,7 +97,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="ml-8 ">
                 <AuthorizeView >
                     <Authorized >
@@ -328,10 +328,6 @@
     </div>
 }
 
-
-
-
-
 @code
 {
     private bool ProfileWindow { get; set; }
@@ -360,20 +356,11 @@
     protected async override Task OnInitializedAsync()
     {
         petLoggedIn = new Pet();
-
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
 
-
-        if (_allPetProfiles.Count == 1)
-        {
-            int petId = _allPetProfiles[0].id;
-            petLoggedIn = await _petController.GetPetProfileAsync(petId);
-        }
-        else
-        {
-        }
         _toShowPetsPetProfiles = _allPetProfiles;
+
         ProfileWindow = false;
         AccountsWindow = false;
         BurgerMenu = false;
@@ -422,6 +409,19 @@
         NavMgr.NavigateTo($"/PetProfile/{petId}");
     }
 
+    async void LoggedInPet()
+    {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
+        if (_allPetProfiles.Count == 1)
+        {
+            int petId = _allPetProfiles[0].id;
+            petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        }
+        else
+        {
+        }
+    }
+
     public async Task DropDownProfileWindow()
     {
         if (ProfileWindow)
@@ -437,7 +437,7 @@
 
     public async void DropDownAccountsWindow()
     {
-        _allPetProfiles = await _petController.GetAllUserPetsAsync();
+        LoggedInPet();
         if (AccountsWindow)
         {
             AccountsWindow = false;
@@ -477,6 +477,7 @@
 
     async Task ShowLogPane()
     {
+        LoggedInPet();
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
         if (LogPaneWindow)
         {
