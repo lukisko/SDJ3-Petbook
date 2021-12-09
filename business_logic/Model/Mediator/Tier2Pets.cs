@@ -36,15 +36,13 @@ namespace business_logic.Model.Mediator
             return theUser.value;//TODO should I get pet or comunication pet???
         }
 
-        /*public async Task<PetList> requestWalkingPet(){
-            Comunication<Pet> communicationClass = new Comunication<Pet>("adoptionPet","Get",new Pet(){type="test",breed="ing",name="none"});
+        public async Task<IList<Pet>> requestPetByStatus(string statusName){
+            Comunication<Status> communicationClass = new Comunication<Status>("status","GetAllOf",new Status(){name = statusName});
 
-            Comunication<IList<Pet>> Pets = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(communicationClass);
+            Comunication<IList<Pet>> pets = await tier2.requestServerAsync<Comunication<Status>,Comunication<IList<Pet>>>(communicationClass);
 
-            Console.WriteLine(JsonSerializer.Serialize(Pets));
-            PetList petList = new PetList(){pets=Pets.value};
-            return petList;
-        }
+            return pets.value;
+        }/*
 
         public async Task<PetList> requestWalkingPets(){
             Comunication<Pet> communicationClass = new Comunication<Pet>("adoptionPet","GetAll",new Pet(){type="test",breed="ing",name="none"});

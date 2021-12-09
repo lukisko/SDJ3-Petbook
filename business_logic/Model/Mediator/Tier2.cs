@@ -76,6 +76,18 @@ namespace business_logic.Model.Mediator
             return await pets.deletePet(oldPet);
         }
 
+        public async Task<IList<Pet>> requestPetsByStatus(string status){
+            IList<Status> rightStatuses = await statuses.requestStatusByName(status);
+            List<Pet> returnPets = new List<Pet>();
+            foreach (Status tmpStatus in rightStatuses){
+                Pet tmpPet = tmpStatus.pet;
+                tmpPet.statuses = new List<Status>(){tmpStatus.copy()};
+                returnPets.Add(tmpStatus.pet);
+            }
+            
+            return returnPets;
+        }
+
         public async Task<Status> getStatus(Status status){
             return await statuses.getStatus(status);
         }

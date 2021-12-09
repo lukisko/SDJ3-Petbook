@@ -34,6 +34,7 @@ namespace business_logic.Controllers
             string token = "";
             try{
                 await model.register(new Model.User(){name = "test", email = emailAddress});
+                //await model.sendCode(emailAddress);
                 response+= "test 1 succeded\n";
             } catch {
                 Console.WriteLine("Test 1 failed or you did not change email address!");
@@ -109,7 +110,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses.Add(status);
                 await model.updatePetAsync(thePet, token);
-                Pet pet = (await model.getPetsAsync(thePet.id,null,null))[0];
+                Pet pet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
                 if (pet.statuses.Count == 0){
                     throw new Exception("status was not added");
                 }
@@ -126,7 +127,7 @@ namespace business_logic.Controllers
             try{
                 Status status = new Status(){
                     name = "walking",
-                    id = 0,
+                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0].statuses[0].id,
                     user = new User(){
                         name = "Lukas",
                         email = "pleva@usa.com"
@@ -134,7 +135,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses = new List<Status>(){status};
                 await model.updatePetAsync(thePet,token);
-                thePet = (await model.getPetsAsync(thePet.id,null,null))[0];
+                thePet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
                 if (thePet.statuses[0].user.email != "pleva@usa.com"){
                     throw new Exception("update do not work.");
                 }

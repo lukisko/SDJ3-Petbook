@@ -12,6 +12,7 @@ namespace business_logic.Model.Mediator
         Task<Pet> createPet(Pet newPet);
         Task<Pet> updatePet(Pet newPet);
         Task<Pet> deletePet(Pet oldPet);
+        Task<IList<Pet>> requestPetsByStatus(string status);
 
         Task<Status> getStatus(Status status);
         Task<Status> addStatus(Status newStatus);

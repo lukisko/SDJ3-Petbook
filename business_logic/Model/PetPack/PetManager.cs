@@ -23,6 +23,10 @@ namespace business_logic.Model.PetPack
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
             return await tier2Mediator.requestPets(user);
         }
+
+        public async Task<IList<Pet>> getPetsByStatus(string status){
+            return await tier2Mediator.requestPetsByStatus(status);
+        }
         public async Task<Pet> createPet(Pet newPet){//TODO check if the user, city and country exist
             Country theCountry = await tier2Mediator.GetCountry(newPet.city.country);
             if (theCountry == null){
