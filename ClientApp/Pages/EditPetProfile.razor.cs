@@ -6,10 +6,11 @@ namespace ClientApp.Pages
 {
     public partial class EditPetProfile : ComponentBase
     {
-        public Pet petToEdit = new Pet() {id = 0};
+        public Pet petToEdit;
 
         protected override async Task OnInitializedAsync()
         {
+            petToEdit = new Pet();
         }
 
         private async Task EditPet()

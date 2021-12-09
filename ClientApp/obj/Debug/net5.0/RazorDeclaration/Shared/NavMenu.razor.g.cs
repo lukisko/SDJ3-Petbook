@@ -139,7 +139,7 @@ using ClientApp.Authentication;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 230 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 233 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
