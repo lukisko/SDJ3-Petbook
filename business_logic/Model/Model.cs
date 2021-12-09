@@ -129,8 +129,10 @@ namespace business_logic.Model
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
             }
-            pet.user.email = email;
-            pet.user.name = (await userManager.GetUser(email)).name;
+            pet.user = new User(){
+                email = email,
+                name = (await userManager.GetUser(email)).name
+            };
             Pet newPet = await petManager.createPet(pet);
             return newPet;
         }
