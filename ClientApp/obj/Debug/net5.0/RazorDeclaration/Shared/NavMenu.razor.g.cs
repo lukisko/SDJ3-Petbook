@@ -146,7 +146,7 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 333 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 338 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -242,6 +242,7 @@ using System.Runtime.CompilerServices;
 
     public async Task DropDownProfileWindow()
     {
+        LoggedInPet();
         if (ProfileWindow)
         {
             ProfileWindow = false;

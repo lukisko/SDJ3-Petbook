@@ -15,7 +15,6 @@ namespace ClientApp.Data.Implementation
     {
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-        public Action<Object> RequestAnswerChange;
 
         public PetController()
         {
@@ -113,13 +112,7 @@ namespace ClientApp.Data.Implementation
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
-            if (responseMessage.StatusCode == HttpStatusCode.Created)
-            {
-                // Well I guess I did it 
-                // But i Forgot what it means
-                RequestAnswerChange.Invoke(responseMessage.Content);
-            }
+            
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
             Pet updatedPet = JsonConvert.DeserializeObject<Pet>(reply);

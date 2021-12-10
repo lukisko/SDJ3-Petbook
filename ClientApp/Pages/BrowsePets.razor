@@ -16,7 +16,8 @@ else
         {
             <div class="py-10 h-200 w-100 bg-pink-100 flex justify-center items-center">
                 <div class="h-56 w-72 absolute flex justify-center items-center pt-12">
-                    @if(item.statuses.Count > 0){
+                    @if (item.statuses.Count > 0)
+                    {
                         <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
                     }
                     else
@@ -38,7 +39,50 @@ else
                                 </button>
 
                             </div>
-                            
+
+                            <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
+                                @foreach (Status status in item.statuses)
+                                {
+                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                        <span class=" text-sm mr-2">@status.name</span>
+                                    </button>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Type</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
+                                </div>
+                                <div class="flex flex-col justify-center items-center">
+                                    <h1 class="text-gray-500 text-xs">Breed</h1>
+                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                                </div>
+                            </div>
+                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                                <h1 class="text-gray-700 font-bold">@item.name</h1>
+                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if(item.gender.Equals('F'))
+                {
+                    <div class="h-56 mx-4 w-5/6 bg-pink-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                        <div>
+                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
+                                <h1 class="text-white">Profile</h1>
+                                <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                    <span class="text-sm mr-2">Message</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                    </svg>
+                                </button>
+
+                            </div>
+
                             <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
                                 @foreach (Status status in item.statuses)
                                 {
@@ -69,7 +113,7 @@ else
                 }
                 else
                 {
-                    <div class="h-56 mx-4 w-5/6 bg-pink-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                    <div class="h-56 mx-4 w-5/6 bg-yellow-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
                         <div>
                             <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
                                 <h1 class="text-white">Profile</h1>
@@ -81,7 +125,7 @@ else
                                 </button>
 
                             </div>
-                            
+
                             <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
                                 @foreach (Status status in item.statuses)
                                 {
@@ -114,3 +158,4 @@ else
         }
     </div>
 }
+

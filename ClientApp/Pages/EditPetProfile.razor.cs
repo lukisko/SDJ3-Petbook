@@ -34,7 +34,6 @@ namespace ClientApp.Pages
         private async Task EditPet()
         {
             await _petController.UpdatePetAsync(petToEdit);
-            NavMgr.NavigateTo("/");
         }
         public void setWalking(ChangeEventArgs evt)
         {

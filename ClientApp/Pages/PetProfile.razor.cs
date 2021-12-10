@@ -12,10 +12,9 @@ namespace ClientApp.Pages
         private Pet pet { get; set; }
         
 
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             pet = await _petController.GetPetProfileAsync(petId);
-            
         }
 
         public void NavigateToEditProfile()
