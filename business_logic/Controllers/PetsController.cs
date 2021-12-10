@@ -58,7 +58,15 @@ namespace business_logic.Controllers
 
         [HttpDelete]
         public async Task<ActionResult<Pet>> DeletePet([FromQuery] int petId, [FromQuery] string token){
-            return StatusCode(501,"comming soon");
+            if (string.IsNullOrEmpty(token)){
+                return StatusCode(400, "token needs to be specified.");
+            }
+            try {
+                Pet oldPet = await model.deletePetAsync(new Pet(){id = petId},token);
+                return StatusCode(200, oldPet);
+            } catch (AccessViolationException e){
+                return StatusCode(401, e.Message);
+            }
         }
     }
 }
