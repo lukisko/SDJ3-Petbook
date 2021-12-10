@@ -41,6 +41,13 @@ namespace business_logic.Model.PetPack
                 theCity = await tier2Mediator.AddCity(city);
             }
 
+            if (newPet.statuses != null){
+                foreach (Status status in newPet.statuses){
+                    status.pet = Pet.copy(newPet);
+                    await tier2Mediator.addStatus(status);
+                }
+            }
+
             newPet.city = theCity;
             Pet pet = await tier2Mediator.createPet(newPet);
             return pet;
@@ -137,10 +144,11 @@ namespace business_logic.Model.PetPack
             List<Status> higerValue = new List<Status>();
             List<Status> returnValue = new List<Status>(length);
 
-            int separateValue = list[0].id;
+            Status pivot = list[0];
+            list.Remove(pivot);
 
             foreach (Status status in list){
-                if (status.id> separateValue){
+                if (status.id> pivot.id){
                     higerValue.Add(status);
                 } else {
                     lowerOrEqualValue.Add(status);
@@ -148,6 +156,7 @@ namespace business_logic.Model.PetPack
             }
 
             returnValue.AddRange(this.orderStatusesByIdLowToHigh(lowerOrEqualValue));
+            returnValue.Add(pivot);
             returnValue.AddRange(this.orderStatusesByIdLowToHigh(higerValue));
 
             return returnValue;
