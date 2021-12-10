@@ -76,7 +76,6 @@ namespace ClientApp.Data.Implementation
             AuthorisedUser authUser = new AuthorisedUser();
             string reply = await responseMessage.Content.ReadAsStringAsync();
             authUser = JsonSerializer.Deserialize<AuthorisedUser>(reply);
-            Console.WriteLine("Get all user pets" + authUser.pets[0].id);
 
             return authUser.pets;
         }

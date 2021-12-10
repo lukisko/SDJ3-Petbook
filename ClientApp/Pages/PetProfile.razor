@@ -2,43 +2,128 @@
 @inject NavigationManager NavMgr
 @inject IPetController _petController
 @*profile pane container*@
-<div class="bg-pink-300 mt-12 mx-12 rounded-xl font-mono text-xl ">
-    @*profile picture, name, options container,edit button*@
-    <div class="grid grid-cols-2 m-3  ">
-        @* profile picture container*@
-        <div class="flex inline-block">
-            <img alt="Dog profile picture" class=" rounded-full w-30 h-30 mt-6 mx-8" src="Images/dog.jpg">
-            
-            @*name container*@
+@if (pet == null)
+{
+    <p>no pet found</p>
+}
+else{
+@* <div class="bg-pink-300 mt-12 mx-12 rounded-xl font-mono text-xl "> *@
+@*     $1$profile picture, name, options container,edit button#1# *@
+@*     <div class="grid grid-cols-2 m-3  "> *@
+@*         $1$ profile picture container#1# *@
+@*         <div class="flex inline-block"> *@
+@*             <img alt="Dog profile picture" class=" rounded-full w-30 h-30 mt-6 mx-8" src="Images/dog.jpg"> *@
+@*              *@
+@*             $1$name container#1# *@
+@* *@
+@*             <div class="grid grid-cols-2 gap-1 mt-8 font-medium"> *@
+@*                 <div class="relative row-span-5 col-span-3 "> *@
+@*                     <label class="absolute bottom-0 left-0 text-white text-3xl ">@pet.name</label> *@
+@*                 </div> *@
+@*                 <div class="col-span-3 place-self-end mb-12"> *@
+@*                     <label class=" bg-white  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Walking Pet</label> *@
+@*                     <label class=" bg-white ml-4  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Foster Pet</label> *@
+@*                     <label class=" bg-white ml-4   p-1   rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Adopting Pet</label> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*         <div class="relative"> *@
+@*             <button class=" mr-8 absolute bottom-0 right-0 flex inline-block  w-auto bg-white py-1  rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToEditProfile())"> *@
+@*                 <svg xmlns="http://www.w3.org/2000/svg" class=" ml-1 mt-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> *@
+@*                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/> *@
+@*                 </svg> *@
+@*                 <label class=" ml-1 mr-2">Edit Profile</label> *@
+@*             </button> *@
+@*         </div> *@
+@*     </div> *@
+@*     <div class="max-w-s mx-15"> *@
+@*         <hr class="border-solid border-1 border-light-blue-500 mx-11 "/> *@
+@*     </div> *@
+@*     $1$profile options buttons#1# *@
+@*     <div class="flex inline-block m-3  "> *@
+@*         <button class=" bg-white py-1 px-2 ml-8 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80"   >Posts</button> *@
+@*         <button class="bg-white  py-1 px-2 ml-5 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >About</button> *@
+@*         <button class="bg-white py-1 px-2 ml-5  mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Followings</button> *@
+@*         <button class="bg-white  py-1 px-2 ml-5 mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Groups</button> *@
+@*     </div> *@
+@* </div> *@
+    
+    <div class="pt-10 h-full w-screen bg-pink-100 flex justify-center items-center">
+    <div class="container h-full mt-10 mb-20 mx-auto ">
+        <div>
 
-            <div class="grid grid-cols-2 gap-1 mt-8 font-medium">
-                <div class="relative row-span-5 col-span-3 ">
-                    <label class="absolute bottom-0 left-0 text-white text-3xl ">Jackie Jo</label>
+            <div class="bg-white mt-100 rounded-lg relative shadow-xl w-5/6 md:w-4/6  lg:w-3/6 xl:w-2/6 mx-auto">
+                <div class="flex justify-center">
+                    @if (pet.gender == 'M')
+                    {
+                        <img alt="Dog profile picture" class="border-8 border-blue-400 rounded-full w-30 h-30 mt-6 mx-8" src="Images/dog.jpg">
+                    }
+                    else
+                    {
+                        <img alt="Dog profile picture" class="border-8 border-pink-400 rounded-full w-30 h-30 mt-6 mx-8" src="Images/dog.jpg">
+                    }
                 </div>
-                <div class="col-span-3 place-self-end mb-12">
-                    <label class=" bg-white  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Walking Pet</label>
-                    <label class=" bg-white ml-4  p-1 rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Foster Pet</label>
-                    <label class=" bg-white ml-4   p-1   rounded-xl   shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Adopting Pet</label>
+                
+                <div class="mt-16">
+                    <div>
+                        <h1 class="font-bold text-center text-3xl text-gray-900">@pet.type <span class="text-white">a</span> @pet.name</h1>
+                        <p class="text-center text-sm text-gray-400 font-medium">@pet.city.name, @pet.city.country.name</p>
+                    </div>
+                    <div>
+                        <p class="text-center text-sm text-gray-400 font-medium">owner: @pet.user.email</p>
+                    </div>
+                    <div class="my-5">
+                        <button @onclick=NavigateToEditProfile class="w-full hover:bg-indigo-700 text-indigo-100 block text-center font-medium leading-6 px-6 py-3 bg-indigo-500">
+                            Edit profile
+                        </button>
+                    </div>
+                    <div class="flex justify-evenly my-5">
+                        <a href="" class="bg font-bold text-sm text-blue-800 w-full text-center py-3 hover:bg-blue-800 hover:text-white hover:shadow-lg">Facebook</a>
+                        <a href="" class="bg font-bold text-sm text-blue-400 w-full text-center py-3 hover:bg-blue-400 hover:text-white hover:shadow-lg">Twitter</a>
+                        <a href="" class="bg font-bold text-sm text-yellow-600 w-full text-center py-3 hover:bg-yellow-600 hover:text-white hover:shadow-lg">Instagram</a>
+                        <a href="" class="bg font-bold text-sm text-gray-600 w-full text-center py-3 hover:bg-gray-600 hover:text-white hover:shadow-lg">Email</a>
+                    </div>
+
+                    <div class="w-full">
+                        <h3 class="font-bold text-gray-600 text-left px-4">Recent activites</h3>
+                        <div class="mt-5 w-full">
+                            <a href="#" class="w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 w-full block hover:bg-gray-100 transition duration-150">
+                                <img src="https://pantazisoft.com/img/avatar-2.jpeg" alt="" class="rounded-full h-6 shadow-md inline-block mr-2">
+                                Updated his status
+                                <span class="text-gray-400 text-sm">24 min ago</span>
+                            </a>
+
+                            <a href="#" class="w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 w-full block hover:bg-gray-100 transition duration-150">
+                                <img src="https://pantazisoft.com/img/avatar-2.jpeg" alt="" class="rounded-full h-6 shadow-md inline-block mr-2">
+                                Added new profile picture
+                                <span class="text-gray-400 text-sm">42 min ago</span>
+                            </a>
+
+                            <a href="#" class="w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 w-full block hover:bg-gray-100 transition duration-150">
+                                <img src="https://pantazisoft.com/img/avatar-2.jpeg" alt="" class="rounded-full h-6 shadow-md inline-block mr-2">
+                                Posted new article in <span class="font-bold">Web Dev</span>
+                                <span class="text-gray-400 text-sm">49 min ago</span>
+                            </a>
+
+                            <a href="#" class="w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 w-full block hover:bg-gray-100 transition duration-150">
+                                <img src="https://pantazisoft.com/img/avatar-2.jpeg" alt="" class="rounded-full h-6 shadow-md inline-block mr-2">
+                                Edited website settings
+                                <span class="text-gray-400 text-sm">1 day ago</span>
+                            </a>
+
+                            <a href="#" class="w-full border-t-2 border-gray-100 font-medium text-gray-600 py-4 px-4 w-full block hover:bg-gray-100 transition duration-150">
+                                <img src="https://pantazisoft.com/img/avatar-2.jpeg" alt="" class="rounded-full h-6 shadow-md inline-block mr-2">
+                                Added new rank
+                                <span class="text-gray-400 text-sm">5 days ago</span>
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="relative">
-            <button class=" mr-8 absolute bottom-0 right-0 flex inline-block  w-auto bg-white py-1  rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="@(() => NavigateToEditProfile())">
-                <svg xmlns="http://www.w3.org/2000/svg" class=" ml-1 mt-1 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-                </svg>
-                <label class=" ml-1 mr-2">Edit Profile</label>
-            </button>
+
         </div>
     </div>
-    <div class="max-w-s mx-15">
-        <hr class="border-solid border-1 border-light-blue-500 mx-11 "/>
     </div>
-    @*profile options buttons*@
-    <div class="flex inline-block m-3  ">
-        <button class=" bg-white py-1 px-2 ml-8 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80"   >Posts</button>
-        <button class="bg-white  py-1 px-2 ml-5 mt-0 mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >About</button>
-        <button class="bg-white py-1 px-2 ml-5  mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Followings</button>
-        <button class="bg-white  py-1 px-2 ml-5 mt-0  mb-6 rounded-xl hover:bg-pink-300  shadow-xl  focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" >Groups</button>
-    </div>
-</div>
+
+}

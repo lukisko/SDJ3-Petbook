@@ -42,7 +42,7 @@ namespace ClientApp.Pages
         private async Task AddNewPet()
         {
             await _petController.AddPetAsync(petToAdd);
-            NavMgr.NavigateTo("/");
+            NavMgr.NavigateTo("/BrowsePets");
         }
 
         public void setWalking(ChangeEventArgs evt)
