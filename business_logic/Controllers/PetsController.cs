@@ -22,9 +22,10 @@ namespace business_logic.Controllers
         }
         [HttpGet]
         public async Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id, [FromQuery] string email, 
-            [FromQuery] string status,[FromQuery] string type,[FromQuery] string breed,[FromQuery] char gender, [FromQuery] DateTime birthday){
+            [FromQuery] string status,[FromQuery] string type,[FromQuery] string breed,[FromQuery] char gender,
+            [FromQuery] DateTime birthday,[FromQuery] string name){
             try {
-                return StatusCode(200,await model.getPetsAsync(id,email,status,type,breed,gender,birthday));
+                return StatusCode(200,await model.getPetsAsync(id,email,status,type,breed,gender,birthday,name));
             } catch (Exception e){
                 return StatusCode(500,e.Message);
             }

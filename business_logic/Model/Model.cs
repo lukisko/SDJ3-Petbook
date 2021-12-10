@@ -57,7 +57,7 @@ namespace business_logic.Model
         }//to delete
 
         public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status, 
-        string type, string breed, char? gender, DateTime? birthday){//TODO maybe move to PetManager
+        string type, string breed, char? gender, DateTime? birthday, string name){//TODO maybe move to PetManager
 
             IList<Pet> petList = null; // if no filtering has take place have it as null
             Func<Pet,bool> petFilter = new Func<Pet,bool>((Pet pet)=>{return true;});
@@ -105,6 +105,13 @@ namespace business_logic.Model
                 /*petFilter = new Func<Pet, bool>((petInside)=>{
                     return petFilter(petInside) && petInside.type == type;
                 });*/ 
+            }
+
+            if (!String.IsNullOrEmpty(name)){
+                petList = petList.Where(pet =>{
+                    if (pet.name == null) return false;
+                    return pet.name.Equals(name);
+                }).ToList();
             }
 
             if (!String.IsNullOrEmpty(breed)){ // filter by breed
@@ -206,7 +213,7 @@ namespace business_logic.Model
                 return null;
             }
             AuthorisedUser user = await userManager.GetUser(email);
-            user.pets = (await this.getPetsAsync(null,user.email,null,null,null,null,null)).ToArray();
+            user.pets = (await this.getPetsAsync(null,user.email,null,null,null,null,null,null)).ToArray();
             return user;
         }
         public async Task<AuthorisedUser> register(User user){
@@ -239,7 +246,7 @@ namespace business_logic.Model
         }
         public async Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
             string email = userManager.getUserWithToken(token);
-            if ((await this.getPetsAsync(senderPetId,null,null,null,null,null,null)).Count == 0){
+            if ((await this.getPetsAsync(senderPetId,null,null,null,null,null,null,null)).Count == 0){
                 messageManager.getMessages(receiverPetId, senderPetId);
                 return new List<Message>();
             }
@@ -255,13 +262,13 @@ namespace business_logic.Model
         public async Task<IList<Pet>> GetMessagePets(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
-            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null)).ToArray();
+            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
                 IList<int> listOfId = messageManager.getPetIdOfMessages(receiverPetId);
                 List<Pet> petList = new List<Pet>();
                 foreach (int petId in listOfId){
-                    petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null));
+                    petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null,null));
                 }
                 return petList;
             } else {
@@ -284,7 +291,7 @@ namespace business_logic.Model
         public async Task<IList<User>> GetPetRequests(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
-            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null)).ToArray();
+            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
                 IList<string> emails = requestManager.getRequestsOfPet(receiverPetId);

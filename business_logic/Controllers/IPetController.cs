@@ -10,7 +10,8 @@ namespace business_logic.Controllers
     {
         [HttpGet]
         Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id, [FromQuery] string email, 
-            [FromQuery] string status,[FromQuery] string type,[FromQuery] string breed,[FromQuery] char gender, [FromQuery] DateTime birthday);
+            [FromQuery] string status,[FromQuery] string type,[FromQuery] string breed,[FromQuery] char gender,
+            [FromQuery] DateTime birthday, [FromQuery] string name);
         [HttpPost]
         Task<ActionResult<Pet>> AddPet(Pet pet,[FromQuery] string token);
         [HttpPut]
