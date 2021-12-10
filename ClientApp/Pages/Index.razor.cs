@@ -15,9 +15,9 @@ namespace  ClientApp.Pages
          // allPets = await _petController.GetAllPetsAsync();
            toShowPets = allPets;
        }
-       private void NavigateToAddPet()
-       {
-           NavMgr.NavigateTo($"/AddPet");
-       }
+       // private void NavigateToAddPet()
+       // {
+       //     NavMgr.NavigateTo($"/AddPet");
+       // }
     }
 }

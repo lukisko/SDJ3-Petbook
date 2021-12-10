@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ClientApp.Model;
 using System;
 using System.IO;
@@ -43,6 +44,7 @@ namespace ClientApp.Pages
         private async Task EditPet()
         {
             await _petController.UpdatePetAsync(petToEdit);
+            NavMgr.NavigateTo($"/PetProfile/{petToEdit.id}");
         }
         public void setWalking(ChangeEventArgs evt)
         {
