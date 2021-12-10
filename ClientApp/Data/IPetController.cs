@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using ClientApp.Model;
@@ -18,7 +19,7 @@ namespace ClientApp.Data
         /// 
         /// </summary>
         /// <returns> IList with all pets account</returns>
-        Task<IList<Pet>> GetAllPetsAsync();
+        Task<IList<Pet>> GetAllPetsAsync(string? email,string? status,string? type, string? breed,string? name );
 
          Task<IList<Pet>> GetAllUserPetsAsync();
          

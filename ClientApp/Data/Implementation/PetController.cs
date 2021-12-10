@@ -48,10 +48,10 @@ namespace ClientApp.Data.Implementation
             return updatedPet;
         }
 
-        public async Task<IList<Pet>> GetAllPetsAsync()
+        public async Task<IList<Pet>> GetAllPetsAsync(string? email,string? status,string? type, string? breed,string? name )
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets?name={name}&email={email}&status={status}&type={type}&breed={breed}");
 
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {

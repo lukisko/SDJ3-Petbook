@@ -19,14 +19,14 @@ namespace ClientApp.Data.Implementation
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
 
-        private HttpContext _context;
+       
 
         public UserController()
         {
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
-            _context = new DefaultHttpContext();
+            
         }
 
         public async Task<string> Register(User newUser)

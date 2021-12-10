@@ -12,46 +12,48 @@
 
 <nav class="bg-green-400 ">
 <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white  hover:text-gray-600  focus:outline-none  focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" @onclick="@(() => DropDownBurgerMenu())">
-                <span class="sr-only">Open main menu</span>
+<div class="relative flex items-center justify-between h-16">
+<div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+    <!-- Mobile menu button-->
+    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white  hover:text-gray-600  focus:outline-none  focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" @onclick="@(() => DropDownBurgerMenu())">
+        <span class="sr-only">Open main menu</span>
 
-                <svg class=" h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
+        <svg class=" h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
 
-                <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+</div>
+<div class="flex-1 flex items-center space-x-4 justify-center sm:items-stretch sm:justify-start ">
+    <div class="flex-shrink-0 flex items-center text-white ">
+        <img class="block lg:hidden mt-1 h-16 w-auto" src="Images/Logo1.png" alt="PetBook Logo">
+        <img class="hidden lg:block mt-1 h-16  w-auto" src="Images/Logo1.png" alt="PetBook Logo">
+        <!-- Search bar -->
+
+    </div>
+    <div class="absolute sm:relative  flex-1 flex items-center">
+        <div class="flex-shrink-0  hidden sm:inline-block border-2 rounded-xl ">
+            <button class=" px-3 border-r">
+                <svg class="w-auto h-4 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24">
+                    <path
+                        d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
+                    </path>
                 </svg>
             </button>
+            <input type="text" class="bg-transparent px-2 py-2 w-auto h-8 rounded-r-xl text-gray-50" placeholder="Search...">
         </div>
-        <div class="flex-1 flex items-center space-x-4 justify-center sm:items-stretch sm:justify-start ">
-            <div class="flex-shrink-0 flex items-center text-white ">
-                <img class="block lg:hidden mt-1 h-16 w-auto" src="Images/Logo1.png" alt="PetBook Logo">
-                <img class="hidden lg:block mt-1 h-16  w-auto" src="Images/Logo1.png" alt="PetBook Logo">
-                <!-- Search bar -->
+    </div>
+</div>
 
-            </div>
-            <div class="absolute sm:relative  flex-1 flex items-center">
-                <div class="flex-shrink-0  hidden sm:inline-block border-2 rounded-xl ">
-                    <button class=" px-3 border-r">
-                        <svg class="w-auto h-4 text-white" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                             viewBox="0 0 24 24">
-                            <path
-                                d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
-                            </path>
-                        </svg>
-                    </button>
-                    <input type="text" class="bg-transparent px-2 py-2 w-auto h-8 rounded-r-xl text-gray-50" placeholder="Search...">
-                </div>
-            </div>
-        </div>
-
-        <div class="z-20 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div class="hidden sm:block sm:ml-6">
-                <div class=" ml-10 flex space-x-9">
+<div class="z-20 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+    <div class="hidden sm:block sm:ml-6">
+        <div class=" ml-10 flex space-x-9">
+            <AuthorizeView >
+                <NotAuthorized >
                     <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
                         <span class="sr-only">Browse Pets</span>
 
@@ -59,158 +61,169 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                         </svg>
                     </button>
-                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateHome">
-                        <span class="sr-only">Go home</span>
+                </NotAuthorized>
+                <Authorized >
+                    <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateAuthPetToBrowsePets">
+                        <span class="sr-only">Browse Pets</span>
 
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                         </svg>
                     </button>
+                </Authorized>
+            </AuthorizeView>
+            <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateHome">
+                <span class="sr-only">Go home</span>
 
-                    <AuthorizeView >
-                        <Authorized >
-                            <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowLogPane">
-                                <span class="sr-only">View Messages</span>
-                                <!-- Heroicon name: outline/bell -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                                </svg>
-                            </button>
-                        </Authorized>
-                        <NotAuthorized >
-                            <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
-                                <span class="sr-only">View Messages</span>
-                                <!-- Heroicon name: outline/bell -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                                </svg>
-                            </button>
-                        </NotAuthorized>
-                    </AuthorizeView>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+            </button>
 
-                    <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span class="sr-only">View Notifications</span>
+            <AuthorizeView >
+                <Authorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowLogPane">
+                        <span class="sr-only">View Messages</span>
                         <!-- Heroicon name: outline/bell -->
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                         </svg>
                     </button>
-                </div>
-            </div>
-            <div class="ml-8 ">
-                <AuthorizeView >
-                    <Authorized >
-                        <div>
-                            <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
-                                <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                            </button>
-                        </div>
-                    </Authorized>
-                    <NotAuthorized >
-                        <div>
-                            <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
-                                <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                            </button>
-                        </div>
-                    </NotAuthorized>
+                </Authorized>
+                <NotAuthorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
+                        <span class="sr-only">View Messages</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </button>
+                </NotAuthorized>
+            </AuthorizeView>
 
-                </AuthorizeView>
-
-
-                @if (ProfileWindow)
-                {
-                    <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100", Not Active: "" -->
-
-                        <ul>
-                            <li>
-                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
-                                    <label >Your Profiles</label>
-                                    <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                    </svg>
-                                </a>
-
-                                @if (AccountsWindow)
-                                {
-                                    <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
-                                        @foreach (Pet item in _allPetProfiles)
-                                        {
-                                            if (_allPetProfiles.Count == 0)
-                                            {
-                                                <li class=" rounded-md ">
-                                                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
-                                                        <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
-                                                    </a>
-                                                </li>
-                                            }
-                                            <li class=" rounded-md ">
-                                                <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
-                                                    @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
-                                                    <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
-                                                </a>
-                                            </li>
-                                        }
-                                        <AuthorizeView >
-                                            <Authorized >
-                                                <li class=" rounded-md  ">
-                                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
-
-                                                        <!-- icon by feathericons.com -->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                        </svg>
-                                                        <label class="ml-2">Add Profile</label>
-                                                    </a>
-                                                </li>
-                                            </Authorized>
-                                            <NotAuthorized >
-                                                <li class=" rounded-md  ">
-                                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(ShowRegister)">
-                                                        <!-- icon by feathericons.com -->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                                        </svg>
-                                                        <label class="ml-2">Add Profile</label>
-                                                    </a>
-                                                </li>
-                                            </NotAuthorized>
-
-                                        </AuthorizeView>
-                                    </ul>
-                                }
-                            </li>
-                            <AuthorizeView >
-                                <NotAuthorized >
-                                    <li>
-                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowSendCode)">
-                                            Log In
-                                        </a>
-                                    </li>
-
-                                    <li >
-                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
-                                            Sign Up
-                                        </a>
-                                    </li>
-                                </NotAuthorized>
-                                <Authorized >
-                                    <li >
-                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LogOut)">
-                                            Log out
-                                        </a>
-                                    </li>
-                                </Authorized>
-                            </AuthorizeView>
-
-                        </ul>
-                    </div>
-                }
-            </div>
+            <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                <span class="sr-only">View Notifications</span>
+                <!-- Heroicon name: outline/bell -->
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </button>
         </div>
     </div>
+    <div class="ml-8 ">
+        <AuthorizeView >
+            <Authorized >
+                <div>
+                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                    </button>
+                </div>
+            </Authorized>
+            <NotAuthorized >
+                <div>
+                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                    </button>
+                </div>
+            </NotAuthorized>
+
+        </AuthorizeView>
+
+
+        @if (ProfileWindow)
+        {
+            <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+
+                <ul>
+                    <li>
+                        <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
+                            <label >Your Profiles</label>
+                            <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+
+                        @if (AccountsWindow)
+                        {
+                            <ul class="absolute rounded-md shadow-lg mt-14 ml-4 bg-white z-20  ">
+                                @foreach (Pet item in _allPetProfiles)
+                                {
+                                    if (_allPetProfiles.Count == 0)
+                                    {
+                                        <li class=" rounded-md ">
+                                            <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
+                                                <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
+                                            </a>
+                                        </li>
+                                    }
+                                    <li class=" rounded-md ">
+                                        <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
+                                            @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
+                                            <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
+                                        </a>
+                                    </li>
+                                }
+                                <AuthorizeView >
+                                    <Authorized >
+                                        <li class=" rounded-md  ">
+                                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
+
+                                                <!-- icon by feathericons.com -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                                <label class="ml-2">Add Profile</label>
+                                            </a>
+                                        </li>
+                                    </Authorized>
+                                    <NotAuthorized >
+                                        <li class=" rounded-md  ">
+                                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(ShowRegister)">
+                                                <!-- icon by feathericons.com -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                                </svg>
+                                                <label class="ml-2">Add Profile</label>
+                                            </a>
+                                        </li>
+                                    </NotAuthorized>
+
+                                </AuthorizeView>
+                            </ul>
+                        }
+                    </li>
+                    <AuthorizeView >
+                        <NotAuthorized >
+                            <li>
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowSendCode)">
+                                    Log In
+                                </a>
+                            </li>
+
+                            <li >
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
+                                    Sign Up
+                                </a>
+                            </li>
+                        </NotAuthorized>
+                        <Authorized >
+                            <li >
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LogOut)">
+                                    Log out
+                                </a>
+                            </li>
+                        </Authorized>
+                    </AuthorizeView>
+
+                </ul>
+            </div>
+        }
+    </div>
+</div>
+</div>
 </div>
 <div class="sm:hidden" id="mobile-menu">
     <div class="px-2 pt-2 pb-3 space-y-1">
@@ -230,12 +243,24 @@
                 </div>
             </div>
 
-            <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" @onclick="() => NavigateToBrowsePets()"/>
-                </svg>
-                <a class="space-x-6" aria-current="page">Browse Pets</a>
-            </div>
+            <AuthorizeView >
+                <NotAuthorized >
+                    <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" @onclick="() => NavigateToBrowsePets()"/>
+                        </svg>
+                        <a class="space-x-6" aria-current="page">Browse Pets</a>
+                    </div>
+                </NotAuthorized>
+                <Authorized >
+                    <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" @onclick="() => NavigateAuthPetToBrowsePets()"/>
+                        </svg>
+                        <a class="space-x-6" aria-current="page">Browse Pets</a>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
 
             <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-auto mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,47 +312,52 @@
 @if (MessagePaneWindow)
 {
     <div class="  absolute bottom-7 right-52 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-        <div class="flex flex-row m-2">
-
-            @* <img class="h-8 w-8 rounded-full" src="@petToSendMessage.imageUrl" alt="Pet Profile Picture"> *@
-            @* <label class="mt-1 ml-2 flex-shrink-0"> @petToSendMessage.id</label> *@
-
-            <a @onclick="() => MessagePaneWindow = false">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-44 text-gray-500 hover:text-gray-800 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </a>
-        </div>
-        <div class="w-auto ">
-            <hr class="border-solid border-1 border-light-blue-500 mx-3 "/>
-        </div>
-
-        <div class="grid grid cols-2 gap-4 overflow-y-auto m-3 w-auto h-72 ">
-            @foreach (Message item in _toShowPetProfileMessagesWithAPet)
-            {
-                if (@item.SenderPetId == petLoggedIn.id)
-                {
-                    <div class=" col-span-1 row-span-2 bg-gray-400 rounded-md text-black justify-self-start p-1 mr-3">
-                        @item.MessageBody
-                    </div>
-                }
-                else
-                {
-                    <div class=" col-span-2 bg-blue-200 rounded-md text-black justify-self-end p-1 ml-3">
-                        @item.MessageBody
-                    </div>
-                }
-            }
-        </div>
-
-        <EditForm Model="@_messageController" OnValidSubmit="@(SendMessage)">
-            <div class="flex flex-row m-2">
-                <InputText class=" mr-1 rounded-xl relative block w-full px-3 py-1 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" @bind-Value="_messageBody"></InputText>
-                <button class="flex-shrink-0 bg-gray-200 w-1/3  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80">Send</button>
-            </div>
-        </EditForm>
+          <div class="flex flex-row m-2">
+                
+                                    <img class="h-8 w-8 rounded-full mr-2  mt-1" src="@_petToLoad.imageUrl" alt="Image">
+                                    <label class=" ml-2 flex fle mt-1">@_petToLoad.name</label>
+                                    <a @onclick="() => MessagePaneWindow = false">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-44 text-gray-500 hover:text-gray-800 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="w-auto ">
+                                    <hr class="border-solid border-1 border-light-blue-500 mx-3 "/>
+                                </div>
+                
+                                <div class="grid grid cols-2 gap-4 overflow-y-auto m-3 w-auto h-72 content-end border border-gray-300 ">
+                                    @foreach (Message message in _toShowPetProfileMessagesWithAPet)
+                                    {
+                                        if (@message.SenderPetId != petLoggedIn.id)
+                                        {
+                                            <div class=" col-span-1 bg-gray-300 rounded-md text-black justify-self-start ml-6 mb-4 p-2 bottom-1 mb-2">
+                                                @message.MessageBody
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class=" col-span-2 bg-blue-200 rounded-md text-black justify-self-end mr-6 mb-4 p-2 bottom-1 mb-2">
+                                                @message.MessageBody
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <EditForm Model="@_messageController" OnValidSubmit="@(SendMessage)">
+                                    <div class="flex flex-row m-2">
+                                        <InputText class=" mr-1 rounded-xl relative block w-full px-3 py-1 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" @bind-Value="_messageBody"></InputText>
+                                        <button class="flex-shrink-0 bg-gray-200 w-1/3  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80">Send</button>
+                                    </div>
+                                </EditForm>
+                            
+                        
     </div>
 }
+
+
+
+
+
 
 @code
 {
@@ -348,8 +378,9 @@
     private IList<Pet> _allMessageLog;
     private IList<Pet> _toShowMessageLog;
     private Pet petLoggedIn { get; set; }
+    
     private int petToSendMessage { get; set; }
-    Message newMessage;
+    private Pet _petToLoad;
 
     private string _messageBody;
 
@@ -357,6 +388,7 @@
     protected async override Task OnInitializedAsync()
     {
         petLoggedIn = new Pet();
+        _petToLoad = new Pet();
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
 
@@ -365,6 +397,12 @@
         ProfileWindow = false;
         AccountsWindow = false;
         BurgerMenu = false;
+        
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        
+        //_toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, _petToLoad.id);
     }
 
 
@@ -390,8 +428,16 @@
         NavMgr.NavigateTo("/BrowsePets");
     }
 
-    void NavigateHome()
+    async Task NavigateAuthPetToBrowsePets()
     {
+        await LoggedInPet();
+        Console.WriteLine("NavigateMethod" + petLoggedIn.id);
+        NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
+    }
+
+    async void NavigateHome()
+    {
+        await LoggedInPet();
         NavMgr.NavigateTo("/");
     }
 
@@ -410,21 +456,17 @@
         NavMgr.NavigateTo($"/PetProfile/{petId}");
     }
 
-    async void LoggedInPet()
+    async Task LoggedInPet()
     {
         _allPetProfiles = await _petController.GetAllUserPetsAsync();
-        if (_allPetProfiles.Count == 1)
-        {
-            int petId = _allPetProfiles[0].id;
-            petLoggedIn = await _petController.GetPetProfileAsync(petId);
-        }
-        else
-        {
-        }
+        int petId = _allPetProfiles[0].id;
+        petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        Console.WriteLine("LoggedinMethod" + petLoggedIn.id);
     }
 
     public async Task DropDownProfileWindow()
     {
+        await LoggedInPet();
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -438,7 +480,6 @@
 
     public async void DropDownAccountsWindow()
     {
-        LoggedInPet();
         if (AccountsWindow)
         {
             AccountsWindow = false;
@@ -464,7 +505,8 @@
     async Task ShowMessagePane(int messageToPetId)
     {
         petToSendMessage = messageToPetId;
-        _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(messageToPetId, petLoggedIn.id);
+        _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
+        _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
         if (MessagePaneWindow)
         {
             MessagePaneWindow = false;
@@ -478,7 +520,7 @@
 
     async Task ShowLogPane()
     {
-        LoggedInPet();
+        await LoggedInPet();
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
         if (LogPaneWindow)
         {
@@ -492,11 +534,12 @@
 
     async Task SendMessage()
     {
-        newMessage = new Message();
+        Message newMessage = new Message();
         newMessage.MessageBody = _messageBody;
         newMessage.SenderPetId = petLoggedIn.id;
         newMessage.ReceiverPetId = petToSendMessage;
         await _messageController.SendMessageAsync(newMessage);
+        _toShowPetProfileMessagesWithAPet.Add(newMessage);
         _messageBody = "";
     }
 
