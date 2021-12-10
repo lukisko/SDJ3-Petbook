@@ -6,6 +6,7 @@ using business_logic.Model.UserPack;
 using business_logic.Model.PetPack;
 using business_logic.Model.MessagePack;
 using System.Linq;
+using business_logic.Model.RequestPack;
 
 namespace business_logic.Model
 {
@@ -16,6 +17,7 @@ namespace business_logic.Model
         private IUserManager userManager;
         private IPetManager petManager;
         private IMessageManager messageManager;
+        private IRequestManager<Request,string> requestManager;
         private Dictionary<string,string> emailCodeMap;
 
         private Random random;
@@ -28,6 +30,10 @@ namespace business_logic.Model
             petManager = new PetManager(tier2Mediator);
             emailCodeMap = new Dictionary<string, string>();
             messageManager = new MessageController();
+            requestManager = new RequestManager<Request,string>(
+                (request)=> {return request.petId;},(request)=> {return request.userEmail;}
+            );
+            
         }
         //////change this down part
         public bool Login(string email){
@@ -258,6 +264,49 @@ namespace business_logic.Model
                     petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null));
                 }
                 return petList;
+            } else {
+                throw new AccessViolationException("you are not owner of the pet.");
+            }
+        }
+
+        public async Task sendRequest(Request request, string token){
+            string email = userManager.getUserWithToken(token);
+            AuthorisedUser usr = await this.GetAuthorisedUser(token);
+            string senderId = request.userEmail;
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.email == senderId){
+                requestManager.makeRequest(request);
+            } else {
+                throw new AccessViolationException("you are not authorised.");
+            }
+        }
+
+        public async Task<IList<User>> GetPetRequests(int receiverPetId, string token){
+            string email = userManager.getUserWithToken(token);
+            AuthorisedUser usr = await userManager.GetUser(email);
+            usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null)).ToArray();
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
+                IList<string> emails = requestManager.getRequestsOfPet(receiverPetId);
+                IList<User> returnValue = new List<User>();
+                foreach (string theEmail in emails){
+                    User theUser = await userManager.GetUser(email);
+                    if (theUser != null && string.IsNullOrEmpty(theUser.email)){
+                        returnValue.Add(theUser);
+                    }
+                } 
+                return returnValue;
+            } else {
+                throw new AccessViolationException("you are not owner of the pet.");
+            }
+        }
+
+        public async Task<IList<Request>> GetRequests(int receiverPetId, string senderUserEmail, string token){//make it authenticaitons
+            string email = userManager.getUserWithToken(token);
+            AuthorisedUser usr = await this.GetAuthorisedUser(token);
+            //check if the user own the pet that he want to claim to send the message from
+            if (usr.pets.Where((thePet)=>{return thePet.id == receiverPetId;}).Count() > 0){
+                return requestManager.getRequestOfPetAndUser(receiverPetId,senderUserEmail);
             } else {
                 throw new AccessViolationException("you are not owner of the pet.");
             }

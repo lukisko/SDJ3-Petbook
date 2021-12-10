@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.PetPack;
+using business_logic.Model.RequestPack;
 using System;
 
 namespace business_logic.Model
@@ -66,5 +67,8 @@ namespace business_logic.Model
         Task sendMessage(Message message, string token);
         Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token);
         Task<IList<Pet>> GetMessagePets(int receiverPetId, string token);
+        Task sendRequest(Request request, string token);
+        Task<IList<User>> GetPetRequests(int receiverPetId, string token);
+        Task<IList<Request>> GetRequests(int receiverPetId, string senderUserEmail, string token);
     }
 }
