@@ -1,56 +1,6 @@
-﻿@page "/EditPetProfile"
+﻿@page "/EditPetProfile/{Id:int}"
 @inject IPetController _petController
 @inject NavigationManager NavMgr
-@* <div class="bg-pink-300 rounded-xl font-mono text-xl "> *@
-
-@* <EditForm Model="@petToAdd" OnValidSubmit="@AddNewPet"> *@
-@*     <DataAnnotationsValidator/> <ValidationSummary/> *@
-@*     <div class="grid min-h-screen place-items-center" style="margin-top: -5rem;"> *@
-@*         <div class="w-11/12 p-3 bg-white sm:w-8/12 md:w-1/2 lg:w-5/12"> *@
-@*             <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal">please fill in your pet information 🐶</span></h1> *@
-@*             <form class="mt-6"> *@
-@*                 <div class="flex justify-between gap-3"> *@
-@*                     <span class="w-1/2"> *@
-@*                         <label for="Name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label> *@
-@*                         $1$ <input id="Name" name="name" autocomplete="given-name" type="text" placeholder="Lucky" @bind-Value="petToAdd.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> #1# *@
-@*                         <InputText id="Name" name="name" placeholder="Lucky" autocomplete="given-name" @bind-Value="petToAdd.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
-@*                     </span> *@
-@*                     <span class="w-1/2"> *@
-@*                         <label for="Type" class="block text-xs font-semibold text-gray-600 uppercase">Type</label> *@
-@*                         <InputText id="Type" name="type" placeholder="Dog" autocomplete="animal-type" @bind-Value="petToAdd.type" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
-@*                     </span> *@
-@*                 </div> *@
-@*                 <label for="Breed" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Breed</label> *@
-@*                 <InputText id="Breed" type="text" name="breed" placeholder="Bichon Maltese" autocomplete="breed" @bind-Value="petToAdd.breed" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
-@*                 <label for="Description" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Description</label> *@
-@*                 <InputText id="Description" type="password" name="Description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToAdd.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
-@* *@
-@*                 <p for="Status" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Status</p> *@
-@*                 <InputSelect @bind-Value="petToAdd.statuses"> *@
-@*                     <option value="Regular">Regular</option> *@
-@*                     <option value="Adoption">Adoption</option> *@
-@*                     <option value="Fostering">Fostering</option> *@
-@*                     <option value="Walking">Walking</option> *@
-@*                 </InputSelect> *@
-@*                 $1$   <InputRadio id="Regular" type="radio" name="Status" value="Regular" @bind-Value="petToAdd.status"/> #1# *@
-@*                 $1$ <label for="Regular">Regular</label><br> #1# *@
-@*                 $1$ #1# *@
-@*                 $1$   <InputRadio id="Adoption" type="radio" name="Status" value="Adoption" @bind-Value="petToAdd.status"/> #1# *@
-@*                 $1$ <label for="Adoption">Adoption</label><br> #1# *@
-@*                 $1$ #1# *@
-@*                 $1$   <InputRadio id="Walking" type="radio" name="Status" value="Walking" @bind-Value="petToAdd.status"/> #1# *@
-@*                 $1$ <label for="Walking">Walking</label><br> #1# *@
-@*                 $1$ #1# *@
-@*                 $1$   <InputRadio id="Fostering" type="radio" name="Status" value="Fostering" @bind-Value="petToAdd.status"/> #1# *@
-@*                 $1$ <label for="Fostering">Fostering</label><br> #1# *@
-@* *@
-@*                 <button type="submit" class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-pink shadow-lg focus:outline-none hover:bg-pink-900 hover:shadow-none"> *@
-@*                     Create Pet Profile *@
-@*                 </button> *@
-@*             </form> *@
-@*         </div> *@
-@*     </div> *@
-@* </EditForm> *@
 
 <div class="custom-shape-divider-top-1638800534 bg-pink-100">
     <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -58,68 +8,91 @@
     </svg>
 </div>
 
+@if (petToEdit == null)
+{
+    <p>pet not found</p>
+}
+else{
+<EditForm Model="@petToEdit" OnValidSubmit="@EditPet">
+    <DataAnnotationsValidator/> <ValidationSummary/>
+    <div class="grid min-h-auto place-items-center bg-pink-100">
+        <div class="w-11/12 p-6 rounded-lg bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
+            <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal"> here you can change your pet profile 🐶</span></h1>
+            <form class="mt-6">
+                 <div class="flex justify-between gap-3">
+                     <span class="w-1/2">
+                         <label for="Name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
+                         <InputText name="name" placeholder="Lucky" autocomplete="given-name" @bind-Value="petToEdit.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+                     </span>
+                     <span class="w-1/2">
+                         <label class="block text-xs font-semibold text-gray-600 uppercase">Type</label>
+                         <InputText name="type" placeholder="Dog" autocomplete="animal-type" @bind-Value="petToEdit.type" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+                     </span>
+                 </div>
+                 <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Breed</label>
+                 <InputText type="text" name="breed" placeholder="Bichon Maltese" autocomplete="breed" @bind-Value="petToEdit.breed" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+                 <label class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Description</label>
+                 <InputText type="text" name="Description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToEdit.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+                 <div class="flex justify-between gap-3">
+                     <span class="w-1/3">
+                         <label class="block text-xs font-semibold text-gray-600 uppercase">City</label>
+                         <InputText name="City" placeholder="Horsens" autocomplete="given-name" @bind-Value="petToEdit.city.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
+                     </span>
+                     <span class="w-1/3">
+                         <label class=" block mt-2 text-xs font-semibold text-gray-600 uppercase">Country</label>
+                         <InputSelect  @bind-Value="petToEdit.city.country.name" placeholder="" class="flex-1 pt-5 w-full border-b-2 border-gray-400 focus:border-green-400
+                                                                            text-gray-600 placeholder-gray-400
+                                                                            outline-none">
+                             <option value=""></option>
+                             <option value="Denmark">Denmark</option>
+                             <option value="Slovakia">Slovakia</option>
+                             <option value="test">test</option>
+                         </InputSelect>
+                     </span>
+                     <span class="w-1/3">
+                         <label class=" block mt-2 text-xs font-semibold text-gray-600 uppercase">Gender</label>
+                         <InputSelect  @bind-Value="petToEdit.gender" placeholder="" class="flex-1 pt-5 w-full border-b-2 border-gray-400 focus:border-green-400
+                                                                                                 text-gray-600 placeholder-gray-400
+                                                                                                 outline-none">
+                             <option value=""></option>
+                             <option value="F">Female</option>
+                             <option value="M">Male</option>
+                         </InputSelect>
+                     </span>
+                     
+                 </div>
 
-<div class="flex bg-pink-100">
-    <div class="m-auto">
-        <EditForm Model="@petToEdit" OnValidSubmit="@EditPet">
-            <div>
+                    <label for="Type" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">BirthDate</label>
+                    <InputDate type="text" name="date" placeholder="xx/xx/xxxx" @bind-Value="petToEdit.birthdate" onclick="this.setAttribute('type', 'date')" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"/>
 
-                <div class="mt-0 bg-white rounded-lg shadow">
-                    <div class="p-5">
-                        <div class="flex">
-                            <div class="flex-1 py-5 pl-5 overflow-hidden">
-                                <h1 class="inline text-2xl font-semibold leading-none">Edit Pet</h1>
-                            </div>
-                        </div>
-                        <div class="flex justify-between gap-3">
-                            <span class="w-1/2">
-                                <label for="Name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
-                                @* <input id="Name" name="name" autocomplete="given-name" type="text" placeholder="Lucky" @bind-Value="petToAdd.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/> *@
-                                <InputText id="Name" name="text" placeholder="@petToEdit.name"  @bind-Value="petToEdit.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
-                            </span>
-                            <span class="w-1/2">
-                                <label for="Type" class="block text-xs font-semibold text-gray-600 uppercase">Type</label>
-                                <InputText id="Type" name="type" placeholder="@petToEdit.type" autocomplete="animal-type" @bind-Value="petToEdit.type" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
-                            </span>
-                        </div>
-                        <label for="Breed" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Breed</label>
-                        <InputText id="Breed" type="text" name="@petToEdit.breed" placeholder="Bichon Maltese" autocomplete="breed" @bind-Value="petToEdit.breed" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
-                        <label for="Description" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Description</label>
-                        <InputText id="Description" type="password" name="@petToEdit.description" placeholder="A good boy" autocomplete="Description" @bind-Value="petToEdit.description" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>
-                        <div class="flex justify-between gap-3">
-                            <div class="flex items-center pt-3"><input type="checkbox" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label for="safeAdress" class="block ml-2 text-sm text-gray-900">walking</label></div>
-                            <div class="flex items-center pt-3"><input type="checkbox" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label for="safeAdress" class="block ml-2 text-sm text-gray-900">fostering</label></div>
-                              <div class="flex items-center pt-3"><input type="checkbox" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label for="safeAdress" class="block ml-2 text-sm text-gray-900">adopting</label></div>
-                        </div>
 
-                        <div class="px-5 ">
-                        </div>
-                        <hr class="mt-4">
-                        <div class="flex flex-row-reverse p-3">
-                            <div class="flex-initial pl-3">
-                                <DataAnnotationsValidator/> <ValidationSummary/>
-                                <button type="submit" @onclick="EditPet" class="flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-green-400  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
-                                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                        <path d="M5 5v14h14V7.83L16.17 5H5zm7 13c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-8H6V6h9v4z" opacity=".3"></path>
-                                        <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm2 16H5V5h11.17L19 7.83V19zm-7-7c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zM6 6h9v4H6z"></path>
-                                    </svg>
-                                    <span class="pl-2 mx-1">Save</span>
-                                </button>
-                            </div>
-                        </div>
+                <p for="Status" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">Status</p>
+                <div class="flex justify-between gap-3">
+                    <div class="flex items-center pt-3">
+                        <input type="checkbox" @onchange="@((arg) => setWalking(arg))" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label class="block ml-2 text-sm text-gray-900">walking</label>
+                    </div>
+                    <div class="flex items-center pt-3">
+                        <input type="checkbox" @onchange="@((arg) => setFostering(arg))" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label class="block ml-2 text-sm text-gray-900">fostering</label>
+                    </div>
+                    <div class="flex items-center pt-3">
+                        <input type="checkbox"  @onchange="@((arg) => setAdopting(arg))" class="w-4 h-4 text-black bg-gray-300 border-none rounded-md focus:ring-transparent"><label class="block ml-2 text-sm text-gray-900">adopting</label>
                     </div>
                 </div>
-            </div>
-        </EditForm>
-    </div>
-</div>
 
+                 <div>
+                     <button type="submit" @onclick="EditPet" class=" w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-green-400 hover:shadow-none">
+                         Create Pet Profile
+                     </button>
+                 </div>
+            </form>
+        </div>
+    </div>
+</EditForm>
+
+}
 <div class=" bg-pink-100 custom-shape-divider-bottom-1638803667">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
     </svg>
 </div>
 
-
-@* </div> *@

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -9,17 +10,17 @@ namespace ClientApp.Pages
         [Parameter] public int petId { get; set; }
 
         private Pet pet { get; set; }
-        private Pet petToShow { get; set; }
+        
 
         protected override async Task OnInitializedAsync()
         {
-           // pet = await _petController.getPetProfileAsync(int petId);
-            petToShow = pet;
+            pet = await _petController.GetPetProfileAsync(petId);
+            
         }
 
         public void NavigateToEditProfile()
         {
-            NavMgr.NavigateTo("/EditPetProfile");
+            NavMgr.NavigateTo($"/EditPetProfile/{petId}");
         }
 
         public void NavigateToAboutPetProfile()

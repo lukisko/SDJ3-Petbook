@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <div class="z-20 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div class="hidden sm:block sm:ml-6">
                 <div class=" ml-10 flex space-x-9">
                     <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
@@ -148,7 +148,7 @@
                                             }
                                             <li class=" rounded-md ">
                                                 <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
-                                                    <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                                                    @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
                                                     <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
                                                 </a>
                                             </li>
