@@ -1,5 +1,6 @@
 ﻿@page "/BrowsePets"
 @using ClientApp.Model
+@using System.IO;
 @inject NavigationManager NavMgr
 @inject IUserController _userController
 @inject IPetController _petController
@@ -18,11 +19,20 @@ else
                 <div class="h-56 w-72 absolute flex justify-center items-center pt-12">
                     @if (item.statuses.Count > 0)
                     {
-                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
+                        @if (File.Exists($"wwwroot/Images/{item.id}.jpg")){
+                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/@(item.id).jpg">
+                        } else{
+                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
+                        }
                     }
                     else
                     {
-                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/dog.jpg">
+                        @if (File.Exists($"wwwroot/Images/{item.id}.jpg")){
+                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/@(item.id).jpg">
+                        } else {
+                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/dog.jpg">
+                        }
+                        
                     }
                 </div>
                 @if (item.gender.Equals('M'))
