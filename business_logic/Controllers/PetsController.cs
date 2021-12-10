@@ -55,5 +55,10 @@ namespace business_logic.Controllers
                 return StatusCode(401,e.Message);
             }
         }
+
+        [HttpDelete]
+        public async Task<ActionResult<Pet>> DeletePet([FromQuery] int petId, [FromQuery] string token){
+            return StatusCode(501,"comming soon");
+        }
     }
 }
