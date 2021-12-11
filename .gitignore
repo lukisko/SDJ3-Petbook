@@ -7,6 +7,8 @@ business_logic/obj
 *.cache
 *.pdb
 *.g.cs
+Entities/obj/Debug
+Entities/bin/Debug
 ClientApp/obj/Debug/net5.0
 ClientApp/bin/Debug/net5.0
 ClientApp/obj/Debug/net5.0/ClientApp.assets.cache
