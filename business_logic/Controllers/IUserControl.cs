@@ -5,7 +5,7 @@ using business_logic.Model;
 
 namespace business_logic.Controllers
 {
-    public interface IUserController
+    public interface IUserControl
     {
          [HttpGet]
         Task<ActionResult<String>> Login([FromQuery] string email, [FromQuery] string code);

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace business_logic.Controllers
 {
-    public interface IPetController
+    public interface IPetControl
     {
         [HttpGet]
         Task<ActionResult<IList<Pet>>> GetPets([FromQuery] int? id, [FromQuery] string email, 

@@ -8,27 +8,24 @@ using business_logic.Model.MessagePack;
 using System.Linq;
 using business_logic.Model.RequestPack;
 
+
 namespace business_logic.Model
 {
     public class Model : IModel
     {
-        private ITier2Mediator tier2Mediator;
         private IEmailHandler emailHandler;
         private IUserManager userManager;
         private IPetManager petManager;
         private IMessageManager messageManager;
         private IRequestManager<Request,string> requestManager;
-        private Dictionary<string,string> emailCodeMap;
 
         private Random random;
 
-        public Model(){
-            tier2Mediator = new Tier2();
+        public Model(ITier2Mediator tier2Mediator){
             emailHandler = new EmailHandler();
             random = new Random(1538);
             userManager = new UserManager(tier2Mediator);
             petManager = new PetManager(tier2Mediator);
-            emailCodeMap = new Dictionary<string, string>();
             messageManager = new MessageController();
             requestManager = new RequestManager<Request,string>(
                 (request)=> {return request.petId;},(request)=> {return request.userEmail;}

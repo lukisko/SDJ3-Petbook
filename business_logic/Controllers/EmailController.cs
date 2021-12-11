@@ -11,7 +11,7 @@ namespace business_logic.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EmailController : ControllerBase, IEmailController //TODO put to a separate file
+    public class EmailController : ControllerBase
     {
         private IModel model;
 
