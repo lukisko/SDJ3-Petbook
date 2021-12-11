@@ -7,10 +7,11 @@
     <projectFile profileName="business_logic">business_logic/business_logic.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
+    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="home page">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Index.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Index.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
@@ -20,8 +21,6 @@
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
@@ -166,7 +165,7 @@
       <workItem from="1638884434973" duration="11920000" />
       <workItem from="1638951639549" duration="25245000" />
       <workItem from="1639036772884" duration="46673000" />
-      <workItem from="1639222917009" duration="5678000" />
+      <workItem from="1639222917009" duration="7000000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
@@ -350,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639136280502</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="home page">
+      <created>1639228961641</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1639228961641</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +391,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="[]" />
     <MESSAGE value="a" />
     <MESSAGE value="working" />
     <MESSAGE value="T3&#10;T2" />
@@ -410,6 +415,7 @@
     <MESSAGE value="add pet almost working" />
     <MESSAGE value="add pet&#10;edit pet&#10;started pet profile" />
     <MESSAGE value="adding &#10;editing&#10;pet profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding &#10;editing&#10;pet profile" />
+    <MESSAGE value="home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="home page" />
   </component>
 </project>

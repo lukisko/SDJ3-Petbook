@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
