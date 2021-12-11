@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ClientApp.Model;
+using System;
+using System.IO;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace ClientApp.Pages
 {
@@ -30,6 +33,12 @@ namespace ClientApp.Pages
             {
                 name = "adopting"
             };
+        }
+
+        private async void LoadFile(InputFileChangeEventArgs e){
+            Console.WriteLine("wow file works.");
+            await using FileStream fs = new($"wwwroot/Images/{petToEdit.id}.jpg", FileMode.Create);
+            await e.File.OpenReadStream(5000000).CopyToAsync(fs);
         }
 
         private async Task EditPet()

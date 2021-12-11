@@ -14,7 +14,10 @@ else{
     <div class="grid min-h-auto place-items-center bg-pink-100">
         <div class="w-11/12 p-6 mt-6 rounded-lg bg-white sm:w-8/12 md:w-1/2 lg:w-5/12">
             <h1 class="text-xl font-semibold">Hello there 👋, <span class="font-normal"> here you can change your pet profile 🐶</span></h1>
-            <div class="flex justify-between gap-3">
+                <div>
+                    Here is uploading of picture: <InputFile OnChange="@LoadFile" accept=".jpg"/>
+                </div>
+                 <div class="flex justify-between gap-3">
                      <span class="w-1/2">
                          <label for="Name" class="block text-xs font-semibold text-gray-600 uppercase">Name</label>
                          <InputText name="name" placeholder="Lucky" autocomplete="given-name" @bind-Value="petToEdit.name" class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" required/>

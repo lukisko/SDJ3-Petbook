@@ -110,7 +110,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses.Add(status);
                 await model.updatePetAsync(thePet, token);
-                Pet pet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
+                Pet pet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0];
                 if (pet.statuses.Count == 0){
                     throw new Exception("status was not added");
                 }
@@ -127,7 +127,7 @@ namespace business_logic.Controllers
             try{
                 Status status = new Status(){
                     name = "walking",
-                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0].statuses[0].id,
+                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0].statuses[0].id,
                     user = new User(){
                         name = "Lukas",
                         email = "pleva@usa.com"
@@ -135,7 +135,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses = new List<Status>(){status};
                 await model.updatePetAsync(thePet,token);
-                thePet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
+                thePet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0];
                 if (thePet.statuses[0].user.email != "pleva@usa.com"){
                     throw new Exception("update do not work.");
                 }

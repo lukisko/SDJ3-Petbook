@@ -20,7 +20,7 @@ namespace business_logic.Model
         /// <param name="status">status of pet you are looking for</param>
         /// <returns>list of pets that fullfil the criteria</returns>
         Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status, 
-        string type, string breed, char? gender, DateTime? birthday);
+        string type, string breed, char? gender, DateTime? birthday, string name);
         Task<Pet> deletePetAsync(Pet pet, string token);
         /// <summary>
         /// update a pet - provide a pet with some changes to have upto date info
