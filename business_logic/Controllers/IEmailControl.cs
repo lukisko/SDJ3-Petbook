@@ -5,9 +5,8 @@ using business_logic.Model;
 
 namespace business_logic.Controllers
 {
-    public interface IEmailController
+    public interface IEmailControl
     {
-        [HttpGet]
         Task<ActionResult<String>> SendEmail([FromQuery] string email);
     }
 }
