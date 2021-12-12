@@ -25,7 +25,7 @@ namespace ClientApp.Data.Implementation
             client = new HttpClient(clientHandler);
         }
         
-        public async Task<IList<Request>> GetAllRequestsAsync(string? userId, int petId)
+        public async Task<IList<Request>> GetAllRequestsAsync(string? userId,int petId)
         {
             IList<Request> pets = new List<Request>();
             HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Request?userId={userId}&petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");

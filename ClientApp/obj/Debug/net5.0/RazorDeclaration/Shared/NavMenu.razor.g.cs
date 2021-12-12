@@ -146,13 +146,14 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 358 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 398 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
     private bool AccountsWindow { get; set; }
     private bool LogPaneWindow { get; set; }
     private bool MessagePaneWindow { get; set; }
+    private bool NotificationPaneWindow { get; set; }
 
     private IList<Pet> _allPetProfiles;
     private IList<Pet> _toShowPetsPetProfiles;
@@ -161,7 +162,7 @@ using System.Runtime.CompilerServices;
 
     private IList<Pet> _allPetMessagesWithAPet;
     private IList<Message> _toShowPetProfileMessagesWithAPet;
-
+    private IList<Request> _toShowNotificationLog;
     private IList<Pet> _allMessageLog;
     private IList<Pet> _toShowMessageLog;
     private Pet petLoggedIn { get; set; }
@@ -178,12 +179,13 @@ using System.Runtime.CompilerServices;
         _petToLoad = new Pet();
         _allPetProfiles = new List<Pet>();
         _toShowPetsPetProfiles = new List<Pet>();
-
+        _toShowNotificationLog = new List<Request>();
         _toShowPetsPetProfiles = _allPetProfiles;
 
         ProfileWindow = false;
         AccountsWindow = false;
         BurgerMenu = false;
+        NotificationPaneWindow = false;
     }
 
     protected override async Task OnParametersSetAsync()
@@ -195,14 +197,12 @@ using System.Runtime.CompilerServices;
     void ShowSendCode()
     {
         _modalService.Show<Login>();
-        
     }
 
 
     void ShowRegister()
     {
         _modalService.Show<Register>();
-       
     }
 
 
@@ -293,7 +293,7 @@ using System.Runtime.CompilerServices;
     }
 
     async Task ShowMessagePane(int messageToPetId)
-    {
+    {   await LoggedInPet();
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
@@ -322,6 +322,30 @@ using System.Runtime.CompilerServices;
         }
     }
 
+    async Task ShowNotificationPane()
+    {
+        // await LoggedInPet();
+        // _toShowNotificationLog = await _requestController.GetAllRequestsAsync(petLoggedIn.id);
+        Request r1 = new Request();
+        r1.petId = 172;
+        r1.typeName = "adopting";
+        r1.userEmail = "cernicern@gmail.com";
+        Request r2 = new Request();
+        r1.petId = 172;
+        r1.typeName = "adopting";
+        r1.userEmail = "cernicern@gmail.com";
+        _toShowNotificationLog.Add(r1);
+        _toShowNotificationLog.Add(r2);
+        if (NotificationPaneWindow)
+        {
+            NotificationPaneWindow = false;
+        }
+        else
+        {
+            NotificationPaneWindow = true;
+        }
+    }
+
     async Task SendMessage()
     {
         Message newMessage = new Message();
@@ -341,6 +365,7 @@ using System.Runtime.CompilerServices;
         AccountsWindow = false;
         LogPaneWindow = false;
         MessagePaneWindow = false;
+        NotificationPaneWindow = false;
     }
 
 
@@ -349,6 +374,7 @@ using System.Runtime.CompilerServices;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRequestController _requestController { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageController _messageController { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }

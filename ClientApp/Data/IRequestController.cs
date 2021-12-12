@@ -7,7 +7,7 @@ namespace ClientApp.Data
 {
     public interface IRequestController
     {
-        Task<IList<Request>> GetAllRequestsAsync(string userId, int petId);
+        Task<IList<Request>> GetAllRequestsAsync(string? userId, int petId);
         Task SendRequestAsync(Request request);
 
     }

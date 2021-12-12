@@ -8,17 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ClientApp/Data/IRequestController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ClientApp/Model/Request.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Data/IPetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/IPetController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/IRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/IRequestController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/PetController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/PetController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Model/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Model/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
@@ -26,6 +22,7 @@
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
@@ -33,11 +30,6 @@
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusPersistence.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusPersistence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/T2Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/T2Handler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/comunication_handler/StatusHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Status.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +193,8 @@
       <workItem from="1638950758427" duration="995000" />
       <workItem from="1639039893557" duration="14984000" />
       <workItem from="1639123560313" duration="362000" />
-      <workItem from="1639225281397" duration="27161000" />
+      <workItem from="1639225281397" duration="27429000" />
+      <workItem from="1639347872763" duration="3725000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
@@ -392,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639160933314</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="test_pet_request">
+      <created>1639269903083</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1639269903083</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +427,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="a" />
     <MESSAGE value="working" />
     <MESSAGE value="T3&#10;T2" />
     <MESSAGE value=".." />
@@ -458,7 +457,79 @@
     <MESSAGE value="access_token" />
     <MESSAGE value="last_changes_add_nav" />
     <MESSAGE value="message_filtering_done_notTested" />
-    <option name="LAST_COMMIT_MESSAGE" value="message_filtering_done_notTested" />
+    <MESSAGE value="test_pet_request" />
+    <option name="LAST_COMMIT_MESSAGE" value="test_pet_request" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs</url>
+          <line>119</line>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\BrowsePets.razor.cs" initialLine="119" containingFunctionPresentation="method 'SendRequest'">
+            <startOffsets>
+              <option value="3987" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4019" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs</url>
+          <line>120</line>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\BrowsePets.razor.cs" initialLine="120" containingFunctionPresentation="method 'SendRequest'">
+            <startOffsets>
+              <option value="4032" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4061" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs</url>
+          <line>121</line>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\BrowsePets.razor.cs" initialLine="121" containingFunctionPresentation="method 'SendRequest'">
+            <startOffsets>
+              <option value="4074" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4102" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs</url>
+          <line>122</line>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\BrowsePets.razor.cs" initialLine="122" containingFunctionPresentation="method 'SendRequest'">
+            <startOffsets>
+              <option value="4115" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4141" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs</url>
+          <line>123</line>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Pages\BrowsePets.razor.cs" initialLine="123" containingFunctionPresentation="method 'SendRequest'">
+            <startOffsets>
+              <option value="4154" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4205" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

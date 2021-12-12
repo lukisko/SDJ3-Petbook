@@ -92,6 +92,7 @@ namespace ClientApp.Data.Implementation
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
             IList<Pet> pet = JsonSerializer.Deserialize<IList<Pet>>(reply);
+            //Throwing an exception if list is empty
             Console.WriteLine(pet[0].id);
             return pet[0];
         }
