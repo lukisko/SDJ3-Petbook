@@ -15,7 +15,7 @@ namespace ClientApp.Data.Implementation
     {
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
-        public Action<Object> RequestAnswerChange;
+        
 
         public PetController()
         {
@@ -48,10 +48,10 @@ namespace ClientApp.Data.Implementation
             return updatedPet;
         }
 
-        public async Task<IList<Pet>> GetAllPetsAsync(string? email,string? status,string? type, string? breed,string? name )
+        public async Task<IList<Pet>> GetAllPetsAsync()
         {
             List<Pet> pets = new List<Pet>();
-            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets?name={name}&email={email}&status={status}&type={type}&breed={breed}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Pets");
 
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
@@ -62,7 +62,7 @@ namespace ClientApp.Data.Implementation
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
         }
-
+        
         public async Task<IList<Pet>> GetAllUserPetsAsync()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
@@ -113,14 +113,7 @@ namespace ClientApp.Data.Implementation
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
-            if (responseMessage.StatusCode == HttpStatusCode.Created)
-            {
-                // Well I guess I did it 
-                // But i Forgot what it means
-                RequestAnswerChange.Invoke(responseMessage.Content);
-            }
-
+            
             string reply = await responseMessage.Content.ReadAsStringAsync();
             Pet updatedPet = JsonConvert.DeserializeObject<Pet>(reply);
             return updatedPet;
@@ -134,6 +127,5 @@ namespace ClientApp.Data.Implementation
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
         }
-        
     }
 }

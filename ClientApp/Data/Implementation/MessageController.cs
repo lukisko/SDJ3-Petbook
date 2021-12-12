@@ -39,7 +39,6 @@ namespace ClientApp.Data.Implementation
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
             string reply = await responseMessage.Content.ReadAsStringAsync();
         }
 

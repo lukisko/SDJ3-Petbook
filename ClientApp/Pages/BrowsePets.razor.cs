@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
@@ -27,9 +28,10 @@ namespace ClientApp.Pages
             allPets = new List<Pet>();
             toShowPets = new List<Pet>();
             _petToLoad = new Pet();
-            allPets = await _petController.GetAllPetsAsync(null, null, null, null, null);
+            allPets = await _petController.GetAllPetsAsync();
             toShowPets = allPets;
         }
+
         async Task ShowMessagePane(int sendMessageToPetId)
         {
             senderPetId = sendMessageToPetId;
@@ -65,7 +67,7 @@ namespace ClientApp.Pages
             _modalService.Show<Register>();
         }
 
-        private void FilterBy(ChangeEventArgs eventArgs)
+        private async Task FilterBy(ChangeEventArgs eventArgs)
         {
             filterBy = eventArgs.Value.ToString();
         }
@@ -77,43 +79,49 @@ namespace ClientApp.Pages
 
             if (typeOfObject.Equals("Pets"))
             {
-                await ExecuteFilteringFamilies();
+                await ExecuteFilteringPets();
             }
         }
 
-        private async Task ExecuteFilteringFamilies()
+        private async Task ExecuteFilteringPets()
         {
             switch (filterBy)
             {
-                case "Email":
+                
+                case "Name":
                     toShowPets =
-                        await _petController.GetAllPetsAsync(filterArgument, null, null, null, null);
+                        allPets.Where(t => t.name.ToString().Contains(filterArgument)).ToList();
                     break;
+
                 case "Status":
                     toShowPets =
-                        await _petController.GetAllPetsAsync(null, filterArgument, null, null, null);
+                        allPets.Where(t => t.statuses.Any(s=>s.name.Contains(filterArgument))).ToList();
                     break;
                 case "Type":
                     toShowPets =
-                        await _petController.GetAllPetsAsync(null, null, filterArgument, null, null);
+                        allPets.Where(t => t.type.ToString().Contains(filterArgument)).ToList();
                     break;
                 case "Breed":
                     toShowPets =
-                        await _petController.GetAllPetsAsync(null, null, null, filterArgument, null);
+                        allPets.Where(t => t.breed.ToString().Contains(filterArgument)).ToList();
                     break;
-                // case "Gender":
-                //     toShowPets = await _petController.GetAllPetsAsync(null, null, null, null,
-                //         filterArgument.ToCharArray(), null, null);
-                //     break;
-                // case "Birthday":
-                //     toShowPets =
-                //         await _petController.GetAllPetsAsync(null, null, null, null, null, filterArgument, null);
-                //     break;
-                case "Name":
+                case "Gender":
+                    toShowPets = allPets.Where(t => t.gender.ToString().Contains(filterArgument)).ToList();
+                    break;
+                case "Birthday":
                     toShowPets =
-                        await _petController.GetAllPetsAsync(null, null, null, null, filterArgument);
+                        allPets.Where(t => t.birthdate.ToString().Contains(filterArgument)).ToList();
                     break;
             }
+        }
+
+        async Task SendRequest(int petIdRequest,string typeName,string email )
+        {
+            Request request = new Request();
+            request.petId = petIdRequest;
+            request.typeName = typeName;
+            request.userEmail = email;
+            await _requestController.SendRequestAsync(request);
         }
     }
 }

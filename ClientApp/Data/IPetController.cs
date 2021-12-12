@@ -19,7 +19,8 @@ namespace ClientApp.Data
         /// 
         /// </summary>
         /// <returns> IList with all pets account</returns>
-        Task<IList<Pet>> GetAllPetsAsync(string? email,string? status,string? type, string? breed,string? name );
+        Task<IList<Pet>> GetAllPetsAsync();
+        
 
          Task<IList<Pet>> GetAllUserPetsAsync();
          

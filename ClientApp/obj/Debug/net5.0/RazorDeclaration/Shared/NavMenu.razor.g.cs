@@ -146,7 +146,7 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 363 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 358 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -165,7 +165,7 @@ using System.Runtime.CompilerServices;
     private IList<Pet> _allMessageLog;
     private IList<Pet> _toShowMessageLog;
     private Pet petLoggedIn { get; set; }
-    
+
     private int petToSendMessage { get; set; }
     private Pet _petToLoad;
 
@@ -184,35 +184,32 @@ using System.Runtime.CompilerServices;
         ProfileWindow = false;
         AccountsWindow = false;
         BurgerMenu = false;
-        
     }
+
     protected override async Task OnParametersSetAsync()
     {
-        
-        //_toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, _petToLoad.id);
+    //_toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, _petToLoad.id);
     }
 
 
     void ShowSendCode()
     {
-        _modalService.Show<SendCode>();
+        _modalService.Show<Login>();
+        
     }
 
 
     void ShowRegister()
     {
         _modalService.Show<Register>();
+       
     }
 
-    void ShowAddPet()
-    {
-        NavMgr.NavigateTo($"/AddPet");
-    //_modalService.Show<AddPet>();
-    }
 
     void NavigateToBrowsePets()
     {
         NavMgr.NavigateTo("/BrowsePets");
+        SetPanesToFalse();
     }
 
     async Task NavigateAuthPetToBrowsePets()
@@ -220,27 +217,32 @@ using System.Runtime.CompilerServices;
         await LoggedInPet();
         Console.WriteLine("NavigateMethod" + petLoggedIn.id);
         NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
+        SetPanesToFalse();
     }
 
     async void NavigateHome()
     {
         await LoggedInPet();
         NavMgr.NavigateTo("/");
+        SetPanesToFalse();
     }
 
     void NavigateAddPet()
     {
         NavMgr.NavigateTo("/AddPet");
+        SetPanesToFalse();
     }
 
     void LogOut()
     {
         ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        SetPanesToFalse();
     }
 
     void NavigateToPetProfile(int petId)
     {
         NavMgr.NavigateTo($"/PetProfile/{petId}");
+        SetPanesToFalse();
     }
 
     async Task LoggedInPet()
@@ -253,6 +255,7 @@ using System.Runtime.CompilerServices;
 
     public async Task DropDownProfileWindow()
     {
+        SetPanesToFalse();
         await LoggedInPet();
         if (ProfileWindow)
         {
@@ -330,6 +333,15 @@ using System.Runtime.CompilerServices;
         _messageBody = "";
     }
 
+    void SetPanesToFalse()
+    {
+        ProfileWindow = false;
+        BurgerMenu = false;
+
+        AccountsWindow = false;
+        LogPaneWindow = false;
+        MessagePaneWindow = false;
+    }
 
 
 
