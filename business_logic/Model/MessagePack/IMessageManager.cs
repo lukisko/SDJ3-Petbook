@@ -1,5 +1,6 @@
 using business_logic.Model.PetPack;
 using System.Collections.Generic;
+using Entities;
 
 namespace business_logic.Model.MessagePack
 {

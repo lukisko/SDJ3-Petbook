@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using business_logic.Model.PetPack;
-using System;
-using System.Linq;
+using Entities;
 
 namespace business_logic.Model.MessagePack
 {

@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Entities;
 
 namespace business_logic.Model.Mediator
 {

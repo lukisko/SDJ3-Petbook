@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using business_logic.Model.UserPack;
+using Entities;
 
 namespace business_logic.Model.Mediator
 {
