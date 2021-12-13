@@ -146,7 +146,7 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 398 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 403 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -324,18 +324,8 @@ using System.Runtime.CompilerServices;
 
     async Task ShowNotificationPane()
     {
-        // await LoggedInPet();
-        // _toShowNotificationLog = await _requestController.GetAllRequestsAsync(petLoggedIn.id);
-        Request r1 = new Request();
-        r1.petId = 172;
-        r1.typeName = "adopting";
-        r1.userEmail = "cernicern@gmail.com";
-        Request r2 = new Request();
-        r1.petId = 172;
-        r1.typeName = "adopting";
-        r1.userEmail = "cernicern@gmail.com";
-        _toShowNotificationLog.Add(r1);
-        _toShowNotificationLog.Add(r2);
+        await LoggedInPet();
+        _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null,petLoggedIn.id);
         if (NotificationPaneWindow)
         {
             NotificationPaneWindow = false;
