@@ -14,6 +14,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 
+/**
+ * Database class used for connecting to database
+ */
 public class Database
 {
 
@@ -24,6 +27,9 @@ public class Database
 
   private static Database instance;
 
+  /**
+   * Constructor which initialize all instant variables
+   */
   private Database()
   {
     configuration = new Configuration().addAnnotatedClass(User.class)
@@ -35,6 +41,10 @@ public class Database
     builder = session.getCriteriaBuilder();
   }
 
+  /**
+   * method for getting instance of database class
+   * @return instance of database class
+   */
   public synchronized static Database getInstance()
   {
     if (instance == null)
@@ -44,6 +54,9 @@ public class Database
     return instance;
   }
 
+  /**
+   * method for starting connection with database
+   */
   public void beginSession()
   {
     if(!session.getTransaction().isActive())
@@ -53,11 +66,19 @@ public class Database
     }
   }
 
+  /**
+   * getting session object
+   * @return session object
+   */
   public Session getSession()
   {
     return session;
   }
 
+  /**
+   * getting criteriaBuilder which can be used for creating of queries
+   * @return builder
+   */
   public CriteriaBuilder getBuilder()
   {
     return builder;
