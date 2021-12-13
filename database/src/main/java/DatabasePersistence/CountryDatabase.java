@@ -41,6 +41,8 @@ public class CountryDatabase implements CountryPersistence
 
   @Override public void save(Country country)
   {
+    if(country == null) throw new IllegalArgumentException();
+
     database.beginSession();
     database.getSession().persist(country);
     database.getSession().getTransaction().commit();

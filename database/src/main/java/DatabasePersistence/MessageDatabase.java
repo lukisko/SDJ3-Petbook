@@ -37,6 +37,18 @@ public class MessageDatabase implements MessagePersisence
     return messageList;
   }
 
+  @Override public List<Message> LoadMessagesOfReceiver(int id2)
+  {
+    database.beginSession();
+    Query query = database.getSession().createQuery("SELECT c FROM message c WHERE receiver_id = :receiver");
+    query.setParameter("receiver",id2);
+    List<Message> messageList = query.getResultList();
+    if(messageList != null){
+      messageList.forEach(Message::clear);
+    }
+    return messageList;
+  }
+
   @Override public int save(Message message)
   {
     database.beginSession();

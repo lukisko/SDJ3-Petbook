@@ -31,6 +31,9 @@ public class MessageHandler
       case "GetAllOf":
         response = getAllOf(value);
         break;
+      case "GetAllOfReceiver":
+        response = getAllOfReceiver(value);
+        break;
       case "Add":
         response = add(value);
         break;
@@ -61,6 +64,19 @@ public class MessageHandler
       return gson.toJson(new Comunication<List<Message>>("message", "GetAllOf",
           messagePersisence.LoadMessagesOfPets(value.getReceiver().getId(),
               value.getSender().getId())));
+    }
+    catch (Exception e)
+    {
+      System.out.println(e.getMessage());
+      return e.getMessage();
+    }
+  }
+  private String getAllOfReceiver(Message value)
+  {
+    try
+    {
+      return gson.toJson(new Comunication<List<Message>>("message", "GetAllOfReceiver",
+          messagePersisence.LoadMessagesOfReceiver(value.getReceiver().getId())));
     }
     catch (Exception e)
     {

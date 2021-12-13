@@ -9,6 +9,7 @@ public interface MessagePersisence
 {
   Message loadMessage(int id);
   List<Message> LoadMessagesOfPets(int id1, int id2);
+  List<Message> LoadMessagesOfReceiver( int id2);
   int save(Message message);
   void delete(Message message);
 }

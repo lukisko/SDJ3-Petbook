@@ -75,16 +75,11 @@ public class UserTest
   void getAllUsersZero(){
     List<User> userList = userPersistence.loadAll();
 
-    for (int x = 0; x < userList.size(); x++)
-    {
-      if(!userList.get(x).getEmail().equals(user1.getEmail()) && !userList.get(x).getEmail().equals(user2.getEmail())){
-        userList.remove(x);
-      }
-    }
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
 
-    List<User> result = new ArrayList<>();
-
-    assertEquals(result, userList);
+    assertEquals(0, userList.size());
   }
   @Test
   void getAllUsersOne(){
@@ -92,12 +87,9 @@ public class UserTest
     List<User> userList = userPersistence.loadAll();
     userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
 
-    for (int x = 0; x < userList.size(); x++)
-    {
-      if(!userList.get(x).getEmail().equals(user1.getEmail())){
-        userList.remove(x);
-      }
-    }
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
 
     assertNotNull(userList);
     assertEquals("test1", userList.get(0).getEmail());
@@ -111,12 +103,9 @@ public class UserTest
     userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
     userPersistence.delete(userPersistence.loadUser(user2.getEmail()));
 
-    for (int x = 0; x < userList.size(); x++)
-    {
-      if(!userList.get(x).getEmail().equals(user1.getEmail()) && !userList.get(x).getEmail().equals(user2.getEmail())){
-        userList.remove(x);
-      }
-    }
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
 
     assertNotNull(userList);
     assertEquals("test1", userList.get(0).getEmail());
