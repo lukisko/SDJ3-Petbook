@@ -9,6 +9,9 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
+/**
+ * used to load, save and remove cities from database
+ */
 public class CityDatabase implements CityPersistence {
 
 

@@ -15,7 +15,7 @@ namespace business_logic.Controllers
     {
         private IUserControl model;
 
-        public  UserController(IUserControl model){
+        public  UserController(IModel model){
             this.model = model;
             
         }

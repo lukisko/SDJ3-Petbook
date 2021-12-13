@@ -15,7 +15,7 @@ namespace business_logic.Controllers
     {
         private IRequestControl model;
 
-        public RequestController(IRequestControl model){
+        public RequestController(IModel model){
             this.model = model;
         }
 

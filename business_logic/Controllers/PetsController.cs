@@ -14,7 +14,7 @@ namespace business_logic.Controllers
     public class PetsController : ControllerBase
     {
         private IPetControl model;
-        public PetsController(IPetControl model){
+        public PetsController(IModel model){
             this.model = model;
         }
         [HttpGet]
