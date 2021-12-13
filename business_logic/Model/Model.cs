@@ -22,16 +22,16 @@ namespace business_logic.Model
 
         private Random random;
 
-        public Model(ITier2Mediator tier2Mediator){
+        public Model(ITier2Mediator tier2Mediator, IUserManager userManager, 
+        IPetManager petManager, IMessageManager messageManager){
             emailHandler = new EmailHandler();
             random = new Random(1538);
-            userManager = new UserManager(tier2Mediator);
-            petManager = new PetManager(tier2Mediator);
-            messageManager = new MessageController();
+            this.userManager = userManager;
+            this.petManager = petManager;
+            this.messageManager = messageManager;
             requestManager = new RequestManager<Request,string>(
                 (request)=> {return request.petId;},(request)=> {return request.userEmail;}
             );
-            
         }
         //////change this down part
         public bool Login(string email){
@@ -245,13 +245,13 @@ namespace business_logic.Model
         public async Task<IList<Entities.Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
             string email = userManager.getUserWithToken(token);
             if ((await this.getPetsAsync(senderPetId,null,null,null,null,null,null,null)).Count == 0){
-                messageManager.getMessages(receiverPetId, senderPetId);
+                await messageManager.getMessages(receiverPetId, senderPetId);
                 return new List<Entities.Message>();
             }
             AuthorisedUser usr = await this.GetAuthorisedUser(token);
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
-                return messageManager.getMessages(receiverPetId,senderPetId);
+                return await messageManager.getMessages(receiverPetId,senderPetId);
             } else {
                 throw new AccessViolationException("you are not owner of the pet.");
             }
@@ -263,7 +263,7 @@ namespace business_logic.Model
             usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
-                IList<int> listOfId = messageManager.getPetIdOfMessages(receiverPetId);
+                IList<int> listOfId = await messageManager.getPetIdOfMessages(receiverPetId);
                 List<Pet> petList = new List<Pet>();
                 foreach (int petId in listOfId){
                     petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null,null));
