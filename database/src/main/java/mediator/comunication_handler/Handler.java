@@ -1,5 +1,9 @@
 package mediator.comunication_handler;
 
+import DatabasePersistence.PetDatabase;
+import DatabasePersistence.PetPersistance;
+import DatabasePersistence.UserDatabase;
+import DatabasePersistence.UserPersistence;
 import model.*;
 
 public class Handler implements CommunicationHandler
@@ -11,12 +15,17 @@ public class Handler implements CommunicationHandler
   private PetHandler petHandler;
   private StatusHandler statusHandler;
 
-  public Handler(Model model){
-    userHandler = new UserHandler(model);
-    countryHandler = new CountryHandler(model);
-    cityHandler = new CityHandler(model);
-    petHandler = new PetHandler(model);
-    statusHandler = new StatusHandler(model);
+
+
+  public Handler(){
+
+
+
+    userHandler = new UserHandler();
+    countryHandler = new CountryHandler();
+    cityHandler = new CityHandler();
+    petHandler = new PetHandler();
+    statusHandler = new StatusHandler();
   }
   @Override public String typeUser(String method, User value)
   {

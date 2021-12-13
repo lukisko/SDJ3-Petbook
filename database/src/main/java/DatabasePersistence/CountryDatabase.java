@@ -15,11 +15,13 @@ public class CountryDatabase implements CountryPersistence
   }
   @Override public Country loadCountry(String name)
   {
+      if(name == null) throw new IllegalArgumentException();
+
       database.beginSession();
       Country country = database.getSession().get(Country.class,name);
       if(country != null)
       {
-        country.getCities().clear();
+        country.clear();
       }
       return country;
   }

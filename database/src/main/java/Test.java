@@ -1,3 +1,7 @@
+import DatabasePersistence.PetDatabase;
+import DatabasePersistence.PetPersistance;
+import DatabasePersistence.UserDatabase;
+import DatabasePersistence.UserPersistence;
 import com.google.gson.Gson;
 import mediator.Comunication;
 import model.*;
@@ -15,12 +19,8 @@ public class Test {
   public static void main(String[] args) {
 
     Gson gson = new Gson();
-    Model model = new ModelManager();
 
 
-    List<Status> statusList = model.getAllStatusesWithName("walking");
-    String stringToSend = gson.toJson(statusList);
-    byte[] toSendBytes = stringToSend.getBytes();
 
 
 

@@ -1,22 +1,22 @@
 package mediator.comunication_handler;
 
+import DatabasePersistence.CityDatabase;
+import DatabasePersistence.CityPersistence;
 import com.google.gson.Gson;
 import mediator.Comunication;
 import model.City;
-import model.Country;
-import model.Model;
 
 import java.util.List;
 
 public class CityHandler
 {
-  private Model model;
+  private CityPersistence cityPersistence;
   private Gson gson;
   private String response;
 
-  public CityHandler(Model model){
+  public CityHandler(){
     gson = new Gson();
-    this.model = model;
+    this.cityPersistence = new CityDatabase();
   }
 
   private void findMethod(String method, City value){
@@ -38,7 +38,7 @@ public class CityHandler
     try
     {
       return gson.toJson(new Comunication<City>("city", "Get",
-          model.getCity(value.getName())));
+          cityPersistence.loadCity(value.getName())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -48,7 +48,7 @@ public class CityHandler
   private String getAll(){
     try
     {
-      return gson.toJson(new Comunication<List<City>>("city", "GetAll", model.getAllCities()));
+      return gson.toJson(new Comunication<List<City>>("city", "GetAll", cityPersistence.loadAll()));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -58,9 +58,9 @@ public class CityHandler
   private String add(City value){
     try
     {
-      model.addCity(value);
+      cityPersistence.save(value);
       return gson.toJson(new Comunication<City>("city", "Add",
-          model.getCity(value.getName())));
+          cityPersistence.loadCity(value.getName())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());

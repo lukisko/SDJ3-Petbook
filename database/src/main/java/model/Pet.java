@@ -123,6 +123,11 @@ public class Pet implements Serializable
     return senderMessages;
   }
 
+  public void setGender(char gender)
+  {
+    this.gender = gender;
+  }
+
   public void clear(){
     statuses.clear();
     senderMessages.clear();

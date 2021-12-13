@@ -1,5 +1,7 @@
 package mediator.comunication_handler;
 
+import DatabasePersistence.PetDatabase;
+import DatabasePersistence.PetPersistance;
 import com.google.gson.Gson;
 import mediator.Comunication;
 import model.*;
@@ -8,13 +10,13 @@ import java.util.List;
 
 public class PetHandler
 {
-  private Model model;
+  private PetPersistance petPersistance;
   private Gson gson;
   private String response;
 
-  public PetHandler(Model model){
+  public PetHandler(){
     gson = new Gson();
-    this.model = model;
+    petPersistance = new PetDatabase();
   }
 
   private void findMethod(String method, Pet value){
@@ -44,7 +46,7 @@ public class PetHandler
     try
     {
       return gson.toJson(new Comunication<Pet>("pet", "Get",
-          model.getPet(value.getId())));
+          petPersistance.loadPet(value.getId())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -54,7 +56,7 @@ public class PetHandler
   private String getAll(){
     try
     {
-      return gson.toJson(new Comunication<List<Pet>>("pet", "GetAll", model.getAllPets()));
+      return gson.toJson(new Comunication<List<Pet>>("pet", "GetAll", petPersistance.loadAll()));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -64,8 +66,8 @@ public class PetHandler
   private String getAllOf(Pet value){
     try
     {
-      return gson.toJson(new Comunication<List<Status>>("status", "GetAllOf",
-          model.getStatusList(value.getId())));
+      return gson.toJson(new Comunication<List<Pet>>("pet", "GetAllOf",
+          petPersistance.loadListOfUser(value.getUser().getEmail())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -75,9 +77,9 @@ public class PetHandler
   private String add(Pet value){
     try
     {
-      int id = model.addPet(value);
+      int id = petPersistance.save(value);
       return gson.toJson(new Comunication<Pet>("pet", "Add",
-          model.getPet(id)));
+          petPersistance.loadPet(id)));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -87,7 +89,7 @@ public class PetHandler
   private String remove(Pet value){
       try
       {
-        model.removePet(value);
+        petPersistance.delete(petPersistance.loadPet(value.getId()));
         return gson.toJson(new Comunication<String>("pet", "Remove",
             "OK"));
       }
@@ -100,7 +102,7 @@ public class PetHandler
     try
     {
       return gson.toJson(new Comunication<Pet>("pet", "Update",
-          model.updatePet(value)));
+          petPersistance.update(petPersistance.loadPet(value.getId()))));
     }
     catch (Exception e){
       System.out.println(e.getMessage());

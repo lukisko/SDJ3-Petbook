@@ -1,5 +1,6 @@
 package DatabasePersistence;
 
+import model.Pet;
 import model.User;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -24,13 +25,13 @@ public class UserDatabase implements UserPersistence
 
   @Override public User loadUser(String email)
   {
+      if(email == null) throw new IllegalArgumentException();
 
       database.beginSession();
       User user = database.getSession().get(User.class,email);
       if(user != null)
       {
-        user.getPets().clear();
-        user.getStatuses().clear();
+        user.clear();
       }
       return user;
   }
@@ -42,14 +43,15 @@ public class UserDatabase implements UserPersistence
       criteria.from(User.class);
       List<User> data = database.getSession().createQuery(criteria).getResultList();
       if (data != null){
-        data.forEach(n -> n.getPets().clear());
-        data.forEach(n -> n.getStatuses().clear());
+        data.forEach(User::clear);
       }
       return data;
   }
 
   @Override public void save(User customer)
   {
+    if(customer == null) throw new IllegalArgumentException();
+
     database.beginSession();
     database.getSession().persist(customer);
     database.getSession().getTransaction().commit();
@@ -63,4 +65,5 @@ public class UserDatabase implements UserPersistence
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
+
 }

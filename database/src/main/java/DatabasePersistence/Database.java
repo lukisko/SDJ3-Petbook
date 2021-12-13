@@ -34,7 +34,7 @@ public class Database
   {
     configuration = new Configuration().addAnnotatedClass(User.class)
         .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).addAnnotatedClass(
-            Country.class).addAnnotatedClass(Status.class).configure().addAnnotatedClass(Message.class).configure();
+            Country.class).addAnnotatedClass(Status.class).addAnnotatedClass(Message.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
     session.beginTransaction();

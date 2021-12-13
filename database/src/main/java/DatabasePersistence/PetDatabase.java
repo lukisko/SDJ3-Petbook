@@ -20,7 +20,6 @@ public class  PetDatabase implements PetPersistance
 
   @Override public Pet loadPet(int id)
   {
-    try {
       database.beginSession();
       Pet pet = database.getSession().get(Pet.class,id);
       if(pet != null)
@@ -28,12 +27,6 @@ public class  PetDatabase implements PetPersistance
         pet.clear();
       }
       return pet;
-    }
-    catch (Exception e){
-      System.out.println("PetDatabase_Exception: " + e.getMessage());
-      e.printStackTrace();
-      return null;
-    }
   }
 
   @Override public List<Pet> loadAll()
@@ -49,7 +42,7 @@ public class  PetDatabase implements PetPersistance
     return data;
   }
 
-  @Override public List<Pet> LoadListOfUser(String email) {
+  @Override public List<Pet> loadListOfUser(String email) {
     database.beginSession();
     Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
     query.setParameter("emailValue",email);

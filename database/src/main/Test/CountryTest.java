@@ -1,69 +1,75 @@
+import DatabasePersistence.CountryDatabase;
+import DatabasePersistence.CountryPersistence;
 import model.Country;
-import model.Model;
-import model.ModelManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CountryTest
 {
-  private Model model;
+  private CountryPersistence countryPersistence;
   private Country country1;
   private Country country2;
-  private Country country3;
 
   @BeforeEach
   void setUp()
   {
-    model = new ModelManager();
-    country1 = new Country("test");
-    country2 = new Country("test1");
-    country3 = new Country("test2");
+    countryPersistence = new CountryDatabase();
+    country1 = new Country("test1");
+    country2 = new Country("test2");
+  }
 
-    model.addCountry(country1);
-  }
-  @AfterEach
-  void setDown(){
-    if(model.getCountry(country1.getName()) != null){
-      model.removeCountry(model.getCountry(country1.getName()));
-    }
-  }
 
   @Test
-  void getCountry(){
+  void getCountryZero(){
+    Country result = countryPersistence.loadCountry(country1.getName());
 
-    Country result = model.getCountry(country1.getName());
+    assertNull(result);
+  }
+  @Test
+  void getCountryOne(){
+    countryPersistence.save(country1);
+    Country result = countryPersistence.loadCountry(country1.getName());
+    countryPersistence.delete(result);
 
     assertNotNull(result);
-    assertEquals("test",result.getName());
+    assertEquals("test1", result.getName());
   }
   @Test
-  void getAllCites(){
-    model.addCountry(country2);
-    model.addCountry(country3);
-    List<Country> countries = model.getAllCountries();
-    model.removeCountry(model.getCountry(country2.getName()));
-    model.removeCountry(model.getCountry(country3.getName()));
+  void getCountryMany(){
+    countryPersistence.save(country1);
+    countryPersistence.save(country2);
+    Country result1 = countryPersistence.loadCountry(country1.getName());
+    Country result2 = countryPersistence.loadCountry(country1.getName());
+    countryPersistence.delete(result1);
+    countryPersistence.delete(result2);
 
-    assertTrue(1 < (long) countries.size());
+    assertNotNull(result1);
+    assertEquals("test1", result1.getName());
+  }
+  @Test
+  void getCountryBoundary(){
+
+  }
+  @Test
+  void getCountryException(){
+    assertThrows(IllegalArgumentException.class,() -> countryPersistence.loadCountry(null));
+  }
+
+
+  @Test
+  void getAllCites(){
+
   }
   @Test
   void addCity(){
 
-    Country result = model.getCountry(country1.getName());
-
-    assertNotNull(result);
-    assertEquals("test",result.getName());
 
   }
   @Test
   void removeCity(){
-    model.removeCountry(country1);
 
-    assertNull(model.getCity("test"));
   }
 }
