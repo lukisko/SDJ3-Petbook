@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Entities;
+using business_logic.Model;
 
 namespace business_logic.Controllers
 {
@@ -11,7 +12,7 @@ namespace business_logic.Controllers
     public class AuthorisedUserController :ControllerBase
     {
         private IAuthorisedUserControl model;
-        public AuthorisedUserController(IAuthorisedUserControl model){
+        public AuthorisedUserController(IModel model){
             this.model = model;
         }
 
