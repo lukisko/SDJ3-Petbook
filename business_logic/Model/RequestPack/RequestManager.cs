@@ -12,6 +12,7 @@ namespace business_logic.Model.RequestPack
         public RequestManager(Func<T,int> identifier, Func<T,V> secondIdentifier){
             this.identifier = identifier;
             this.secondIdentifier = secondIdentifier;
+            this.dictionary = new Dictionary<int, IList<T>>();
         }
         public IList<T> getRequestOfPetAndUser(int identifier, V secondIdentifier){
             List<T> returnValue = new List<T>();
