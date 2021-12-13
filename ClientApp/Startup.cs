@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Blazored.Modal;
+using ClientApp.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ClientApp.Data;
+using ClientApp.Data.Implementation;
+using ClientApp.Model;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace ClientApp
 {
@@ -30,8 +36,15 @@ namespace ClientApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<IPetController, PetController>();
-            services.AddScoped<IUserController,UserController>();
-            // services.AddBlazoredModal();
+            services.AddScoped<IUserController, UserController>();
+            services.AddScoped<IMessageController, MessageController>();
+            services.AddScoped<IRequestController, RequestController>();
+            services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            services.AddScoped<StaticVariables>();
+            services
+                .AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
+            services.AddBlazoredModal();
 
         }
 
@@ -51,14 +64,15 @@ namespace ClientApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+               
             });
+            
         }
     }
 }

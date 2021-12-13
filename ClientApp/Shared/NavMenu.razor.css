@@ -60,3 +60,11 @@
         display: block;
     }
 }
+
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+
+
+

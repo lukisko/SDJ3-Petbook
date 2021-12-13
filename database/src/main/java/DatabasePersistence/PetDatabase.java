@@ -1,16 +1,15 @@
 package DatabasePersistence;
 
 import model.Pet;
-import model.User;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class PetDatabase implements PetPersistance
+public class  PetDatabase implements PetPersistance
 {
-
   private Database database;
+
 
 
   public PetDatabase(){
@@ -22,56 +21,79 @@ public class PetDatabase implements PetPersistance
   @Override public Pet loadPet(int id)
   {
     try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE id = :idValue");
-      query.setParameter("idValue",id);
-      Pet pet = (Pet)query.getSingleResult();
+      database.beginSession();
+      Pet pet = database.getSession().get(Pet.class,id);
+      if(pet != null)
+      {
+        pet.getUser().getPets().clear();
+        pet.getUser().getStatuses().clear();
+        pet.getCity().getPets().clear();
+        pet.getCity().getCountry().getCities().clear();
+        pet.getStatuses().clear();
+      }
       return pet;
     }
     catch (Exception e){
       System.out.println("PetDatabase_Exception: " + e.getMessage());
+      e.printStackTrace();
       return null;
     }
   }
 
   @Override public List<Pet> loadAll()
   {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c");
-      List<Pet> petList = query.getResultList();
-      return petList;
+    database.beginSession();
+    CriteriaQuery<Pet> criteria = database.getBuilder().createQuery(Pet.class);
+    criteria.from(Pet.class);
+    List<Pet> data = database.getSession().createQuery(criteria).getResultList();
+    if(data != null)
+    {
+      data.forEach((pet) -> pet.getUser().getPets().clear());
+      data.forEach((pet) -> pet.getUser().getStatuses().clear());
+      data.forEach((pet) -> pet.getCity().getPets().clear());
+      data.forEach((pet) -> pet.getCity().getCountry().getCities().clear());
+      data.forEach((pet) -> pet.getStatuses().clear());
     }
-    catch (Exception e){
-      System.out.println("PetDatabase_Exception: " + e.getMessage());
-      return null;
-    }
+    return data;
   }
 
-  @Override public List<Pet> LoadListOf(String email) {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
-      query.setParameter("emailValue",email);
-      List<Pet> petList = query.getResultList();
-      return petList;
+  @Override public List<Pet> LoadListOfUser(String email) {
+    database.beginSession();
+    Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
+    query.setParameter("emailValue",email);
+    List<Pet> petList = query.getResultList();
+    if(petList != null){
+      petList.forEach(pet -> pet.getStatuses().clear());
+      petList.forEach(pet -> pet.getUser().getPets().clear());
+      petList.forEach(pet -> pet.getUser().getStatuses().clear());
+      petList.forEach(pet -> pet.getCity().getCountry().getCities().clear());
+      petList.forEach((pet) -> pet.getCity().getPets().clear());
     }
-    catch (Exception e){
-      System.out.println("PetDatabase_Exception: " + e.getMessage());
-      return null;
-    }
+    return petList;
   }
 
-  @Override public void save(User user,Pet pet)
+  @Override public int save(Pet pet)
   {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
-    }
-    System.out.println(user);
-//    User ss = new User();
-//
-//    ss.setEmail("asd");
-    user.addPet(pet);
-    pet.setUser(user);
-    user.addPet(pet);
-    database.getEntityManager().persist(pet);
-    database.getEntityManager().getTransaction().commit();
+    database.beginSession();
+    database.getSession().save(pet);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+    return pet.getId();
+  }
+
+  @Override public void delete(Pet pet)
+  {
+    database.beginSession();
+    database.getSession().delete(pet);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+  }
+  @Override public Pet update(Pet pet)
+  {
+    database.beginSession();
+    database.getSession().update(pet);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+    return pet;
   }
 }

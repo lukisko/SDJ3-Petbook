@@ -1,11 +1,17 @@
 package DatabasePersistence;
 
 import model.City;
+import model.Country;
 import model.Pet;
+import model.User;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
+/**
+ * used to load, save and remove cities from database
+ */
 public class CityDatabase implements CityPersistence {
 
 
@@ -18,35 +24,40 @@ public class CityDatabase implements CityPersistence {
 
 
   @Override public City loadCity(String name) {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM city c WHERE name = :city_name");
-      query.setParameter("city_name",name);
-      City city = (City) query.getSingleResult();
+      database.beginSession();
+      City city = database.getSession().get(City.class,name);
+      if(city != null)
+      {
+        city.getPets().clear();
+        city.getCountry().getCities().clear();
+      }
       return city;
-    }
-    catch (Exception e) {
-      System.out.println("CityDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public List<City> loadAll() {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM city c");
-      List<City> cityList = query.getResultList();
-      return cityList;
-    }
-    catch (Exception e){
-      System.out.println("CityDatabase_Exception: " + e.getMessage());
-      return null;
-    }
+      database.beginSession();
+      CriteriaQuery<City> criteria = database.getBuilder().createQuery(City.class);
+      criteria.from(City.class);
+      List<City> data = database.getSession().createQuery(criteria).getResultList();
+      if(data != null){
+        data.forEach(n -> n.getPets().clear());
+        data.forEach(n -> n.getCountry().getCities().clear());
+      }
+      return data;
   }
 
   @Override public void save(City city) {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
-    }
-    database.getEntityManager().persist(city);
-    database.getEntityManager().getTransaction().commit();
+    database.beginSession();
+    database.getSession().persist(city);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+  }
+
+  @Override public void delete(City city)
+  {
+    database.beginSession();
+    database.getSession().delete(city);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
   }
 }

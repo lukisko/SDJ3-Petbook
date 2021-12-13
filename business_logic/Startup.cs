@@ -35,8 +35,9 @@ namespace business_logic
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "business_logic", Version = "v1" });
             });
-            services.AddSingleton<IPetsData ,PetsData>();
+            //services.AddSingleton<IPetsData ,PetsData>();
             services.AddSingleton<IModel,Model.Model>();
+            services.AddSingleton<ITier2Mediator, Tier2>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

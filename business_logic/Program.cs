@@ -15,7 +15,7 @@ namespace business_logic
 {
     public class Program
     {
-        public async static Task Main(string[] args)
+        public static void Main(string[] args)
         {
             //Tier2 test = new Tier2(); //to test comunication uncomment this line and one of the bellow
             //await test.requestPets(); //delete also async
@@ -25,6 +25,15 @@ namespace business_logic
             //await med.requestPets();
             //IEmailHandler emailHandler = new EmailHandler();
             //emailHandler.sendEmail("lukas.pleva126@gmail.com","title","hello world");
+
+            //Comunication<Pet> petCom = new Comunication<Pet>("type","method",new Pet(){user = new User(){email="ahoj"}});
+
+            //string json = JsonSerializer.Serialize(petCom);
+            //Comunication<Pet> petNew = JsonSerializer.Deserialize<Comunication<Pet>>(json);
+            //Console.WriteLine(JsonSerializer.Serialize(new Pet(){name="test",BirthDate=new DateTime(2012,10,24)}));
+
+            //Console.WriteLine(json);
+            //Console.WriteLine(petNew.value.user.email);
             CreateHostBuilder(args).Build().Run();
         }
 

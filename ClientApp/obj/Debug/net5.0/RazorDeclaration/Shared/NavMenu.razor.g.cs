@@ -13,78 +13,127 @@ namespace ClientApp.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 1 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 5 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 6 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 7 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 8 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 9 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 10 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/_Imports.razor"
+#line 11 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 12 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
+using Blazored.Modal.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 1 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Pages;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Model;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Data.Implementation;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using ClientApp.Authentication;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+using System.Runtime.CompilerServices;
 
 #line default
 #line hidden
@@ -97,20 +146,230 @@ using ClientApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 74 "/run/media/lukisko/Windows-SSD/VIA/SEMESTER3/SEP3/Project-SDJ3/ClientApp/Shared/NavMenu.razor"
-           
-    private bool collapseNavMenu = true;
+#line 403 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+ 
+    private bool ProfileWindow { get; set; }
+    private bool BurgerMenu { get; set; }
+    private bool AccountsWindow { get; set; }
+    private bool LogPaneWindow { get; set; }
+    private bool MessagePaneWindow { get; set; }
+    private bool NotificationPaneWindow { get; set; }
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private IList<Pet> _allPetProfiles;
+    private IList<Pet> _toShowPetsPetProfiles;
 
-    private void ToggleNavMenu()
+    private User userLoggedIn { get; set; }
+
+    private IList<Pet> _allPetMessagesWithAPet;
+    private IList<Message> _toShowPetProfileMessagesWithAPet;
+    private IList<Request> _toShowNotificationLog;
+    private IList<Pet> _allMessageLog;
+    private IList<Pet> _toShowMessageLog;
+    private Pet petLoggedIn { get; set; }
+
+    private int petToSendMessage { get; set; }
+    private Pet _petToLoad;
+
+    private string _messageBody;
+
+
+    protected async override Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        petLoggedIn = new Pet();
+        _petToLoad = new Pet();
+        _allPetProfiles = new List<Pet>();
+        _toShowPetsPetProfiles = new List<Pet>();
+        _toShowNotificationLog = new List<Request>();
+        _toShowPetsPetProfiles = _allPetProfiles;
+
+        ProfileWindow = false;
+        AccountsWindow = false;
+        BurgerMenu = false;
+        NotificationPaneWindow = false;
     }
+
+    protected override async Task OnParametersSetAsync()
+    {
+    //_toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, _petToLoad.id);
+    }
+
+
+    void ShowSendCode()
+    {
+        _modalService.Show<Login>();
+    }
+
+
+    void ShowRegister()
+    {
+        _modalService.Show<Register>();
+    }
+
+
+    void NavigateToBrowsePets()
+    {
+        NavMgr.NavigateTo("/BrowsePets");
+        SetPanesToFalse();
+    }
+
+    async Task NavigateAuthPetToBrowsePets()
+    {
+        await LoggedInPet();
+        Console.WriteLine("NavigateMethod" + petLoggedIn.id);
+        NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
+        SetPanesToFalse();
+    }
+
+    async void NavigateHome()
+    {
+        await LoggedInPet();
+        NavMgr.NavigateTo("/");
+        SetPanesToFalse();
+    }
+
+    void NavigateAddPet()
+    {
+        NavMgr.NavigateTo("/AddPet");
+        SetPanesToFalse();
+    }
+
+    void LogOut()
+    {
+        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        SetPanesToFalse();
+    }
+
+    void NavigateToPetProfile(int petId)
+    {
+        NavMgr.NavigateTo($"/PetProfile/{petId}");
+        SetPanesToFalse();
+    }
+
+    async Task LoggedInPet()
+    {
+        _allPetProfiles = await _petController.GetAllUserPetsAsync();
+        int petId = _allPetProfiles[0].id;
+        petLoggedIn = await _petController.GetPetProfileAsync(petId);
+        Console.WriteLine("LoggedinMethod" + petLoggedIn.id);
+    }
+
+    public async Task DropDownProfileWindow()
+    {
+        SetPanesToFalse();
+        await LoggedInPet();
+        if (ProfileWindow)
+        {
+            ProfileWindow = false;
+            AccountsWindow = false;
+        }
+        else
+        {
+            ProfileWindow = true;
+        }
+    }
+
+    public async void DropDownAccountsWindow()
+    {
+        if (AccountsWindow)
+        {
+            AccountsWindow = false;
+        }
+        else
+        {
+            AccountsWindow = true;
+        }
+    }
+
+    public void DropDownBurgerMenu()
+    {
+        if (BurgerMenu)
+        {
+            BurgerMenu = false;
+        }
+        else
+        {
+            BurgerMenu = true;
+        }
+    }
+
+    async Task ShowMessagePane(int messageToPetId)
+    {   await LoggedInPet();
+        petToSendMessage = messageToPetId;
+        _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
+        _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
+        if (MessagePaneWindow)
+        {
+            MessagePaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = false;
+            MessagePaneWindow = true;
+        }
+    }
+
+    async Task ShowLogPane()
+    {
+        await LoggedInPet();
+        _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
+        if (LogPaneWindow)
+        {
+            LogPaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = true;
+        }
+    }
+
+    async Task ShowNotificationPane()
+    {
+        await LoggedInPet();
+        _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null,petLoggedIn.id);
+        if (NotificationPaneWindow)
+        {
+            NotificationPaneWindow = false;
+        }
+        else
+        {
+            NotificationPaneWindow = true;
+        }
+    }
+
+    async Task SendMessage()
+    {
+        Message newMessage = new Message();
+        newMessage.MessageBody = _messageBody;
+        newMessage.SenderPetId = petLoggedIn.id;
+        newMessage.ReceiverPetId = petToSendMessage;
+        await _messageController.SendMessageAsync(newMessage);
+        _toShowPetProfileMessagesWithAPet.Add(newMessage);
+        _messageBody = "";
+    }
+
+    void SetPanesToFalse()
+    {
+        ProfileWindow = false;
+        BurgerMenu = false;
+
+        AccountsWindow = false;
+        LogPaneWindow = false;
+        MessagePaneWindow = false;
+        NotificationPaneWindow = false;
+    }
+
+
+
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IRequestController _requestController { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IMessageController _messageController { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPetController _petController { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavMgr { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IModalService _modalService { get; set; }
     }
 }
 #pragma warning restore 1591

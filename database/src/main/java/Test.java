@@ -1,30 +1,28 @@
+import com.google.gson.Gson;
+import mediator.Comunication;
 import model.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import javax.imageio.spi.ServiceRegistry;
+import java.util.List;
+import java.util.Random;
 
 public class Test {
+
+
   public static void main(String[] args) {
+
+    Gson gson = new Gson();
     Model model = new ModelManager();
-//    User user = new User();
-//    user.setEmail("d");
-//    model.addUser(user);
-//    User user = model.getUser("asd");
-//    System.out.println(user);
 
-//    User user = new User();
-//    user.setEmail("asd");
-//    City city = new City();
-//    city.setName("AS");
-//
-//    Pet pet = new Pet();
-//    pet.setId(1);
-//    pet.setCity(city);
-//    model.addPet("asd",pet);
 
-//    model.addCity(city);
-    Pet pet = new Pet();
-    City city = new City();
-    city.setName("BA");
-    pet.setCity(city);
-    //pet.setId(200);
-    model.addPet("asd",pet);
+    List<Status> statusList = model.getAllStatusesWithName("walking");
+    String stringToSend = gson.toJson(statusList);
+    byte[] toSendBytes = stringToSend.getBytes();
+
+
+
   }
 }

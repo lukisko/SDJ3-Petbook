@@ -1,8 +1,12 @@
 package DatabasePersistence;
 
 import model.User;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class UserDatabase implements UserPersistence
@@ -11,49 +15,52 @@ public class UserDatabase implements UserPersistence
   private Database database;
 
 
+
   public UserDatabase(){
     database = Database.getInstance();
+
   }
 
 
   @Override public User loadUser(String email)
   {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM user c WHERE email = :value");
-      query.setParameter("value",email);
-      User user = (User) query.getSingleResult();
-      if(user.getPets().size() > 0) {
-        user.getPets().forEach((n) -> n.setUser(null));
-        user.getPets().forEach((n) -> n.getCity().setPets(null));
+
+      database.beginSession();
+      User user = database.getSession().get(User.class,email);
+      if(user != null)
+      {
+        user.getPets().clear();
+        user.getStatuses().clear();
       }
       return user;
-    }
-    catch (Exception e){
-      System.out.println("UserDatabase_Exception: " + e.getMessage());
-      return null;
-    }
   }
 
   @Override public List<User> loadAll()
   {
-    try {
-      Query query = database.getEntityManager().createQuery("SELECT c FROM user c");
-      List<User> customerList = query.getResultList();
-      return customerList;
-    }
-    catch (Exception e){
-      System.out.println("UserDatabase_Exception: " + e.getMessage());
-      return null;
-    }
+      database.beginSession();
+      CriteriaQuery<User> criteria = database.getBuilder().createQuery(User.class);
+      criteria.from(User.class);
+      List<User> data = database.getSession().createQuery(criteria).getResultList();
+      if (data != null){
+        data.forEach(n -> n.getPets().clear());
+        data.forEach(n -> n.getStatuses().clear());
+      }
+      return data;
   }
 
   @Override public void save(User customer)
   {
-    if(!database.getEntityManager().getTransaction().isActive()) {
-      database.getEntityManager().getTransaction().begin();
-    }
-    database.getEntityManager().persist(customer);
-    database.getEntityManager().getTransaction().commit();
+    database.beginSession();
+    database.getSession().persist(customer);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
+  }
 
+  @Override public void delete(User customer)
+  {
+    database.beginSession();
+    database.getSession().delete(customer);
+    database.getSession().getTransaction().commit();
+    database.getSession().close();
   }
 }

@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using business_logic.Model.UserPack;
+using Entities;
 
 namespace business_logic.Model.Mediator
 {
@@ -23,6 +23,7 @@ namespace business_logic.Model.Mediator
             Console.WriteLine(JsonSerializer.Serialize(theUser));
             return theUser.value;//TODO should I get pet or comunication pet???
         }
+        
         public async Task<AuthorisedUser> MakeUser(AuthorisedUser user){
             Console.WriteLine("name before serialize: "+ user.name);
             Comunication<AuthorisedUser> commClass = new Comunication<AuthorisedUser>("user","Add",user);

@@ -1,5 +1,10 @@
 package DatabasePersistence;
 
+import model.*;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
@@ -7,41 +12,75 @@ import org.hibernate.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 
 /**
- * Class Database connects to database repository
- * threw creating EntityManagerFactory which is using
- * persistence xml file to get database information
+ * Database class used for connecting to database
  */
 public class Database
 {
-  private EntityManagerFactory entityManagerFactory;
-  private EntityManager entityManager;
+
+  private Configuration configuration;
+  private SessionFactory factory;
+  private Session session;
+  private CriteriaBuilder builder;
 
   private static Database instance;
 
   /**
-   * Constructor initialising all instant variables
+   * Constructor which initialize all instant variables
    */
-  private Database(){
-    entityManagerFactory = Persistence.createEntityManagerFactory("petBookDBS");
-    entityManager= entityManagerFactory.createEntityManager();
-    entityManager.getTransaction().begin();
+  private Database()
+  {
+    configuration = new Configuration().addAnnotatedClass(User.class)
+        .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).addAnnotatedClass(
+            Country.class).addAnnotatedClass(Status.class).configure();
+    factory = configuration.buildSessionFactory();
+    session = factory.getCurrentSession();
+    session.beginTransaction();
+    builder = session.getCriteriaBuilder();
   }
 
-  public synchronized static Database getInstance() {
-    if (instance == null) {
+  /**
+   * method for getting instance of database class
+   * @return instance of database class
+   */
+  public synchronized static Database getInstance()
+  {
+    if (instance == null)
+    {
       instance = new Database();
     }
     return instance;
   }
 
   /**
-   * get entityManager of database
-   * @return entityManager, used for communicating with database
+   * method for starting connection with database
    */
-  public EntityManager getEntityManager(){
-    return entityManager;
+  public void beginSession()
+  {
+    if(!session.getTransaction().isActive())
+    {
+      session = session.getSessionFactory().openSession();
+      session.beginTransaction();
+    }
   }
 
+  /**
+   * getting session object
+   * @return session object
+   */
+  public Session getSession()
+  {
+    return session;
+  }
+
+  /**
+   * getting criteriaBuilder which can be used for creating of queries
+   * @return builder
+   */
+  public CriteriaBuilder getBuilder()
+  {
+    return builder;
+  }
 }

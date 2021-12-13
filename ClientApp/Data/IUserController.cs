@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using business_logic.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using ClientApp.Model;
 
 namespace ClientApp.Data
 {
@@ -12,7 +12,7 @@ namespace ClientApp.Data
         /// <param name="newUser"></param>
         /// <exception cref=""></exception>
         /// <returns></returns>
-        Task<User> Register(User newUser);
+        Task<string> Register(User newUser);
 
         /// <summary>
         /// 
@@ -29,5 +29,9 @@ namespace ClientApp.Data
         /// <param name="email"></param>
         /// <returns></returns>
         Task SendEmail(string email);
+        
+        
+        
+       
     }
 }

@@ -1,0 +1,158 @@
+﻿@page "/MessagePane"
+@using ClientApp.Model
+@using System.Text.Json
+@inject IPetController _petController
+@inject IMessageController _messageController
+
+
+
+@if (LogPaneWindow)
+{
+    <div class=" mr-96  absolute right-0 mt-2 w-auto
+ rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        <label class="mt-2 ml-2 flex-shrink-0 text-2xl">Messages</label>
+        <ul >
+            @foreach (Pet item in _toShowMessageLog)
+            {
+                <li class=" rounded-md w-full mt-4 ">
+                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ShowMessagePane(@item.id))">
+                        <img class="h-12 w-12 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture">
+                        <label class="mt-2 ml-2 flex-shrink-0 text-xl"> @item.name</label>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+<button class="bg-black text-white" @onclick="ShowLogPane">Log Pane</button>
+<button class="mr-5  bg-black text-white" @onclick="@(() => ShowMessagePane(1))">MessagePane</button>
+
+@* <div> *@
+@*     <InputFile OnChange="@OnFileSelection"></InputFile> *@
+@*     <div class="row"> *@
+@*         <img src="@imgUrl"> *@
+@*     </div> *@
+@* </div> *@
+
+
+@if (MessagePaneWindow)
+{
+    <div class="  absolute bottom-7 right-52 w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+        <div class="flex flex-row m-2">
+            <img class="h-8 w-8 rounded-full" src="@pet1.imageUrl" alt="Pet Profile Picture">
+            <label class="mt-1 ml-2 flex-shrink-0"> @pet1.name</label>
+            <a @onclick="() => MessagePaneWindow = false">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-44 text-gray-500 hover:text-gray-800 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </a>
+        </div>
+        <div class="w-auto ">
+            <hr class="border-solid border-1 border-light-blue-500 mx-3 "/>
+        </div>
+
+        <div class="grid grid cols-2 gap-4 overflow-y-auto m-3 w-auto h-72 ">
+            @foreach (Message item in _toShowPetProfileMessagesWithAPet)
+            {
+                if (@item.SenderPetId % 2 == 0)
+                {
+                    <div class=" col-span-1 row-span-2 bg-gray-400 rounded-md text-black justify-self-start p-1 mr-3">
+                        @item.MessageBody
+                    </div>
+                }
+                else
+                {
+                    <div class=" col-span-2 bg-blue-200 rounded-md text-black justify-self-end p-1 ml-3">
+                        @item.MessageBody
+                    </div>
+                }
+            }
+        </div>
+
+        <EditForm Model="@_messageController" OnValidSubmit="@(SendMessage)">
+            <div class="flex flex-row m-2">
+                <InputText class=" mr-1 rounded-xl relative block w-full px-3 py-1 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" @bind-Value="_messageBody"></InputText>
+                <button class="flex-shrink-0 bg-gray-200 w-1/3  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="() => SendMessage()">Send</button>
+            </div>
+        </EditForm>
+    </div>
+}
+
+@code {
+
+    private bool LogPaneWindow { get; set; }
+    private bool MessagePaneWindow { get; set; }
+    private IList<Pet> _allPetMessagesWithAPet;
+    private IList<Message> _toShowPetProfileMessagesWithAPet;
+    private IList<Pet> _allMessageLog;
+    private IList<Pet> _toShowMessageLog;
+    Message newMessage;
+    Pet pet1 { get; set; }
+    Pet pet2 { get; set; }
+    
+    private string _messageBody;
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        pet1 = new Pet();
+        pet2 = new Pet();
+        _toShowMessageLog = new List<Pet>();
+        _toShowPetProfileMessagesWithAPet = new List<Message>();
+
+        pet1.imageUrl = "Images/dog2.jpg";
+        pet1.name = "Jackie Bo";
+        pet1.breed = "Terrier";
+
+
+        pet2.imageUrl = "Images/dog.jpg";
+        pet2.id = 2;
+        pet2.name = "Andrew Wong";
+        pet2.breed = "Terrier";
+    }
+
+    async void ShowMessagePane(int messageToPetId)
+    {
+        if (MessagePaneWindow)
+        {
+            MessagePaneWindow = false;
+        }
+        else
+        {
+            MessagePaneWindow = true;
+        }
+    }
+
+    async void ShowLogPane()
+    {
+        if (LogPaneWindow)
+        {
+            LogPaneWindow = false;
+        }
+        else
+        {
+            LogPaneWindow = true;
+        }
+    }
+
+    async void SendMessage()
+    {
+        newMessage = new Message();
+        newMessage.MessageBody = _messageBody;
+        await _messageController.SendMessageAsync(newMessage);
+        _messageBody = "";
+    }
+
+    // string imgUrl = string.Empty;
+    // private async Task OnFileSelection(InputFileChangeEventArgs eventArgs)
+    // {
+    //     IBrowserFile imgFile = eventArgs.File;
+    //     var buffers = new byte[imgFile.Size];
+    //     await imgFile.OpenReadStream().ReadAsync(buffers);
+    //     string imageType = imgFile.ContentType;
+    //     imgUrl =$"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
+    //     
+    // }
+
+}

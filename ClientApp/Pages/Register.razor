@@ -1,0 +1,31 @@
+﻿@page "/Register"
+@inject IUserController _userController
+@inject NavigationManager NavMgr
+@inject IModalService _modalService
+
+
+
+<div class="min-h-full flex  items-center justify-center py-12 px-4 sm:px-6 lg:px-8 rounded-xl">
+    <div class="w-auto space-y-7  ">
+        <div>
+            <img class="mx-auto h-38 w-auto" src="Images/Logo1.png" alt="PetBook Logo">
+            <h2 class="mt-1 text-center  text-xl font-bold text-gray-700">
+                Sign up
+            </h2>
+        </div>
+        <EditForm Model="@_userController" OnValidSubmit="@(RegisterUser)">
+            <div class=" shadow-sm space-y-px  ">
+                <div class="flex flex-col space-y-2 rounded-xl">
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" required placeholder="Name" @bind-Value="_userToRegister.name"/>
+                    <InputText class="rounded-xl  relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="Email" required placeholder="Email" @bind-Value="_userToRegister.email"/>
+                </div>
+            </div>
+            <DataAnnotationsValidator/> <ValidationSummary/>
+            <div class="text-red-500 text-center">@_errorMessage</div>
+            <div class="flex flex-row mt-4 space-x-4 ">
+                <button class="bg-gray-200 w-full py-1  rounded-xl hover:bg-pink-300    focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" type="submit">Sign Up</button>
+                <button class="bg-white w-full py-1  rounded-xl hover:bg-pink-200   focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-80" @onclick="() => ShowLogIn()">Log in</button>
+            </div>
+        </EditForm>
+    </div>
+</div>

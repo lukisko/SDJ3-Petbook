@@ -1,63 +1,101 @@
-﻿using System.Net;
+﻿using System;
+using System.Web;
+using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using business_logic.Model;
+using ClientApp.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace ClientApp.Data
+
+namespace ClientApp.Data.Implementation
 {
     public class UserController : IUserController
     {
-        private string uri = "https://localhost:5001";
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
+
+       
 
         public UserController()
         {
             clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
             client = new HttpClient(clientHandler);
+            
         }
 
-        public async Task<User> Register(User newUser)
+        public async Task<string> Register(User newUser)
         {
             string serializedUser = JsonSerializer.Serialize(newUser);
             HttpContent content = new StringContent(serializedUser, Encoding.UTF8, "application/json");
-            HttpResponseMessage responseMessage = await client.PostAsync($"{uri}/User", content);
-
+            HttpResponseMessage responseMessage = await client.PostAsync($"{StaticVariables.URL}/User", content);
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
-            User user = JsonSerializer.Deserialize<User>(reply);
-            return user;
+            return reply;
         }
 
         public async Task<User> Login(string email, string code)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}?email={email}&code={code}");
+            HttpResponseMessage responseMessage =
+                await client.GetAsync($"{StaticVariables.URL}/User?email={email}&code={code}");
+
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            string reply = await responseMessage.Content.ReadAsStringAsync();
-            User user = JsonSerializer.Deserialize<User>(reply);
+
+            if (responseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
+            }
+
+            StaticVariables.AccessToken = GenerateRandomKey();
+            var token = responseMessage.Content.ReadAsStringAsync().Result;
+            StaticVariables.AccessTokensLibrary.Add(StaticVariables.AccessToken, token);
+
+            // test
+            var tok = StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken];
+            Console.WriteLine(tok);
+            //test
+            HttpResponseMessage authUserResponseMessage =
+                await client.GetAsync(
+                    $"{StaticVariables.URL}/AuthorisedUser?token={tok}");
+            if (responseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new AuthenticationException(authUserResponseMessage.Content.ReadAsStringAsync().Result);
+            }
+
+            Console.WriteLine(authUserResponseMessage.Content.ReadAsStringAsync().Result);
+            string reply = await authUserResponseMessage.Content.ReadAsStringAsync();
+            User user = JsonConvert.DeserializeObject<User>(reply);
             return user;
         }
 
         public async Task SendEmail(string email)
         {
-            HttpResponseMessage responseMessage = await client.GetAsync($"{uri}/{email}");
+            HttpResponseMessage responseMessage = await client.GetAsync($"{StaticVariables.URL}/Email?email={email}");
 
             if (responseMessage.StatusCode == HttpStatusCode.BadRequest)
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-          // would it make sense to return something?
+        }
+
+        private string GenerateRandomKey()
+        {
+            Random r = new Random();
+            var x = r.Next(0, 1000000);
+            string s = x.ToString("000000");
+            return s;
         }
     }
 }

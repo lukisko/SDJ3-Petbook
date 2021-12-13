@@ -16,10 +16,17 @@ public class User implements Serializable
   private String email;
   @Column(name = "name")
   private String name;
-  @OneToMany(mappedBy="user", cascade = CascadeType.MERGE)
+  @OneToMany(mappedBy="user", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
   private List<Pet> pets;
+  @OneToMany(mappedBy="user", fetch = FetchType.EAGER,cascade=CascadeType.MERGE)
+  private List<Status> statuses;
 
   public User(){
+    pets = new ArrayList<>();
+    statuses = new ArrayList<>();
+  }
+  public User(String email){
+    this.email = email;
     pets = new ArrayList<>();
   }
   public void setEmail(String email)
@@ -47,16 +54,14 @@ public class User implements Serializable
     return pets;
   }
 
-  public void addPet(Pet pet){
-    pets.add(pet);
-  }
-  public void removePet(Pet pet){
-
+  public List<Status> getStatuses()
+  {
+    return statuses;
   }
 
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''
-        + ", pets=" + pets + '}';
+        + ", pets=" + pets + ", statuses=" + statuses + '}';
   }
 }

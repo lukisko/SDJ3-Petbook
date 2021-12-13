@@ -1,14 +1,38 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Threading.Tasks;
-using business_logic.Model;
 using System.Collections.Generic;
-using business_logic.Model;
+using ClientApp.Model;
 
 namespace ClientApp.Data
 {
     public interface IPetController
     {
-        Task addPetAsync(Pet pet);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pet"></param>
+        /// <returns></returns>
+        Task<Pet> AddPetAsync(Pet pet);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> IList with all pets account</returns>
         Task<IList<Pet>> GetAllPetsAsync();
+        
+
+         Task<IList<Pet>> GetAllUserPetsAsync();
+         
+         Task<Pet> GetPetProfileAsync(int petId);
+
+         Task<Pet> UpdatePetAsync(Pet pet);
+        
+         Task DeletePet(int petId);
+
+
+         // Task AdoptPetAsync(string userEmail, int petId);
+         // Task FosterPetAsync(string userEmail, int petId);
+         // Task WalkPetAsync(string userEmail, int petId);
     }
 }

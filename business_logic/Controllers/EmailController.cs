@@ -11,22 +11,27 @@ namespace business_logic.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class EmailController : ControllerBase, IEmailController //TODO put to a separate file
+    public class EmailController : ControllerBase
     {
-        private IModel model;
+        private IEmailControl model;
 
-        public  EmailController(IModel model){
+        public EmailController(IModel model) //THis is very weird that it do not work with IEmailControl but it work with IModel
+        {
             this.model = model;
         }
 
         [HttpGet]
-        public async Task<ActionResult<String>> SendEmail([FromQuery] string email){
+        public async Task<ActionResult<String>> SendEmail([FromQuery] string email)
+        {
             //return StatusCode(500,"sorry server down");
-            if (await model.sendCode(email)){
-                    return StatusCode(200);
-                } else {
-                    return StatusCode(400,"the email od not exist or is not in our system.");
-                }
+            if (await model.sendCode(email))
+            {
+                return StatusCode(200);
+            }
+            else
+            {
+                return StatusCode(400, "the email do not exist or is not in our system.");
+            }
         }
     }
 }

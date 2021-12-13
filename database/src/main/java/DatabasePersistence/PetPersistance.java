@@ -9,6 +9,8 @@ public interface PetPersistance
 {
   Pet loadPet(int id);
   List<Pet> loadAll();
-  List<Pet> LoadListOf(String email);
-  void save(User user,Pet pet);
+  List<Pet> LoadListOfUser(String email);
+  int save(Pet pet);
+  void delete(Pet pet);
+  Pet update(Pet pet);
 }
