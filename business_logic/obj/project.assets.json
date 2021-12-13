@@ -189,6 +189,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj",
       "Microsoft.OpenApi >= 1.2.3",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -217,7 +218,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -260,5 +265,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to find project information for 'C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
+      "libraryId": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

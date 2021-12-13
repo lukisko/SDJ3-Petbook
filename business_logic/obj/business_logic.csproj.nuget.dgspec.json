@@ -25,7 +25,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
