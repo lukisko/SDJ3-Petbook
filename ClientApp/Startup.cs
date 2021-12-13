@@ -38,6 +38,7 @@ namespace ClientApp
             services.AddScoped<IPetController, PetController>();
             services.AddScoped<IUserController, UserController>();
             services.AddScoped<IMessageController, MessageController>();
+            services.AddScoped<IRequestController, RequestController>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             services.AddScoped<StaticVariables>();
             services

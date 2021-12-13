@@ -39,13 +39,13 @@ namespace ClientApp.Data.Implementation
             {
                 throw new AuthenticationException(responseMessage.Content.ReadAsStringAsync().Result);
             }
-
             string reply = await responseMessage.Content.ReadAsStringAsync();
         }
 
 
         public async Task<IList<Message>> GetAllMessagesAsync(int receiverId, int senderId)
         {
+            Console.WriteLine("Controller receiver"+receiverId+"sender id"+senderId);
             HttpResponseMessage responseMessage = await client.GetAsync(
                 $"{StaticVariables.URL}/Message?receiverPetId={receiverId}&senderPetId={senderId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
 

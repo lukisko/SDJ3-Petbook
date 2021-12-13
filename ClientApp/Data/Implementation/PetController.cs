@@ -15,6 +15,7 @@ namespace ClientApp.Data.Implementation
     {
         private readonly HttpClient client;
         private HttpClientHandler clientHandler;
+        
 
         public PetController()
         {
@@ -61,7 +62,7 @@ namespace ClientApp.Data.Implementation
             pets = JsonSerializer.Deserialize<List<Pet>>(reply);
             return pets;
         }
-
+        
         public async Task<IList<Pet>> GetAllUserPetsAsync()
         {
             HttpResponseMessage responseMessage = await client.GetAsync(
@@ -91,6 +92,7 @@ namespace ClientApp.Data.Implementation
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
             IList<Pet> pet = JsonSerializer.Deserialize<IList<Pet>>(reply);
+            //Throwing an exception if list is empty
             Console.WriteLine(pet[0].id);
             return pet[0];
         }
@@ -113,6 +115,7 @@ namespace ClientApp.Data.Implementation
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
             
+            
 
             string reply = await responseMessage.Content.ReadAsStringAsync();
             Pet updatedPet = JsonConvert.DeserializeObject<Pet>(reply);
@@ -127,6 +130,5 @@ namespace ClientApp.Data.Implementation
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
         }
-        
     }
 }
