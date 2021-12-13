@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using business_logic.Model.UserPack;
 using System.Collections.Generic;
+using Entities;
 
 namespace business_logic.Model.PetPack
 {

@@ -5,12 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
-using business_logic.Model.Mediator;
-
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using business_logic.Model.PetPack;
-using business_logic.Model.RequestPack;
+using Entities;
 
 namespace business_logic.Controllers
 {
@@ -18,7 +13,7 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class RequestController : ControllerBase
     {
-        private IModel model;
+        private IRequestControl model;
 
         public RequestController(IModel model){
             this.model = model;

@@ -13,9 +13,9 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class EmailController : ControllerBase
     {
-        private IModel model;
+        private IEmailControl model;
 
-        public EmailController(IModel model)
+        public EmailController(IModel model) //THis is very weird that it do not work with IEmailControl but it work with IModel
         {
             this.model = model;
         }

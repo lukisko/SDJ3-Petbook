@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
-using System.Net.Http;
-using business_logic.Model.UserPack;
-using business_logic.Model.MessagePack;
-using business_logic.Model.PetPack;
+using Entities;
 
 namespace business_logic.Controllers
 {
@@ -33,7 +30,7 @@ namespace business_logic.Controllers
             string emailAddress = newEmailAddress;
             string token = "";
             try{
-                await model.register(new Model.User(){name = "test", email = emailAddress});
+                await model.register(new Entities.User(){name = "test", email = emailAddress});
                 //await model.sendCode(emailAddress);
                 response+= "test 1 succeded\n";
             } catch {
@@ -66,7 +63,7 @@ namespace business_logic.Controllers
                             name = "Denmark"
                         }
                     },
-                    user = new Model.User(){
+                    user = new Entities.User(){
                         name = "string",
                         email = "string"
                     },

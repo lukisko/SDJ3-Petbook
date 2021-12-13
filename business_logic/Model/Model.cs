@@ -7,6 +7,7 @@ using business_logic.Model.PetPack;
 using business_logic.Model.MessagePack;
 using System.Linq;
 using business_logic.Model.RequestPack;
+using Entities;
 
 
 namespace business_logic.Model
@@ -42,18 +43,18 @@ namespace business_logic.Model
             }
             return true;
         }
-        public async Task<PetList> getPetsAsync(){
+        public async Task<Entities.PetList> getPetsAsync(){
             
             PetList list = await petManager.requestPets();
             return list;
         }//to delete
 
-        public async Task<IList<Pet>> getPetsAsync(AuthorisedUser user){
+        public async Task<IList<Entities.Pet>> getPetsAsync(Entities.AuthorisedUser user){
             IList<Pet> thePet = await petManager.requestPets(user);
             return thePet;
         }//to delete
 
-        public async Task<IList<Pet>> getPetsAsync(int? id, string userEmail, string status, 
+        public async Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
         string type, string breed, char? gender, DateTime? birthday, string name){//TODO maybe move to PetManager
 
             IList<Pet> petList = null; // if no filtering has take place have it as null
@@ -134,12 +135,12 @@ namespace business_logic.Model
             return petList;
         }
 
-        public async Task<Pet> createPetAsync(Pet pet,string token){
+        public async Task<Entities.Pet> createPetAsync(Entities.Pet pet,string token){
             string email = userManager.getUserWithToken(token);
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
             }
-            pet.user = new User(){
+            pet.user = new Entities.User(){
                 email = email,
                 name = (await userManager.GetUser(email)).name
             };
@@ -155,7 +156,7 @@ namespace business_logic.Model
             return newPet;
         }
 
-        public async Task<Pet> deletePetAsync(Pet pet, string token){
+        public async Task<Entities.Pet> deletePetAsync(Entities.Pet pet, string token){
             string email = userManager.getUserWithToken(token);
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
@@ -169,7 +170,7 @@ namespace business_logic.Model
             return pet;
         }
 
-        public async Task<Pet> updatePetAsync(Pet pet, string token){ // just owner can modify pet
+        public async Task<Entities.Pet> updatePetAsync(Entities.Pet pet, string token){ // just owner can modify pet
             string email = userManager.getUserWithToken(token);
             if (email == null){
                 throw new AccessViolationException("user is not authorised");
@@ -181,7 +182,7 @@ namespace business_logic.Model
             pet.user.email = email;
             pet.user.name = (await userManager.GetUser(email)).name;
             foreach (Status status in pet.statuses){
-                status.pet = Pet.copy(pet);
+                status.pet = pet.copy();
                 status.pet.statuses = new List<Status>();
             };
             Pet newPet = await petManager.updatePet(pet);
@@ -204,7 +205,7 @@ namespace business_logic.Model
             return "";
         }
 
-        public async Task<AuthorisedUser> GetAuthorisedUser(string token){
+        public async Task<Entities.AuthorisedUser> GetAuthorisedUser(string token){
             string email = userManager.getUserWithToken(token);
             if (email == null){
                 return null;
@@ -213,7 +214,7 @@ namespace business_logic.Model
             user.pets = (await this.getPetsAsync(null,user.email,null,null,null,null,null,null)).ToArray();
             return user;
         }
-        public async Task<AuthorisedUser> register(User user){
+        public async Task<Entities.AuthorisedUser> register(Entities.User user){
             //change this
             AuthorisedUser authUsr = new AuthorisedUser(){
                 email = user.email,
@@ -230,7 +231,7 @@ namespace business_logic.Model
             throw new Exception("email already exist.");
         }
 
-        public async Task sendMessage(Message message, string token){
+        public async Task sendMessage(Entities.Message message, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await this.GetAuthorisedUser(token);
             int senderId = message.SenderPetId;
@@ -241,11 +242,11 @@ namespace business_logic.Model
                 throw new AccessViolationException("you are not owner of the pet.");
             }
         }
-        public async Task<IList<Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
+        public async Task<IList<Entities.Message>> GetMessages(int receiverPetId, int senderPetId, string token){//make it authenticaitons
             string email = userManager.getUserWithToken(token);
             if ((await this.getPetsAsync(senderPetId,null,null,null,null,null,null,null)).Count == 0){
                 messageManager.getMessages(receiverPetId, senderPetId);
-                return new List<Message>();
+                return new List<Entities.Message>();
             }
             AuthorisedUser usr = await this.GetAuthorisedUser(token);
             //check if the user own the pet that he want to claim to send the message from
@@ -256,7 +257,7 @@ namespace business_logic.Model
             }
         }
 
-        public async Task<IList<Pet>> GetMessagePets(int receiverPetId, string token){
+        public async Task<IList<Entities.Pet>> GetMessagePets(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
             usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
@@ -273,7 +274,7 @@ namespace business_logic.Model
             }
         }
 
-        public async Task sendRequest(Request request, string token){
+        public async Task sendRequest(Entities.Request request, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await this.GetAuthorisedUser(token);
             string senderId = request.userEmail;
@@ -285,7 +286,7 @@ namespace business_logic.Model
             }
         }
 
-        public async Task<IList<User>> GetPetRequests(int receiverPetId, string token){
+        public async Task<IList<Entities.User>> GetPetRequests(int receiverPetId, string token){
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await userManager.GetUser(email);
             usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
@@ -305,7 +306,7 @@ namespace business_logic.Model
             }
         }
 
-        public async Task<IList<Request>> GetRequests(int receiverPetId, string senderUserEmail, string token){//make it authenticaitons
+        public async Task<IList<Entities.Request>> GetRequests(int receiverPetId, string senderUserEmail, string token){//make it authenticaitons
             string email = userManager.getUserWithToken(token);
             AuthorisedUser usr = await this.GetAuthorisedUser(token);
             //check if the user own the pet that he want to claim to send the message from

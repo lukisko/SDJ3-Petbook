@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using business_logic.Model.UserPack;
+using Entities;
 
 namespace business_logic.Model.Mediator
 {
-    public interface ITier2Mediator
+    public interface ITier2Mediator : ITier2User
     {
         Task<PetList> requestPets();
         Task<Pet> requestPet(int id);

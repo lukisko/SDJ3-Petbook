@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ClientApp.Model
+namespace Entities
 {
     public class Message
     {

@@ -18,6 +18,29 @@ namespace Entities
         public DateTime birthdate {get;set;}
         public City city {get;set;}
         public User user {get;set;}
-        
+        public Pet copy(){
+            List<Status> status2 = new List<Status>();
+            status2.AddRange(statuses);
+            return new Pet(){
+                imageUrl = this.imageUrl,
+                id = id,
+                name = name,
+                type = type,
+                breed = breed,
+                gender = gender,
+                description = description,
+                statuses = status2,
+                birthdate = new DateTime(birthdate.Year,birthdate.Month,birthdate.Day),
+                city = new City(){
+                    name = city.name,
+                    country = new Country(){
+                        name = city.country.name
+                    }
+                },
+                user = user.copy()
+            };
+            
+
+        }
     }
 }
