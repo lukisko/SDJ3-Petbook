@@ -2,7 +2,7 @@ package mediator;
 
 /**
  * Communication class used as communication protocol
- * @param <T>
+ * @param <T> type of class thats used in this protocol class
  */
 public class Comunication<T>
 {
@@ -11,7 +11,7 @@ public class Comunication<T>
   private T value;
 
   /**
-   * Constructor initialising all instant variables
+   * Constructor which initialize all instant variables
    * @param type type of object
    * @param method type of method
    * @param value object
@@ -24,7 +24,7 @@ public class Comunication<T>
   }
 
   /**
-   * setting type of object
+   * setts type of object
    * @param type type of object
    */
   public void setType(String type)
@@ -33,7 +33,7 @@ public class Comunication<T>
   }
 
   /**
-   * setting type of method
+   * setts type of method
    * @param method method type
    */
   public void setMethod(String method)
@@ -42,7 +42,7 @@ public class Comunication<T>
   }
 
   /**
-   * setting object
+   * setts object
    * @param value object
    */
   public void setValue(T value)
@@ -51,7 +51,7 @@ public class Comunication<T>
   }
 
   /**
-   * getting type of object
+   * gets type of object
    * @return type of object
    */
   public String getType()
@@ -60,7 +60,7 @@ public class Comunication<T>
   }
 
   /**
-   * getting type of method
+   * gets type of method
    * @return method type
    */
   public String getMethod()
@@ -69,7 +69,7 @@ public class Comunication<T>
   }
 
   /**
-   * getting object
+   * gets object
    * @return object
    */
   public T getValue()

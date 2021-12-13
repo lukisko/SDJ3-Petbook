@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "x8Rnn4j9oEFdeiI51RuWnldTYM1xt4enVyuoLfZyxzF1j9ZaQoY3EuZFkAIBGA/D3kI/sNsH3IIJnv3zvKSlvg==",
-  "success": false,
+  "dgSpecHash": "REaSztVPYLiUabM52/Lhbfg6RJBsOOza5DDNq09UkCGb0OArdWTaT2Q7p/qkUHCrDgZC94Q+xw8ukrR02bs70A==",
+  "success": true,
   "projectFilePath": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\business_logic\\business_logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hanch\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
@@ -11,15 +11,5 @@
     "C:\\Users\\hanch\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\hanch\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "C:\\Users\\hanch\\Desktop\\SDJ3-Petbook\\Entities\\Entities.csproj",
-      "targetGraphs": [
-        "net5.0"
-      ]
-    }
-  ]
+  "logs": []
 }
