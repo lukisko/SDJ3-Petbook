@@ -58,6 +58,11 @@ public class Status
     return name;
   }
 
+  public void clear(){
+    pet.clear();
+    user.clear();
+  }
+
   public void setStatus(Status status){
     this.name = status.name;
     this.user = status.user;

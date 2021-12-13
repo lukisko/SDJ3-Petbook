@@ -25,11 +25,7 @@ public class  PetDatabase implements PetPersistance
       Pet pet = database.getSession().get(Pet.class,id);
       if(pet != null)
       {
-        pet.getUser().getPets().clear();
-        pet.getUser().getStatuses().clear();
-        pet.getCity().getPets().clear();
-        pet.getCity().getCountry().getCities().clear();
-        pet.getStatuses().clear();
+        pet.clear();
       }
       return pet;
     }
@@ -48,11 +44,7 @@ public class  PetDatabase implements PetPersistance
     List<Pet> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null)
     {
-      data.forEach((pet) -> pet.getUser().getPets().clear());
-      data.forEach((pet) -> pet.getUser().getStatuses().clear());
-      data.forEach((pet) -> pet.getCity().getPets().clear());
-      data.forEach((pet) -> pet.getCity().getCountry().getCities().clear());
-      data.forEach((pet) -> pet.getStatuses().clear());
+      data.forEach(Pet::clear);
     }
     return data;
   }
@@ -63,11 +55,7 @@ public class  PetDatabase implements PetPersistance
     query.setParameter("emailValue",email);
     List<Pet> petList = query.getResultList();
     if(petList != null){
-      petList.forEach(pet -> pet.getStatuses().clear());
-      petList.forEach(pet -> pet.getUser().getPets().clear());
-      petList.forEach(pet -> pet.getUser().getStatuses().clear());
-      petList.forEach(pet -> pet.getCity().getCountry().getCities().clear());
-      petList.forEach((pet) -> pet.getCity().getPets().clear());
+      petList.forEach(Pet::clear);
     }
     return petList;
   }

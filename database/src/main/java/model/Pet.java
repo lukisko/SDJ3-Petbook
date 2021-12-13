@@ -34,6 +34,10 @@ public class Pet implements Serializable
   @ManyToOne
   @JoinColumn(name="city_name", nullable = false)
   private City city;
+  @OneToMany(mappedBy = "receiver")
+  private List<Message> receiverMessages;
+  @OneToMany(mappedBy = "sender")
+  private List<Message> senderMessages;
 
 
 
@@ -109,6 +113,24 @@ public class Pet implements Serializable
     this.description = description;
   }
 
+  public List<Message> getReceiverMessages()
+  {
+    return receiverMessages;
+  }
+
+  public List<Message> getSenderMessages()
+  {
+    return senderMessages;
+  }
+
+  public void clear(){
+    statuses.clear();
+    senderMessages.clear();
+    receiverMessages.clear();
+    city.clear();
+    user.clear();
+  }
+
   public void setPet(Pet pet){
     this.name = pet.getName();
     this.city = pet.getCity();
@@ -117,6 +139,8 @@ public class Pet implements Serializable
     this.breed = pet.getBreed();
     this.gender = pet.getGender();
     this.statuses = pet.getStatuses();
+    this.receiverMessages = pet.getReceiverMessages();
+    this.senderMessages = pet.getSenderMessages();
   }
 
   public List<Status> getStatuses()

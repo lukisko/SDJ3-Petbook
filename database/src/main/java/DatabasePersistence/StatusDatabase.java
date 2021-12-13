@@ -25,6 +25,8 @@ public class StatusDatabase implements StatusPersistence
       status.getPet().getCity().getCountry().getCities().clear();
       status.getPet().getCity().getPets().clear();
       status.getPet().getStatuses().clear();
+      status.getPet().getReceiverMessages().clear();
+      status.getPet().getSenderMessages().clear();
       if(status.getUser() != null)
       {
         status.getUser().getStatuses().clear();
@@ -44,6 +46,8 @@ public class StatusDatabase implements StatusPersistence
       statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
       statusList.forEach(status -> status.getPet().getCity().getPets().clear());
       statusList.forEach(status -> status.getPet().getStatuses().clear());
+      statusList.forEach(status -> status.getPet().getSenderMessages().clear());
+      statusList.forEach(status -> status.getPet().getReceiverMessages().clear());
       statusList.forEach(status -> {
         if(status.getUser() != null)
         {
@@ -70,6 +74,8 @@ public class StatusDatabase implements StatusPersistence
       statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
       statusList.forEach(status -> status.getPet().getCity().getPets().clear());
       statusList.forEach(status -> status.getPet().getStatuses().clear());
+      statusList.forEach(status -> status.getPet().getSenderMessages().clear());
+      statusList.forEach(status -> status.getPet().getReceiverMessages().clear());
       statusList.forEach(status -> {
         if(status.getUser() != null)
         {
@@ -96,6 +102,8 @@ public class StatusDatabase implements StatusPersistence
       data.forEach(status-> status.getPet().getCity().getCountry().getCities().clear());
       data.forEach(status -> status.getPet().getCity().getPets().clear());
       data.forEach(status -> status.getPet().getStatuses().clear());
+      data.forEach(status -> status.getPet().getSenderMessages().clear());
+      data.forEach(status -> status.getPet().getReceiverMessages().clear());
       data.forEach(status -> {
         if(status.getUser() != null)
         {
