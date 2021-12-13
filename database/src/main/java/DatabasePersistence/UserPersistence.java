@@ -1,5 +1,6 @@
 package DatabasePersistence;
 
+import model.Pet;
 import model.User;
 
 import java.util.List;

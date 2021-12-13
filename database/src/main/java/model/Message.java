@@ -1,20 +1,33 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity(name = "message")
 @Table(name = "message_table")
 public class Message
 {
+  @Id
+  @Column(name = "id")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+  @ManyToOne
+  @JoinColumn(name="sender_id", nullable = false)
   private Pet sender;
+  @ManyToOne
+  @JoinColumn(name="receiver_id", nullable = false)
   private Pet receiver;
+  @Column(name = "text")
   private String message;
+  @Column(name = "dateTime")
   private String dateTime;
 
   public Message(){
 
+  }
+
+  public int getId()
+  {
+    return id;
   }
 
   public Pet getReceiver()
@@ -37,6 +50,11 @@ public class Message
     return message;
   }
 
+  public void setId(int id)
+  {
+    this.id = id;
+  }
+
   public void setReceiver(Pet receiver)
   {
     this.receiver = receiver;
@@ -55,5 +73,10 @@ public class Message
   public void setMessage(String message)
   {
     this.message = message;
+  }
+
+  public void clear(){
+    sender.clear();
+    receiver.clear();
   }
 }

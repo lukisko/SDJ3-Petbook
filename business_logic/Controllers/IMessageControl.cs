@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using ClientApp.Model;
 using Entities;
 
 namespace business_logic.Controllers

@@ -21,9 +21,9 @@ public class T2Handler implements Runnable
   private Gson gson;
   private CommunicationHandler handler;
 
-  public T2Handler(Socket socket, Model model) throws IOException
+  public T2Handler(Socket socket) throws IOException
   {
-    handler = new Handler(model);
+    handler = new Handler();
     is = socket.getInputStream();
     os = socket.getOutputStream();
     this.running = true;

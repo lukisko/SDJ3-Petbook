@@ -35,6 +35,10 @@ public class Country
     this.name = name;
   }
 
+  public void clear(){
+    cities.clear();
+  }
+
   @Override public String toString()
   {
     return "Country{" + "name='" + name + '\'' + ", cities=" + cities + '}';

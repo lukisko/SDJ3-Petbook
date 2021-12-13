@@ -8,29 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/MainLayout.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/ClientApp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ref/ClientApp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/CityDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/mediator/Comunication.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/mediator/Comunication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/IMessageControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/IMessageControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/IRequestControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/IRequestControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/MessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/MessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/RequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/RequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business_logic/Controllers/TestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/business_logic/Controllers/TestController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,42 +38,30 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/BrowsePets.razor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/PetProfile.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Model.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/IModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Data/Implementation/PetController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f4690e732f84ca9a1afbdcaceab37426c990/12/EventCallbackWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/BrowsePets.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/BrowsePets.razor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/ITier2Mediator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/BrowsePets.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/1B2/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/IModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Shared/SurveyPrompt.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/BrowsePets.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/SurveyPrompt.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/PetProfile.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Shared/NavMenu.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Pages/BrowsePets.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/nicol/RiderProjects/SDJ3-Petbook/ClientApp/Data/Implementation/PetController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Model.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21bFnuV8onUOOmlC6qYu9zWlfT9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -476,66 +447,31 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
           <line>29</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="29" containingFunctionPresentation="method 'GetAllRequestsAsync'">
-            <startOffsets>
-              <option value="882" />
-            </startOffsets>
-            <endOffsets>
-              <option value="924" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="29" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
           <line>30</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="30" containingFunctionPresentation="method 'GetAllRequestsAsync'">
-            <startOffsets>
-              <option value="937" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1134" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="30" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
           <line>36</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="36" containingFunctionPresentation="method 'GetAllRequestsAsync'">
-            <startOffsets>
-              <option value="1340" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1405" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="36" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
           <line>37</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="37" containingFunctionPresentation="method 'GetAllRequestsAsync'">
-            <startOffsets>
-              <option value="1418" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1474" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="37" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
           <line>38</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="38" containingFunctionPresentation="method 'GetAllRequestsAsync'">
-            <startOffsets>
-              <option value="1487" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1499" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="38" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
@@ -543,12 +479,6 @@
           <line>579</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="579" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />
         </line-breakpoint>
@@ -557,12 +487,6 @@
           <line>580</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="580" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
@@ -571,12 +495,6 @@
           <line>502</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="502" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
@@ -585,12 +503,6 @@
           <line>503</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="503" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
@@ -599,12 +511,6 @@
           <line>504</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="504" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
@@ -613,12 +519,6 @@
           <line>505</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="505" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
           </properties>
           <option name="timeStamp" value="37" />
         </line-breakpoint>

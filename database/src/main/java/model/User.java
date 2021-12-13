@@ -59,6 +59,11 @@ public class User implements Serializable
     return statuses;
   }
 
+  public void clear(){
+    pets.clear();
+    statuses.clear();
+  }
+
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''

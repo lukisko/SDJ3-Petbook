@@ -24,12 +24,13 @@ public class CityDatabase implements CityPersistence {
 
 
   @Override public City loadCity(String name) {
+      if(name == null) throw new IllegalArgumentException();
+
       database.beginSession();
       City city = database.getSession().get(City.class,name);
       if(city != null)
       {
-        city.getPets().clear();
-        city.getCountry().getCities().clear();
+        city.clear();
       }
       return city;
   }
@@ -40,13 +41,14 @@ public class CityDatabase implements CityPersistence {
       criteria.from(City.class);
       List<City> data = database.getSession().createQuery(criteria).getResultList();
       if(data != null){
-        data.forEach(n -> n.getPets().clear());
-        data.forEach(n -> n.getCountry().getCities().clear());
+        data.forEach(City::clear);
       }
       return data;
   }
 
   @Override public void save(City city) {
+    if(city == null) throw new IllegalArgumentException();
+
     database.beginSession();
     database.getSession().persist(city);
     database.getSession().getTransaction().commit();

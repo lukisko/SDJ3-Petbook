@@ -1,7 +1,5 @@
 package mediator;
 
-import model.Model;
-
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -10,10 +8,9 @@ public class T3Server implements Runnable
   private final static int PORT = 5123;
   private boolean running;
   private ServerSocket welcomeSocket;
-  private Model model;
 
-  public T3Server(Model model){
-    this.model = model;
+  public T3Server(){
+
   }
 
   @Override public void run()
@@ -27,7 +24,7 @@ public class T3Server implements Runnable
         System.out.println("Waiting for client");
         Socket socket = welcomeSocket.accept();
         System.out.println("Client connected");
-        T2Handler t2Handler = new T2Handler(socket, model);
+        T2Handler t2Handler = new T2Handler(socket);
         Thread clientHandler = new Thread(t2Handler);
         clientHandler.setDaemon(true);
         clientHandler.start();

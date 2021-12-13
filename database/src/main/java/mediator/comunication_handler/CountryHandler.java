@@ -1,22 +1,22 @@
 package mediator.comunication_handler;
 
+import DatabasePersistence.CountryDatabase;
+import DatabasePersistence.CountryPersistence;
 import com.google.gson.Gson;
 import mediator.Comunication;
 import model.Country;
-import model.Model;
-
 
 import java.util.List;
 
 public class CountryHandler
 {
-  private Model model;
+  private CountryPersistence countryPersistence;
   private Gson gson;
   private String response;
 
-  public CountryHandler(Model model){
+  public CountryHandler(){
     gson = new Gson();
-    this.model = model;
+    this.countryPersistence = new CountryDatabase();
   }
 
   private void findMethod(String method, Country value){
@@ -38,7 +38,7 @@ public class CountryHandler
     try
     {
       String string = gson.toJson(new Comunication<Country>("country", "Get",
-          model.getCountry(value.getName())));
+          countryPersistence.loadCountry(value.getName())));
       return string;
     }
     catch (Exception e){
@@ -49,7 +49,7 @@ public class CountryHandler
   private String getAll(){
     try
     {
-      return gson.toJson(new Comunication<List<Country>>("country", "GetAll", model.getAllCountries()));
+      return gson.toJson(new Comunication<List<Country>>("country", "GetAll", countryPersistence.loadAll()));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -59,9 +59,9 @@ public class CountryHandler
   private String add(Country value){
     try
     {
-      model.addCountry(value);
+      countryPersistence.save(value);
       return gson.toJson(new Comunication<Country>("country", "Add",
-          model.getCountry(value.getName())));
+          countryPersistence.loadCountry(value.getName())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());

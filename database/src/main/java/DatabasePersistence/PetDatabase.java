@@ -20,24 +20,13 @@ public class  PetDatabase implements PetPersistance
 
   @Override public Pet loadPet(int id)
   {
-    try {
       database.beginSession();
       Pet pet = database.getSession().get(Pet.class,id);
       if(pet != null)
       {
-        pet.getUser().getPets().clear();
-        pet.getUser().getStatuses().clear();
-        pet.getCity().getPets().clear();
-        pet.getCity().getCountry().getCities().clear();
-        pet.getStatuses().clear();
+        pet.clear();
       }
       return pet;
-    }
-    catch (Exception e){
-      System.out.println("PetDatabase_Exception: " + e.getMessage());
-      e.printStackTrace();
-      return null;
-    }
   }
 
   @Override public List<Pet> loadAll()
@@ -48,26 +37,18 @@ public class  PetDatabase implements PetPersistance
     List<Pet> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null)
     {
-      data.forEach((pet) -> pet.getUser().getPets().clear());
-      data.forEach((pet) -> pet.getUser().getStatuses().clear());
-      data.forEach((pet) -> pet.getCity().getPets().clear());
-      data.forEach((pet) -> pet.getCity().getCountry().getCities().clear());
-      data.forEach((pet) -> pet.getStatuses().clear());
+      data.forEach(Pet::clear);
     }
     return data;
   }
 
-  @Override public List<Pet> LoadListOfUser(String email) {
+  @Override public List<Pet> loadListOfUser(String email) {
     database.beginSession();
     Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
     query.setParameter("emailValue",email);
     List<Pet> petList = query.getResultList();
     if(petList != null){
-      petList.forEach(pet -> pet.getStatuses().clear());
-      petList.forEach(pet -> pet.getUser().getPets().clear());
-      petList.forEach(pet -> pet.getUser().getStatuses().clear());
-      petList.forEach(pet -> pet.getCity().getCountry().getCities().clear());
-      petList.forEach((pet) -> pet.getCity().getPets().clear());
+      petList.forEach(Pet::clear);
     }
     return petList;
   }

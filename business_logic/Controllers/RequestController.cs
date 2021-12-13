@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
+using business_logic.Model.RequestPack;
 using Entities;
 
 namespace business_logic.Controllers
