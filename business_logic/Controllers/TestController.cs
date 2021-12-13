@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
-using System.Net.Http;
-using business_logic.Model.UserPack;
-using business_logic.Model.MessagePack;
-using business_logic.Model.PetPack;
+using Entities;
 
 namespace business_logic.Controllers
 {
@@ -33,7 +30,7 @@ namespace business_logic.Controllers
             string emailAddress = newEmailAddress;
             string token = "";
             try{
-                await model.register(new Model.User(){name = "test", email = emailAddress});
+                await model.register(new Entities.User(){name = "test", email = emailAddress});
                 //await model.sendCode(emailAddress);
                 response+= "test 1 succeded\n";
             } catch {
@@ -66,7 +63,7 @@ namespace business_logic.Controllers
                             name = "Denmark"
                         }
                     },
-                    user = new Model.User(){
+                    user = new Entities.User(){
                         name = "string",
                         email = "string"
                     },
@@ -110,7 +107,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses.Add(status);
                 await model.updatePetAsync(thePet, token);
-                Pet pet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
+                Pet pet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0];
                 if (pet.statuses.Count == 0){
                     throw new Exception("status was not added");
                 }
@@ -127,7 +124,7 @@ namespace business_logic.Controllers
             try{
                 Status status = new Status(){
                     name = "walking",
-                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0].statuses[0].id,
+                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0].statuses[0].id,
                     user = new User(){
                         name = "Lukas",
                         email = "pleva@usa.com"
@@ -135,7 +132,7 @@ namespace business_logic.Controllers
                 };
                 thePet.statuses = new List<Status>(){status};
                 await model.updatePetAsync(thePet,token);
-                thePet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null))[0];
+                thePet = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0];
                 if (thePet.statuses[0].user.email != "pleva@usa.com"){
                     throw new Exception("update do not work.");
                 }

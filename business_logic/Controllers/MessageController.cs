@@ -5,11 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
-using business_logic.Model.Mediator;
-
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using business_logic.Model.PetPack;
+using Entities;
 
 namespace business_logic.Controllers
 {
@@ -17,8 +13,8 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class MessageController : ControllerBase
     {
-        private IModel model;
-        public MessageController(IModel model)
+        private IMessageControl model;
+        public MessageController(IMessageControl model)
         {
             this.model = model;
         }

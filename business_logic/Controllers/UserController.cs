@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
-using System.Net.Http;
-using business_logic.Model.UserPack;
+using Entities;
 
 namespace business_logic.Controllers
 {
@@ -14,9 +13,9 @@ namespace business_logic.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private IModel model;
+        private IUserControl model;
 
-        public  UserController(IModel model){
+        public  UserController(IUserControl model){
             this.model = model;
             
         }

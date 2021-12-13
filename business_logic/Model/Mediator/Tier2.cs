@@ -5,6 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using business_logic.Model.UserPack;
+using Entities;
 
 namespace business_logic.Model.Mediator
 {

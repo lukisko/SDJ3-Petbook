@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Mime;
 using System.Linq;
 using System.Threading.Tasks;
 using ClientApp.Model;

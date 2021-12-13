@@ -115,6 +115,8 @@ namespace ClientApp.Data.Implementation
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
             
+            
+
             string reply = await responseMessage.Content.ReadAsStringAsync();
             Pet updatedPet = JsonConvert.DeserializeObject<Pet>(reply);
             return updatedPet;

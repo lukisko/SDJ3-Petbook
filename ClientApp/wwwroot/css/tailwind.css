@@ -30,8 +30,8 @@ SVG
 .custom-shape-divider-top-1638800534 svg {
     position: relative;
     display: block;
-    width: calc(133% + 1.3px);
-    height: 250px;
+    width: calc(100% + 1.3px);
+    height: 230px;
 }
 
 .custom-shape-divider-top-1638800534 .shape-fill {

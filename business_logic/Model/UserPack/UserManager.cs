@@ -2,21 +2,20 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using business_logic.Model.Mediator;
 using System;
-using business_logic.Model.UserPack;
-using business_logic.Model;
+using Entities;
 
 namespace business_logic.Model.UserPack
 {
     public class UserManager : IUserManager
     {
-        private ITier2Mediator tier2Mediator;
+        private ITier2User tier2Mediator;
         private Dictionary<string,AuthorisedUser> emailUserMap;
         private Dictionary<string,string> emailCodeMap;
         private Dictionary<string,string> tokenEmailMap;
 
         private Random random;
 
-        public UserManager(ITier2Mediator mediator){
+        public UserManager(ITier2User mediator){
             this.tier2Mediator = mediator;
             emailUserMap = new Dictionary<string, AuthorisedUser>();
             random = new Random(1538);

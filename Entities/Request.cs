@@ -1,4 +1,4 @@
-namespace business_logic.Model.RequestPack
+namespace Entities
 {
     public class Request
     {

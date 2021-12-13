@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.Mediator;
-using System.Linq;
+using Entities;
 using System;
 
 namespace business_logic.Model.PetPack
@@ -43,7 +43,7 @@ namespace business_logic.Model.PetPack
 
             if (newPet.statuses != null){
                 foreach (Status status in newPet.statuses){
-                    status.pet = Pet.copy(newPet);
+                    status.pet = newPet.copy();
                     await tier2Mediator.addStatus(status);
                 }
             }

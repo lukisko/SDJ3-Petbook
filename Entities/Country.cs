@@ -1,4 +1,4 @@
-namespace business_logic.Model
+namespace Entities
 {
     public class Country
     {

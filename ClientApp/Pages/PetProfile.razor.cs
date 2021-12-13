@@ -14,7 +14,7 @@ namespace ClientApp.Pages
 
         
 
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             pet = await _petController.GetPetProfileAsync(petId);
         }

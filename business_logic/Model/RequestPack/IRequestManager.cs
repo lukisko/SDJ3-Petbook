@@ -2,10 +2,10 @@ using System.Collections.Generic;
 
 namespace business_logic.Model.RequestPack
 {
-    public interface IRequestManager
+    public interface IRequestManager<T,V>
     {
-        IList<Request> getRequestOfPetAndUser(int petId, int userId);
-        IList<int> getRequestOfPet(int petId);
-        void makeRequest(Request request);
+        IList<T> getRequestOfPetAndUser(int identifier, V secondIdentifier);
+        IList<V> getRequestsOfPet(int petId);
+        void makeRequest(T request);
     }
 }

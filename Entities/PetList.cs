@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace business_logic.Model
+namespace Entities
 {
     public class PetList
     {
