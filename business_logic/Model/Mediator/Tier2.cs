@@ -26,15 +26,6 @@ namespace business_logic.Model.Mediator
             //countries = new Tier2Country(this);
             //statuses = new Tier2Status(this);
         }
-
-        public async Task<AuthorisedUser> GetUser(AuthorisedUser user){
-            //Console.WriteLine(this.users);
-            //AuthorisedUser authUser = await this.users.GetUser(user);
-            //authUser.pets = 
-            //return authUser;
-            return null;
-        }
-
         public async Task<V> requestServerAsync<T,V>(T classToSend){
             //sending
             string s = JsonSerializer.Serialize(classToSend);
