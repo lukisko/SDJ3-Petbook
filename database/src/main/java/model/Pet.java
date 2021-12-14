@@ -43,11 +43,16 @@ public class Pet implements Serializable
 
   public Pet(){
     statuses = new ArrayList<>();
+    receiverMessages = new ArrayList<>();
+    senderMessages = new ArrayList<>();
   }
-  public Pet(String name, City city){
+  public Pet(String name, City city, User user){
     this.name = name;
     this.city = city;
+    this.user = user;
     statuses = new ArrayList<>();
+    receiverMessages = new ArrayList<>();
+    senderMessages = new ArrayList<>();
   }
 
   public int getId()
