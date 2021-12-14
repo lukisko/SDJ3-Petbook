@@ -5,8 +5,8 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2City : ITier2City
     {
-        private Tier2 tier2;
-        public Tier2City(Tier2 tier2){
+        private ITier2Singleton tier2;
+        public Tier2City(ITier2Singleton tier2){
             this.tier2 = tier2;
         }
         public async Task<City> getCity(City city){

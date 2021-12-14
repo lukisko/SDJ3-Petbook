@@ -10,9 +10,9 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2Pets : ITier2Pets
     {
-        private Tier2 tier2;
+        private ITier2Singleton tier2;
         private static string theType = "pet";
-        public Tier2Pets(Tier2 tier2){
+        public Tier2Pets(ITier2Singleton tier2){
             this.tier2 = tier2;
         }
 
@@ -28,9 +28,9 @@ namespace business_logic.Model.Mediator
 
         public async Task<IList<Pet>> GetByUserEmail(AuthorisedUser user){//TODO
             Console.WriteLine("name before serialize: "+ user.name);
-            Comunication<AuthorisedUser> commClass = new Comunication<AuthorisedUser>("user","GetAllOf",user);
+            Comunication<Pet> commClass = new Comunication<Pet>(theType,"GetAllOf",new Pet(){user = user});
 
-            Comunication<IList<Pet>> theUser = await tier2.requestServerAsync<Comunication<AuthorisedUser>,Comunication<IList<Pet>>>(commClass);
+            Comunication<IList<Pet>> theUser = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Pet>>>(commClass);
 
             Console.WriteLine(JsonSerializer.Serialize(theUser));
             return theUser.value;//TODO should I get pet or comunication pet???

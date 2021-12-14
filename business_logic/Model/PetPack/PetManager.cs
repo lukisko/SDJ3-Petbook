@@ -15,14 +15,26 @@ namespace business_logic.Model.PetPack
         private ITier2Status tier2Status;
         private ITier2User tier2User;
 
-        public PetManager(ITier2Pets mediator){
+        public PetManager(ITier2Pets mediator, ITier2City tier2City, ITier2Country tier2Country,ITier2Status tier2Status,ITier2User tier2User){
             this.tier2Pet = mediator; // change name if this
+            this.tier2City = tier2City;
+            this.tier2Country = tier2Country;
+            this.tier2Status = tier2Status;
+            this.tier2User = tier2User;
         }
         public async Task<PetList> requestPets(){
-            return await tier2Pet.requestPets();
+            PetList list = await tier2Pet.requestPets();
+            Console.WriteLine("have got all pets");
+            foreach (Pet pet in list.pets){
+                Console.WriteLine("getting status of pets");
+                pet.statuses = await tier2Status.getStatusesOf(pet);
+            }
+            return list;
         }
         public async Task<Pet> requestPet(int id){
-            return await tier2Pet.requestPet(id);
+            Pet pet = await tier2Pet.requestPet(id);
+            pet.statuses = await tier2Status.getStatusesOf(pet);
+            return pet;
         }
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
             return await tier2Pet.GetByUserEmail(user);

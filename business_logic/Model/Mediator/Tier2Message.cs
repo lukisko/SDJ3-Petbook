@@ -6,9 +6,9 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2Message : ITier2Message
     {
-        private Tier2 tier2;
+        private ITier2Singleton tier2;
 
-        public Tier2Message(Tier2 tier2){
+        public Tier2Message(ITier2Singleton tier2){
             this.tier2 = tier2;
         }
 

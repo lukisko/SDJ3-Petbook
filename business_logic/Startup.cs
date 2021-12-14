@@ -36,7 +36,8 @@ namespace business_logic
             });
             //services.AddSingleton<IPetsData ,PetsData>();
             services.AddSingleton<IModel,Model.Model>();
-            services.AddSingleton<ITier2Mediator, Tier2>();
+            //services.AddSingleton<ITier2Mediator, Tier2>();
+            services.AddSingleton<ITier2Singleton, Tier2>();
 
             services.AddSingleton<ITier2User, Tier2User>();
             services.AddSingleton<ITier2Status, Tier2Status>();

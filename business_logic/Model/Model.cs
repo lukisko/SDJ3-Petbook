@@ -22,7 +22,7 @@ namespace business_logic.Model
 
         private Random random;
 
-        public Model(ITier2Mediator tier2Mediator, IUserManager userManager, 
+        public Model(/*ITier2Mediator tier2Mediator, */IUserManager userManager, 
         IPetManager petManager, IMessageManager messageManager){
             emailHandler = new EmailHandler();
             random = new Random(1538);
@@ -176,6 +176,9 @@ namespace business_logic.Model
                 throw new AccessViolationException("user is not authorised");
             }
             Pet databasePet = await petManager.requestPet(pet.id);
+            if (databasePet == null){
+                throw new AccessViolationException("pet with that id do not exist");
+            }
             if (databasePet.user.email != email){
                 throw new AccessViolationException("just owner of pet can modify it.");
             }

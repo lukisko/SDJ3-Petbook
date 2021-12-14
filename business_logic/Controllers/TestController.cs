@@ -94,8 +94,8 @@ namespace business_logic.Controllers
                 await model.getPetsAsync(new AuthorisedUser(){email =emailAddress});
                 Console.WriteLine("Test 5 successful");
                 response+= "test 5 succeded\n";
-            } catch {
-                Console.WriteLine("Test 5 failed!");
+            } catch (Exception e){
+                Console.WriteLine($"Test 5 failed!\n{e}");
                 response+= "test 5 (get pets or a user) not succeded\n";
             }
             //0/////////////////////////////////////
@@ -158,7 +158,7 @@ namespace business_logic.Controllers
             Console.WriteLine($"\ntest {number} started:");
             try{
                 Message msg = new Message(){
-                    ReceiverPetId = 5,
+                    ReceiverPetId = 15,
                     SenderPetId = thePet.id,
                     MessageBody = "hello Pet.",
                     DateTime = new DateTime()
@@ -181,7 +181,7 @@ namespace business_logic.Controllers
             } catch {
                 Console.WriteLine($"Test {number} failed!");
                 response+= $"test {number} (remove status) not succeded\n";
-            }
+            }*/
             //0/////////////////////////////////////
             number = 11;
             Console.WriteLine($"\nTest {number} started:");
@@ -192,7 +192,7 @@ namespace business_logic.Controllers
             } catch {
                 Console.WriteLine($"Test {number} failed!");
                 response+= $"test {number} (remove pet) not succeded\n";
-            }*/
+            }
 
             model.sendCode("pleva@usa.com");
             

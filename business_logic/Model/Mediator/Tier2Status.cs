@@ -6,8 +6,8 @@ namespace business_logic.Model.Mediator
 {
     public class Tier2Status : ITier2Status
     {
-        private Tier2 tier2;
-        public Tier2Status(Tier2 tier2){
+        private ITier2Singleton tier2;
+        public Tier2Status(ITier2Singleton tier2){
             this.tier2 = tier2;
         }
 
@@ -20,13 +20,13 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<IList<Status>> getStatusesOf(Pet pet){
-            Comunication<Pet> communicationClass = new Comunication<Pet>("pet","GetAllOf",pet);
+            Comunication<Status> communicationClass = new Comunication<Status>("status","GetAllOf",new Status(){pet = pet});
 
             if (pet == null){
                 return new List<Status>();
             }
 
-            Comunication<IList<Status>> theStatus = await tier2.requestServerAsync<Comunication<Pet>,Comunication<IList<Status>>>(communicationClass);
+            Comunication<IList<Status>> theStatus = await tier2.requestServerAsync<Comunication<Status>,Comunication<IList<Status>>>(communicationClass);
 
             return theStatus.value;
         }
