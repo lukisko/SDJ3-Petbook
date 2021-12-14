@@ -18,13 +18,12 @@ public class Test {
     Gson gson = new Gson();
     MessagePersisence messagePersisence = new MessageDatabase();
     PetPersistance petPersistance = new PetDatabase();
-    Message message = new Message();
-    Pet pet1 = petPersistance.loadPet(9);
-    message.setMessage("asd");
-    message.setReceiver(pet1);
-    message.setSender(pet1);
-    messagePersisence.save(message);
-
+    Pet pet = petPersistance.loadPet(34);
+    System.out.println(pet);
+    String send = gson.toJson(pet);
+    System.out.println(send);
+    byte[] toSendBytes = send.getBytes();
+    System.out.println(toSendBytes);
 
   }
 }
