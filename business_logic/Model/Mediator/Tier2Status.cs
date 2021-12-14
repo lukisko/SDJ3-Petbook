@@ -20,7 +20,7 @@ namespace business_logic.Model.Mediator
         }
 
         public async Task<IList<Status>> getStatusesOf(Pet pet){
-            Comunication<Status> communicationClass = new Comunication<Status>("status","GetAllOf",new Status(){pet = pet});
+            Comunication<Status> communicationClass = new Comunication<Status>("status","GetAllOfPet",new Status(){pet = pet});
 
             if (pet == null){
                 return new List<Status>();

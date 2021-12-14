@@ -175,6 +175,7 @@ namespace business_logic.Model.PetPack
         }
         public async Task<Pet> updatePet(Pet newPet){
             Pet oldPet = await tier2Pet.requestPet(newPet.id);//you can not change id of pet
+            oldPet.statuses = await tier2Status.getStatusesOf(oldPet);
             if (oldPet == null){
                 return null;
             }
