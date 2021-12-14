@@ -249,11 +249,11 @@ public class PetTest
 
   @Test void updatePetOne(){
     int id1 = petPersistance.save(pet1);
+
     Pet before = petPersistance.loadPet(id1);
 
     assertEquals(before.getName(), "test1");
 
-    pet1 = petPersistance.loadPet(id1);
     pet1.setName("working");
     petPersistance.update(pet1);
     Pet after = petPersistance.loadPet(id1);
@@ -289,7 +289,6 @@ public class PetTest
   }
   @Test void updatePetException(){
     assertThrows(IllegalArgumentException.class,() -> petPersistance.update(null));
-    assertThrows(IllegalArgumentException.class,() -> petPersistance.update(pet1));
   }
 
 

@@ -52,7 +52,10 @@ public class City {
   }
 
   public void clear(){
-    pets.clear();
+    if(pets != null)
+    {
+      pets.clear();
+    }
     country.clear();
   }
 

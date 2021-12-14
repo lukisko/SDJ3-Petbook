@@ -137,7 +137,10 @@ public class Pet implements Serializable
     statuses.clear();
     senderMessages.clear();
     receiverMessages.clear();
-    city.clear();
+    if(city != null)
+    {
+      city.clear();
+    }
     user.clear();
   }
 

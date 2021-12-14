@@ -81,9 +81,14 @@ public class StatusDatabase implements StatusPersistence
 
   @Override public Status update(Status status)
   {
-    if(status == null || status != loadStatus(status.getId())) throw new IllegalArgumentException();
+    if(status == null) throw new IllegalArgumentException();
+
+
+    Status statusToUpdate = loadStatus(status.getId());
+    statusToUpdate.setStatus(status);
+
     database.beginSession();
-    database.getSession().update(status);
+    database.getSession().update(statusToUpdate);
     database.getSession().getTransaction().commit();
     database.getSession().close();
     return loadStatus(status.getId());
