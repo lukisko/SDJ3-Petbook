@@ -20,18 +20,7 @@ public class StatusDatabase implements StatusPersistence
     Status status = database.getSession().get(Status.class,id);
     if(status != null)
     {
-      status.getPet().getUser().getPets().clear();
-      status.getPet().getUser().getStatuses().clear();
-      status.getPet().getCity().getCountry().getCities().clear();
-      status.getPet().getCity().getPets().clear();
-      status.getPet().getStatuses().clear();
-      status.getPet().getReceiverMessages().clear();
-      status.getPet().getSenderMessages().clear();
-      if(status.getUser() != null)
-      {
-        status.getUser().getStatuses().clear();
-        status.getUser().getPets().clear();
-      }
+      status.clear();
     }
     return status;
   }
@@ -41,51 +30,20 @@ public class StatusDatabase implements StatusPersistence
     query.setParameter("petId",id);
     List<Status> statusList = query.getResultList();
     if(statusList != null){
-      statusList.forEach(status -> status.getPet().getUser().getPets().clear());
-      statusList.forEach(status -> status.getPet().getUser().getStatuses().clear());
-      statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
-      statusList.forEach(status -> status.getPet().getCity().getPets().clear());
-      statusList.forEach(status -> status.getPet().getStatuses().clear());
-      statusList.forEach(status -> status.getPet().getSenderMessages().clear());
-      statusList.forEach(status -> status.getPet().getReceiverMessages().clear());
-      statusList.forEach(status -> {
-        if(status.getUser() != null)
-        {
-          status.getUser().getStatuses().clear();
-        }});
-      statusList.forEach(status -> {
-        if (status.getUser() != null)
-        {
-          status.getUser().getPets().clear();
-        }});
+      statusList.forEach(Status::clear);
     }
     return statusList;
   }
 
   @Override public List<Status> getAllOf(String statusName)
   {
+    if(statusName == null) throw new IllegalArgumentException();
     database.beginSession();
     Query query = database.getSession().createQuery("SELECT c FROM status c WHERE name = :name");
     query.setParameter("name",statusName);
     List<Status> statusList = query.getResultList();
     if(statusList != null){
-      statusList.forEach(status -> status.getPet().getUser().getPets().clear());
-      statusList.forEach(status -> status.getPet().getUser().getStatuses().clear());
-      statusList.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
-      statusList.forEach(status -> status.getPet().getCity().getPets().clear());
-      statusList.forEach(status -> status.getPet().getStatuses().clear());
-      statusList.forEach(status -> status.getPet().getSenderMessages().clear());
-      statusList.forEach(status -> status.getPet().getReceiverMessages().clear());
-      statusList.forEach(status -> {
-        if(status.getUser() != null)
-        {
-          status.getUser().getStatuses().clear();
-        }});
-      statusList.forEach(status -> {
-        if (status.getUser() != null)
-        {
-          status.getUser().getPets().clear();
-        }});
+      statusList.forEach(Status::clear);
     }
     return statusList;
   }
@@ -97,29 +55,14 @@ public class StatusDatabase implements StatusPersistence
     criteria.from(Status.class);
     List<Status> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null){
-      data.forEach(status -> status.getPet().getUser().getPets().clear());
-      data.forEach(status -> status.getPet().getCity().getCountry().getCities().clear());
-      data.forEach(status-> status.getPet().getCity().getCountry().getCities().clear());
-      data.forEach(status -> status.getPet().getCity().getPets().clear());
-      data.forEach(status -> status.getPet().getStatuses().clear());
-      data.forEach(status -> status.getPet().getSenderMessages().clear());
-      data.forEach(status -> status.getPet().getReceiverMessages().clear());
-      data.forEach(status -> {
-        if(status.getUser() != null)
-        {
-          status.getUser().getStatuses().clear();
-        }});
-      data.forEach(status -> {
-        if (status.getUser() != null)
-        {
-          status.getUser().getPets().clear();
-        }});
+      data.forEach(Status::clear);
     }
     return data;
   }
 
   @Override public int save(Status status)
   {
+    if(status == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().save(status);
     database.getSession().getTransaction().commit();
@@ -129,6 +72,7 @@ public class StatusDatabase implements StatusPersistence
 
   @Override public void delete(Status status)
   {
+    if(status == null || status != loadStatus(status.getId())) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().delete(status);
     database.getSession().getTransaction().commit();
@@ -137,6 +81,7 @@ public class StatusDatabase implements StatusPersistence
 
   @Override public Status update(Status status)
   {
+    if(status == null || status != loadStatus(status.getId())) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().update(status);
     database.getSession().getTransaction().commit();

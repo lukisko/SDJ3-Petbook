@@ -199,7 +199,9 @@ public class PetTest
   @Test void getAllPetsOfUserZero()
   {
     List<Pet> result = petPersistance.loadListOfUser(user.getEmail());
-
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
     assertEquals(0,result.size());
   }
   @Test void getAllPetsOfUserOne()
@@ -208,6 +210,9 @@ public class PetTest
     List<Pet> result = petPersistance.loadListOfUser(user.getEmail());
     petPersistance.delete(petPersistance.loadPet(id1));
 
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
     assertEquals(1,result.size());
     assertEquals(user.getEmail(),result.get(0).getUser().getEmail());
   }
@@ -219,6 +224,9 @@ public class PetTest
     petPersistance.delete(petPersistance.loadPet(id1));
     petPersistance.delete(petPersistance.loadPet(id2));
 
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
     assertEquals(2,result.size());
     assertEquals(user.getEmail(),result.get(0).getUser().getEmail());
     assertEquals(user.getEmail(),result.get(1).getUser().getEmail());
