@@ -86,6 +86,6 @@ public class StatusDatabase implements StatusPersistence
     database.getSession().update(status);
     database.getSession().getTransaction().commit();
     database.getSession().close();
-    return status;
+    return loadStatus(status.getId());
   }
 }

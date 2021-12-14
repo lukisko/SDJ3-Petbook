@@ -79,6 +79,6 @@ public class  PetDatabase implements PetPersistance
     database.getSession().update(pet);
     database.getSession().getTransaction().commit();
     database.getSession().close();
-    return pet;
+    return loadPet(pet.getId());
   }
 }

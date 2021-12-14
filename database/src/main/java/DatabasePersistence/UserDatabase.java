@@ -48,20 +48,20 @@ public class UserDatabase implements UserPersistence
       return data;
   }
 
-  @Override public void save(User customer)
+  @Override public void save(User user)
   {
-    if(customer == null) throw new IllegalArgumentException();
+    if(user == null) throw new IllegalArgumentException();
 
     database.beginSession();
-    database.getSession().persist(customer);
+    database.getSession().persist(user);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
 
-  @Override public void delete(User customer)
+  @Override public void delete(User user)
   {
     database.beginSession();
-    database.getSession().delete(customer);
+    database.getSession().delete(user);
     database.getSession().getTransaction().commit();
     database.getSession().close();
   }
