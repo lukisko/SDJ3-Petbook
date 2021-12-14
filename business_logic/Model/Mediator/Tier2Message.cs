@@ -48,6 +48,20 @@ namespace business_logic.Model.Mediator
             return messages;
         }
 
+        public async Task<IList<Message>> getAllOfSenderMessage(int senderId){
+            Message messg = new Message(){SenderPetId = senderId};
+            Comunication<MessageDatabase> commClass = new Comunication<MessageDatabase>("message","GetAllOfSender",this.fromMessageToDatabase(messg));
+
+            Comunication<IList<MessageDatabase>> theMessageList = await tier2.requestServerAsync<Comunication<MessageDatabase>, Comunication<IList<MessageDatabase>>>(commClass);
+
+            IList<Message> messages = new List<Message>();
+            foreach (MessageDatabase msgData in theMessageList.value){
+                messages.Add(this.fromDatabaseToMessage(msgData));
+            }
+
+            return messages;
+        }
+
         public async Task<Message> addMessage(Message messg){
             Comunication<MessageDatabase> commClass = new Comunication<MessageDatabase>("message","Add",this.fromMessageToDatabase(messg));
 

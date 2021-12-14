@@ -124,7 +124,7 @@ namespace business_logic.Controllers
             try{
                 Status status = new Status(){
                     name = "walking",
-                    id = ( await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0].statuses[0].id,
+                    id = (await model.getPetsAsync(thePet.id,null,null,null,null,null,null,null))[0].statuses[0].id,
                     user = new User(){
                         name = "Lukas",
                         email = "pleva@usa.com"
