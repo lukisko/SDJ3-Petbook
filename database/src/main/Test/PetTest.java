@@ -235,8 +235,53 @@ public class PetTest
 
 
 
-  @Test void updatePet(){
+  @Test void updatePetZero(){
 
+  }
+
+  @Test void updatePetOne(){
+    int id1 = petPersistance.save(pet1);
+    Pet before = petPersistance.loadPet(id1);
+
+    assertEquals(before.getName(), "test1");
+
+    pet1 = petPersistance.loadPet(id1);
+    pet1.setName("working");
+    petPersistance.update(pet1);
+    Pet after = petPersistance.loadPet(id1);
+    petPersistance.delete(petPersistance.loadPet(id1));
+
+    assertEquals(after.getName(), pet1.getName());
+  }
+  @Test void updatePetMany(){
+    int id1 = petPersistance.save(pet1);
+    Pet before1 = petPersistance.loadPet(id1);
+    int id2 = petPersistance.save(pet2);
+    Pet before2 = petPersistance.loadPet(id2);
+
+    assertEquals(before1.getName(), "test1");
+    assertEquals(before2.getName(), "test2");
+
+    pet1 = petPersistance.loadPet(id1);
+    pet1.setName("working");
+    petPersistance.update(pet1);
+    pet2 = petPersistance.loadPet(id2);
+    pet2.setName("working");
+    petPersistance.update(pet2);
+    Pet after1 = petPersistance.loadPet(id1);
+    Pet after2 = petPersistance.loadPet(id2);
+    petPersistance.delete(petPersistance.loadPet(id1));
+    petPersistance.delete(petPersistance.loadPet(id2));
+
+    assertEquals(after1.getName(), pet1.getName());
+    assertEquals(after2.getName(), pet2.getName());
+  }
+  @Test void updatePetBoundary(){
+
+  }
+  @Test void updatePetException(){
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.update(null));
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.update(pet1));
   }
 
 

@@ -1,6 +1,8 @@
 import DatabasePersistence.*;
 import com.google.gson.Gson;
 import mediator.Comunication;
+import mediator.comunication_handler.CommunicationHandler;
+import mediator.comunication_handler.Handler;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,14 +18,8 @@ public class Test {
   public static void main(String[] args) {
 
     Gson gson = new Gson();
-    MessagePersisence messagePersisence = new MessageDatabase();
-    PetPersistance petPersistance = new PetDatabase();
-    Pet pet = petPersistance.loadPet(34);
-    System.out.println(pet);
-    String send = gson.toJson(pet);
-    System.out.println(send);
-    byte[] toSendBytes = send.getBytes();
-    System.out.println(toSendBytes);
+    //MessagePersisence messagePersisence = new MessageDatabase();
+    CommunicationHandler communicationHandler = new Handler();
 
   }
 }

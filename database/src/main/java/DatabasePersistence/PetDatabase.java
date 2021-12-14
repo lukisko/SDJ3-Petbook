@@ -74,7 +74,7 @@ public class  PetDatabase implements PetPersistance
   }
   @Override public Pet update(Pet pet)
   {
-    if(pet == null) throw new IllegalArgumentException();
+    if(pet == null || pet != loadPet(pet.getId())) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().update(pet);
     database.getSession().getTransaction().commit();
