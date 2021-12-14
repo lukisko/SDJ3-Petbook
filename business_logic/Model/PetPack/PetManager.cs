@@ -3,6 +3,7 @@ using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.Mediator;
 using Entities;
+using System.Linq;
 using System;
 
 namespace business_logic.Model.PetPack
@@ -25,6 +26,96 @@ namespace business_logic.Model.PetPack
             this.tier2User = tier2User;
             this.tier2Message = tier2Message;
         }
+
+        public async Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
+        string type, string breed, char? gender, DateTime? birthday, string name){
+            IList<Pet> petList = null; // if no filtering has take place have it as null
+            Func<Pet,bool> petFilter = new Func<Pet,bool>((Pet pet)=>{return true;});
+
+            if (id != null){
+                Pet thePet = await this.requestPet((int)id);
+                return new List<Pet>(){thePet};
+            }
+            
+
+            if (!String.IsNullOrEmpty(userEmail)){ // filter be email
+                if (petList == null){
+                    AuthorisedUser authUsr = await tier2User.GetUser( new AuthorisedUser(){
+                        email = userEmail,
+                        pets= new Pet[0]
+                    });
+
+                    if (authUsr != null && !String.IsNullOrEmpty(authUsr.email)){
+                        petList =  await this.requestPets(authUsr);
+                    } else {
+                        petList = new List<Pet>();
+                    }
+                } else {
+                    petList = petList.Where((pet)=> {
+                        if (pet.user == null) return false;
+                        return pet.user.email.Equals(userEmail);
+                    }).ToList();
+                }
+            }
+
+            if (!String.IsNullOrEmpty(status)){ //filter by status
+                if (petList == null){
+                    petList = await this.getPetsByStatus(status);
+                } else {
+                    petList = petList.Where((pet)=>{
+                        if (pet.statuses == null) return false;
+                        foreach(Status statusIn in pet.statuses){
+                            if (statusIn == null) continue;
+                            if (statusIn.name == status) return true;
+                        }
+                        return false;
+                    }).ToList();
+                }
+            }
+
+            if (petList == null){
+                petList = (await this.requestPets()).pets;/////////////////////////
+            }
+
+            if (!String.IsNullOrEmpty(type)){
+                petList = petList.Where((pet)=>{
+                    if (pet.type == null) return false;
+                    return pet.type.Equals(type);
+                }).ToList();
+                /*petFilter = new Func<Pet, bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.type == type;
+                });*/ 
+            }
+
+            if (!String.IsNullOrEmpty(name)){
+                petList = petList.Where(pet =>{
+                    if (pet.name == null) return false;
+                    return pet.name.Equals(name);
+                }).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(breed)){ // filter by breed
+                petList = petList.Where((pet) =>{
+                    if (pet.breed == null) return false;
+                    return pet.breed.Equals(breed);
+                }).ToList();
+            }
+
+            if (gender != null && ((int) gender) != 0){
+                petList = petList.Where(pet =>{
+                    return pet.gender == gender;
+                }).ToList();
+            }
+
+            if (birthday!= null && !birthday.Equals(new DateTime())){
+                petList = petList.Where(pet =>{
+                    if (pet.birthdate == null) return false;
+                    return pet.birthdate.Equals(birthday);
+                }).ToList();
+            }
+
+            return petList;
+        }
         public async Task<PetList> requestPets(){
             PetList list = await tier2Pet.requestPets();
             Console.WriteLine("have got all pets");
@@ -40,7 +131,11 @@ namespace business_logic.Model.PetPack
             return pet;
         }
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
-            return await tier2Pet.GetByUserEmail(user);
+            IList<Pet> petList =  await tier2Pet.GetByUserEmail(user);
+            foreach (Pet tmpPet in petList){
+                tmpPet.statuses = await tier2Status.getStatusesOf(tmpPet);
+            }
+            return petList;
         }
 
         public async Task<IList<Pet>> getPetsByStatus(string status){

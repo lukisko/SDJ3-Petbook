@@ -11,7 +11,7 @@ public class MessageDatabase implements MessagePersisence
   private Database database;
 
   public MessageDatabase(){
-    database = Database.getInstance();
+    database = Database.getInstance(); //TODO add this to target
   }
 
   @Override public Message loadMessage(int id)
