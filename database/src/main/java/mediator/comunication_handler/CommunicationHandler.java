@@ -9,4 +9,5 @@ public interface CommunicationHandler
   String typeCity(String method, City value);
   String typePet(String method, Pet value);
   String typeStatus(String method, Status value);
+  String typeMessage(String method, Message value);
 }

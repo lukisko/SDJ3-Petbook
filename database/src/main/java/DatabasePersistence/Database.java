@@ -57,7 +57,7 @@ public class Database
   /**
    * method for starting connection with database
    */
-  public void beginSession()
+  public synchronized void beginSession()
   {
     if(!session.getTransaction().isActive())
     {

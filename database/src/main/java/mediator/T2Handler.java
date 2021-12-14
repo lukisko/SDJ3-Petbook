@@ -75,6 +75,11 @@ public class T2Handler implements Runnable
                 .fromJson(new Gson().toJson(request.getValue()), Status.class);
             stringToSend = handler.typeStatus(request.getMethod(), status);
             break;
+          case "message":
+            Message message = new Gson()
+                .fromJson(new Gson().toJson(request.getValue()), Message.class);
+            stringToSend = handler.typeMessage(request.getMethod(), message);
+            break;
         }
 
         System.out.println("Response: " + stringToSend);
