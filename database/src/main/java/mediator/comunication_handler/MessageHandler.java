@@ -17,12 +17,11 @@ public class MessageHandler
   private String response;
   private Gson gson;
   private MessagePersisence messagePersisence;
-//  private PetPersistance petPersistance;
 
   public MessageHandler()
   {
+    gson = new Gson();
     messagePersisence = new MessageDatabase();
-//    petPersistance = new PetDatabase();
   }
 
   private void findMethod(String method, Message value)
@@ -93,8 +92,6 @@ public class MessageHandler
   {
     try
     {
-//      value.setSender(petPersistance.loadPet(value.getSender().getId()));
-//      value.setReceiver(petPersistance.loadPet(value.getReceiver().getId()));
       int id = messagePersisence.save(value);
       return gson.toJson(new Comunication<Message>("message", "Add",
           messagePersisence.loadMessage(id)));

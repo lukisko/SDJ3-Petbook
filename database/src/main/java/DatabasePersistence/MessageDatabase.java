@@ -13,6 +13,7 @@ public class MessageDatabase implements MessagePersisence
   public MessageDatabase(){
     database = Database.getInstance();
   }
+
   @Override public Message loadMessage(int id)
   {
     database.beginSession();
