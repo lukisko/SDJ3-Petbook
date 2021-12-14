@@ -11,10 +11,10 @@ public class Message
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
   @ManyToOne
-  @JoinColumn(name="sender_id", nullable = false)
+  @JoinColumn(name="sender_id"/*, nullable = false*/)
   private Pet sender;
   @ManyToOne
-  @JoinColumn(name="receiver_id", nullable = false)
+  @JoinColumn(name="receiver_id"/*, nullable = false*/)
   private Pet receiver;
   @Column(name = "text")
   private String message;

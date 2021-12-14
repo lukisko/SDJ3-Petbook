@@ -20,13 +20,13 @@ public class  PetDatabase implements PetPersistance
 
   @Override public Pet loadPet(int id)
   {
-      database.beginSession();
-      Pet pet = database.getSession().get(Pet.class,id);
-      if(pet != null)
-      {
-        pet.clear();
-      }
-      return pet;
+    database.beginSession();
+    Pet pet = database.getSession().get(Pet.class,id);
+    if(pet != null)
+    {
+      pet.clear();
+    }
+    return pet;
   }
 
   @Override public List<Pet> loadAll()
@@ -43,6 +43,7 @@ public class  PetDatabase implements PetPersistance
   }
 
   @Override public List<Pet> loadListOfUser(String email) {
+    if(email == null) throw new IllegalArgumentException();
     database.beginSession();
     Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
     query.setParameter("emailValue",email);
@@ -55,6 +56,7 @@ public class  PetDatabase implements PetPersistance
 
   @Override public int save(Pet pet)
   {
+    if(pet == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().save(pet);
     database.getSession().getTransaction().commit();
@@ -64,6 +66,7 @@ public class  PetDatabase implements PetPersistance
 
   @Override public void delete(Pet pet)
   {
+    if(pet == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().delete(pet);
     database.getSession().getTransaction().commit();
@@ -71,6 +74,7 @@ public class  PetDatabase implements PetPersistance
   }
   @Override public Pet update(Pet pet)
   {
+    if(pet == null || pet != loadPet(pet.getId())) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().update(pet);
     database.getSession().getTransaction().commit();
