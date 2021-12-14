@@ -4,7 +4,7 @@ using Entities;
 
 namespace business_logic.Model.Mediator
 {
-    public class Tier2Status
+    public class Tier2Status : ITier2Status
     {
         private Tier2 tier2;
         public Tier2Status(Tier2 tier2){

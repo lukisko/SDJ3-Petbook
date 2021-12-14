@@ -8,7 +8,7 @@ using Entities;
 
 namespace business_logic.Model.Mediator
 {
-    public class Tier2Pets
+    public class Tier2Pets : ITier2Pets
     {
         private Tier2 tier2;
         private static string theType = "pet";

@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using business_logic.Model.Mediator;
 using System;
 using Entities;
+using Microsoft.AspNetCore.Components;
+
 
 namespace business_logic.Model.UserPack
 {
@@ -15,8 +17,8 @@ namespace business_logic.Model.UserPack
 
         private Random random;
 
-        public UserManager(ITier2User mediator){
-            this.tier2Mediator = mediator;
+        public UserManager(ITier2User tier2User){
+            this.tier2Mediator = tier2User;
             emailUserMap = new Dictionary<string, AuthorisedUser>();
             random = new Random(1538);
             emailCodeMap = new Dictionary<string, string>();
