@@ -52,6 +52,7 @@ public class MessageDatabase implements MessagePersisence
 
   @Override public int save(Message message)
   {
+    if(message == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().save(message);
     database.getSession().getTransaction().commit();
@@ -61,6 +62,7 @@ public class MessageDatabase implements MessagePersisence
 
   @Override public void delete(Message message)
   {
+    if(message == null || message != loadMessage(message.getId())) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().delete(message);
     database.getSession().getTransaction().commit();
