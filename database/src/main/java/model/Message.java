@@ -21,8 +21,7 @@ public class Message
   @Column(name = "dateTime")
   private String dateTime;
 
-  public Message(){
-
+  public Message(){//TODO put this into resources
   }
 
   public int getId()

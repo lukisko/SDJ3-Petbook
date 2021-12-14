@@ -90,6 +90,7 @@ public class T2Handler implements Runnable
       catch (Exception e)
       {
         e.printStackTrace();
+        return;
       }
     }
 
