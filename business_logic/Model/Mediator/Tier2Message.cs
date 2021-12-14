@@ -20,7 +20,8 @@ namespace business_logic.Model.Mediator
             return this.fromDatabaseToMessage(theMessage.value);
         }
 
-        public async Task<IList<Message>> getAllOfMessage(Message messg){
+        public async Task<IList<Message>> getAllOfMessage(int receiverId, int senderId){
+            Message messg = new Message(){ReceiverPetId = receiverId, SenderPetId = senderId};
             Comunication<MessageDatabase> commClass = new Comunication<MessageDatabase>("message","GetAllOf",this.fromMessageToDatabase(messg));
 
             Comunication<IList<MessageDatabase>> theMessageList = await tier2.requestServerAsync<Comunication<MessageDatabase>, Comunication<IList<MessageDatabase>>>(commClass);
@@ -33,7 +34,8 @@ namespace business_logic.Model.Mediator
             return messages;
         }
 
-        public async Task<IList<Message>> getAllOfReceiverMessage(Message messg){
+        public async Task<IList<Message>> getAllOfReceiverMessage(int receiverId){
+            Message messg = new Message(){ReceiverPetId = receiverId};
             Comunication<MessageDatabase> commClass = new Comunication<MessageDatabase>("message","GetAllOfReceiver",this.fromMessageToDatabase(messg));
 
             Comunication<IList<MessageDatabase>> theMessageList = await tier2.requestServerAsync<Comunication<MessageDatabase>, Comunication<IList<MessageDatabase>>>(commClass);

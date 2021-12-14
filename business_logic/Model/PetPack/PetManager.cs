@@ -14,13 +14,16 @@ namespace business_logic.Model.PetPack
         private ITier2Country tier2Country;
         private ITier2Status tier2Status;
         private ITier2User tier2User;
+        private ITier2Message tier2Message;
 
-        public PetManager(ITier2Pets mediator, ITier2City tier2City, ITier2Country tier2Country,ITier2Status tier2Status,ITier2User tier2User){
+        public PetManager(ITier2Pets mediator, ITier2City tier2City, ITier2Country tier2Country,
+        ITier2Status tier2Status,ITier2User tier2User, ITier2Message tier2Message){
             this.tier2Pet = mediator; // change name if this
             this.tier2City = tier2City;
             this.tier2Country = tier2Country;
             this.tier2Status = tier2Status;
             this.tier2User = tier2User;
+            this.tier2Message = tier2Message;
         }
         public async Task<PetList> requestPets(){
             PetList list = await tier2Pet.requestPets();
@@ -147,6 +150,10 @@ namespace business_logic.Model.PetPack
         public async Task<Pet> deletePet(Pet oldPet){
             foreach (Status status in oldPet.statuses){
                 await tier2Status.removeStatus(status);
+            }
+            IList<Message> messageList = await tier2Message.getAllOfReceiverMessage(oldPet.id);
+            foreach (Message message in messageList){
+                await tier2Message.removeMessage(message);
             }
             return await tier2Pet.deletePet(oldPet);
         }

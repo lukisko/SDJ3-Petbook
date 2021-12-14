@@ -7,8 +7,8 @@ namespace business_logic.Model.Mediator
     public interface ITier2Message
     {
         Task<Message> getMessage(Message messg);
-        Task<IList<Message>> getAllOfMessage(Message messg);
-        Task<IList<Message>> getAllOfReceiverMessage(Message messg);
+        Task<IList<Message>> getAllOfMessage(int receiverId, int senderId);
+        Task<IList<Message>> getAllOfReceiverMessage(int receiverId);
         Task<Message> addMessage(Message messg);
         Task<Message> removeMessage(Message messg);
     }
