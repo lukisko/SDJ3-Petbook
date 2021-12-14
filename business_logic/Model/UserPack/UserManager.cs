@@ -12,17 +12,10 @@ namespace business_logic.Model.UserPack
     {
         private ITier2User tier2Mediator;
         private Dictionary<string,AuthorisedUser> emailUserMap;
-        private Dictionary<string,string> emailCodeMap;
-        private Dictionary<string,string> tokenEmailMap;
-
-        private Random random;
 
         public UserManager(ITier2User tier2User){
             this.tier2Mediator = tier2User;
             emailUserMap = new Dictionary<string, AuthorisedUser>();
-            random = new Random(1538);
-            emailCodeMap = new Dictionary<string, string>();
-            tokenEmailMap = new Dictionary<string, string>();
         }
 
         public async Task<bool> emailExist(string email){
@@ -51,46 +44,6 @@ namespace business_logic.Model.UserPack
         public async Task<AuthorisedUser> CreateUser(AuthorisedUser user){
             AuthorisedUser usr = await tier2Mediator.MakeUser(user);
             return usr;
-        }
-
-        public string MakeUserCode(string email){
-            string code = this.createRandomCode(7);
-            emailCodeMap[email] = code;
-            return code;
-        }
-
-        public bool IsCorrectCode(string email, string code){
-            if (emailCodeMap.ContainsKey(email)){
-                if (emailCodeMap[email].Equals(code)){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public string MakeUserToken(string email){
-            string token = "";
-            do {
-                token = this.createRandomCode(25);
-            }while (tokenEmailMap.ContainsKey(token));
-            tokenEmailMap[token] = email;
-            return token;
-        }
-
-        public string getUserWithToken(string token){
-            if (!tokenEmailMap.ContainsKey(token)){
-                return null;
-            }
-            return tokenEmailMap[token];
-        }
-
-        private string createRandomCode(int codeLength){
-            string code = "";
-            for (int i = 0; i< codeLength;i++){
-                char ch =(char)random.Next(65,90+1);
-                code += ch.ToString();
-            }
-            return code;
         }
     }
 }

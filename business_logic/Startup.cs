@@ -12,6 +12,7 @@ using business_logic.Model.UserPack;
 using business_logic.Model.PetPack;
 using business_logic.Model.MessagePack;
 using business_logic.Model.RequestPack;
+using business_logic.Model.Login;
 using Entities;
 
 namespace business_logic
@@ -36,6 +37,10 @@ namespace business_logic
             });
             //services.AddSingleton<IPetsData ,PetsData>();
             services.AddSingleton<IModel,Model.Model>();
+
+            services.AddSingleton<IEmailHandler,EmailHandler>();
+            services.AddSingleton<ILoginManager,LoginManager>();
+            
             //services.AddSingleton<ITier2Mediator, Tier2>();
             services.AddSingleton<ITier2Singleton, Tier2>();
 

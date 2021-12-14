@@ -19,7 +19,11 @@ namespace business_logic.Model.MessagePack
             messageTier.addMessage(message);
         }
         public async Task<IList<Message>> getMessages(int receiverId, int senderId){
-            return await messageTier.getAllOfMessage(receiverId,senderId);
+            List<Message> messageList = new List<Message>();
+            messageList.AddRange(await messageTier.getAllOfMessage(receiverId,senderId));
+            messageList.AddRange(await messageTier.getAllOfMessage(senderId,receiverId));
+            return messageList;
+
         }
 
         public async Task<IList<int>> getPetIdOfMessages(int receiverId){

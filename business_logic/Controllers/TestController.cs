@@ -169,7 +169,7 @@ namespace business_logic.Controllers
             } catch (Exception e){
                 Console.WriteLine($"Test {number} failed!\n{e}");
                 response+= $"test {number} (send message) not succeded\n";
-            }/*
+            }
             //0/////////////////////////////////////
             number = 10;
             Console.WriteLine($"\ntest {number} started:");
@@ -181,7 +181,7 @@ namespace business_logic.Controllers
             } catch {
                 Console.WriteLine($"Test {number} failed!");
                 response+= $"test {number} (remove status) not succeded\n";
-            }*/
+            }
             //0/////////////////////////////////////
             number = 11;
             Console.WriteLine($"\nTest {number} started:");
