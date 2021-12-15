@@ -13,7 +13,7 @@ using business_logic.Model.Login;
 
 namespace business_logic.Model
 {
-    public class Model : IModel
+    public class Model
     {
         private IUserManager userManager;
         private IPetManager petManager;
@@ -29,21 +29,11 @@ namespace business_logic.Model
             this.userManager = userManager;
             this.petManager = petManager;
             this.messageManager = messageManager;
-            requestManager = new RequestManager<Request,string>(
+            /*requestManager = new RequestManager<Request,string>(
                 (request)=> {return request.petId;},(request)=> {return request.userEmail;}
-            );
+            );*/
             this.loginManager = loginManager;
         }
-        public async Task<Entities.PetList> getPetsAsync(){
-            
-            PetList list = await petManager.requestPets();
-            return list;
-        }//to delete
-
-        public async Task<IList<Entities.Pet>> getPetsAsync(Entities.AuthorisedUser user){
-            IList<Pet> thePet = await petManager.requestPets(user);
-            return thePet;
-        }//to delete
 
         public async Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
         string type, string breed, char? gender, DateTime? birthday, string name){//TODO maybe move to PetManager
@@ -72,7 +62,7 @@ namespace business_logic.Model
             return newPet;
         }
 
-        public async Task<Entities.Pet> deletePetAsync(Entities.Pet pet, string token){
+        public async Task<Entities.Pet> deletePetAsync(Entities.Pet pet, string token){/////////////////done
             string email = loginManager.getUserWithToken(token);
             if (email == null){
                 throw new AccessViolationException("user is not authorised");

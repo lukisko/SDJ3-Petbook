@@ -5,10 +5,12 @@ using business_logic.Model.Mediator;
 using Entities;
 using System.Linq;
 using System;
+using business_logic.Model.Login;
+using business_logic.Controllers;
 
 namespace business_logic.Model.PetPack
 {
-    public class PetManager : IPetManager
+    public class PetManager : IPetControl
     {
         private ITier2Pets tier2Pet;
         private ITier2City tier2City;
@@ -16,15 +18,17 @@ namespace business_logic.Model.PetPack
         private ITier2Status tier2Status;
         private ITier2User tier2User;
         private ITier2Message tier2Message;
+        private ILoginManager loginManager;
 
         public PetManager(ITier2Pets mediator, ITier2City tier2City, ITier2Country tier2Country,
-        ITier2Status tier2Status,ITier2User tier2User, ITier2Message tier2Message){
+        ITier2Status tier2Status,ITier2User tier2User, ITier2Message tier2Message, ILoginManager loginManager){
             this.tier2Pet = mediator; // change name if this
             this.tier2City = tier2City;
             this.tier2Country = tier2Country;
             this.tier2Status = tier2Status;
             this.tier2User = tier2User;
             this.tier2Message = tier2Message;
+            this.loginManager = loginManager;
         }
 
         public async Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
@@ -148,7 +152,16 @@ namespace business_logic.Model.PetPack
             }
             return returnPets;
         }
-        public async Task<Pet> createPet(Pet newPet){//TODO check if the user, city and country exist
+        public async Task<Pet> createPetAsync(Pet newPet,string token){//TODO check if the user, city and country exist
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            newPet.user = new Entities.User(){
+                email = email,
+                name = (await tier2User.GetUser(new AuthorisedUser(){email = email})).name
+            };
+
             Country theCountry = await tier2Country.getCountry(newPet.city.country);
             if (theCountry == null){
                 theCountry = await tier2Country.addCountry(newPet.city.country);
@@ -171,9 +184,36 @@ namespace business_logic.Model.PetPack
 
             newPet.city = theCity;
             Pet pet = await tier2Pet.createPet(newPet);
+
+            if (newPet.statuses.Count > 0)
+            {
+                foreach (var status in pet.statuses)
+                {
+                    pet.statuses.Add(status);
+                }
+                await updatePetAsync(newPet, token);
+            }
             return pet;
         }
-        public async Task<Pet> updatePet(Pet newPet){
+        public async Task<Pet> updatePetAsync(Pet newPet, string token){
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            Pet databasePet = await tier2Pet.requestPet(newPet.id);
+            if (databasePet == null){
+                throw new AccessViolationException("pet with that id do not exist");
+            }
+            if (databasePet.user.email != email){
+                throw new AccessViolationException("just owner of pet can modify it.");
+            }
+            newPet.user.email = (newPet.user == null && newPet.user.email == null)?email:newPet.user.email;
+            newPet.user.name = (await tier2User.GetUser(new AuthorisedUser(){email = newPet.user.email})).name;
+            foreach (Status status in newPet.statuses){
+                status.pet = newPet.copy();
+                status.pet.statuses = new List<Status>();
+            };
+
             Pet oldPet = await tier2Pet.requestPet(newPet.id);//you can not change id of pet
             oldPet.statuses = await tier2Status.getStatusesOf(oldPet);
             if (oldPet == null){
@@ -243,7 +283,16 @@ namespace business_logic.Model.PetPack
             }
             return await tier2Pet.updatePet(newPet);
         }
-        public async Task<Pet> deletePet(Pet oldPet){
+        public async Task<Pet> deletePetAsync(Pet oldPet,string token){
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            Pet realPet =  await tier2Pet.requestPet(oldPet.id);
+            if (!realPet.user.email.Equals(email)){
+                throw new AccessViolationException("you do not have right to delete this pet");
+            }
+
             foreach (Status status in oldPet.statuses){
                 await tier2Status.removeStatus(status);
             }

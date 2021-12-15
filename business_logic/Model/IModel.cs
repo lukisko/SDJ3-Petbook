@@ -7,10 +7,7 @@ using System;
 namespace business_logic.Model
 {
     public interface IModel : IAuthorisedUserControl,IEmailControl,IMessageControl,IPetControl,IRequestControl,IUserControl
-    {
-        Task<Entities.PetList> getPetsAsync();   
-
-        Task<IList<Entities.Pet>> getPetsAsync(Entities.AuthorisedUser user);
+    { 
         /// <summary>
         /// get pets that will be also filtered by your criteria
         /// </summary>

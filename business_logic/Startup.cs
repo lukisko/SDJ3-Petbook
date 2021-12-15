@@ -14,6 +14,7 @@ using business_logic.Model.MessagePack;
 using business_logic.Model.RequestPack;
 using business_logic.Model.Login;
 using Entities;
+using business_logic.Controllers;
 
 namespace business_logic
 {
@@ -36,7 +37,13 @@ namespace business_logic
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "business_logic", Version = "v1" });
             });
             //services.AddSingleton<IPetsData ,PetsData>();
-            services.AddSingleton<IModel,Model.Model>();
+            //services.AddSingleton<IModel,Model.Model>();
+
+            services.AddSingleton<IUserControl,UserManager>();
+            services.AddSingleton<IRequestControl,RequestManager>();
+            services.AddSingleton<IPetControl,PetManager>();
+            services.AddSingleton<IMessageControl,business_logic.Model.MessagePack.MessageController>();
+
 
             services.AddSingleton<IEmailHandler,EmailHandler>();
             services.AddSingleton<ILoginManager,LoginManager>();
@@ -51,14 +58,14 @@ namespace business_logic
             services.AddSingleton<ITier2City, Tier2City>();
             services.AddSingleton<ITier2Message,Tier2Message>();
 
-            services.AddSingleton<IUserManager,UserManager>();
+            /*services.AddSingleton<IUserManager,UserManager>();
             services.AddSingleton<IPetManager, PetManager>();
             services.AddSingleton<IRequestManager<Request,string>>((thing) => {
                 return new RequestManager<Request,string>(
                 (request)=> {return request.petId;},(request)=> {return request.userEmail;});
             });
             services.AddSingleton<IMessageManager, MessageController>();
-            services.AddSingleton<IEmailHandler, EmailHandler>();
+            services.AddSingleton<IEmailHandler, EmailHandler>();*/
 
             //services.AddSingleton<ITier2Mediator>((service) => {return Tier2.getInstance();});
         }

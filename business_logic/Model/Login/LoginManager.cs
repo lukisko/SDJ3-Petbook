@@ -5,6 +5,7 @@ using System;
 using Entities;
 using Microsoft.AspNetCore.Components;
 using business_logic.Model.Login;
+using business_logic.Controllers;
 
 namespace business_logic.Model
 {
