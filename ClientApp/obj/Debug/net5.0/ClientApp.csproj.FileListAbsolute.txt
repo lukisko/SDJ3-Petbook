@@ -901,12 +901,8 @@ C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\EditPetProfile.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\Login.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\MessagePane.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\PetProfile.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\Register.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SendCode.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Shared\PetProfilePane.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -921,16 +917,11 @@ C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Brows
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\EditPetProfile.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Login.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\MessagePane.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\PetProfile.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Register.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\SendCode.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\PetProfilePane.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
-C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.RazorAssemblyInfo.cache
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.RazorAssemblyInfo.cs
@@ -952,3 +943,5 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclar
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\MessagePane.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Shared\MessagePane.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\MessagePane.razor.g.cs
+C:\Users\hanch\Desktop\SDJ3-Petbook\clientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SwitchProfile.razor.g.cs
+C:\Users\hanch\Desktop\SDJ3-Petbook\clientApp\obj\Debug\net5.0\Razor\Pages\SwitchProfile.razor.g.cs
