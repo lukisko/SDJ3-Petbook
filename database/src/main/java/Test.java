@@ -18,8 +18,9 @@ public class Test {
   public static void main(String[] args) {
 
     Gson gson = new Gson();
-    //MessagePersisence messagePersisence = new MessageDatabase();
-    CommunicationHandler communicationHandler = new Handler();
+    MessagePersisence messagePersisence = new MessageDatabase();
+
+    System.out.println(messagePersisence.LoadMessagesOfSender(60).get(0).getId());
 
   }
 }
