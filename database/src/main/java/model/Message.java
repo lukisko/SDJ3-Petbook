@@ -75,7 +75,7 @@ public class Message
   }
 
   public void clear(){
-    sender.clear();
-    receiver.clear();
+    if(sender != null) sender.clear();
+    if(receiver != null) receiver.clear();
   }
 }

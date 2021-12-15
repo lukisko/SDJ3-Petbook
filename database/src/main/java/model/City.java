@@ -52,11 +52,8 @@ public class City {
   }
 
   public void clear(){
-    if(pets != null)
-    {
-      pets.clear();
-    }
-    country.clear();
+    if(pets != null) pets.clear();
+    if(country != null) country.clear();
   }
 
   @Override public String toString()

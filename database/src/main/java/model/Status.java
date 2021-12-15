@@ -68,14 +68,9 @@ public class Status
   }
 
   public void clear(){
-    if(pet != null)
-    {
-      pet.clear();
-    }
-    if(user != null)
-    {
-      user.clear();
-    }
+    if(pet != null)  pet.clear();
+    if(user != null)  user.clear();
+
   }
 
   public void setStatus(Status status){

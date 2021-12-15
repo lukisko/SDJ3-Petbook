@@ -8,26 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/Test/PetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/Test/PetTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/Test/StatusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/Test/StatusTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/StatusDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/City.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Pet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/model/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/model/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessageDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessageDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/StatusDatabase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/UserDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/UserDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/City.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/Pet.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Pet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/model/Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/model/Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/test-classes/PetTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/PetTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/test-classes/StatusTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/StatusTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +172,7 @@
       <workItem from="1639384636807" duration="757000" />
       <workItem from="1639471421413" duration="129000" />
       <workItem from="1639471584884" duration="5052000" />
-      <workItem from="1639501181534" duration="1738000" />
+      <workItem from="1639501181534" duration="1803000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>

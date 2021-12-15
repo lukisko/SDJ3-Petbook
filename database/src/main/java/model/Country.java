@@ -36,7 +36,7 @@ public class Country
   }
 
   public void clear(){
-    cities.clear();
+    if(cities != null) cities.clear();
   }
 
   @Override public String toString()
