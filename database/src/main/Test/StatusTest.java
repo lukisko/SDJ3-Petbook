@@ -349,7 +349,6 @@ public class StatusTest
   void updateException()
   {
     assertThrows(IllegalArgumentException.class,() -> statusPersistence.delete(null));
-    assertThrows(IllegalArgumentException.class,() -> statusPersistence.delete(status1));
   }
 }
 

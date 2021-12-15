@@ -60,8 +60,8 @@ public class User implements Serializable
   }
 
   public void clear(){
-    pets.clear();
-    statuses.clear();
+    if(pets != null) pets.clear();
+    if(statuses != null) statuses.clear();
   }
 
   @Override public String toString()

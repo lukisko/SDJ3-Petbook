@@ -134,11 +134,11 @@ public class Pet implements Serializable
   }
 
   public void clear(){
-    statuses.clear();
-    senderMessages.clear();
-    receiverMessages.clear();
-    city.clear();
-    user.clear();
+    if(statuses != null) statuses.clear();
+    if(senderMessages != null) senderMessages.clear();
+    if(receiverMessages != null) receiverMessages.clear();
+    if(city != null) city.clear();
+    if(user != null) user.clear();
   }
 
   public void setPet(Pet pet){
