@@ -39,6 +39,11 @@ public class Country
     if(cities != null) cities.clear();
   }
 
+  public void setCities(List<City> cities)
+  {
+    this.cities = cities;
+  }
+
   @Override public String toString()
   {
     return "Country{" + "name='" + name + '\'' + ", cities=" + cities + '}';

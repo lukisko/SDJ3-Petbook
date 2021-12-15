@@ -118,6 +118,36 @@ public class Pet implements Serializable
     this.description = description;
   }
 
+  public void setType(String type)
+  {
+    this.type = type;
+  }
+
+  public void setBirthdate(String birthdate)
+  {
+    this.birthdate = birthdate;
+  }
+
+  public void setBreed(String breed)
+  {
+    this.breed = breed;
+  }
+
+  public void setReceiverMessages(List<Message> receiverMessages)
+  {
+    this.receiverMessages = receiverMessages;
+  }
+
+  public void setStatuses(List<Status> statuses)
+  {
+    this.statuses = statuses;
+  }
+
+  public void setSenderMessages(List<Message> senderMessages)
+  {
+    this.senderMessages = senderMessages;
+  }
+
   public List<Message> getReceiverMessages()
   {
     return receiverMessages;

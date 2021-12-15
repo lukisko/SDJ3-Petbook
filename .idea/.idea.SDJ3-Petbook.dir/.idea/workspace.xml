@@ -8,6 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/MessageHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessageDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessageDatabase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessagePersisence.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/MessagePersisence.class" afterDir="false" />
@@ -178,7 +179,7 @@
       <workItem from="1639471421413" duration="129000" />
       <workItem from="1639471584884" duration="5052000" />
       <workItem from="1639501181534" duration="1803000" />
-      <workItem from="1639558079684" duration="626000" />
+      <workItem from="1639558079684" duration="946000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
