@@ -7,12 +7,12 @@ namespace business_logic.Model.MessagePack
 {
     public class MessageController : IMessageManager
     {
-        private Dictionary<int,IList<Message>> dictionary;
         private ITier2Message messageTier;
+        private ITier2Pets tier2Pets;
 
-        public MessageController(ITier2Message messageTier){
+        public MessageController(ITier2Message messageTier, ITier2Pets tier2Pets){
             this.messageTier = messageTier;
-            dictionary = new Dictionary<int, IList<Message>>();
+            this.tier2Pets = tier2Pets;
         }
 
         public void sendMessage(Message message){
@@ -26,11 +26,11 @@ namespace business_logic.Model.MessagePack
 
         }
 
-        public async Task<IList<int>> getPetIdOfMessages(int receiverId){
+        public async Task<IList<Pet>> getPetIdOfMessages(int receiverId){
             IList<Message> messageList = await messageTier.getAllOfReceiverMessage(receiverId);
-            List<int> petIds = new List<int>();
+            List<Pet> petIds = new List<Pet>();
             foreach (Message mesg in messageList){
-                petIds.Add(mesg.SenderPetId);
+                petIds.Add(await tier2Pets.requestPet(mesg.SenderPetId));
             }
             return petIds;
         }

@@ -181,12 +181,7 @@ namespace business_logic.Model
             usr.pets = (await this.getPetsAsync(null,email,null,null,null,null,null,null)).ToArray();
             //check if the user own the pet that he want to claim to send the message from
             if (usr.pets.Where((Pet pet) => {return pet.id == receiverPetId;}).Count() > 0){
-                IList<int> listOfId = await messageManager.getPetIdOfMessages(receiverPetId);
-                List<Pet> petList = new List<Pet>();
-                foreach (int petId in listOfId){
-                    petList.AddRange(await this.getPetsAsync(petId,null,null,null,null,null,null,null));
-                }
-                return petList;
+                return await messageManager.getPetIdOfMessages(receiverPetId);
             } else {
                 throw new AccessViolationException("you are not owner of the pet.");
             }

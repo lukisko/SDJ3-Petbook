@@ -9,6 +9,6 @@ namespace business_logic.Model.MessagePack
     {
         void sendMessage(Message message);
         Task<IList<Message>> getMessages(int receiverId, int senderId);
-        Task<IList<int>> getPetIdOfMessages(int receiverId);
+        Task<IList<Pet>> getPetIdOfMessages(int receiverId);
     }
 }
