@@ -251,6 +251,10 @@ namespace business_logic.Model.PetPack
             foreach (Message message in messageList){
                 await tier2Message.removeMessage(message);
             }
+            IList<Message> messageList2 = await tier2Message.getAllOfSenderMessage(oldPet.id);
+            foreach (Message message in messageList2){
+                await tier2Message.removeMessage(message);
+            }
             return await tier2Pet.deletePet(oldPet);
         }
 

@@ -9,7 +9,7 @@ namespace business_logic.Model.RequestPack
         private Func<T,int> identifier;
         private Func<T,V> secondIdentifier;
 
-        public RequestManager(Func<T,int> identifier, Func<T,V> secondIdentifier){
+        public RequestManager(Func<T,int> identifier, Func<T,V> secondIdentifier){//character U\200A is special white space "hair space"
             this.identifier = identifier;
             this.secondIdentifier = secondIdentifier;
             this.dictionary = new Dictionary<int, IList<T>>();
