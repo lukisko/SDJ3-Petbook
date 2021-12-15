@@ -27,6 +27,12 @@ public interface MessagePersisence
    */
   List<Message> LoadMessagesOfReceiver( int id2);
   /**
+   * loads senders messages of specific pet
+   * @param id1 id of sender pet
+   * @return list of messages from database
+   */
+  List<Message> LoadMessagesOfSender( int id1);
+  /**
    * saves message to database
    * @param message message object to be saved
    * @return id of saved message
