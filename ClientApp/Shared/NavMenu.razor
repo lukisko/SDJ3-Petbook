@@ -37,31 +37,10 @@
 </div>
 
 <div class="z-20 inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-<div class="hidden sm:block sm:ml-6">
-    <div class=" ml-10 flex space-x-9">
-        <AuthorizeView >
-            <NotAuthorized >
-                <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
-                    <span class="sr-only">Browse Pets</span>
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                </button>
-            </NotAuthorized>
-            <Authorized >
-                @if (@petLoggedIn != null)
-                {
-                    <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateAuthPetToBrowsePets">
-                        <span class="sr-only">Browse Pets</span>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        </svg>
-                    </button>
-                }
-                else
-                {
+    <div class="hidden sm:block sm:ml-6">
+        <div class=" ml-10 flex space-x-9">
+            <AuthorizeView >
+                <NotAuthorized >
                     <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
                         <span class="sr-only">Browse Pets</span>
 
@@ -69,174 +48,179 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                         </svg>
                     </button>
-                }
-            </Authorized>
-        </AuthorizeView>
-        <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateHome">
-            <span class="sr-only">Go home</span>
-
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-            </svg>
-        </button>
-
-        <AuthorizeView >
-            <Authorized >
-                <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowLogPane">
-                    <span class="sr-only">View Messages</span>
-                    <!-- Heroicon name: outline/bell -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                    </svg>
-                </button>
-            </Authorized>
-            <NotAuthorized >
-                <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
-                    <span class="sr-only">View Messages</span>
-                    <!-- Heroicon name: outline/bell -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                    </svg>
-                </button>
-            </NotAuthorized>
-        </AuthorizeView>
-
-        <AuthorizeView >
-            <Authorized >
-                <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowNotificationPane">
-                    <span class="sr-only">View Notifications</span>
-                    <!-- Heroicon name: outline/bell -->
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                    </svg>
-                </button>
-            </Authorized>
-            <NotAuthorized >
-                <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
-                    <span class="sr-only">View Notifications</span>
-                    <!-- Heroicon name: outline/bell -->
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-                    </svg>
-                </button>
-            </NotAuthorized>
-
-
-        </AuthorizeView>
-    </div>
-</div>
-<div class="ml-8 ">
-    <AuthorizeView >
-        <Authorized >
-            <div>
-                <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
-                    <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                </button>
-            </div>
-        </Authorized>
-        <NotAuthorized >
-            <div>
-                <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
-                    <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                </button>
-            </div>
-        </NotAuthorized>
-
-    </AuthorizeView>
-
-
-    @if (ProfileWindow)
-    {
-        <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <!-- Active: "bg-gray-100", Not Active: "" -->
-
-            <ul>
-                <li>
-                    <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
-                        <label >Your Profiles</label>
-                        <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                    </a>
-
-                    @if (AccountsWindow)
+                </NotAuthorized>
+                <Authorized >
+                    @if (@petLoggedIn != null)
                     {
-                        <ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
-                            @foreach (Pet item in _allPetProfiles)
-                            {
-                                if (_allPetProfiles.Count == 0)
+                        <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateAuthPetToBrowsePets">
+                            <span class="sr-only">Browse Pets</span>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </button>
+                    }
+                    else
+                    {
+                        <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateToBrowsePets">
+                            <span class="sr-only">Browse Pets</span>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </button>
+                    }
+                </Authorized>
+            </AuthorizeView>
+            <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateHome">
+                <span class="sr-only">Go home</span>
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                </svg>
+            </button>
+
+            <AuthorizeView >
+                <Authorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowLogPane">
+                        <span class="sr-only">View Messages</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </button>
+                </Authorized>
+                <NotAuthorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full  hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
+                        <span class="sr-only">View Messages</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </button>
+                </NotAuthorized>
+            </AuthorizeView>
+
+            <AuthorizeView >
+                <Authorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowNotificationPane">
+                        <span class="sr-only">View Notifications</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                    </button>
+                </Authorized>
+                <NotAuthorized >
+                    <button type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="ShowRegister">
+                        <span class="sr-only">View Notifications</span>
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                    </button>
+                </NotAuthorized>
+
+
+            </AuthorizeView>
+        </div>
+    </div>
+    <div class="ml-8 ">
+        <AuthorizeView >
+            <Authorized >
+                <div>
+                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                    </button>
+                </div>
+            </Authorized>
+            <NotAuthorized >
+                <div>
+                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
+                        <span class="sr-only">Open user menu</span>
+                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+                    </button>
+                </div>
+            </NotAuthorized>
+
+        </AuthorizeView>
+
+
+        @if (ProfileWindow)
+        {
+            <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100", Not Active: "" -->
+
+                <ul>
+                    <li>
+                        <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
+                            <label >Your Profiles</label>
+                            <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </a>
+
+                        @if (AccountsWindow)
+                        {
+                            <ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
+                                <li class=" rounded-md  ">
+                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateSwitchProfile)">
+
+                                        <!-- icon by feathericons.com -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <label class="ml-2">Switch Profile</label>
+                                    </a>
+                                </li>
+                                @foreach (Pet item in _allPetProfiles)
                                 {
+                                    if (_allPetProfiles.Count == 0)
+                                    {
+                                        <li class=" rounded-md ">
+                                            <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
+                                                <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
+                                            </a>
+                                        </li>
+                                    }
                                     <li class=" rounded-md ">
-                                        <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
-                                            <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
+                                        <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
+                                            @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
+                                            <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
                                         </a>
                                     </li>
                                 }
-                                <li class=" rounded-md ">
-                                    <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
-                                        @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
-                                        <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
-                                    </a>
-                                </li>
-                            }
-                            <AuthorizeView >
-                                <Authorized >
-                                    <li class=" rounded-md  ">
-                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
+                            </ul>
+                        }
+                    </li>
+                    <AuthorizeView >
+                        <NotAuthorized >
+                            <li>
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LoggedInPet)">
+                                    Log In
+                                </a>
+                            </li>
 
-                                            <!-- icon by feathericons.com -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                            <label class="ml-2">Add Profile</label>
-                                        </a>
-                                    </li>
-                                </Authorized>
-                                <NotAuthorized >
-                                    <li class=" rounded-md  ">
-                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(ShowRegister)">
-                                            <!-- icon by feathericons.com -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                            </svg>
-                                            <label class="ml-2">Add Profile</label>
-                                        </a>
-                                    </li>
-                                </NotAuthorized>
+                            <li >
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
+                                    Sign Up
+                                </a>
+                            </li>
+                        </NotAuthorized>
+                        <Authorized >
+                            <li >
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LogOut)">
+                                    Log out
+                                </a>
+                            </li>
+                        </Authorized>
+                    </AuthorizeView>
 
-                            </AuthorizeView>
-                        </ul>
-                    }
-                </li>
-                <AuthorizeView >
-                    <NotAuthorized >
-                        <li>
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowSendCode)">
-                                Log In
-                            </a>
-                        </li>
-
-                        <li >
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
-                                Sign Up
-                            </a>
-                        </li>
-                    </NotAuthorized>
-                    <Authorized >
-                        <li >
-                            <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LogOut)">
-                                Log out
-                            </a>
-                        </li>
-                    </Authorized>
-                </AuthorizeView>
-
-            </ul>
-        </div>
-    }
-</div>
+                </ul>
+            </div>
+        }
+    </div>
 </div>
 </div>
 </div>
@@ -293,7 +277,7 @@
 
             <div class="flex flex-row space-x-1 hover:text-gray-300  text-white block px-3 py-2 rounded-md text-base font-medium">
                 <svg class="h-5 w-auto mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" @onclick="NavigateAddPet"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                 </svg>
                 <a class=" space-x-6" aria-current="page" @onclick="@(ShowNotificationPane)">Notifications</a>
             </div>
@@ -455,7 +439,7 @@
         NotificationPaneWindow = false;
     }
 
-    void ShowSendCode()
+    void ShowSendCod()
     {
         _modalService.Show<Login>();
     }
@@ -488,9 +472,13 @@
         SetPanesToFalse();
     }
 
-    void NavigateAddPet()
+   async Task NavigateSwitchProfile()
     {
-        NavMgr.NavigateTo("/AddPet");
+        
+       var result =  _modalService.Show<SwitchProfile>();
+        var loggedInPetId = await result.Result;
+       // may throw an error
+       petLoggedIn = await _petController.GetPetProfileAsync((int)loggedInPetId.Data);
         SetPanesToFalse();
     }
 

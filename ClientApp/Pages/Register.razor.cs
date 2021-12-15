@@ -31,9 +31,10 @@ namespace ClientApp.Pages
                  Email = _userToRegister.email;
                 _modalService.Show<Login>();
                 await ModalInstance.CloseAsync();
+                
             }
             catch (Exception e)
-            {
+            { 
                 _errorMessage = e.Message;
                 Console.WriteLine(e);
                 _userToRegister.name = "";
@@ -43,7 +44,7 @@ namespace ClientApp.Pages
 
         private async void ShowLogIn()
         {
-            _modalService.Show<SendCode>();
+            _modalService.Show<Login>();
             await ModalInstance.CloseAsync();
         }
     }

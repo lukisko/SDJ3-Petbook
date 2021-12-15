@@ -1,0 +1,35 @@
+﻿@page "/Switch_profile"
+@using ClientApp.Model
+@inject IPetController _petController
+@inject NavigationManager NavMgr
+
+<label>Choose a profile to be logged in </label>
+<ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
+    @foreach (Pet item in _toShowPetsPetProfiles)
+    {
+        if (_toShowPetsPetProfiles.Count == 0)
+        {
+            <li class=" rounded-md ">
+                <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
+                    <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
+                </a>
+            </li>
+        }
+        <li class=" rounded-md ">
+            <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ProfileLoggedInWith(@item.id))">
+                @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
+                <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
+            </a>
+        </li>
+    }
+    <label>Or</label>
+    <li class=" rounded-md  ">
+        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <label class="ml-2">Add Profile</label>
+        </a>
+    </li>
+</ul>

@@ -64,7 +64,7 @@ namespace ClientApp.Pages
             }
         }
 
-        void ShowSendCode()
+        void ShowLogin()
         {
             _modalService.Show<Register>();
         }

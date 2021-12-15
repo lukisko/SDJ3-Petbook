@@ -25,13 +25,15 @@ namespace ClientApp.Pages
         {
             try
             {
-               
+                await _userController.SendEmail(Email);
+                _errorMessage = "Code has been sent to your email ";
+                
                 await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
                    _confirmationCode);
-               Email = null;
+                Email = null;
                 _confirmationCode = null;
                 await ModalInstance.CloseAsync();
-                NavMgr.NavigateTo("/");
+                _modalService.Show<SwitchProfile>();
             }
             catch (Exception e)
             {
