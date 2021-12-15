@@ -95,7 +95,7 @@ public class MessageHandler
     try
     {
       return gson.toJson(new Comunication<List<Message>>("message", "GetAllOfSender",
-          messagePersisence.LoadMessagesOfSender(value.getReceiver().getId())));
+          messagePersisence.LoadMessagesOfSender(value.getSender().getId())));
     }
     catch (Exception e)
     {
