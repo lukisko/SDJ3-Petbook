@@ -20,7 +20,7 @@ public class Test {
     Gson gson = new Gson();
     MessagePersisence messagePersisence = new MessageDatabase();
 
-    System.out.println(messagePersisence.LoadMessagesOfSender(60).get(0).getId());
+    System.out.println(messagePersisence.LoadMessagesOfPets(72,15).get(0).getId());
 
   }
 }
