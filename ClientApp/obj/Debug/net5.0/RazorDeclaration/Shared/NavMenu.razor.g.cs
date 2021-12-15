@@ -146,7 +146,7 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 403 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 417 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -188,9 +188,6 @@ using System.Runtime.CompilerServices;
         NotificationPaneWindow = false;
     }
 
-   
-
-
     void ShowSendCode()
     {
         _modalService.Show<Login>();
@@ -230,9 +227,9 @@ using System.Runtime.CompilerServices;
         SetPanesToFalse();
     }
 
-    void LogOut()
+    async Task LogOut()
     {
-        ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
+        await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).Logout();
         SetPanesToFalse();
     }
 
@@ -265,7 +262,7 @@ using System.Runtime.CompilerServices;
         }
     }
 
-    public  void DropDownAccountsWindow()
+    public void DropDownAccountsWindow()
     {
         if (AccountsWindow)
         {
@@ -290,7 +287,8 @@ using System.Runtime.CompilerServices;
     }
 
     async Task ShowMessagePane(int messageToPetId)
-    {   await LoggedInPet();
+    {
+        await LoggedInPet();
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
@@ -322,7 +320,7 @@ using System.Runtime.CompilerServices;
     async Task ShowNotificationPane()
     {
         await LoggedInPet();
-        _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null,petLoggedIn.id);
+        _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null, petLoggedIn.id);
         if (NotificationPaneWindow)
         {
             NotificationPaneWindow = false;
