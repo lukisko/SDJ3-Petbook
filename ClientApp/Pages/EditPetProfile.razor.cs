@@ -14,25 +14,56 @@ namespace ClientApp.Pages
         private Status walking;
         private Status fostering;
         private Status adopting;
+
+        private bool isWalked;
+        private bool isFoster;
+        private bool isAdoption;
+        
         
         [Parameter] public int Id { set; get; }
 
         protected override async Task OnInitializedAsync()
         {
             petToEdit = await _petController.GetPetProfileAsync(Id);
-            
+
             walking = new Status()
             {
-                name = "walking"
+                name = ""
             };
-            fostering = new Status()
+            fostering = new Status(){
+                name = ""
+            };
+            adopting = new Status(){
+                name = ""
+            };
+            
+            isWalked = false;
+            isFoster = false;
+            isAdoption = false;
+            
+            foreach (var status in petToEdit.statuses)
             {
-                name = "fostering"
-            };
-            adopting = new Status()
-            {
-                name = "adopting"
-            };
+
+                switch (@status.name)
+                {
+                    case "walking":
+                        isWalked = true;
+                        walking = status;
+                        walking.name = "exist";
+                        break;
+                    case "fostering":
+                        isFoster = true;
+                        fostering = status;
+                        fostering.name = "exist";
+                        break;
+                    case "adopting":
+                        isAdoption = true;
+                        adopting = status;
+                        adopting.name = "exist";
+                        break;
+                }
+            }
+            
         }
 
         private async void LoadFile(InputFileChangeEventArgs e){
@@ -43,39 +74,48 @@ namespace ClientApp.Pages
 
         private async Task EditPet()
         {
+            setWalking();
+            setFostering();
+            setAdopting();
             await _petController.UpdatePetAsync(petToEdit);
             NavMgr.NavigateTo($"/PetProfile/{petToEdit.id}");
         }
-        public void setWalking(ChangeEventArgs evt)
+        public void setWalking()
         {
-            if((bool) evt.Value)
+            if(isWalked && !walking.name.Equals("exist"))
             {
+                walking.name = "walking";
                 petToEdit.statuses.Add(walking);
             }
-            else
+            else if (walking.name.Equals("exist"))
             {
+                walking.name = "walking";
                 petToEdit.statuses.Remove(walking);
             }
         }
-        public void setFostering(ChangeEventArgs evt)
+        public void setFostering()
         {
-            if((bool) evt.Value)
+            if(isFoster && !fostering.name.Equals("exist"))
             {
+                fostering.name = "fostering";
                 petToEdit.statuses.Add(fostering);
             }
-            else
+            else if (walking.name.Equals("exist"))
             {
+                fostering.name = "fostering";
                 petToEdit.statuses.Remove(fostering);
             }
         }
-        public void setAdopting(ChangeEventArgs evt)
+        public void setAdopting()
         {
-            if((bool) evt.Value)
+            if(isAdoption && !adopting.name.Equals("exist"))
             {
+                adopting.name = "adopting";
                 petToEdit.statuses.Add(adopting);
             }
-            else
+            else if (walking.name.Equals("exist"))
             {
+                adopting.name = "adopting";
                 petToEdit.statuses.Remove(adopting);
             }
         }
