@@ -50,7 +50,7 @@
                 </button>
             </NotAuthorized>
             <Authorized >
-                @if (@petLoggedIn == null)
+                @if (@petLoggedIn != null)
                 {
                     <button alt="Browse Pets" type="button" class="bg-transparent p-1 rounded-full hover:text-gray-300 text-white focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" @onclick="NavigateAuthPetToBrowsePets">
                         <span class="sr-only">Browse Pets</span>

@@ -32,11 +32,11 @@ else
         <div class="absolute sm:relative  flex-1 flex items-center">
             <div class="ml-4 flex-shrink-0  flex flex-inline border-2 border-gray-400 rounded-xl text-gray-600 ">
                 <svg class="w-auto h-5 text-gray-400 mt-2 mx-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                         viewBox="0 0 24 24">
-                        <path
-                            d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
-                        </path>
-                    </svg>
+                     viewBox="0 0 24 24">
+                    <path
+                        d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
+                    </path>
+                </svg>
                 <input @oninput="@((arg) => FilterArg(arg, "Pets"))" type="text" class="bg-transparent w-auto h-8  rounded-r-xl " placeholder="Search...">
             </div>
         </div>
@@ -48,193 +48,212 @@ else
     </div>
 
     <div class="grid grid-cols-3">
-        @foreach (var item in toShowPets)
-        {
-            <div class="py-10 h-200 w-100 bg-pink-100 flex justify-center items-center">
-                <div class="h-56 w-72 absolute flex justify-center items-center pt-12">
-                    @if (item.statuses.Count > 0)
+    @foreach (var item in toShowPets)
+    {
+        <div class="py-10 h-200 w-100 bg-pink-100 flex justify-center items-center">
+            <div class="h-56 w-72 absolute flex justify-center items-center pt-12">
+                @if (item.statuses.Count > 0)
+                {
+                    @if (File.Exists($"wwwroot/Images/{item.id}.jpg"))
                     {
-                        @if (File.Exists($"wwwroot/Images/{item.id}.jpg")){
-                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/@(item.id).jpg">
-                        } else{
-                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
-                        }
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/@(item.id).jpg">
                     }
                     else
                     {
-                        @if (File.Exists($"wwwroot/Images/{item.id}.jpg")){
-                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/@(item.id).jpg">
-                        } else {
-                            <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/dog.jpg">
-                        }
-                        
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mt-6 mx-8" src="Images/dog.jpg">
                     }
-                </div>
-                @if (item.gender.Equals('M'))
-                {
-                    <div class="h-56 mx-4 w-5/6 bg-blue-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
-                        <div>
-                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
-                                <h1 class="text-white">Profile</h1>
-                                <AuthorizeView >
-                                    <Authorized >
-                                        <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => ShowMessagePane(@item.id))">
-                                            <span class="text-sm mr-2">Message</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                            </svg>
-                                        </button>
-                                    </Authorized>
-                                    <NotAuthorized >
-                                        <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(ShowSendCode)">
-                                            <span class="text-sm mr-2">Message</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                            </svg>
-                                        </button>
-                                    </NotAuthorized>
-                                </AuthorizeView>
-
-                            </div>
-
-                            <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
-                                @foreach (Status status in item.statuses)
-                                {
-                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                                        <span class=" text-sm mr-2">@status.name</span>
-                                    </button>
-                                }
-                            </div>
-                        </div>
-
-                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
-                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Type</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
-                                </div>
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Breed</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
-                                </div>
-                            </div>
-                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                <h1 class="text-gray-700 font-bold">@item.name</h1>
-                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
-                            </div>
-                        </div>
-                    </div>
-                }
-                else if(item.gender.Equals('F'))
-                {
-                    <div class="h-56 mx-4 w-5/6 bg-pink-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
-                        <div>
-                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
-                                <h1 class="text-white">Profile</h1>
-                                <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                                    <span class="text-sm mr-2">Message</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                    </svg>
-                                </button>
-
-                            </div>
-
-                            <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
-                                @foreach (Status status in item.statuses)
-                                {
-                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                                        <span class=" text-sm mr-2">@status.name</span>
-                                    </button>
-                                }
-                            </div>
-                        </div>
-
-                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
-                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Type</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
-                                </div>
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Breed</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
-                                </div>
-                            </div>
-                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                <h1 class="text-gray-700 font-bold">@item.name</h1>
-                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
-                            </div>
-                        </div>
-                    </div>
                 }
                 else
                 {
-                    <div class="h-56 mx-4 w-5/6 bg-yellow-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
-                        <div>
-                            <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
-                                <h1 class="text-white">Profile</h1>
-                                <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                                    <span class="text-sm mr-2">Message</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                        <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                    </svg>
-                                </button>
-                                <AuthorizeView >
-                                    <Authorized >
-                                        <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => ShowMessagePane(@item.id))">
-                                            <span class="text-sm mr-2">Message</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                            </svg>
-                                        </button>
-                                    </Authorized>
-                                    <NotAuthorized >
-                                        <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(ShowSendCode)">
-                                            <span class="text-sm mr-2">Message</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                            </svg>
-                                        </button>
-                                    </NotAuthorized>
-                                </AuthorizeView>
-                            </div>
-
-                            <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
-                                @foreach (Status status in item.statuses)
-                                {
-                                    <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => SendRequest(@status.pet.id,@status.name,status.user.email))">
-                                        <span class=" text-sm mr-2">@status.name</span>
-                                    </button>
-                                }
-                            </div>
-                        </div>
-
-                        <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
-                            <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Type</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.type</h1>
-                                </div>
-                                <div class="flex flex-col justify-center items-center">
-                                    <h1 class="text-gray-500 text-xs">Breed</h1>
-                                    <h1 class="text-gray-600 text-sm">@item.breed</h1>
-                                </div>
-                            </div>
-                            <div class="w-full h-1/2 flex flex-col justify-center items-center">
-                                <h1 class="text-gray-700 font-bold">@item.name</h1>
-                                <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
-                            </div>
-                        </div>
-                    </div>
+                    @if (File.Exists($"wwwroot/Images/{item.id}.jpg"))
+                    {
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/@(item.id).jpg">
+                    }
+                    else
+                    {
+                        <img alt="Dog profile picture" class=" rounded-full w-10 h-10 mb-8 mx-8" src="Images/dog.jpg">
+                    }
                 }
             </div>
-        }
+            @if (item.gender.Equals('M'))
+            {
+                <div class="h-56 mx-4 w-5/6 bg-blue-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                    <div>
+                        <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
+                            <h1 class="text-white">Profile</h1>
+                            <AuthorizeView >
+                                <Authorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => ShowMessagePane(@item.id))">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </Authorized>
+                                <NotAuthorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(ShowSendCode)">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </NotAuthorized>
+                            </AuthorizeView>
+
+                        </div>
+
+                        <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
+                            @foreach (Status status in item.statuses)
+                            {
+                                <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                    <span class=" text-sm mr-2">@status.name</span>
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Type</h1>
+                                <h1 class="text-gray-600 text-sm">@item.type</h1>
+                            </div>
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Breed</h1>
+                                <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                            </div>
+                        </div>
+                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                            <h1 class="text-gray-700 font-bold">@item.name</h1>
+                            <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (item.gender.Equals('F'))
+            {
+                <div class="h-56 mx-4 w-5/6 bg-pink-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                    <div>
+                        <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
+                            <h1 class="text-white">Profile</h1>
+                            <AuthorizeView >
+                                <Authorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => ShowMessagePane(@item.id))">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </Authorized>
+                                <NotAuthorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(ShowSendCode)">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </NotAuthorized>
+                            </AuthorizeView>
+
+                        </div>
+
+                        <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
+                            @foreach (Status status in item.statuses)
+                            {
+                                <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                    <span class=" text-sm mr-2">@status.name</span>
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Type</h1>
+                                <h1 class="text-gray-600 text-sm">@item.type</h1>
+                            </div>
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Breed</h1>
+                                <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                            </div>
+                        </div>
+                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                            <h1 class="text-gray-700 font-bold">@item.name</h1>
+                            <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="h-56 mx-4 w-5/6 bg-yellow-400 rounded-3xl shadow-md sm:w-80 sm:mx-0">
+                    <div>
+                        <div class="h-1/2 w-full flex justify-between items-baseline px-3 py-6">
+                            <h1 class="text-white">Profile</h1>
+                            <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
+                                <span class="text-sm mr-2">Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                    <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                </svg>
+                            </button>
+                            <AuthorizeView >
+                                <Authorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => ShowMessagePane(@item.id))">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </Authorized>
+                                <NotAuthorized >
+                                    <button class="z-10 bg-white text-gray-800 font-bold rounded border-b-2 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(ShowSendCode)">
+                                        <span class="text-sm mr-2">Message</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+                                        </svg>
+                                    </button>
+                                </NotAuthorized>
+                            </AuthorizeView>
+
+                        </div>
+
+                        <div class="w-full grid gap-x-1 grid-cols-3 items-baseline px-3 pb-8">
+                            @foreach (Status status in item.statuses)
+                            {
+                                <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(() => SendRequest(@status.pet.id, @status.name, status.user.email))">
+                                    <span class=" text-sm mr-2">@status.name</span>
+                                </button>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="bg-white h-1/2 w-full rounded-3xl flex flex-col justify-around items-center">
+                        <div class="w-full h-1/2 flex justify-between items-center px-3 pt-2">
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Type</h1>
+                                <h1 class="text-gray-600 text-sm">@item.type</h1>
+                            </div>
+                            <div class="flex flex-col justify-center items-center">
+                                <h1 class="text-gray-500 text-xs">Breed</h1>
+                                <h1 class="text-gray-600 text-sm">@item.breed</h1>
+                            </div>
+                        </div>
+                        <div class="w-full h-1/2 flex flex-col justify-center items-center">
+                            <h1 class="text-gray-700 font-bold">@item.name</h1>
+                            <h1 class="text-gray-500 text-sm">@item.city.name, @item.city.country.name</h1>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
     </div>
     @if (MessagePaneWindow)
     {
         <div class=" sticky  bottom-7 left-52  w-80 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
             <div class="flex flex-row m-2">
+
                 <img class="h-8 w-8 rounded-full mr-2  mt-1" src="@_petToLoad.imageUrl" alt="Image">
                 <label class=" ml-2 flex fle mt-1">@_petToLoad.name</label>
                 <a @onclick="() => MessagePaneWindow = false">
@@ -252,17 +271,17 @@ else
                 {
                     if (@message.SenderPetId != petId)
                     {
-                        <div  class="w-full">
+                        <div class="w-full">
                             <div class=" bg-gray-300 rounded-md text-black p-2 bottom-1 ml-6 mt-2 mb-2">
                                 @message.MessageBody
                             </div>
-                            </div>
+                        </div>
                     }
                     else
                     {
                         <div class=" bg-blue-200 rounded-md text-black  mr-6 p-2 mt-2 mb-2">
-                                @message.MessageBody
-                            </div>
+                            @message.MessageBody
+                        </div>
                     }
                 }
             </div>
