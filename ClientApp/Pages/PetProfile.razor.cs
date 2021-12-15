@@ -23,25 +23,6 @@ namespace ClientApp.Pages
         {
             NavMgr.NavigateTo($"/EditPetProfile/{petId}");
         }
-
-        public void NavigateToAboutPetProfile()
-        {
-            NavMgr.NavigateTo("/AboutPetProfile");
-        }
-
-        public void NavigateToPetPosts()
-        {
-            NavMgr.NavigateTo("/AboutPetProfilePosts");
-        }
-
-        public void NavigateToPetFollowings()
-        {
-            NavMgr.NavigateTo("/PetProfileFollowings");
-        }
-
-        public void NavigateToPetGroups()
-        {
-            NavMgr.NavigateTo("/PetGroups");
-        }
+        
     }
 }

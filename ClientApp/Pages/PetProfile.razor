@@ -1,11 +1,10 @@
 ﻿@page "/PetProfile/{petId:int}"
-@using ClientApp.Model
+
 @using System.IO
-@using ClientApp.Model
-@using Microsoft.AspNetCore.Components
+
 @inject NavigationManager NavMgr
 @inject IPetController _petController
-@inject IMessageController _messageController
+
 @*profile pane container*@
 @if (pet == null)
 {

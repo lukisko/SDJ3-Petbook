@@ -122,7 +122,7 @@ namespace ClientApp.Data.Implementation
             return updatedPet;
         }
 
-        public async Task DeletePet(int petId)
+        public async Task DeletePetAsync(int petId)
         {
             HttpResponseMessage responseMessage = await client.DeleteAsync($"{StaticVariables.URL}/Pets?petId={petId}");
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)

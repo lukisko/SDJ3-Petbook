@@ -46,7 +46,7 @@ namespace ClientApp.Pages
             await _petController.UpdatePetAsync(petToEdit);
             NavMgr.NavigateTo($"/PetProfile/{petToEdit.id}");
         }
-        public void setWalking(ChangeEventArgs evt)
+        private  void setWalking(ChangeEventArgs evt)
         {
             if((bool) evt.Value)
             {
@@ -57,7 +57,7 @@ namespace ClientApp.Pages
                 petToEdit.statuses.Remove(walking);
             }
         }
-        public void setFostering(ChangeEventArgs evt)
+        private void setFostering(ChangeEventArgs evt)
         {
             if((bool) evt.Value)
             {
@@ -68,7 +68,7 @@ namespace ClientApp.Pages
                 petToEdit.statuses.Remove(fostering);
             }
         }
-        public void setAdopting(ChangeEventArgs evt)
+        private void setAdopting(ChangeEventArgs evt)
         {
             if((bool) evt.Value)
             {

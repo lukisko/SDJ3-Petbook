@@ -14,7 +14,6 @@ namespace ClientApp.Authentication
     {
         private readonly IJSRuntime jsRuntime;
         private readonly IUserController userService;
-
         private User cachedUser;
 
         public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserController userService)
@@ -65,11 +64,11 @@ namespace ClientApp.Authentication
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
         }
 
-        public void Logout()
+        public async Task Logout()
         {
             cachedUser = null;
             var user = new ClaimsPrincipal(new ClaimsIdentity());
-            jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
+           await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
             StaticVariables.AccessTokensLibrary.Remove(StaticVariables.AccessToken);
         }

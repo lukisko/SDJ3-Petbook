@@ -41,7 +41,7 @@ namespace ClientApp.Pages
         }
         
 
-        public async void ShowLogIn()
+        private async void ShowLogIn()
         {
             _modalService.Show<SendCode>();
             await ModalInstance.CloseAsync();
