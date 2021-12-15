@@ -80,6 +80,7 @@ namespace business_logic.Model.Mediator
 
         private Message fromDatabaseToMessage(MessageDatabase msgData){
             return new Message(){
+                id = msgData.id,
                 ReceiverPetId = (msgData.receiver == null)? 0:msgData.receiver.id,
                 SenderPetId = (msgData.sender == null)? 0:msgData.sender.id,
                 MessageBody = msgData.message,
@@ -89,6 +90,7 @@ namespace business_logic.Model.Mediator
 
         private MessageDatabase fromMessageToDatabase(Message msg){
             return new MessageDatabase(){
+                id = msg.id,
                 receiver = new Pet(){id = msg.ReceiverPetId},
                 sender = new Pet(){id = msg.SenderPetId},
                 message = msg.MessageBody,
