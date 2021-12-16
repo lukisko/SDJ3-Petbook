@@ -126,64 +126,59 @@
         </div>
     </div>
     <div class="ml-8 ">
-        <AuthorizeView >
-            <Authorized >
-                <div>
-                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                    </button>
-                </div>
-            </Authorized>
-            <NotAuthorized >
-                <div>
-                    <button type="button" class="max-w-xs rounded-full flex items-center text-sm" @onclick="@(ShowRegister)">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
-                    </button>
-                </div>
-            </NotAuthorized>
-
-        </AuthorizeView>
-
-
+        <div>
+            <button type="button" class="max-w-xs rounded-full flex items-center text-sm  " @onclick="@(DropDownProfileWindow)">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full" src="Images/dog.jpg" alt="Pet Profile Picture">
+            </button>
+        </div>
         @if (ProfileWindow)
         {
             <div class=" ali  origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100", Not Active: "" -->
 
                 <ul>
+                    <AuthorizeView >
+                        <Authorized >
+                            <li>
+                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(SwitchProfile)">
+                                    <label >Switch Profile</label>
+                                </a>
+                            </li>
+                        </Authorized>
+                        <NotAuthorized >
+                            <li>
+                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(ShowLogin)">
+                                    <label >Switch Profile</label>
+                                </a>
+                            </li>
+                        </NotAuthorized>
+                    </AuthorizeView>
                     <li>
-                        <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
-                            <label >Your Profiles</label>
-                            <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                            </svg>
-                        </a>
+                        <AuthorizeView >
+                            <Authorized >
+                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(DropDownAccountsWindow)">
+                                    <label >Your Profiles</label>
+                                    <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                            </Authorized>
+                            <NotAuthorized >
+                                <a class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  flex flex-row" role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(ShowLogin)">
+                                    <label >Your Profiles</label>
+                                    <svg class="h-5 w-5 text-gray-800 ml-14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                </a>
+                            </NotAuthorized>
+                        </AuthorizeView>
 
                         @if (AccountsWindow)
                         {
                             <ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
-                                <li class=" rounded-md  ">
-                                    <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateSwitchProfile)">
-
-                                        <!-- icon by feathericons.com -->
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                        </svg>
-                                        <label class="ml-2">Switch Profile</label>
-                                    </a>
-                                </li>
-                                @foreach (Pet item in _allPetProfiles)
+                                @foreach (Pet item in _toShowPetsPetProfiles)
                                 {
-                                    if (_allPetProfiles.Count == 0)
-                                    {
-                                        <li class=" rounded-md ">
-                                            <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row">
-                                                <label class="mt-1 ml-2 flex-shrink-0"> No pet profiles</label>
-                                            </a>
-                                        </li>
-                                    }
                                     <li class=" rounded-md ">
                                         <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => NavigateToPetProfile(@item.id))">
                                             @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
@@ -196,15 +191,14 @@
                     </li>
                     <AuthorizeView >
                         <NotAuthorized >
-                            <li>
-                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(LoggedInPet)">
+                            <li >
+                                <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowLogin)">
                                     Log In
                                 </a>
                             </li>
-
                             <li >
                                 <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1" id="user-menu-item-2" @onclick="@(ShowRegister)">
-                                    Sign Up
+                                    Sign up
                                 </a>
                             </li>
                         </NotAuthorized>
@@ -318,7 +312,7 @@
 
 @if (NotificationPaneWindow)
 {
-    <div class=" mr-20  absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+    <div class=" mr-96  absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
         <label class="mt-2 ml-2 flex-shrink-0 text-2xl">Notifications</label>
         <ul >
             @foreach (Request item in _toShowNotificationLog)
@@ -423,6 +417,8 @@
 
     private string _messageBody;
 
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
@@ -439,15 +435,29 @@
         NotificationPaneWindow = false;
     }
 
-    void ShowSendCod()
+    async Task ShowLogin()
     {
-        _modalService.Show<Login>();
+        var result = _modalService.Show<Login>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
+        
     }
 
 
-    void ShowRegister()
+    async Task ShowRegister()
     {
-        _modalService.Show<Register>();
+        var result = _modalService.Show<Register>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
+        
     }
 
 
@@ -459,7 +469,6 @@
 
     async Task NavigateAuthPetToBrowsePets()
     {
-        await LoggedInPet();
         Console.WriteLine("NavigateMethod" + petLoggedIn.id);
         NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
         SetPanesToFalse();
@@ -467,20 +476,10 @@
 
     async void NavigateHome()
     {
-        await LoggedInPet();
         NavMgr.NavigateTo("/");
         SetPanesToFalse();
     }
 
-   async Task NavigateSwitchProfile()
-    {
-        
-       var result =  _modalService.Show<SwitchProfile>();
-        var loggedInPetId = await result.Result;
-       // may throw an error
-       petLoggedIn = await _petController.GetPetProfileAsync((int)loggedInPetId.Data);
-        SetPanesToFalse();
-    }
 
     async Task LogOut()
     {
@@ -494,18 +493,22 @@
         SetPanesToFalse();
     }
 
-    async Task LoggedInPet()
+
+    async Task SwitchProfile()
     {
-        _allPetProfiles = await _petController.GetAllUserPetsAsync();
-        int petId = _allPetProfiles[0].id;
-        petLoggedIn = await _petController.GetPetProfileAsync(petId);
-        Console.WriteLine("LoggedinMethod" + petLoggedIn.id);
+        var result = _modalService.Show<SwitchProfile>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
     }
+
 
     public async Task DropDownProfileWindow()
     {
-        SetPanesToFalse();
-        await LoggedInPet();
+       
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -517,8 +520,8 @@
         }
     }
 
-    public void DropDownAccountsWindow()
-    {
+    public async Task DropDownAccountsWindow()
+    {_toShowPetsPetProfiles  = await _petController.GetAllUserPetsAsync();
         if (AccountsWindow)
         {
             AccountsWindow = false;
@@ -543,7 +546,6 @@
 
     async Task ShowMessagePane(int messageToPetId)
     {
-        await LoggedInPet();
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
@@ -560,7 +562,6 @@
 
     async Task ShowLogPane()
     {
-        await LoggedInPet();
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
         if (LogPaneWindow)
         {
@@ -574,7 +575,6 @@
 
     async Task ShowNotificationPane()
     {
-        await LoggedInPet();
         _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null, petLoggedIn.id);
         if (NotificationPaneWindow)
         {

@@ -3,8 +3,8 @@
 @inject IPetController _petController
 @inject NavigationManager NavMgr
 
-<label>Choose a profile to be logged in </label>
-<ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
+<label  class="mt-1 text-center text-3xl font-bold text-gray-500">Choose a pet profile to be logged in </label>
+<ul class="text-center  ">
     @foreach (Pet item in _toShowPetsPetProfiles)
     {
         if (_toShowPetsPetProfiles.Count == 0)
@@ -15,18 +15,16 @@
                 </a>
             </li>
         }
-        <li class=" rounded-md ">
-            <a class=" block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex flex-row" @onclick="@(() => ProfileLoggedInWith(@item.id))">
-                @* <img class="h-8 w-8 rounded-full" src="@item.imageUrl" alt="Pet Profile Picture"> *@
-                <label class="mt-1 ml-2 flex-shrink-0"> @item.name</label>
+        <li class="  flex flex-row justify-center mt-8 ">
+            <a class=" rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200 text-2xl" @onclick="@(() => ProfileLoggedInWith(@item.id))">
+                <label class=" "> @item.name</label>
             </a>
         </li>
     }
-    <label>Or</label>
-    <li class=" rounded-md  ">
-        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md flex flex-row " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <label class="mt-1 text-center text-xl  font-bold text-gray-500 mx-3">Or</label>
+    <li>
+        <a class="  flex flex-row justify-center  rounded-md px-4 py-2 text-gray-700 hover:bg-gray-200 text-2xl " role="menuitem" tabindex="-1" id="user-menu-item-1" @onclick="(NavigateAddPet)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             <label class="ml-2">Add Profile</label>

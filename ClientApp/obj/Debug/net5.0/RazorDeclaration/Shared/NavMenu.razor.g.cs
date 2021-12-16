@@ -13,126 +13,126 @@ namespace ClientApp.Shared
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 1 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 5 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 6 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 7 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 8 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 9 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 10 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 11 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using ClientApp.Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 12 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Blazored.Modal;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\_Imports.razor"
+#line 13 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\_Imports.razor"
 using Blazored.Modal.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 1 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
 using ClientApp.Pages;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 2 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
 using ClientApp.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 3 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
 using ClientApp.Data.Implementation;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 4 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
 using ClientApp.Authentication;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 5 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
 using System.Runtime.CompilerServices;
 
 #line default
@@ -146,7 +146,7 @@ using System.Runtime.CompilerServices;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 401 "C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
+#line 395 "C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor"
  
     private bool ProfileWindow { get; set; }
     private bool BurgerMenu { get; set; }
@@ -172,6 +172,8 @@ using System.Runtime.CompilerServices;
 
     private string _messageBody;
 
+    [CascadingParameter]
+    BlazoredModalInstance ModalInstance { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
@@ -188,15 +190,29 @@ using System.Runtime.CompilerServices;
         NotificationPaneWindow = false;
     }
 
-    void ShowSendCod()
+    async Task ShowLogin()
     {
-        _modalService.Show<Login>();
+        var result = _modalService.Show<Login>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
+        
     }
 
 
-    void ShowRegister()
+    async Task ShowRegister()
     {
-        _modalService.Show<Register>();
+        var result = _modalService.Show<Register>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
+        
     }
 
 
@@ -208,7 +224,6 @@ using System.Runtime.CompilerServices;
 
     async Task NavigateAuthPetToBrowsePets()
     {
-        await LoggedInPet();
         Console.WriteLine("NavigateMethod" + petLoggedIn.id);
         NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
         SetPanesToFalse();
@@ -216,20 +231,10 @@ using System.Runtime.CompilerServices;
 
     async void NavigateHome()
     {
-        await LoggedInPet();
         NavMgr.NavigateTo("/");
         SetPanesToFalse();
     }
 
-   async Task NavigateSwitchProfile()
-    {
-        
-       var result =  _modalService.Show<SwitchProfile>();
-        var loggedInPetId = await result.Result;
-       // may throw an error
-       petLoggedIn = await _petController.GetPetProfileAsync((int)loggedInPetId.Data);
-        SetPanesToFalse();
-    }
 
     async Task LogOut()
     {
@@ -243,18 +248,22 @@ using System.Runtime.CompilerServices;
         SetPanesToFalse();
     }
 
-    async Task LoggedInPet()
+
+    async Task SwitchProfile()
     {
-        _allPetProfiles = await _petController.GetAllUserPetsAsync();
-        int petId = _allPetProfiles[0].id;
-        petLoggedIn = await _petController.GetPetProfileAsync(petId);
-        Console.WriteLine("LoggedinMethod" + petLoggedIn.id);
+        var result = _modalService.Show<SwitchProfile>();
+        var petId = await result.Result;
+        if (petId.Data != null)
+        {
+            petLoggedIn = await _petController.GetPetProfileAsync((int) petId.Data);
+            SetPanesToFalse();
+        }
     }
+
 
     public async Task DropDownProfileWindow()
     {
-        SetPanesToFalse();
-        await LoggedInPet();
+       
         if (ProfileWindow)
         {
             ProfileWindow = false;
@@ -266,8 +275,8 @@ using System.Runtime.CompilerServices;
         }
     }
 
-    public void DropDownAccountsWindow()
-    {
+    public async Task DropDownAccountsWindow()
+    {_toShowPetsPetProfiles  = await _petController.GetAllUserPetsAsync();
         if (AccountsWindow)
         {
             AccountsWindow = false;
@@ -292,7 +301,6 @@ using System.Runtime.CompilerServices;
 
     async Task ShowMessagePane(int messageToPetId)
     {
-        await LoggedInPet();
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
@@ -309,7 +317,6 @@ using System.Runtime.CompilerServices;
 
     async Task ShowLogPane()
     {
-        await LoggedInPet();
         _toShowMessageLog = await _messageController.GetAllMessagePets(petLoggedIn.id);
         if (LogPaneWindow)
         {
@@ -323,7 +330,6 @@ using System.Runtime.CompilerServices;
 
     async Task ShowNotificationPane()
     {
-        await LoggedInPet();
         _toShowNotificationLog = await _requestController.GetAllRequestsAsync(null, petLoggedIn.id);
         if (NotificationPaneWindow)
         {

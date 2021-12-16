@@ -8,7 +8,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ClientApp/Pages/DeleteProfile.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ClientApp/Pages/DeleteProfile.razor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Authentication/CustomAuthenticationStateProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Authentication/CustomAuthenticationStateProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Data/Implementation/MessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/AddPet.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/AddPet.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Login.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/Register.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/Register.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/SwitchProfile.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/SwitchProfile.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Pages/SwitchProfile.razor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Pages/SwitchProfile.razor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.StaticWebAssets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/bin/Debug/net5.0/ClientApp.Views.pdb" afterDir="false" />
@@ -33,7 +48,6 @@
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/ClientApp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Error.cshtml.g.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Index.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/_Host.cshtml.g.cs" afterDir="false" />
@@ -90,27 +104,50 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/ITier2Mediator.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/PetProfile.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Model.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/business_logic/Model/IModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f4690e732f84ca9a1afbdcaceab37426c990/12/EventCallbackWorkItem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Country.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/_Imports.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Comunication.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Class1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/City.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/ITier2Mediator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/AuthorisedUser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/business_logic/Model/Mediator/Tier2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/AddPet.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/AddPet.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/BrowsePets.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/1B2/ExecutionContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Pages/Index.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f4690e732f84ca9a1afbdcaceab37426c990/8/ComponentBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/AddPet.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/MainLayout.razor.g.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Shared/MainLayout.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/RazorDeclaration/Shared/NavMenu.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/User.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/business_logic/Model/Model.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/obj/Debug/net5.0/Razor/App.razor.g.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Index.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/_Host.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Login.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/PetList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Status.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Pet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Entities/Request.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/BrowsePets.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bc3d7024e97f4f818de53bc3c23872b48f5790/1D4/TaskCompletionSource_T.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/EditPetProfile.razor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/EditPetProfile.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ClientApp/Pages/Register.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="21bFnuV8onUOOmlC6qYu9zWlfT9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -229,6 +266,10 @@
       <workItem from="1639501181534" duration="1803000" />
       <workItem from="1639558079684" duration="13287000" />
       <workItem from="1639587967387" duration="858000" />
+      <workItem from="1639599591267" duration="115000" />
+      <workItem from="1639599747093" duration="947000" />
+      <workItem from="1639600757859" duration="430000" />
+      <workItem from="1639601222949" duration="22122000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
@@ -508,57 +549,5 @@
     <MESSAGE value="showing of pets" />
     <MESSAGE value="editing status of pet fix" />
     <option name="LAST_COMMIT_MESSAGE" value="editing status of pet fix" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
-          <line>29</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="29" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
-          <line>30</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="30" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
-          <line>36</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="36" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
-          <line>37</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="37" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Data/Implementation/RequestController.cs</url>
-          <line>38</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Data\Implementation\RequestController.cs" initialLine="38" containingFunctionPresentation="method 'GetAllRequestsAsync'" />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor</url>
-          <line>576</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="579" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-          </properties>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor</url>
-          <line>577</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="580" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-          </properties>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

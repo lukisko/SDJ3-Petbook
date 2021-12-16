@@ -14,17 +14,25 @@ namespace ClientApp.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            
             _toShowPetsPetProfiles = new List<Pet>();
             _toShowPetsPetProfiles = await _petController.GetAllUserPetsAsync();
         }
 
         void ProfileLoggedInWith(int petId)
         {
-            ModalInstance.CloseAsync(ModalResult.Ok(petId));
+            if (petId==0)
+            {
+                ModalInstance.CloseAsync();
+            }
+            else
+            {
+                ModalInstance.CloseAsync(ModalResult.Ok(petId));
+            }
         }
-        void NavigateAddPet()
+
+        async Task NavigateAddPet()
         {
+            await ModalInstance.CloseAsync();
             NavMgr.NavigateTo("/AddPet");
         }
     }

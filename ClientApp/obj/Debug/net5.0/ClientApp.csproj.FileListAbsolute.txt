@@ -527,7 +527,6 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
-C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\Error.cshtml.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\_Host.cshtml.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.RazorAssemblyInfo.cache
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\ClientApp.RazorAssemblyInfo.cs
@@ -549,8 +548,6 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclar
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\EditPetProfile.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\bin\Debug\net5.0\Blazored.Modal.dll
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
-C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SendCode.razor.g.cs
-C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\SendCode.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\BrowsePets.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\BrowsePets.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\PetProfile.razor.g.cs
@@ -945,3 +942,7 @@ C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\
 C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Shared\MessagePane.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\clientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SwitchProfile.razor.g.cs
 C:\Users\hanch\Desktop\SDJ3-Petbook\clientApp\obj\Debug\net5.0\Razor\Pages\SwitchProfile.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\SwitchProfile.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\SwitchProfile.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\DeleteProfile.razor.g.cs
+C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\DeleteProfile.razor.g.cs

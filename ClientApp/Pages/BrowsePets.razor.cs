@@ -19,6 +19,8 @@ namespace ClientApp.Pages
         private string _messageBody;
         private int senderPetId { get; set; }
         private Pet _petToLoad;
+        private Pet _loggedInPet;
+        private DateTime filterDate;
         private string filterBy;
 
 
@@ -39,7 +41,7 @@ namespace ClientApp.Pages
             senderPetId = sendMessageToPetId;
             _toShowPetProfileMessagesWithAPet =
                 await _messageController.GetAllMessagesAsync(petId, sendMessageToPetId);
-            _petToLoad = await _petController.GetPetProfileAsync(sendMessageToPetId);
+            
             if (MessagePaneWindow)
             {
                 MessagePaneWindow = false;
@@ -56,17 +58,36 @@ namespace ClientApp.Pages
             newMessage.MessageBody = _messageBody;
             if (!_messageBody.Equals("") || _messageBody != null)
             {
-                newMessage.SenderPetId = petId;
-                newMessage.ReceiverPetId = senderPetId;
-                await _messageController.SendMessageAsync(newMessage);
-                _toShowPetProfileMessagesWithAPet.Add(newMessage);
-                _messageBody = "";
+                try
+                {
+                    newMessage.SenderPetId = petId;
+                    newMessage.ReceiverPetId = senderPetId;
+                    await _messageController.SendMessageAsync(newMessage);
+                    _toShowPetProfileMessagesWithAPet.Add(newMessage);
+                    _messageBody = "";
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
             }
         }
 
         void ShowLogin()
         {
-            _modalService.Show<Register>();
+            _modalService.Show<Login>();
+        }
+
+        async Task SwitchProfile()
+        {
+            var result = _modalService.Show<SwitchProfile>();
+            var petIdData = await result.Result;
+            if (petIdData.Data != null)
+            {
+                petId = (int)petIdData.Data;
+                _loggedInPet = await _petController.GetPetProfileAsync((int) petIdData.Data);
+            }
         }
 
         private async Task FilterBy(ChangeEventArgs eventArgs)
@@ -89,7 +110,6 @@ namespace ClientApp.Pages
         {
             switch (filterBy)
             {
-                
                 case "Name":
                     toShowPets =
                         allPets.Where(t => t.name.ToString().Contains(filterArgument)).ToList();
@@ -97,7 +117,7 @@ namespace ClientApp.Pages
 
                 case "Status":
                     toShowPets =
-                        allPets.Where(t => t.statuses.Any(s=>s.name.Contains(filterArgument))).ToList();
+                        allPets.Where(t => t.statuses.Any(s => s.name.Contains(filterArgument))).ToList();
                     break;
                 case "Type":
                     toShowPets =
@@ -112,18 +132,27 @@ namespace ClientApp.Pages
                     break;
                 case "Birthday":
                     toShowPets =
-                        allPets.Where(t => t.birthdate.ToString().Contains(filterArgument)).ToList();
+                        allPets.Where(t => t.birthdate.Equals(filterDate)).ToList();
                     break;
             }
         }
 
-        async Task SendRequest(int petIdRequest,string typeName,string email )
+
+        async Task SendRequest(int petIdRequest, string typeName, string email)
         {
-            Request request = new Request();
-            request.petId = petIdRequest;
-            request.typeName = typeName;
-            request.userEmail = email;
-            await _requestController.SendRequestAsync(request);
+            try
+            {
+                Request request = new Request();
+                request.petId = petIdRequest;
+                request.typeName = typeName;
+             //   request.userEmail = email;
+                await _requestController.SendRequestAsync(request);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }

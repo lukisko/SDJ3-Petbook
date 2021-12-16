@@ -5,6 +5,8 @@ using ClientApp.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using ClientApp.Authentication;
+using ClientApp.Model;
+
 namespace ClientApp.Pages
 {
     public partial class Login : ComponentBase
@@ -13,27 +15,51 @@ namespace ClientApp.Pages
         private string Email { get; set; }
         private string _confirmationCode;
         private string _errorMessage;
-
+        private bool sendButton { get; set; }
+        private bool logButtons { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
             _errorMessage = "";
             _confirmationCode = null;
+            sendButton = true;
+            logButtons = false;
         }
-
-        private async Task LoginUser()
+        
+        private async Task SendCode()
         {
             try
             {
                 await _userController.SendEmail(Email);
                 _errorMessage = "Code has been sent to your email ";
-                
-                await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
+                sendButton = false;
+                logButtons = true;
+            }
+            catch (Exception e)
+            {
+                _errorMessage = e.Message;
+                Console.WriteLine(e);
+            }
+        }
+        
+        private async Task LoginUser()
+        {
+            try
+            {
+               await ((CustomAuthenticationStateProvider) AuthenticationStateProvider).ValidateLogin(Email,
                    _confirmationCode);
                 Email = null;
                 _confirmationCode = null;
-                await ModalInstance.CloseAsync();
-                _modalService.Show<SwitchProfile>();
+                var result = _modalService.Show<SwitchProfile>();
+                var petId = await result.Result;
+                if (petId.Data != null)
+                {
+                    await ModalInstance.CloseAsync(petId);
+                }
+                else
+                {
+                   await ModalInstance.CloseAsync();
+                }
             }
             catch (Exception e)
             {
