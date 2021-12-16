@@ -26,11 +26,8 @@ else
                 <option class="bg-white">Type</option>
                 <option class="bg-white">Breed</option>
                 <option class="bg-white">Gender</option>
-                <option class="bg-white">Birthday</option>
-                <option  class="flex flex-inline">Birthday
-
-                    <a > <EditForm Model="@filterDate"> <InputDate type="text" name="date" placeholder="xx/xx/xxxx" @bind-Value="filterDate" onclick="this.setAttribute('type', 'date')" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"/></EditForm></a>
-                </option>
+                <EditForm Model="@filterDate"> <InputDate type="text" name="date" placeholder="xx/xx/xxxx" @bind-Value="filterDate" onclick="this.setAttribute('type', 'date')" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200">Birthday</InputDate></EditForm>
+                
             </select>
         </div>
         <div class="absolute sm:relative  flex-1 flex items-center">
@@ -127,9 +124,8 @@ else
                                     {
                                         <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="@(SwitchProfile)">
                                             <span class=" text-sm mr-2">@status.name</span>
-                                         </button>
-                                     }
-                                   
+                                        </button>
+                                    }
                                     else
                                     {
                                         <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="(() => SendRequest(status))">
@@ -311,7 +307,7 @@ else
                                     else
                                     {
                                         <button class="z-10  bg-white text-gray-800 font-bold rounded  hover:border-yellow-600 hover:bg-yellow-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center" @onclick="(() => SendRequest(status))">
-                                            <span class=" text-sm mr-2">@status.name @status.pet.id @status.user.email</span>
+                                            <span class=" text-sm mr-2">@status.name </span>
                                         </button>
                                     }
 
