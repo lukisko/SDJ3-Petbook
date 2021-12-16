@@ -31,6 +31,7 @@ namespace ClientApp.Pages
             _toShowPetProfileMessagesWithAPet = new List<Message>();
             allPets = new List<Pet>();
             toShowPets = new List<Pet>();
+            _loggedInPet = new Pet();
             _petToLoad = new Pet();
             allPets = await _petController.GetAllPetsAsync();
             toShowPets = allPets;
@@ -138,14 +139,15 @@ namespace ClientApp.Pages
         }
 
 
-        async Task SendRequest(int petIdRequest, string typeName, string email)
+        async Task SendRequest(Status status)
         {
             try
             {
+                Console.WriteLine(status.id);
                 Request request = new Request();
-                request.petId = petIdRequest;
-                request.typeName = typeName;
-             //   request.userEmail = email;
+                request.petId = status.pet.id;
+                request.typeName = status.name;
+                //request.userEmail = "jurco10510@gmail.com";
                 await _requestController.SendRequestAsync(request);
             }
             catch (Exception e)
