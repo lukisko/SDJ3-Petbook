@@ -363,7 +363,7 @@
 }
 @if (RequestsPaneWindow)
 {
-    <div class=" mr-96  absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+    <div class=" mr-72  absolute right-0 mt-2 w-auto rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
         <label class="mt-2 ml-2 flex-shrink-0 text-2xl">Requests</label>
         <ul >
             @foreach (Request item in _allUsersRequests)
@@ -579,6 +579,7 @@
         if (AccountsWindow)
         {
             AccountsWindow = false;
+            RequestsPaneWindow = false;
         }
         else
         {
@@ -591,6 +592,7 @@
         if (BurgerMenu)
         {
             BurgerMenu = false;
+            
         }
         else
         {
@@ -647,6 +649,7 @@
         _allUsersRequests = await _requestController.GetAllRequestsAsync(userEmailGuest, petLoggedIn.id);
         if (RequestsPaneWindow)
         {
+            
             RequestsPaneWindow = false;
         }
         else
