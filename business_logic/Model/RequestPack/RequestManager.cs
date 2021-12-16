@@ -70,15 +70,8 @@ namespace business_logic.Model.RequestPack
         }
         public async Task sendRequest(Request request,string token){
             string email = loginManager.getUserWithToken(token);
+            request.userEmail = email;
             
-            if (email == null){
-                return;
-            }
-            string senderId = request.userEmail;
-            //check if the user own the pet that he want to claim to send the message from
-            if (email != request.userEmail){
-                throw new AccessViolationException("you are not authorised.");
-            }
             if (dictionary.ContainsKey(identifier(request))){
                 dictionary[identifier(request)].Add(request);
             } else {
