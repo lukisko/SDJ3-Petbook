@@ -79,6 +79,7 @@ public class  PetDatabase implements PetPersistance
     Pet petToUpdate = loadPet(pet.getId());
     petToUpdate.setPet(pet);
 
+
     database.beginSession();
     database.getSession().update(petToUpdate);
     database.getSession().getTransaction().commit();

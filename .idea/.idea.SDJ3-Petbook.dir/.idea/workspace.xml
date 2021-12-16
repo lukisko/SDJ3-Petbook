@@ -7,11 +7,11 @@
     <projectFile profileName="business_logic">business_logic/business_logic.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="build">
+    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="...">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/Test/PetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/Test/PetTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/Test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/Test/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/test-classes/UserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/test-classes/UserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +174,7 @@
       <workItem from="1639471584884" duration="5052000" />
       <workItem from="1639501181534" duration="1803000" />
       <workItem from="1639558079684" duration="13287000" />
-      <workItem from="1639587967387" duration="4690000" />
+      <workItem from="1639587967387" duration="7366000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
@@ -400,7 +400,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639589108565</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="...">
+      <created>1639645469088</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1639645469088</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,7 +442,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="login_register" />
     <MESSAGE value="Message_profile added" />
     <MESSAGE value="message_profile_added" />
     <MESSAGE value="petprofile_update" />
@@ -460,7 +466,8 @@
     <MESSAGE value="showing of pets" />
     <MESSAGE value="editing status of pet fix" />
     <MESSAGE value="build" />
-    <option name="LAST_COMMIT_MESSAGE" value="build" />
+    <MESSAGE value="..." />
+    <option name="LAST_COMMIT_MESSAGE" value="..." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -497,19 +504,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor</url>
-          <line>576</line>
+          <line>577</line>
           <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="579" isMultiMethodBreakpoint="true">
             <option name="multiMethodBreakpoint" value="true" />
           </properties>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ClientApp/Shared/NavMenu.razor</url>
-          <line>577</line>
-          <properties documentPath="C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\Shared\NavMenu.razor" initialLine="580" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-          </properties>
-          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
