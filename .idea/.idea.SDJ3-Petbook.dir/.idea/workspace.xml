@@ -7,12 +7,7 @@
     <projectFile profileName="business_logic">business_logic/business_logic.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="...">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SDJ3-Petbook.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/DatabasePersistence/PetDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/database/src/main/java/mediator/comunication_handler/PetHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" beforeDir="false" afterPath="$PROJECT_DIR$/database/target/classes/DatabasePersistence/PetDatabase.class" afterDir="false" />
-    </list>
+    <list default="true" id="b07b732e-60a9-4af4-b74a-cd0f9026faf4" name="Changes" comment="adding pet with status not working" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +64,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ChangesTree.GroupingKeys" value="" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.44254446" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.44257855" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -174,7 +169,7 @@
       <workItem from="1639471584884" duration="5052000" />
       <workItem from="1639501181534" duration="1803000" />
       <workItem from="1639558079684" duration="13287000" />
-      <workItem from="1639587967387" duration="7366000" />
+      <workItem from="1639587967387" duration="11668000" />
     </task>
     <task id="LOCAL-00001" summary="[]">
       <created>1638202083374</created>
@@ -407,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639645469088</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="adding pet with status not working">
+      <created>1639652006225</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1639652006225</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +444,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Message_profile added" />
     <MESSAGE value="message_profile_added" />
     <MESSAGE value="petprofile_update" />
     <MESSAGE value="pet_profile_fixed" />
@@ -467,7 +468,8 @@
     <MESSAGE value="editing status of pet fix" />
     <MESSAGE value="build" />
     <MESSAGE value="..." />
-    <option name="LAST_COMMIT_MESSAGE" value="..." />
+    <MESSAGE value="adding pet with status not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding pet with status not working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

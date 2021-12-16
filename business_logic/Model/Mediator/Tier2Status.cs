@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Entities;
@@ -30,7 +31,11 @@ namespace business_logic.Model.Mediator
 
             return theStatus.value;
         }
-        public async Task<Status> addStatus(Status newStatus){
+        public async Task<Status> addStatus(Status newStatus)
+        {
+            newStatus.pet = newStatus.pet.copy();
+            newStatus.pet.statuses.Clear();
+            newStatus.pet.birthdate = new DateTime();
             Comunication<Status> communicationClass = new Comunication<Status>("status","Add",newStatus);
 
             Comunication<Status> theStatus = await tier2.requestServerAsync<Comunication<Status>,Comunication<Status>>(communicationClass);
