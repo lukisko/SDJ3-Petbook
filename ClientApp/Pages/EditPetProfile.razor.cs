@@ -18,10 +18,9 @@ namespace ClientApp.Pages
         private bool isWalked;
         private bool isFoster;
         private bool isAdoption;
-        
-        
-        [Parameter] public int Id { set; get; }
 
+        [Parameter] public int Id { set; get; }
+        
         protected override async Task OnInitializedAsync()
         {
             petToEdit = await _petController.GetPetProfileAsync(Id);
@@ -78,7 +77,7 @@ namespace ClientApp.Pages
             setFostering();
             setAdopting();
             await _petController.UpdatePetAsync(petToEdit);
-            NavMgr.NavigateTo($"/PetProfile/{petToEdit.id}");
+            NavMgr.NavigateTo($"/BrowsePets");
         }
         public void setWalking()
         {

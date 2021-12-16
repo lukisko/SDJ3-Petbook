@@ -14,7 +14,7 @@ namespace ClientApp.Pages
         private  async Task DeletePetProfile()
         {
             await _petController.DeletePetAsync(id);
-           await ModalInstance.CloseAsync();
+            await ModalInstance.CloseAsync();
             NavMgr.NavigateTo("/");
         }
         private  async Task Cancel()

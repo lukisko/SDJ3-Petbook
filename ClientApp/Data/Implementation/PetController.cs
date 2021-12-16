@@ -124,7 +124,8 @@ namespace ClientApp.Data.Implementation
 
         public async Task DeletePetAsync(int petId)
         {
-            HttpResponseMessage responseMessage = await client.DeleteAsync($"{StaticVariables.URL}/Pets?petId={petId}");
+            HttpResponseMessage responseMessage = await client.DeleteAsync($"{StaticVariables.URL}/Pets?petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+            
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
