@@ -197,7 +197,7 @@ namespace business_logic.Controllers
             number = 11;
             Console.WriteLine($"\nTest {number} started:");
             try{
-                await petControl.deletePetAsync(thePet,token);
+                await petControl.deletePetAsync(new Pet(){id = thePet.id},token);
                 Console.WriteLine($"Test {number} successful");
                 response+= $"test {number} succeded\n";
             } catch {

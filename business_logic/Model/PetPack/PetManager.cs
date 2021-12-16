@@ -289,11 +289,12 @@ namespace business_logic.Model.PetPack
                 throw new AccessViolationException("user is not authorised");
             }
             Pet realPet =  await tier2Pet.requestPet(oldPet.id);
+            realPet.statuses = await tier2Status.getStatusesOf(realPet);
             if (!realPet.user.email.Equals(email)){
                 throw new AccessViolationException("you do not have right to delete this pet");
             }
 
-            foreach (Status status in oldPet.statuses){
+            foreach (Status status in realPet.statuses){
                 await tier2Status.removeStatus(status);
             }
             IList<Message> messageList = await tier2Message.getAllOfReceiverMessage(oldPet.id);

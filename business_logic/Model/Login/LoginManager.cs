@@ -33,6 +33,7 @@ namespace business_logic.Model
         public bool IsCorrectCode(string email, string code){
             if (emailCodeMap.ContainsKey(email)){
                 if (emailCodeMap[email].Equals(code)){
+                    emailCodeMap.Remove(email);
                     return true;
                 }
             }

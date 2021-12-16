@@ -28,6 +28,7 @@ public class MessageDatabase implements MessagePersisence
   @Override public List<Message> LoadMessagesOfPets(int id1, int id2)
   {
     database.beginSession();
+    System.out.println("remake messageDatabase index file");
     Query query = database.getSession().createQuery("SELECT c FROM message c WHERE receiver_id = :receiver AND sender_id = :sender");
     query.setParameter("receiver",id1);
     query.setParameter("sender",id2);
