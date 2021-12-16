@@ -14,6 +14,10 @@ namespace ClientApp.Pages
         private Status fostering;
         private Status adopting;
 
+        private bool isWalked;
+        private bool isFoster;
+        private bool isAdoption;
+
         protected override async Task OnInitializedAsync()
         {
             petToAdd = new Pet()
@@ -26,6 +30,10 @@ namespace ClientApp.Pages
                 statuses = new List<Status>(),
             };
             
+            isWalked = false;
+            isFoster = false;
+            isAdoption = false;
+            
             walking = new Status()
             {
                 name = "walking"
@@ -36,46 +44,38 @@ namespace ClientApp.Pages
             };
             adopting = new Status()
             {
-                name = "adopting"
+                name = "adopting",
             };
         }
         private async Task AddNewPet()
         {
+            setWalking();
+            setFostering();
+            setAdopting();
             await _petController.AddPetAsync(petToAdd);
             NavMgr.NavigateTo("/BrowsePets");
         }
 
-        public void setWalking(ChangeEventArgs evt)
+        public void setWalking()
         {
-            if((bool) evt.Value)
+            if(isWalked)
             {
                 petToAdd.statuses.Add(walking);
             }
-            else
-            {
-                petToAdd.statuses.Remove(walking);
-            }
+            
         }
-        public void setFostering(ChangeEventArgs evt)
+        public void setFostering()
         {
-            if((bool) evt.Value)
+            if(isFoster)
             {
                 petToAdd.statuses.Add(fostering);
             }
-            else
-            {
-                petToAdd.statuses.Remove(fostering);
-            }
         }
-        public void setAdopting(ChangeEventArgs evt)
+        public void setAdopting()
         {
-            if((bool) evt.Value)
+            if(isAdoption)
             {
                 petToAdd.statuses.Add(adopting);
-            }
-            else
-            {
-                petToAdd.statuses.Remove(adopting);
             }
         }
     }
