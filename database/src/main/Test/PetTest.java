@@ -259,7 +259,7 @@ public class PetTest
     Pet after = petPersistance.loadPet(id1);
     petPersistance.delete(petPersistance.loadPet(id1));
 
-    assertEquals(after.getName(), pet1.getName());
+    assertEquals(after.getName(), "working");
   }
   @Test void updatePetMany(){
     int id1 = petPersistance.save(pet1);

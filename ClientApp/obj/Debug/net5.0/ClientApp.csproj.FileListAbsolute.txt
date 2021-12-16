@@ -946,3 +946,5 @@ C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclar
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\SwitchProfile.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\DeleteProfile.razor.g.cs
 C:\Users\nicol\RiderProjects\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\DeleteProfile.razor.g.cs
+C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\RazorDeclaration\Pages\DeleteProfile.razor.g.cs
+C:\Users\hanch\Desktop\SDJ3-Petbook\ClientApp\obj\Debug\net5.0\Razor\Pages\DeleteProfile.razor.g.cs

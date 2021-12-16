@@ -125,22 +125,26 @@ public class UserTest
 
   @Test
   void addUserZero(){
-
     User result = userPersistence.loadUser(user1.getEmail());
 
     assertNull(result);
   }
   @Test
   void addUserOne(){
+    assertNull(userPersistence.loadUser(user1.getEmail()));
+
     userPersistence.save(user1);
     User result = userPersistence.loadUser(user1.getEmail());
     userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
 
     assertNotNull(result);
-    assertEquals("test1", result.getEmail());
+    assertEquals(user1.getEmail(), result.getEmail());
   }
   @Test
   void addUserMany(){
+    assertNull(userPersistence.loadUser(user1.getEmail()));
+    assertNull(userPersistence.loadUser(user2.getEmail()));
+
     userPersistence.save(user1);
     userPersistence.save(user2);
     User result1 = userPersistence.loadUser(user1.getEmail());
@@ -150,8 +154,8 @@ public class UserTest
 
     assertNotNull(result1);
     assertNotNull(result2);
-    assertEquals("test1", result1.getEmail());
-    assertEquals("test2", result2.getEmail());
+    assertEquals(user1.getEmail(), result1.getEmail());
+    assertEquals(user2.getEmail(), result2.getEmail());
   }
   @Test
   void addUserBoundary(){
