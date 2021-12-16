@@ -283,6 +283,7 @@ using System.Runtime.CompilerServices;
         if (AccountsWindow)
         {
             AccountsWindow = false;
+            RequestsPaneWindow = false;
         }
         else
         {
@@ -295,6 +296,7 @@ using System.Runtime.CompilerServices;
         if (BurgerMenu)
         {
             BurgerMenu = false;
+            
         }
         else
         {
@@ -351,6 +353,7 @@ using System.Runtime.CompilerServices;
         _allUsersRequests = await _requestController.GetAllRequestsAsync(userEmailGuest, petLoggedIn.id);
         if (RequestsPaneWindow)
         {
+            
             RequestsPaneWindow = false;
         }
         else
