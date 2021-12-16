@@ -102,7 +102,7 @@ public class PetHandler
     try
     {
       return gson.toJson(new Comunication<Pet>("pet", "Update",
-          petPersistance.update(petPersistance.loadPet(value.getId()))));
+          petPersistance.update(value)));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
