@@ -61,8 +61,8 @@ namespace business_logic.Model.RequestPack
             IList<string> emails = userEmails;
             IList<User> returnValue = new List<User>();
                 foreach (string theEmail in emails){
-                    User theUser = await tier2User.GetUser(new AuthorisedUser(){email=email});
-                    if (theUser != null && string.IsNullOrEmpty(theUser.email)){
+                    User theUser = await tier2User.GetUser(new AuthorisedUser(){email=theEmail});
+                    if (theUser != null && !string.IsNullOrEmpty(theUser.email)){
                         returnValue.Add(theUser);
                     }
                 } 
