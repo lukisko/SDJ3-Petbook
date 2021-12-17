@@ -200,7 +200,7 @@
 
                     @if (AccountsWindow)
                     {
-                        <ul class="absolute rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
+                        <ul class="absolute w-full  rounded-md shadow-lg mt-11 ml-4 bg-white z-20  ">
                             @foreach (Pet item in _toShowPetsPetProfiles)
                             {
                                 <li class=" rounded-md ">
@@ -464,7 +464,7 @@
     private IList<Pet> _toShowMessageLog;
     private IList<Request> _allUsersRequests;
     private Pet petLoggedIn { get; set; }
-    
+
     private int petToSendMessage { get; set; }
     private Pet _petToLoad;
 
@@ -520,14 +520,14 @@
         SetPanesToFalse();
     }
 
-    async Task NavigateAuthPetToBrowsePets()
+    void NavigateAuthPetToBrowsePets()
     {
         Console.WriteLine("NavigateMethod" + petLoggedIn.id);
         NavMgr.NavigateTo($"/BrowsePets/{petLoggedIn.id}");
         SetPanesToFalse();
     }
 
-    async void NavigateHome()
+    void NavigateHome()
     {
         NavMgr.NavigateTo("/");
         SetPanesToFalse();
@@ -560,7 +560,7 @@
     }
 
 
-    public async Task DropDownProfileWindow()
+    void DropDownProfileWindow()
     {
         if (ProfileWindow)
         {
@@ -573,7 +573,7 @@
         }
     }
 
-    public async Task DropDownAccountsWindow()
+    async Task DropDownAccountsWindow()
     {
         _toShowPetsPetProfiles = await _petController.GetAllUserPetsAsync();
         if (AccountsWindow)
@@ -587,12 +587,11 @@
         }
     }
 
-    public void DropDownBurgerMenu()
+    void DropDownBurgerMenu()
     {
         if (BurgerMenu)
         {
             BurgerMenu = false;
-            
         }
         else
         {
@@ -602,6 +601,7 @@
 
     async Task ShowMessagePane(int messageToPetId)
     {
+        _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
@@ -631,8 +631,7 @@
 
     async Task ShowNotificationPane()
     {
-        
-         _toShowNotificationLog = await _requestController.GetAllReceivedRequestsAsync(petLoggedIn.id);
+        _toShowNotificationLog = await _requestController.GetAllReceivedRequestsAsync(petLoggedIn.id);
         if (NotificationPaneWindow)
         {
             NotificationPaneWindow = false;
@@ -643,13 +642,12 @@
             NotificationPaneWindow = true;
         }
     }
-    
+
     async Task ShowAllUserRequests(string userEmailGuest)
     {
         _allUsersRequests = await _requestController.GetAllRequestsAsync(userEmailGuest, petLoggedIn.id);
         if (RequestsPaneWindow)
         {
-            
             RequestsPaneWindow = false;
         }
         else

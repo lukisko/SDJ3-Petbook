@@ -305,7 +305,7 @@ using System.Runtime.CompilerServices;
     }
 
     async Task ShowMessagePane(int messageToPetId)
-    {
+    {_petToLoad = await _petController.GetPetProfileAsync(messageToPetId);
         petToSendMessage = messageToPetId;
         _toShowPetProfileMessagesWithAPet = await _messageController.GetAllMessagesAsync(petLoggedIn.id, messageToPetId);
         _petToLoad = await _petController.GetPetProfileAsync(messageToPetId);

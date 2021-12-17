@@ -25,7 +25,7 @@ namespace ClientApp.Data.Implementation
             client = new HttpClient(clientHandler);
         }
 
-        public async Task<IList<User>> GetAllReceivedRequestsAsync( int petId)
+        public async Task<IList<User>> GetAllReceivedRequestsAsync(int petId)
         {
             IList<User> pets = new List<User>();
             HttpResponseMessage responseMessage = await client.GetAsync(

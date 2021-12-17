@@ -20,11 +20,11 @@ namespace ClientApp.Pages
             pet = await _petController.GetPetProfileAsync(petId);
         }
 
-        public void NavigateToEditProfile()
+        private  void NavigateToEditProfile()
         {
             NavMgr.NavigateTo($"/EditPetProfile/{petId}");
         }
-        public void NavigateToDeleteProfile(int petIdToDelete)
+        private void NavigateToDeleteProfile(int petIdToDelete)
         {
             var parameters = new ModalParameters();
             parameters.Add(nameof(Pet.id), petIdToDelete);
