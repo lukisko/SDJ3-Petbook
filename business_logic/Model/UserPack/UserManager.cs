@@ -51,7 +51,7 @@ namespace business_logic.Model.UserPack
             //Console.WriteLine("something is here");
             if (! await this.emailExist(user.email)){
                 AuthorisedUser usr = await this.CreateUser(authUsr);
-                await this.sendCode(user.email);
+                //await this.sendCode(user.email);
                 Console.WriteLine("efter creating user");
                 return usr;
             }
