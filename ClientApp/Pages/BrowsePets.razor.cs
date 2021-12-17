@@ -42,7 +42,7 @@ namespace ClientApp.Pages
             senderPetId = sendMessageToPetId;
             _toShowPetProfileMessagesWithAPet =
                 await _messageController.GetAllMessagesAsync(petId, sendMessageToPetId);
-            
+            _petToLoad = await _petController.GetPetProfileAsync(sendMessageToPetId);
             if (MessagePaneWindow)
             {
                 MessagePaneWindow = false;
@@ -88,6 +88,7 @@ namespace ClientApp.Pages
             {
                 petId = (int)petIdData.Data;
                 _loggedInPet = await _petController.GetPetProfileAsync((int) petIdData.Data);
+                _petToLoad = _loggedInPet;
             }
         }
 
@@ -147,7 +148,6 @@ namespace ClientApp.Pages
                 Request request = new Request();
                 request.petId = status.pet.id;
                 request.typeName = status.name;
-                //request.userEmail = "jurco10510@gmail.com";
                 await _requestController.SendRequestAsync(request);
             }
             catch (Exception e)

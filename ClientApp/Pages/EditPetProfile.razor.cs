@@ -79,7 +79,7 @@ namespace ClientApp.Pages
             await _petController.UpdatePetAsync(petToEdit);
             NavMgr.NavigateTo($"/BrowsePets");
         }
-        public void setWalking()
+        private void setWalking()
         {
             if(isWalked && !walking.name.Equals("exist"))
             {
@@ -92,7 +92,7 @@ namespace ClientApp.Pages
                 petToEdit.statuses.Remove(walking);
             }
         }
-        public void setFostering()
+        private void setFostering()
         {
             if(isFoster && !fostering.name.Equals("exist"))
             {
@@ -105,7 +105,7 @@ namespace ClientApp.Pages
                 petToEdit.statuses.Remove(fostering);
             }
         }
-        public void setAdopting()
+        private void setAdopting()
         {
             if(isAdoption && !adopting.name.Equals("exist"))
             {
