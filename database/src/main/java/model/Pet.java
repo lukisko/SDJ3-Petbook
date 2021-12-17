@@ -34,16 +34,25 @@ public class Pet implements Serializable
   @ManyToOne
   @JoinColumn(name="city_name", nullable = false)
   private City city;
+  @OneToMany(mappedBy = "receiver")
+  private List<Message> receiverMessages;
+  @OneToMany(mappedBy = "sender")
+  private List<Message> senderMessages;
 
 
 
   public Pet(){
     statuses = new ArrayList<>();
+    receiverMessages = new ArrayList<>();
+    senderMessages = new ArrayList<>();
   }
-  public Pet(String name, City city){
+  public Pet(String name, City city, User user){
     this.name = name;
     this.city = city;
+    this.user = user;
     statuses = new ArrayList<>();
+    receiverMessages = new ArrayList<>();
+    senderMessages = new ArrayList<>();
   }
 
   public int getId()
@@ -109,6 +118,59 @@ public class Pet implements Serializable
     this.description = description;
   }
 
+  public void setType(String type)
+  {
+    this.type = type;
+  }
+
+  public void setBirthdate(String birthdate)
+  {
+    this.birthdate = birthdate;
+  }
+
+  public void setBreed(String breed)
+  {
+    this.breed = breed;
+  }
+
+  public void setReceiverMessages(List<Message> receiverMessages)
+  {
+    this.receiverMessages = receiverMessages;
+  }
+
+  public void setStatuses(List<Status> statuses)
+  {
+    this.statuses = statuses;
+  }
+
+  public void setSenderMessages(List<Message> senderMessages)
+  {
+    this.senderMessages = senderMessages;
+  }
+
+  public List<Message> getReceiverMessages()
+  {
+    return receiverMessages;
+  }
+
+  public List<Message> getSenderMessages()
+  {
+    return senderMessages;
+  }
+
+  public void setGender(char gender)
+  {
+    this.gender = gender;
+  }
+
+  public void clear(){
+    if(statuses != null) statuses.clear();
+    if(senderMessages != null) senderMessages.clear();
+    if(receiverMessages != null) receiverMessages.clear();
+    if(city != null) city.clear();
+    if(user != null) user.clear();
+  }
+
   public void setPet(Pet pet){
     this.name = pet.getName();
     this.city = pet.getCity();
@@ -117,6 +179,8 @@ public class Pet implements Serializable
     this.breed = pet.getBreed();
     this.gender = pet.getGender();
     this.statuses = pet.getStatuses();
+    this.receiverMessages = pet.getReceiverMessages();
+    this.senderMessages = pet.getSenderMessages();
   }
 
   public List<Status> getStatuses()

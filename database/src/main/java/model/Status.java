@@ -19,6 +19,15 @@ public class Status
   @JoinColumn(name="user_email")
   private User user;
 
+  public Status(){
+
+  }
+  public Status(String name, User user, Pet pet){
+    this.name = name;
+    this.user = user;
+    this.pet = pet;
+  }
+
   public void setId(int id)
   {
     this.id = id;
@@ -56,6 +65,12 @@ public class Status
   public String getName()
   {
     return name;
+  }
+
+  public void clear(){
+    if(pet != null)  pet.clear();
+    if(user != null)  user.clear();
+
   }
 
   public void setStatus(Status status){

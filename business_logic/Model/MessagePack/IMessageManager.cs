@@ -1,13 +1,14 @@
 using business_logic.Model.PetPack;
 using System.Collections.Generic;
 using Entities;
+using System.Threading.Tasks;
 
 namespace business_logic.Model.MessagePack
 {
     public interface IMessageManager
     {
         void sendMessage(Message message);
-        IList<Message> getMessages(int receiverId, int senderId);
-        IList<int> getPetIdOfMessages(int receiverId);
+        Task<IList<Message>> getMessages(int receiverId, int senderId);
+        Task<IList<Pet>> getPetIdOfMessages(int receiverId);
     }
 }

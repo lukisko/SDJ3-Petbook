@@ -1,3 +1,4 @@
+import DatabasePersistence.*;
 import model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,110 +10,289 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PetTest
 {
-  private Model model;
-  private User user;
-  private Country country;
-  private City city;
-  private Pet pet;
+  private PetPersistance petPersistance;
+  private CityPersistence cityPersistence;
+  private UserPersistence userPersistence;
   private Pet pet1;
   private Pet pet2;
+  private User user;
 
   @BeforeEach void setUp()
   {
-    model = new ModelManager();
-    user = new User("test");
-    country = new Country("test");
-    city = new City("test");
-    city.setCountry(country);
-    pet = new Pet("test",city);
-    pet.setUser(user);
-    pet1 = new Pet("test1",city);
-    pet1.setUser(user);
-    pet2 = new Pet("test2",city);
-    pet2.setUser(user);
-
-    model.addUser(user);
-    model.addCountry(country);
-    model.addCity(city);
-    model.addPet(pet);
-  }
-  @AfterEach
-  void setDown(){
-    model.removePet(model.getPet(getId(0)));
-    model.removeCity(model.getCity(city.getName()));
-    model.removeCountry(model.getCountry(country.getName()));
-    model.removeUser(model.getUser(user.getEmail()));
+    petPersistance = new PetDatabase();
+    cityPersistence = new CityDatabase();
+    userPersistence = new UserDatabase();
+    user = userPersistence.loadUser("asd");
+    pet1 = new Pet("test1",cityPersistence.loadCity("asd"), user);
+    pet1.setGender('M');
+    pet2 = new Pet("test2",cityPersistence.loadCity("asd"), user);
+    pet2.setGender('F');
   }
 
-  @Test void getPet()
+
+  @Test void getPetZero()
   {
-    Pet result = model.getPet(getId(0));
+    Pet result = petPersistance.loadPet(3);
+
+    assertNull(result);
+  }
+  @Test void getPetOne()
+  {
+    int id = petPersistance.save(pet1);
+    Pet result = petPersistance.loadPet(id);
+    petPersistance.delete(result);
 
     assertNotNull(result);
-    assertEquals("test", result.getName());
+    assertEquals(result.getName(),pet1.getName());
+  }
+  @Test void getPetMany()
+  {
+    int id1 = petPersistance.save(pet1);
+    int id2 = petPersistance.save(pet2);
+    Pet result1 = petPersistance.loadPet(id1);
+    Pet result2 = petPersistance.loadPet(id2);
+    petPersistance.delete(result1);
+    petPersistance.delete(result2);
+
+    assertNotNull(result1);
+    assertNotNull(result2);
+    assertEquals(result1.getName(),pet1.getName());
+    assertEquals(result2.getName(),pet2.getName());
+  }
+  @Test void getPetBoundary()
+  {
 
   }
-  @Test void addPet()
+  @Test void getPetException()
   {
-    model.addPet(pet1);
-    Pet result = model.getPet(getId(1));
-    model.removePet(model.getPet(getId(1)));
+
+  }
+
+
+
+  @Test void addPetZero()
+  {
+    Pet result = petPersistance.loadPet(3);
+
+    assertNull(result);
+  }
+  @Test void addPetOne()
+  {
+    int id = petPersistance.save(pet1);
+    Pet result = petPersistance.loadPet(id);
+    petPersistance.delete(result);
 
     assertNotNull(result);
-    assertEquals("test1", result.getName());
+    assertEquals(result.getName(),pet1.getName());
   }
-  @Test void removePet()
+  @Test void addPetMany()
   {
-    int id = getId(0);
+    int id1 = petPersistance.save(pet1);
+    int id2 = petPersistance.save(pet2);
+    Pet result1 = petPersistance.loadPet(id1);
+    Pet result2 = petPersistance.loadPet(id2);
+    petPersistance.delete(result1);
+    petPersistance.delete(result2);
 
-    assertNotNull(model.getPet(id));
-
-    model.removePet(model.getPet(getId(0)));
-
-    assertNull(model.getPet(id));
-
-    model.addPet(pet);
+    assertNotNull(result1);
+    assertNotNull(result2);
+    assertEquals(result1.getName(),pet1.getName());
+    assertEquals(result2.getName(),pet2.getName());
   }
-  @Test void getAllPets()
+  @Test void addPetBoundary()
   {
 
-    model.addPet(pet1);
-    model.addPet(pet2);
-    List<Pet> result = model.getAllPets();
-    model.removePet(model.getPet(getId(2)));
-    model.removePet(model.getPet(getId(1)));
+  }
+  @Test void addPetException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.save(null));
+  }
+
+
+  @Test void removePetZero()
+  {
+    int id = petPersistance.save(pet1);
+    Pet result = petPersistance.loadPet(id);
 
     assertNotNull(result);
-    assertTrue(2 < (long) result.size());
-    assertEquals(getId(0), result.get(0).getId());
 
+    petPersistance.delete(result);
 
+    assertNull(petPersistance.loadPet(id));
   }
-  @Test void getAllPetsOfUser()
+  @Test void removePetOne()
   {
-    model.addPet(pet1);
-    model.addPet(pet2);
-    List<Pet> result = model.getPetList(user.getEmail());
-    model.removePet(model.getPet(getId(2)));
-    model.removePet(model.getPet(getId(1)));
+    int id = petPersistance.save(pet1);
+    Pet result = petPersistance.loadPet(id);
 
     assertNotNull(result);
-    assertTrue(2 < (long) result.size());
-    assertEquals(user.getEmail(), result.get(1).getUser().getEmail());
 
+    petPersistance.delete(result);
+
+    assertNull(petPersistance.loadPet(id));
   }
-
-
-
-
-
-
-
-
-
-  private int getId(int position)
+  @Test void removePetMany()
   {
-    List<Pet> pets = model.getPetList(user.getEmail());
-    return pets.get(position).getId();
+    int id1 = petPersistance.save(pet1);
+    int id2 = petPersistance.save(pet2);
+    Pet result1 = petPersistance.loadPet(id1);
+    Pet result2 = petPersistance.loadPet(id2);
+
+    assertNotNull(result1);
+    assertNotNull(result2);
+    assertEquals(result1.getName(),pet1.getName());
+
+    petPersistance.delete(result1);
+    petPersistance.delete(result2);
+
+    assertNull(petPersistance.loadPet(id1));
+    assertNull(petPersistance.loadPet(id2));
   }
+  @Test void removePetBoundary()
+  {
+
+  }
+  @Test void removePetException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.delete(null));
+  }
+
+
+
+  @Test void getAllPetsZero()
+  {
+    List<Pet> result = petPersistance.loadAll();
+    result.removeIf(x -> !x.getName().equals(pet1.getName()) && !x.getName()
+        .equals(pet2.getName()));
+    assertEquals(result.size(), 0);
+  }
+  @Test void getAllPetsOne()
+  {
+    int id1 = petPersistance.save(pet1);
+    List<Pet> result = petPersistance.loadAll();
+    result.removeIf(x -> !x.getName().equals(pet1.getName()) && !x.getName()
+        .equals(pet2.getName()));
+    petPersistance.delete(petPersistance.loadPet(id1));
+    assertEquals(result.size(), 1);
+  }
+  @Test void getAllPetsMany()
+  {
+    int id1 = petPersistance.save(pet1);
+    int id2 = petPersistance.save(pet2);
+    List<Pet> result = petPersistance.loadAll();
+    result.removeIf(x -> !x.getName().equals(pet1.getName()) && !x.getName()
+        .equals(pet2.getName()));
+    petPersistance.delete(petPersistance.loadPet(id1));
+    petPersistance.delete(petPersistance.loadPet(id2));
+    assertEquals(result.size(), 2);
+  }
+  @Test void getAllPetsBoundary()
+  {
+
+  }
+  @Test void getAllPetsException()
+  {
+
+  }
+
+
+  @Test void getAllPetsOfUserZero()
+  {
+    List<Pet> result = petPersistance.loadListOfUser(user.getEmail());
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
+    assertEquals(0,result.size());
+  }
+  @Test void getAllPetsOfUserOne()
+  {
+    int id1 = petPersistance.save(pet1);
+    List<Pet> result = petPersistance.loadListOfUser(user.getEmail());
+    petPersistance.delete(petPersistance.loadPet(id1));
+
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
+    assertEquals(1,result.size());
+    assertEquals(user.getEmail(),result.get(0).getUser().getEmail());
+  }
+  @Test void getAllPetsOfUserMany()
+  {
+    int id1 = petPersistance.save(pet1);
+    int id2 = petPersistance.save(pet2);
+    List<Pet> result = petPersistance.loadListOfUser(user.getEmail());
+    petPersistance.delete(petPersistance.loadPet(id1));
+    petPersistance.delete(petPersistance.loadPet(id2));
+
+    result.removeIf(
+        pet -> !pet.getName().equals(pet1.getName()) && !pet.getName()
+            .equals(pet2.getName()));
+    assertEquals(2,result.size());
+    assertEquals(user.getEmail(),result.get(0).getUser().getEmail());
+    assertEquals(user.getEmail(),result.get(1).getUser().getEmail());
+  }
+  @Test void getAllPetsOfUserBoundary()
+  {
+
+  }
+  @Test void getAllPetsOfUserException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.delete(null));
+  }
+
+
+
+
+  @Test void updatePetZero(){
+
+  }
+
+  @Test void updatePetOne(){
+    int id1 = petPersistance.save(pet1);
+
+    Pet before = petPersistance.loadPet(id1);
+
+    assertEquals(before.getName(), "test1");
+
+    pet1.setName("working");
+    petPersistance.update(pet1);
+    Pet after = petPersistance.loadPet(id1);
+    petPersistance.delete(petPersistance.loadPet(id1));
+
+    assertEquals(after.getName(), "working");
+  }
+  @Test void updatePetMany(){
+    int id1 = petPersistance.save(pet1);
+    Pet before1 = petPersistance.loadPet(id1);
+    int id2 = petPersistance.save(pet2);
+    Pet before2 = petPersistance.loadPet(id2);
+
+    assertEquals(before1.getName(), "test1");
+    assertEquals(before2.getName(), "test2");
+
+    pet1 = petPersistance.loadPet(id1);
+    pet1.setName("working");
+    petPersistance.update(pet1);
+    pet2 = petPersistance.loadPet(id2);
+    pet2.setName("working");
+    petPersistance.update(pet2);
+    Pet after1 = petPersistance.loadPet(id1);
+    Pet after2 = petPersistance.loadPet(id2);
+    petPersistance.delete(petPersistance.loadPet(id1));
+    petPersistance.delete(petPersistance.loadPet(id2));
+
+    assertEquals(after1.getName(), pet1.getName());
+    assertEquals(after2.getName(), pet2.getName());
+  }
+  @Test void updatePetBoundary(){
+
+  }
+  @Test void updatePetException(){
+    assertThrows(IllegalArgumentException.class,() -> petPersistance.update(null));
+  }
+
+
+
+
+
 }

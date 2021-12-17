@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Blazored.Modal;
 using ClientApp.Model;
 using Microsoft.AspNetCore.Components;
 
@@ -19,29 +20,16 @@ namespace ClientApp.Pages
             pet = await _petController.GetPetProfileAsync(petId);
         }
 
-        public void NavigateToEditProfile()
+        private  void NavigateToEditProfile()
         {
             NavMgr.NavigateTo($"/EditPetProfile/{petId}");
         }
-
-        public void NavigateToAboutPetProfile()
+        private void NavigateToDeleteProfile(int petIdToDelete)
         {
-            NavMgr.NavigateTo("/AboutPetProfile");
+            var parameters = new ModalParameters();
+            parameters.Add(nameof(Pet.id), petIdToDelete);
+            _modalService.Show<DeleteProfile>("Delete profile",parameters);
         }
-
-        public void NavigateToPetPosts()
-        {
-            NavMgr.NavigateTo("/AboutPetProfilePosts");
-        }
-
-        public void NavigateToPetFollowings()
-        {
-            NavMgr.NavigateTo("/PetProfileFollowings");
-        }
-
-        public void NavigateToPetGroups()
-        {
-            NavMgr.NavigateTo("/PetGroups");
-        }
+        
     }
 }

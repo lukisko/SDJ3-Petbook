@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using business_logic.Model;
+using business_logic.Model.RequestPack;
 using Entities;
 
 namespace business_logic.Controllers
@@ -15,7 +16,7 @@ namespace business_logic.Controllers
     {
         private IRequestControl model;
 
-        public RequestController(IModel model){
+        public RequestController(IRequestControl model){
             this.model = model;
         }
 

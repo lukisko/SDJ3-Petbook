@@ -20,24 +20,13 @@ public class  PetDatabase implements PetPersistance
 
   @Override public Pet loadPet(int id)
   {
-    try {
-      database.beginSession();
-      Pet pet = database.getSession().get(Pet.class,id);
-      if(pet != null)
-      {
-        pet.getUser().getPets().clear();
-        pet.getUser().getStatuses().clear();
-        pet.getCity().getPets().clear();
-        pet.getCity().getCountry().getCities().clear();
-        pet.getStatuses().clear();
-      }
-      return pet;
+    database.beginSession();
+    Pet pet = database.getSession().get(Pet.class,id);
+    if(pet != null)
+    {
+      pet.clear();
     }
-    catch (Exception e){
-      System.out.println("PetDatabase_Exception: " + e.getMessage());
-      e.printStackTrace();
-      return null;
-    }
+    return pet;
   }
 
   @Override public List<Pet> loadAll()
@@ -48,32 +37,26 @@ public class  PetDatabase implements PetPersistance
     List<Pet> data = database.getSession().createQuery(criteria).getResultList();
     if(data != null)
     {
-      data.forEach((pet) -> pet.getUser().getPets().clear());
-      data.forEach((pet) -> pet.getUser().getStatuses().clear());
-      data.forEach((pet) -> pet.getCity().getPets().clear());
-      data.forEach((pet) -> pet.getCity().getCountry().getCities().clear());
-      data.forEach((pet) -> pet.getStatuses().clear());
+      data.forEach(Pet::clear);
     }
     return data;
   }
 
-  @Override public List<Pet> LoadListOfUser(String email) {
+  @Override public List<Pet> loadListOfUser(String email) {
+    if(email == null) throw new IllegalArgumentException();
     database.beginSession();
     Query query = database.getSession().createQuery("SELECT c FROM pet c WHERE user_email = :emailValue");
     query.setParameter("emailValue",email);
     List<Pet> petList = query.getResultList();
     if(petList != null){
-      petList.forEach(pet -> pet.getStatuses().clear());
-      petList.forEach(pet -> pet.getUser().getPets().clear());
-      petList.forEach(pet -> pet.getUser().getStatuses().clear());
-      petList.forEach(pet -> pet.getCity().getCountry().getCities().clear());
-      petList.forEach((pet) -> pet.getCity().getPets().clear());
+      petList.forEach(Pet::clear);
     }
     return petList;
   }
 
   @Override public int save(Pet pet)
   {
+    if(pet == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().save(pet);
     database.getSession().getTransaction().commit();
@@ -83,6 +66,7 @@ public class  PetDatabase implements PetPersistance
 
   @Override public void delete(Pet pet)
   {
+    if(pet == null) throw new IllegalArgumentException();
     database.beginSession();
     database.getSession().delete(pet);
     database.getSession().getTransaction().commit();
@@ -90,10 +74,16 @@ public class  PetDatabase implements PetPersistance
   }
   @Override public Pet update(Pet pet)
   {
+    if(pet == null) throw new IllegalArgumentException();
+
+    Pet petToUpdate = loadPet(pet.getId());
+    petToUpdate.setPet(pet);
+
+
     database.beginSession();
-    database.getSession().update(pet);
+    database.getSession().update(petToUpdate);
     database.getSession().getTransaction().commit();
     database.getSession().close();
-    return pet;
+    return loadPet(pet.getId());
   }
 }

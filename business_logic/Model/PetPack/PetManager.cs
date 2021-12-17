@@ -3,57 +3,219 @@ using business_logic.Model.UserPack;
 using System.Collections.Generic;
 using business_logic.Model.Mediator;
 using Entities;
+using System.Linq;
 using System;
+using business_logic.Model.Login;
+using business_logic.Controllers;
 
 namespace business_logic.Model.PetPack
 {
-    public class PetManager : IPetManager
+    public class PetManager : IPetControl
     {
-        private ITier2Mediator tier2Mediator;
+        private ITier2Pets tier2Pet;
+        private ITier2City tier2City;
+        private ITier2Country tier2Country;
+        private ITier2Status tier2Status;
+        private ITier2User tier2User;
+        private ITier2Message tier2Message;
+        private ILoginManager loginManager;
 
-        public PetManager(ITier2Mediator mediator){
-            this.tier2Mediator = mediator;
+        public PetManager(ITier2Pets mediator, ITier2City tier2City, ITier2Country tier2Country,
+        ITier2Status tier2Status,ITier2User tier2User, ITier2Message tier2Message, ILoginManager loginManager){
+            this.tier2Pet = mediator; // change name if this
+            this.tier2City = tier2City;
+            this.tier2Country = tier2Country;
+            this.tier2Status = tier2Status;
+            this.tier2User = tier2User;
+            this.tier2Message = tier2Message;
+            this.loginManager = loginManager;
+        }
+
+        public async Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
+        string type, string breed, char? gender, DateTime? birthday, string name){
+            IList<Pet> petList = null; // if no filtering has take place have it as null
+            Func<Pet,bool> petFilter = new Func<Pet,bool>((Pet pet)=>{return true;});
+
+            if (id != null){
+                Pet thePet = await this.requestPet((int)id);
+                return new List<Pet>(){thePet};
+            }
+            
+
+            if (!String.IsNullOrEmpty(userEmail)){ // filter be email
+                if (petList == null){
+                    AuthorisedUser authUsr = await tier2User.GetUser( new AuthorisedUser(){
+                        email = userEmail,
+                        pets= new Pet[0]
+                    });
+
+                    if (authUsr != null && !String.IsNullOrEmpty(authUsr.email)){
+                        petList =  await this.requestPets(authUsr);
+                    } else {
+                        petList = new List<Pet>();
+                    }
+                } else {
+                    petList = petList.Where((pet)=> {
+                        if (pet.user == null) return false;
+                        return pet.user.email.Equals(userEmail);
+                    }).ToList();
+                }
+            }
+
+            if (!String.IsNullOrEmpty(status)){ //filter by status
+                if (petList == null){
+                    petList = await this.getPetsByStatus(status);
+                } else {
+                    petList = petList.Where((pet)=>{
+                        if (pet.statuses == null) return false;
+                        foreach(Status statusIn in pet.statuses){
+                            if (statusIn == null) continue;
+                            if (statusIn.name == status) return true;
+                        }
+                        return false;
+                    }).ToList();
+                }
+            }
+
+            if (petList == null){
+                petList = (await this.requestPets()).pets;/////////////////////////
+            }
+
+            if (!String.IsNullOrEmpty(type)){
+                petList = petList.Where((pet)=>{
+                    if (pet.type == null) return false;
+                    return pet.type.Equals(type);
+                }).ToList();
+                /*petFilter = new Func<Pet, bool>((petInside)=>{
+                    return petFilter(petInside) && petInside.type == type;
+                });*/ 
+            }
+
+            if (!String.IsNullOrEmpty(name)){
+                petList = petList.Where(pet =>{
+                    if (pet.name == null) return false;
+                    return pet.name.Equals(name);
+                }).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(breed)){ // filter by breed
+                petList = petList.Where((pet) =>{
+                    if (pet.breed == null) return false;
+                    return pet.breed.Equals(breed);
+                }).ToList();
+            }
+
+            if (gender != null && ((int) gender) != 0){
+                petList = petList.Where(pet =>{
+                    return pet.gender == gender;
+                }).ToList();
+            }
+
+            if (birthday!= null && !birthday.Equals(new DateTime())){
+                petList = petList.Where(pet =>{
+                    if (pet.birthdate == null) return false;
+                    return pet.birthdate.Equals(birthday);
+                }).ToList();
+            }
+
+            return petList;
         }
         public async Task<PetList> requestPets(){
-            return await tier2Mediator.requestPets();
+            PetList list = await tier2Pet.requestPets();
+            Console.WriteLine("have got all pets");
+            foreach (Pet pet in list.pets){
+                Console.WriteLine("getting status of pets");
+                pet.statuses = await tier2Status.getStatusesOf(pet);
+            }
+            return list;
         }
         public async Task<Pet> requestPet(int id){
-            return await tier2Mediator.requestPet(id);
+            Pet pet = await tier2Pet.requestPet(id);
+            pet.statuses = await tier2Status.getStatusesOf(pet);
+            return pet;
         }
         public async Task<IList<Pet>> requestPets(AuthorisedUser user){
-            return await tier2Mediator.requestPets(user);
+            IList<Pet> petList =  await tier2Pet.GetByUserEmail(user);
+            foreach (Pet tmpPet in petList){
+                tmpPet.statuses = await tier2Status.getStatusesOf(tmpPet);
+            }
+            return petList;
         }
 
         public async Task<IList<Pet>> getPetsByStatus(string status){
-            return await tier2Mediator.requestPetsByStatus(status);
+            IList<Status> rightStatuses = await tier2Status.requestStatusByName(status);
+            List<Pet> returnPets = new List<Pet>();
+            foreach (Status tmpStatus in rightStatuses){
+                Pet tmpPet = tmpStatus.pet;
+                tmpPet.statuses = new List<Status>(){tmpStatus.copy()};
+                returnPets.Add(tmpStatus.pet);
+            }
+            return returnPets;
         }
-        public async Task<Pet> createPet(Pet newPet){//TODO check if the user, city and country exist
-            Country theCountry = await tier2Mediator.GetCountry(newPet.city.country);
+        public async Task<Pet> createPetAsync(Pet newPet,string token){//TODO check if the user, city and country exist
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            newPet.user = new Entities.User(){
+                email = email,
+                name = (await tier2User.GetUser(new AuthorisedUser(){email = email})).name
+            };
+
+            Country theCountry = await tier2Country.getCountry(newPet.city.country);
             if (theCountry == null){
-                theCountry = await tier2Mediator.AddCountry(newPet.city.country);
+                theCountry = await tier2Country.addCountry(newPet.city.country);
             }
             
             City city = newPet.city;
             city.country = theCountry;
 
-            City theCity = await tier2Mediator.GetCity(city);
+            City theCity = await tier2City.getCity(city);
             if (theCity == null){
-                theCity = await tier2Mediator.AddCity(city);
+                theCity = await tier2City.addCity(city);
             }
 
             if (newPet.statuses != null){
                 foreach (Status status in newPet.statuses){
                     status.pet = newPet.copy();
-                    await tier2Mediator.addStatus(status);
+                    await tier2Status.addStatus(status);
                 }
             }
 
             newPet.city = theCity;
-            Pet pet = await tier2Mediator.createPet(newPet);
+            Pet pet = await tier2Pet.createPet(newPet);
+
+            if (newPet.statuses.Count > 0)
+            {
+                foreach (var status in pet.statuses)
+                {
+                    pet.statuses.Add(status);
+                }
+                await updatePetAsync(newPet, token);
+            }
             return pet;
         }
-        public async Task<Pet> updatePet(Pet newPet){
-            Pet oldPet = await tier2Mediator.requestPet(newPet.id);//you can not change id of pet
+        public async Task<Pet> updatePetAsync(Pet newPet, string token){
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
+            }
+            Pet databasePet = await tier2Pet.requestPet(newPet.id);
+            if (databasePet == null){
+                throw new AccessViolationException("pet with that id do not exist");
+            }
+            if (databasePet.user.email != email){
+                throw new AccessViolationException("just owner of pet can modify it.");
+            }
+            newPet.user.email = (newPet.user == null && newPet.user.email == null)?email:newPet.user.email;
+            newPet.user.name = (await tier2User.GetUser(new AuthorisedUser(){email = newPet.user.email})).name;
+            foreach (Status status in newPet.statuses){
+                status.pet = newPet.copy();
+                status.pet.statuses = new List<Status>();
+            };
+
+            Pet oldPet = await tier2Pet.requestPet(newPet.id);//you can not change id of pet
+            oldPet.statuses = await tier2Status.getStatusesOf(oldPet);
             if (oldPet == null){
                 return null;
             }
@@ -69,9 +231,9 @@ namespace business_logic.Model.PetPack
             foreach (Status newStatus in orderedNewStatus){
                 newStatus.pet.id = newPet.id;
                 if (notCheckedIndex>=oldLength){
-                    await tier2Mediator.addStatus(newStatus);
+                    await tier2Status.addStatus(newStatus);
                 } else if (newStatus.id<orderedOldStatus[notCheckedIndex].id){
-                    await tier2Mediator.addStatus(newStatus);
+                    await tier2Status.addStatus(newStatus);
                 } else if (newStatus.id == orderedOldStatus[notCheckedIndex].id){
                     //if the first value is not null and second value is not equal - update
                     //if the first one is null and the second one is not null - update
@@ -83,49 +245,67 @@ namespace business_logic.Model.PetPack
                             (newStatus.user == null ^ orderedOldStatus[notCheckedIndex].user == null) ||
                             !(newStatus.user.email.Equals(orderedOldStatus[notCheckedIndex].user.email))
                         ) ){
-                        Status theStatus = await tier2Mediator.getStatus(newStatus);
-                        User theUser = await tier2Mediator.GetUser(new AuthorisedUser(){email = newStatus.user.email});
+                        Status theStatus = await tier2Status.getStatus(newStatus);
+                        User theUser = await tier2User.GetUser(new AuthorisedUser(){email = newStatus.user.email});
                         theStatus.user = theUser;
-                        await tier2Mediator.updateStatus(theStatus);
+                        await tier2Status.updateStatus(theStatus);
                     }
                     notCheckedIndex++;
                 } else {
-                    await tier2Mediator.removeStatus(orderedOldStatus[notCheckedIndex]);
+                    await tier2Status.removeStatus(orderedOldStatus[notCheckedIndex]);
                     notCheckedIndex++;
                 }
             }
 
             while (notCheckedIndex < orderedOldStatus.Count){
-                await tier2Mediator.removeStatus(orderedOldStatus[notCheckedIndex]);
+                await tier2Status.removeStatus(orderedOldStatus[notCheckedIndex]);
                 notCheckedIndex++;
             }
 
             if (newPet.city.country.name != oldPet.city.country.name){//if the pet is in new country or city, we need to check it
-                Country newCountry = await tier2Mediator.GetCountry(newPet.city.country);
+                Country newCountry = await tier2Country.getCountry(newPet.city.country);
                 if (newCountry == null){
-                    newCountry = await tier2Mediator.AddCountry(newPet.city.country);
+                    newCountry = await tier2Country.addCountry(newPet.city.country);
                 }
                 //check if the city needs to be added
                 newPet.city.country = newCountry;
-                City newCity = await tier2Mediator.GetCity(newPet.city);
+                City newCity = await tier2City.getCity(newPet.city);
                 if (newCity == null){
-                    newCity = await tier2Mediator.AddCity(newPet.city);
+                    newCity = await tier2City.addCity(newPet.city);
                 }
                 newPet.city = newCity;
             } else if (newPet.city.name != oldPet.city.name){
-                City newCity = await tier2Mediator.GetCity(newPet.city);
+                City newCity = await tier2City.getCity(newPet.city);
                 if (newCity == null){
-                    newCity = await tier2Mediator.AddCity(newPet.city);
+                    newCity = await tier2City.addCity(newPet.city);
                 }
                 newPet.city = newCity;
             }
-            return await tier2Mediator.updatePet(newPet);
+            return await tier2Pet.updatePet(newPet);
         }
-        public async Task<Pet> deletePet(Pet oldPet){
-            foreach (Status status in oldPet.statuses){
-                await tier2Mediator.removeStatus(status);
+        public async Task<Pet> deletePetAsync(Pet oldPet,string token){
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                throw new AccessViolationException("user is not authorised");
             }
-            return await tier2Mediator.deletePet(oldPet);
+            Pet realPet =  await tier2Pet.requestPet(oldPet.id);
+            realPet.statuses = await tier2Status.getStatusesOf(realPet);
+            if (!realPet.user.email.Equals(email)){
+                throw new AccessViolationException("you do not have right to delete this pet");
+            }
+
+            foreach (Status status in realPet.statuses){
+                await tier2Status.removeStatus(status);
+            }
+            IList<Message> messageList = await tier2Message.getAllOfReceiverMessage(oldPet.id);
+            foreach (Message message in messageList){
+                await tier2Message.removeMessage(message);
+            }
+            IList<Message> messageList2 = await tier2Message.getAllOfSenderMessage(oldPet.id);
+            foreach (Message message in messageList2){
+                await tier2Message.removeMessage(message);
+            }
+            return await tier2Pet.deletePet(oldPet);
         }
 
         private List<Status> orderStatusesByIdLowToHigh(List<Status> list){

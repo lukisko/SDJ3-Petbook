@@ -8,11 +8,6 @@ namespace  ClientApp.Pages
    public partial class Index :ComponentBase {
     
        
-
-       protected override async Task OnInitializedAsync()
-       {
-         
-       }
        private void NavigateToPetList()
        {
            NavMgr.NavigateTo($"/BrowsePets");

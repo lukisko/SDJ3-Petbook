@@ -14,7 +14,7 @@ namespace business_logic.Controllers
     public class MessageController : ControllerBase
     {
         private IMessageControl model;
-        public MessageController(IModel model)
+        public MessageController(IMessageControl model)
         {
             this.model = model;
         }

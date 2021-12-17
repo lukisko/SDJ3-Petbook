@@ -1,11 +1,12 @@
 using System;
 using System.Net.Mail;
+using business_logic.Controllers;
 
 namespace business_logic.Model
 {
     public class EmailHandler : IEmailHandler
     {
-        public void sendEmail(string EmailAddress, string title, string content){
+        private static void sendEmail(string EmailAddress, string title, string content){
             Console.WriteLine("in sendEmail final method");
             MailMessage mail = new MailMessage();
             SmtpClient mailClient = new SmtpClient("smtp.mail.com");
@@ -30,7 +31,7 @@ namespace business_logic.Model
             });
         }
         public void sendLoginLink(string EmailAddress, string LoginCode){
-            this.sendEmail(EmailAddress,"login code","Hello, here you have your login code: "+LoginCode);
+            EmailHandler.sendEmail(EmailAddress,"login code","Hello, here you have your login code: "+LoginCode);
         }
     }
 }

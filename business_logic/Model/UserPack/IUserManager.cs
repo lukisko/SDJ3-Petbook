@@ -25,9 +25,5 @@ namespace business_logic.Model.UserPack
         /// <param name="user">Authorised user class that should be added to database</param>
         /// <returns>created class of the authorised user</returns>
         Task<AuthorisedUser> CreateUser(AuthorisedUser user);
-        string MakeUserCode(string email);
-        bool IsCorrectCode(string email, string code);
-        string MakeUserToken(string email);
-        string getUserWithToken(string token);
     }
 }

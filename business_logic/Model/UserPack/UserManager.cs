@@ -3,24 +3,66 @@ using System.Threading.Tasks;
 using business_logic.Model.Mediator;
 using System;
 using Entities;
+using Microsoft.AspNetCore.Components;
+using business_logic.Controllers;
+using business_logic.Model.Login;
+
 
 namespace business_logic.Model.UserPack
 {
-    public class UserManager : IUserManager
+    public class UserManager : IUserControl,IUserManager//, IAuthorisedUserControl
     {
         private ITier2User tier2Mediator;
+        private ILoginManager loginManager;
         private Dictionary<string,AuthorisedUser> emailUserMap;
-        private Dictionary<string,string> emailCodeMap;
-        private Dictionary<string,string> tokenEmailMap;
 
-        private Random random;
-
-        public UserManager(ITier2User mediator){
-            this.tier2Mediator = mediator;
+        public UserManager(ITier2User tier2User,ILoginManager loginManager){
+            this.tier2Mediator = tier2User;
+            this.loginManager = loginManager;
             emailUserMap = new Dictionary<string, AuthorisedUser>();
-            random = new Random(1538);
-            emailCodeMap = new Dictionary<string, string>();
-            tokenEmailMap = new Dictionary<string, string>();
+        }
+
+        public async Task<bool> sendCode(string email){
+            if (! await this.emailExist(email)){
+                return false;
+            }
+            loginManager.MakeUserCode(email);
+            
+            return true;
+        }
+
+        /*public async Task<Entities.AuthorisedUser> GetAuthorisedUser(string token){
+            string email = loginManager.getUserWithToken(token);
+            if (email == null){
+                return null;
+            }
+            AuthorisedUser user = await this.GetUser(email);
+            user.pets = (await this.getPetsAsync(null,user.email,null,null,null,null,null,null)).ToArray();
+            return user;
+        }*/
+
+        public async Task<Entities.AuthorisedUser> register(Entities.User user){
+            //change this
+            AuthorisedUser authUsr = new AuthorisedUser(){
+                email = user.email,
+                name = user.name,
+                pets = new Pet[0]
+            };
+            //Console.WriteLine("something is here");
+            if (! await this.emailExist(user.email)){
+                AuthorisedUser usr = await this.CreateUser(authUsr);
+                //await this.sendCode(user.email);
+                Console.WriteLine("efter creating user");
+                return usr;
+            }
+            throw new Exception("email already exist.");
+        }
+
+        public async Task<string> login(string email, string code){
+            if (loginManager.IsCorrectCode(email,code)){
+                return loginManager.MakeUserToken(email);
+            }
+            return "";
         }
 
         public async Task<bool> emailExist(string email){
@@ -49,46 +91,6 @@ namespace business_logic.Model.UserPack
         public async Task<AuthorisedUser> CreateUser(AuthorisedUser user){
             AuthorisedUser usr = await tier2Mediator.MakeUser(user);
             return usr;
-        }
-
-        public string MakeUserCode(string email){
-            string code = this.createRandomCode(7);
-            emailCodeMap[email] = code;
-            return code;
-        }
-
-        public bool IsCorrectCode(string email, string code){
-            if (emailCodeMap.ContainsKey(email)){
-                if (emailCodeMap[email].Equals(code)){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public string MakeUserToken(string email){
-            string token = "";
-            do {
-                token = this.createRandomCode(25);
-            }while (tokenEmailMap.ContainsKey(token));
-            tokenEmailMap[token] = email;
-            return token;
-        }
-
-        public string getUserWithToken(string token){
-            if (!tokenEmailMap.ContainsKey(token)){
-                return null;
-            }
-            return tokenEmailMap[token];
-        }
-
-        private string createRandomCode(int codeLength){
-            string code = "";
-            for (int i = 0; i< codeLength;i++){
-                char ch =(char)random.Next(65,90+1);
-                code += ch.ToString();
-            }
-            return code;
         }
     }
 }

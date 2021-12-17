@@ -21,9 +21,9 @@ public class T2Handler implements Runnable
   private Gson gson;
   private CommunicationHandler handler;
 
-  public T2Handler(Socket socket, Model model) throws IOException
+  public T2Handler(Socket socket) throws IOException
   {
-    handler = new Handler(model);
+    handler = new Handler();
     is = socket.getInputStream();
     os = socket.getOutputStream();
     this.running = true;
@@ -75,6 +75,11 @@ public class T2Handler implements Runnable
                 .fromJson(new Gson().toJson(request.getValue()), Status.class);
             stringToSend = handler.typeStatus(request.getMethod(), status);
             break;
+          case "message":
+            Message message = new Gson()
+                .fromJson(new Gson().toJson(request.getValue()), Message.class);
+            stringToSend = handler.typeMessage(request.getMethod(), message);
+            break;
         }
 
         System.out.println("Response: " + stringToSend);
@@ -85,6 +90,7 @@ public class T2Handler implements Runnable
       catch (Exception e)
       {
         e.printStackTrace();
+        return;
       }
     }
 

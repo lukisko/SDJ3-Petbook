@@ -29,11 +29,12 @@ namespace ClientApp.Pages
             {
                  await _userController.Register(_userToRegister);
                  Email = _userToRegister.email;
-                _modalService.Show<Login>();
-                await ModalInstance.CloseAsync();
+                
+                 //pass the email
+                 _modalService.Show<Login>();
             }
             catch (Exception e)
-            {
+            { 
                 _errorMessage = e.Message;
                 Console.WriteLine(e);
                 _userToRegister.name = "";
@@ -41,10 +42,20 @@ namespace ClientApp.Pages
         }
         
 
-        public async void ShowLogIn()
+        private async  Task  ShowLogIn()
         {
-            _modalService.Show<SendCode>();
-            await ModalInstance.CloseAsync();
+           
+            var result = _modalService.Show<Login>();
+            var petId = await result.Result;
+            if (petId.Data != null)
+            {
+                await ModalInstance.CloseAsync(petId);
+            }
+            else
+            {
+                await ModalInstance.CloseAsync();
+            }
+            
         }
     }
 }

@@ -1,3 +1,4 @@
+import DatabasePersistence.*;
 import model.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,106 +10,345 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class StatusTest
 {
-  private Model model;
-  private User user;
-  private Country country;
-  private City city;
-  private Pet pet;
-  private Status status;
+  private StatusPersistence statusPersistence;
+  private UserPersistence userPersistence;
+  private PetPersistance petPersistance;
+
+  private Status status1;
   private Status status2;
-  private int petId;
-  private int statusId;
-  private int statusId2;
+  private User user;
+  private Pet pet;
 
   @BeforeEach void setUp()
   {
-    model = new ModelManager();
-    country = new Country("test");
-    city = new City("test");
-    city.setCountry(country);
-    user = new User("test");
-    pet = new Pet("test", city);
-    pet.setUser(user);
-    status = new Status();
-    status.setPet(pet);
-    status.setName("test");
-    status.setUser(user);
-    status2 = new Status();
-    status2.setPet(pet);
-
-    model.addUser(user);
-    model.addCountry(country);
-    model.addCity(city);
-    petId = model.addPet(pet);
-    statusId = model.addStatus(status);
+    statusPersistence = new StatusDatabase();
+    userPersistence = new UserDatabase();
+    petPersistance = new PetDatabase();
+    user = userPersistence.loadUser("asd");
+    pet = petPersistance.loadPet(10000);
+    status1 = new Status("test1",user,pet);
+    status2 = new Status("test2",user,pet);
   }
 
-  @AfterEach void setDown()
+  @Test void getStatusZero()
   {
-    model.removeStatus(model.getStatus(statusId));
-    model.removePet(model.getPet(petId));
-    model.removeCity(model.getCity(city.getName()));
-    model.removeCountry(model.getCountry(country.getName()));
-    model.removeUser(model.getUser(user.getEmail()));
-  }
+    Status result = statusPersistence.loadStatus(1);
 
-  @Test void getStatus()
+    assertNull(result);
+  }
+  @Test void getStatusOne()
   {
-    Status result = model.getStatus(statusId);
+    int id = statusPersistence.save(status1);
+    Status result = statusPersistence.loadStatus(id);
+    statusPersistence.delete(statusPersistence.loadStatus(id));
 
     assertNotNull(result);
-    assertEquals("test", result.getName());
+    assertEquals(status1.getName(),result.getName());
   }
-
-  @Test
-  void loadStatusOfPet()
+  @Test void getStatusMany()
   {
-    System.out.println("STATUS2 :   " + status2);
-    statusId2 = model.addStatus(status2);
-    List<Status> result = model.getStatusList(petId);
-    model.removeStatus(model.getStatus(statusId2));
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status2);
+    Status result1 = statusPersistence.loadStatus(id1);
+    Status result2 = statusPersistence.loadStatus(id2);
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
 
-    assertNotNull(result);
-    assertTrue(1 < result.size());
-    assertEquals("test", result.get(0).getPet().getName());
-    assertEquals("test", result.get(1).getPet().getName());
+    assertNotNull(result1);
+    assertEquals(status1.getName(),result1.getName());
+    assertNotNull(result2);
+    assertEquals(status2.getName(),result2.getName());
   }
-
-  @Test
-  void getAllStatuses()
-  {
-    statusId2 = model.addStatus(status2);
-    List<Status> result = model.getStatusList(petId);
-    model.removeStatus(model.getStatus(statusId2));
-
-    assertNotNull(result);
-    assertTrue(1 < result.size());
-  }
-
-  @Test
-  void addStatus()
+  @Test void getStatusBoundary()
   {
 
-    List<Status> result = model.getStatusList(petId);
-    statusId2 = model.addStatus(status2);
+  }
+  @Test void getStatusException()
+  {
 
-    assertTrue(model.getAllStatuses().size() > result.size());
-
-    model.removeStatus(model.getStatus(statusId2));
-
-
-    assertTrue(0 < result.size());
   }
 
-  @Test
-  void removeStatus()
-  {
-    statusId2 = model.addStatus(status2);
-    List<Status> result = model.getStatusList(petId);
-    model.removeStatus(model.getStatus(statusId2));
 
-    assertTrue(model.getAllStatuses().size() < result.size());
-    assertNull(model.getStatus(statusId2));
+
+
+  @Test
+  void loadStatusOfPetZero()
+  {
+    List<Status> result = statusPersistence.loadStatusOfPet(10000);
+
+    assertEquals(0,result.size());
+  }
+  @Test
+  void loadStatusOfPetOne()
+  {
+    int id1 = statusPersistence.save(status1);
+    List<Status> result = statusPersistence.loadStatusOfPet(status1.getPet().getId());
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+
+    assertEquals(1,result.size());
+    assertEquals(status1.getName(), result.get(0).getName());
+  }
+  @Test
+  void loadStatusOfPetMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status2);
+    List<Status> result = statusPersistence.loadStatusOfPet(status1.getPet().getId());
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
+
+    assertEquals(2,result.size());
+    assertEquals(status1.getName(), result.get(0).getName());
+    assertEquals(status2.getName(), result.get(1).getName());
+  }
+  @Test
+  void loadStatusOfPetBoundary()
+  {
+
+  }
+  @Test
+  void loadStatusOfPetException()
+  {
+
+  }
+
+
+
+  @Test
+  void getAllStatusesZero()
+  {
+    List<Status> result = statusPersistence.loadAll();
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(0,result.size());
+  }
+  @Test
+  void getAllStatusesOne()
+  {
+    int id1 = statusPersistence.save(status1);
+    List<Status> result = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(1,result.size());
+  }
+  @Test
+  void getAllStatusesMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status2);
+    List<Status> result = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(2,result.size());
+  }
+  @Test
+  void getAllStatusesBoundary()
+  {
+
+  }
+  @Test
+  void getAllStatusesException()
+  {
+
+  }
+
+
+
+
+  @Test
+  void getAllOfZero()
+  {
+    List<Status> result = statusPersistence.getAllOf("test1");
+
+    assertEquals(0, result.size());
+  }
+  @Test
+  void getAllOfOne()
+  {
+    int id1 = statusPersistence.save(status1);
+    List<Status> result = statusPersistence.getAllOf("test1");
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+
+    assertEquals(1, result.size());
+    assertEquals(status1.getName(), result.get(0).getName());
+  }
+  @Test
+  void getAllOfMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status1);
+    List<Status> result = statusPersistence.getAllOf("test1");
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
+
+    assertEquals(2, result.size());
+    assertEquals(status1.getName(), result.get(0).getName());
+    assertEquals(status1.getName(), result.get(1).getName());
+  }
+  @Test
+  void getAllOfBoundary()
+  {
+
+  }
+  @Test
+  void getAllOfException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> statusPersistence.getAllOf(null));
+  }
+
+
+  @Test
+  void addStatusZero()
+  {
+    List<Status> result = statusPersistence.loadAll();
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(0,result.size());
+  }
+  @Test
+  void addStatusOne()
+  {
+    int id1 = statusPersistence.save(status1);
+    List<Status> result = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(1,result.size());
+  }
+  @Test
+  void addStatusMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status2);
+    List<Status> result = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
+    result.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(2,result.size());
+  }
+  @Test
+  void addStatusBoundary()
+  {
+
+  }
+  @Test
+  void addStatusException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> statusPersistence.save(null));
+  }
+
+
+
+
+  @Test
+  void removeStatusZero()
+  {
+
+  }
+  @Test
+  void removeStatusOne()
+  {
+    int id1 = statusPersistence.save(status1);
+    List<Status> before = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    List<Status> after = statusPersistence.loadAll();
+    before.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    after.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(1,before.size());
+    assertEquals(0,after.size());
+  }
+  @Test
+  void removeStatusMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status1);
+    List<Status> before = statusPersistence.loadAll();
+    statusPersistence.delete(statusPersistence.loadStatus(id1));
+    statusPersistence.delete(statusPersistence.loadStatus(id2));
+    List<Status> after = statusPersistence.loadAll();
+    before.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    after.removeIf(
+        country -> !country.getName().equals(status1.getName()) && !country.getName()
+            .equals(status2.getName()));
+    assertEquals(2,before.size());
+    assertEquals(0,after.size());
+  }
+  @Test
+  void removeStatusBoundary()
+  {
+
+  }
+  @Test
+  void removeStatusException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> statusPersistence.delete(null));
+    assertThrows(IllegalArgumentException.class,() -> statusPersistence.delete(status1));
+  }
+
+
+
+  @Test
+  void updateZero()
+  {
+
+  }
+  @Test
+  void updateOne()
+  {
+    int id = statusPersistence.save(status1);
+    assertEquals(status1.getName(),statusPersistence.loadStatus(id).getName());
+    status1 = statusPersistence.loadStatus(id);
+    status1.setName(status2.getName());
+    statusPersistence.update(status1);
+    Status result = statusPersistence.loadStatus(id);
+    statusPersistence.delete(result);
+    assertEquals(status2.getName(),result.getName());
+  }
+  @Test
+  void updateMany()
+  {
+    int id1 = statusPersistence.save(status1);
+    int id2 = statusPersistence.save(status2);
+    assertEquals(status1.getName(),statusPersistence.loadStatus(id1).getName());
+    assertEquals(status2.getName(),statusPersistence.loadStatus(id2).getName());
+    status1 = statusPersistence.loadStatus(id1);
+    status1.setName(status2.getName());
+    statusPersistence.update(status1);
+    status2 = statusPersistence.loadStatus(id2);
+    status2.setName(status1.getName());
+    statusPersistence.update(status2);
+    Status result1 = statusPersistence.loadStatus(id1);
+    statusPersistence.delete(result1);
+    Status result2 = statusPersistence.loadStatus(id2);
+    statusPersistence.delete(result2);
+    assertEquals(status2.getName(),result1.getName());
+    assertEquals(status1.getName(),result2.getName());
+  }
+  @Test
+  void updateBoundary()
+  {
+
+  }
+  @Test
+  void updateException()
+  {
+    assertThrows(IllegalArgumentException.class,() -> statusPersistence.delete(null));
   }
 }
 

@@ -14,7 +14,6 @@ namespace ClientApp.Authentication
     {
         private readonly IJSRuntime jsRuntime;
         private readonly IUserController userService;
-
         private User cachedUser;
 
         public CustomAuthenticationStateProvider(IJSRuntime jsRuntime, IUserController userService)
@@ -43,15 +42,16 @@ namespace ClientApp.Authentication
             return await Task.FromResult(new AuthenticationState(cachedClaimsPrincipal));
         }
 
-        public async Task ValidateLogin(string email, string code)
-        {
+        public async Task<User> ValidateLogin(string email, string code)
+        { 
             if (string.IsNullOrEmpty(email)) throw new Exception("Enter mail");
             if (string.IsNullOrEmpty(code)) throw new Exception("Enter code");
 
             ClaimsIdentity identity = new ClaimsIdentity();
+            User user = new User();
             try
             {
-                User user = await userService.Login(email, code);
+                 user = await userService.Login(email, code);
                 identity = SetupClaimsForUser(user);
                 string serialisedData = JsonSerializer.Serialize(user);
                 await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", serialisedData);
@@ -63,13 +63,14 @@ namespace ClientApp.Authentication
             }
 
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(new ClaimsPrincipal(identity))));
+            return user;
         }
 
-        public void Logout()
+        public async Task Logout()
         {
             cachedUser = null;
             var user = new ClaimsPrincipal(new ClaimsIdentity());
-            jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
+           await jsRuntime.InvokeVoidAsync("sessionStorage.setItem", "currentUser", "");
             NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
             StaticVariables.AccessTokensLibrary.Remove(StaticVariables.AccessToken);
         }

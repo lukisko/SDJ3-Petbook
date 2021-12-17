@@ -85,11 +85,7 @@ namespace ClientApp.Data.Implementation
             HttpResponseMessage responseMessage = await client.GetAsync(
                 $"{StaticVariables.URL}/Pets?id={petId}");
             Console.WriteLine("Pet controller" + petId);
-            // if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
-            // {
-            //     throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
-            // }
-
+            
             string reply = await responseMessage.Content.ReadAsStringAsync();
             IList<Pet> pet = JsonSerializer.Deserialize<IList<Pet>>(reply);
             //Throwing an exception if list is empty
@@ -114,17 +110,15 @@ namespace ClientApp.Data.Implementation
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);
             }
-            
-            
-
             string reply = await responseMessage.Content.ReadAsStringAsync();
             Pet updatedPet = JsonConvert.DeserializeObject<Pet>(reply);
             return updatedPet;
         }
 
-        public async Task DeletePet(int petId)
+        public async Task DeletePetAsync(int petId)
         {
-            HttpResponseMessage responseMessage = await client.DeleteAsync($"{StaticVariables.URL}/Pets?petId={petId}");
+            HttpResponseMessage responseMessage = await client.DeleteAsync($"{StaticVariables.URL}/Pets?petId={petId}&token={StaticVariables.AccessTokensLibrary[StaticVariables.AccessToken]}");
+            
             if (responseMessage.StatusCode == HttpStatusCode.InternalServerError)
             {
                 throw new Exception(responseMessage.Content.ReadAsStringAsync().Result);

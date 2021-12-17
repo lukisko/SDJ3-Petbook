@@ -1,22 +1,25 @@
 package mediator.comunication_handler;
 
+import DatabasePersistence.UserDatabase;
+import DatabasePersistence.UserPersistence;
 import com.google.gson.Gson;
 import mediator.Comunication;
-import model.Model;
-import model.Pet;
 import model.User;
 
 import java.util.List;
 
 public class UserHandler
 {
-  private Model model;
+
   private Gson gson;
   private String response;
+  private UserPersistence userPersistence;
 
-  public UserHandler(Model model){
+
+  public UserHandler(){
     gson = new Gson();
-    this.model = model;
+    response = "";
+    this.userPersistence = new UserDatabase();
   }
   private void findMethod(String method, User value){
     switch (method)
@@ -27,15 +30,9 @@ public class UserHandler
       case "GetAll":
         response = getAll();
         break;
-      case "GetAllOf":
-        response = getAllOf(value);
-        break;
       case "Add":
         response = add(value);
         break;
-//      case "Remove":
-//        response = remove(value);
-//        break;
     }
   }
 
@@ -43,7 +40,7 @@ public class UserHandler
     try
     {
       return gson.toJson(new Comunication<User>("user", "Get",
-          model.getUser(value.getEmail())));
+          userPersistence.loadUser(value.getEmail())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -53,18 +50,7 @@ public class UserHandler
   private String getAll(){
     try
     {
-      return gson.toJson(new Comunication<List<User>>("user", "GetAll", model.getAllUsers()));
-    }
-    catch (Exception e){
-      System.out.println(e.getMessage());
-      return e.getMessage();
-    }
-  }
-  private String getAllOf(User value){
-    try
-    {
-      return gson.toJson(new Comunication<List<Pet>>("pet", "GetAllOf",
-          model.getPetList(value.getEmail())));
+      return gson.toJson(new Comunication<List<User>>("user", "GetAll", userPersistence.loadAll()));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
@@ -74,18 +60,15 @@ public class UserHandler
   private String add(User value){
     try
     {
-      model.addUser(value);
+      userPersistence.save(value);
       return gson.toJson(new Comunication<User>("user", "Add",
-          model.getUser(value.getEmail())));
+          userPersistence.loadUser(value.getEmail())));
     }
     catch (Exception e){
       System.out.println(e.getMessage());
       return e.getMessage();
     }
   }
-//  public String remove(User value){
-//    return null; // for future
-//  }
 
   public String getResponse(String method, User value)
   {

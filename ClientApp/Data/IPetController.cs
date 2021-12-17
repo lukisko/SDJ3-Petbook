@@ -28,7 +28,7 @@ namespace ClientApp.Data
 
          Task<Pet> UpdatePetAsync(Pet pet);
         
-         Task DeletePet(int petId);
+         Task DeletePetAsync(int petId);
 
 
          // Task AdoptPetAsync(string userEmail, int petId);

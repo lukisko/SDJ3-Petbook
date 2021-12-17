@@ -1,69 +1,169 @@
-import model.Model;
-import model.ModelManager;
-import model.User;
+import DatabasePersistence.PetDatabase;
+import DatabasePersistence.PetPersistance;
+import DatabasePersistence.UserDatabase;
+import DatabasePersistence.UserPersistence;
+import model.*;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UserTest
 {
-  private Model model;
+  private UserPersistence userPersistence;
   private User user1;
   private User user2;
-  private User user3;
 
   @BeforeEach
   void setUp()
   {
-    model = new ModelManager();
-    user1 = new User("test");
-    user2 = new User("test1");
-    user3 = new User("test2");
-    model.addUser(user1);
-  }
-  @AfterEach
-  void setDown(){
-    if(model.getUser(user1.getEmail()) != null)
-    {
-      model.removeUser(model.getUser(user1.getEmail()));
-    }
+    userPersistence = new UserDatabase();
+    user1 = new User("test1");
+    user2 = new User("test2");
+
   }
 
   @Test
-  void getUser(){
-    User result = model.getUser(user1.getEmail());
+  void getUserZero(){
 
-    assertNotNull(result);
-    assertEquals("test", result.getEmail());
-
-  }
-  @Test
-  void getAllUsers(){
-    model.addUser(user2);
-    model.addUser(user3);
-    List<User> result = model.getAllUsers();
-    model.removeUser(model.getUser(user2.getEmail()));
-    model.removeUser(model.getUser(user3.getEmail()));
-
-    assertNotNull(result);
-    assertTrue(2 < (long) result.size());
-  }
-  @Test
-  void removeUser(){
-    model.removeUser(model.getUser(user1.getEmail()));
-    User result = model.getUser(user1.getEmail());
+    User result = userPersistence.loadUser(user1.getEmail());
 
     assertNull(result);
   }
   @Test
-  void addUser(){
-    User result = model.getUser(user1.getEmail());
+  void getUserOne(){
+    userPersistence.save(user1);
+    User result = userPersistence.loadUser(user1.getEmail());
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
 
     assertNotNull(result);
-    assertEquals("test", result.getEmail());
+    assertEquals("test1", result.getEmail());
   }
+  @Test
+  void getUserMany(){
+    userPersistence.save(user1);
+    userPersistence.save(user2);
+    User result1 = userPersistence.loadUser(user1.getEmail());
+    User result2 = userPersistence.loadUser(user2.getEmail());
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
+    userPersistence.delete(userPersistence.loadUser(user2.getEmail()));
+
+    assertNotNull(result1);
+    assertNotNull(result2);
+    assertEquals("test1", result1.getEmail());
+    assertEquals("test2", result2.getEmail());
+  }
+  @Test
+  void getUserBoundary(){
+
+  }
+  @Test
+  void getUserException(){
+    assertThrows(IllegalArgumentException.class,() -> userPersistence.loadUser(null));
+  }
+
+
+
+  @Test
+  void getAllUsersZero(){
+    List<User> userList = userPersistence.loadAll();
+
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
+
+    assertEquals(0, userList.size());
+  }
+  @Test
+  void getAllUsersOne(){
+    userPersistence.save(user1);
+    List<User> userList = userPersistence.loadAll();
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
+
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
+
+    assertNotNull(userList);
+    assertEquals("test1", userList.get(0).getEmail());
+    assertTrue(2 > userList.size());
+  }
+  @Test
+  void getAllUsersMany(){
+    userPersistence.save(user1);
+    userPersistence.save(user2);
+    List<User> userList = userPersistence.loadAll();
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
+    userPersistence.delete(userPersistence.loadUser(user2.getEmail()));
+
+    userList.removeIf(
+        user -> !user.getEmail().equals(user1.getEmail()) && !user.getEmail()
+            .equals(user2.getEmail()));
+
+    assertNotNull(userList);
+    assertEquals("test1", userList.get(0).getEmail());
+    assertTrue(1 < userList.size());
+  }
+  @Test
+  void getAllUsersBoundary(){
+
+  }
+  @Test
+  void getAllUsersException(){
+
+  }
+
+
+
+
+  @Test
+  void addUserZero(){
+    User result = userPersistence.loadUser(user1.getEmail());
+
+    assertNull(result);
+  }
+  @Test
+  void addUserOne(){
+    assertNull(userPersistence.loadUser(user1.getEmail()));
+
+    userPersistence.save(user1);
+    User result = userPersistence.loadUser(user1.getEmail());
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
+
+    assertNotNull(result);
+    assertEquals(user1.getEmail(), result.getEmail());
+  }
+  @Test
+  void addUserMany(){
+    assertNull(userPersistence.loadUser(user1.getEmail()));
+    assertNull(userPersistence.loadUser(user2.getEmail()));
+
+    userPersistence.save(user1);
+    userPersistence.save(user2);
+    User result1 = userPersistence.loadUser(user1.getEmail());
+    User result2 = userPersistence.loadUser(user2.getEmail());
+    userPersistence.delete(userPersistence.loadUser(user1.getEmail()));
+    userPersistence.delete(userPersistence.loadUser(user2.getEmail()));
+
+    assertNotNull(result1);
+    assertNotNull(result2);
+    assertEquals(user1.getEmail(), result1.getEmail());
+    assertEquals(user2.getEmail(), result2.getEmail());
+  }
+  @Test
+  void addUserBoundary(){
+
+  }
+  @Test
+  void addUserException(){
+    assertThrows(IllegalArgumentException.class,() -> userPersistence.loadUser(null));
+  }
+
 }

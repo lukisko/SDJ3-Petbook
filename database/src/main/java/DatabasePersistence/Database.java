@@ -17,55 +17,34 @@ import javax.persistence.criteria.CriteriaBuilder;
 /**
  * Database class used for connecting to database
  */
-public class Database
-{
-
+public class Database {
   private Configuration configuration;
   private SessionFactory factory;
   private Session session;
   private CriteriaBuilder builder;
-
   private static Database instance;
-
   /**
    * Constructor which initialize all instant variables
    */
-  private Database()
-  {
+  private Database() {
     configuration = new Configuration().addAnnotatedClass(User.class)
         .addAnnotatedClass(Pet.class).addAnnotatedClass(City.class).addAnnotatedClass(
-            Country.class).addAnnotatedClass(Status.class).configure();
+            Country.class).addAnnotatedClass(Status.class).addAnnotatedClass(Message.class).configure();
     factory = configuration.buildSessionFactory();
     session = factory.getCurrentSession();
     session.beginTransaction();
     builder = session.getCriteriaBuilder();
   }
-
   /**
    * method for getting instance of database class
    * @return instance of database class
    */
-  public synchronized static Database getInstance()
-  {
-    if (instance == null)
-    {
+  public synchronized static Database getInstance() {
+    if (instance == null) {
       instance = new Database();
     }
     return instance;
   }
-
-  /**
-   * method for starting connection with database
-   */
-  public void beginSession()
-  {
-    if(!session.getTransaction().isActive())
-    {
-      session = session.getSessionFactory().openSession();
-      session.beginTransaction();
-    }
-  }
-
   /**
    * getting session object
    * @return session object
@@ -74,7 +53,15 @@ public class Database
   {
     return session;
   }
-
+  /**
+   * method for starting connection with database
+   */
+  public synchronized void beginSession() {
+    if(!session.getTransaction().isActive()) {
+      session = session.getSessionFactory().openSession();
+      session.beginTransaction();
+    }
+  }
   /**
    * getting criteriaBuilder which can be used for creating of queries
    * @return builder

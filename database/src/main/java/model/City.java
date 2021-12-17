@@ -51,6 +51,11 @@ public class City {
     return pets;
   }
 
+  public void clear(){
+    if(pets != null) pets.clear();
+    if(country != null) country.clear();
+  }
+
   @Override public String toString()
   {
     return "City{" + "name='" + name + '\'' + ", pets=" + pets + ", country="

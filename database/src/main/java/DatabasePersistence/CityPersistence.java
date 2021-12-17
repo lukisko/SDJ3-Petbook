@@ -22,11 +22,13 @@ public interface CityPersistence {
   /**
    * saves city to database
    * @param city object to be saved
+   * @throws IllegalArgumentException if city is null
    */
   void save(City city);
   /**
    * removes city from database
    * @param city object to be removed
+   * @throws IllegalArgumentException if city is null or is not existing in database
    */
   void delete(City city);
 }

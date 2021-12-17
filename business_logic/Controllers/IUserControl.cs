@@ -7,5 +7,7 @@ namespace business_logic.Controllers
     {
         Task<string> login(string email, string code);
         Task<AuthorisedUser> register(User user);
+        Task<AuthorisedUser> GetUser(string email);
+        Task<bool> sendCode(string email);
     }
 }

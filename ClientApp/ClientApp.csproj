@@ -16,4 +16,16 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Shared\SurveyPrompt.razor" />
+    <Content Remove="Shared\PetProfilePane.razor" />
+    <Content Remove="Pages\MessagePane.razor" />
+    <Content Remove="Pages\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\MessagePane.razor.cs" />
+    <Compile Remove="Pages\Error.cshtml.cs" />
+  </ItemGroup>
+
 </Project>

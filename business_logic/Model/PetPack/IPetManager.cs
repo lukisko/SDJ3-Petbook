@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using business_logic.Model.UserPack;
+using System;
 using System.Collections.Generic;
 using Entities;
 
@@ -10,6 +11,8 @@ namespace business_logic.Model.PetPack
         Task<PetList> requestPets();
         Task<Pet> requestPet(int id);
         Task<IList<Pet>> requestPets(AuthorisedUser user);
+        Task<IList<Entities.Pet>> getPetsAsync(int? id, string userEmail, string status, 
+        string type, string breed, char? gender, DateTime? birthday, string name);
         Task<IList<Pet>> getPetsByStatus(string status);
         Task<Pet> createPet(Pet newPet);
         /// <summary>

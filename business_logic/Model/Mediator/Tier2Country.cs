@@ -3,10 +3,10 @@ using Entities;
 
 namespace business_logic.Model.Mediator
 {
-    public class Tier2Country
+    public class Tier2Country : ITier2Country
     {
-        private Tier2 tier2;
-        public Tier2Country(Tier2 tier2){
+        private ITier2Singleton tier2;
+        public Tier2Country(ITier2Singleton tier2){
             this.tier2 = tier2;
         }
         public async Task<Country> getCountry(Country country){

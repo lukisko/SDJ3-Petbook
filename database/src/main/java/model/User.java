@@ -59,6 +59,21 @@ public class User implements Serializable
     return statuses;
   }
 
+  public void setStatuses(List<Status> statuses)
+  {
+    this.statuses = statuses;
+  }
+
+  public void setPets(List<Pet> pets)
+  {
+    this.pets = pets;
+  }
+
+  public void clear(){
+    if(pets != null) pets.clear();
+    if(statuses != null) statuses.clear();
+  }
+
   @Override public String toString()
   {
     return "User{" + "email='" + email + '\'' + ", name='" + name + '\''

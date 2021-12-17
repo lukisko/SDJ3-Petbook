@@ -1,5 +1,8 @@
+import DatabasePersistence.*;
 import com.google.gson.Gson;
 import mediator.Comunication;
+import mediator.comunication_handler.CommunicationHandler;
+import mediator.comunication_handler.Handler;
 import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,14 +18,9 @@ public class Test {
   public static void main(String[] args) {
 
     Gson gson = new Gson();
-    Model model = new ModelManager();
+    MessagePersisence messagePersisence = new MessageDatabase();
 
-
-    List<Status> statusList = model.getAllStatusesWithName("walking");
-    String stringToSend = gson.toJson(statusList);
-    byte[] toSendBytes = stringToSend.getBytes();
-
-
+    System.out.println(messagePersisence.LoadMessagesOfPets(72,15).get(0).getId());
 
   }
 }
